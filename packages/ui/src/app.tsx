@@ -1,17 +1,24 @@
 import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+  Alert,
+  AlertDescription,
   Button,
   Checkbox,
-  Disclosure,
-  DisclosureItem,
   Icon,
   IconButton,
   Input,
   Label,
-  OnboardingTip,
-  Radio,
+  RadioGroup,
+  RadioGroupItem,
   SectionTitle,
   Select,
-  SelectMenuOption,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
   Switch,
   Textarea,
   Type,
@@ -24,24 +31,39 @@ function App() {
         <SectionTitle>Inputs</SectionTitle>
         <Input placeholder="Type something" />
         <Textarea placeholder="Longer text..." rows={3} />
-        <Checkbox id="cb1" defaultChecked>Option A</Checkbox>
-        <Radio id="r1" name="demo-radio">Option A</Radio>
-        <Radio id="r2" name="demo-radio">Option B</Radio>
-        <Switch id="sw1" defaultChecked>Enable feature</Switch>
-        <Select
-          options={[{ value: 'a', label: 'Option A' }, { value: 'b', label: 'Option B' }]}
-          render={(opt) => (
-            <SelectMenuOption key={opt.value} value={opt.value}>
-              {opt.label}
-            </SelectMenuOption>
-          )}
-        />
+        <div className="flex items-center gap-2">
+          <Checkbox id="cb1" defaultChecked />
+          <Label htmlFor="cb1">Option A</Label>
+        </div>
+        <RadioGroup defaultValue="a">
+          <div className="flex items-center gap-2">
+            <RadioGroupItem value="a" id="r1" />
+            <Label htmlFor="r1">Option A</Label>
+          </div>
+          <div className="flex items-center gap-2">
+            <RadioGroupItem value="b" id="r2" />
+            <Label htmlFor="r2">Option B</Label>
+          </div>
+        </RadioGroup>
+        <div className="flex items-center gap-2">
+          <Switch id="sw1" defaultChecked />
+          <Label htmlFor="sw1">Enable feature</Label>
+        </div>
+        <Select defaultValue="a">
+          <SelectTrigger>
+            <SelectValue placeholder="Choose..." />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="a">Option A</SelectItem>
+            <SelectItem value="b">Option B</SelectItem>
+          </SelectContent>
+        </Select>
       </div>
 
       <div className="flex flex-col gap-2 mb-6">
         <SectionTitle>Buttons</SectionTitle>
-        <Button tint="primary">Primary action</Button>
-        <Button>Secondary action</Button>
+        <Button variant="default">Primary action</Button>
+        <Button variant="secondary">Secondary action</Button>
         <IconButton iconProps={{ iconName: 'plus' }} aria-label="Add item" />
       </div>
 
@@ -50,22 +72,20 @@ function App() {
         <Icon iconName="star" />
         <Label>Field label</Label>
         <Type size="large" weight="bold">Heading text</Type>
-        <OnboardingTip iconProps={{ iconName: 'info' }}>This is a tip for new users.</OnboardingTip>
+        <Alert>
+          <Icon iconName="info" className="size-4" />
+          <AlertDescription>This is a tip for new users.</AlertDescription>
+        </Alert>
       </div>
 
       <div className="flex flex-col gap-2 mb-6">
         <SectionTitle>Layout</SectionTitle>
-        <Disclosure
-          tips={[{ heading: 'More info', content: 'Details here.' }]}
-          render={(tip) => (
-            <DisclosureItem
-              key={tip.heading}
-              heading={tip.heading}
-              content={tip.content}
-              expanded
-            />
-          )}
-        />
+        <Accordion type="single" collapsible defaultValue="item-1">
+          <AccordionItem value="item-1">
+            <AccordionTrigger>More info</AccordionTrigger>
+            <AccordionContent>Details here.</AccordionContent>
+          </AccordionItem>
+        </Accordion>
       </div>
     </div>
   );

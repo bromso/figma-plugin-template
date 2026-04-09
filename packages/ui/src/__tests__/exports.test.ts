@@ -1,50 +1,62 @@
 import { describe, expect, it } from 'vitest';
 import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+  Alert,
+  AlertDescription,
+  AlertTitle,
   Button,
   Checkbox,
-  Disclosure,
-  DisclosureItem,
   Icon,
   IconButton,
   Input,
   Label,
+  RadioGroup,
+  RadioGroupItem,
   SectionTitle,
-  OnboardingTip,
-  Radio,
   Select,
-  SelectMenuOption,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
   Switch,
   Textarea,
   Type,
-  classes,
+  cn,
 } from '../index';
 
 describe('@repo/ui exports', () => {
-  it('exports all 14 react-figma-ui components', () => {
+  it('exports all shadcn/ui and custom components', () => {
     expect(Button).toBeDefined();
     expect(Checkbox).toBeDefined();
-    expect(Disclosure).toBeDefined();
-    expect(DisclosureItem).toBeDefined();
-    expect(Icon).toBeDefined();
-    expect(IconButton).toBeDefined();
     expect(Input).toBeDefined();
     expect(Label).toBeDefined();
-    expect(SectionTitle).toBeDefined();
-    expect(OnboardingTip).toBeDefined();
-    expect(Radio).toBeDefined();
     expect(Select).toBeDefined();
+    expect(SelectContent).toBeDefined();
+    expect(SelectItem).toBeDefined();
+    expect(SelectTrigger).toBeDefined();
+    expect(SelectValue).toBeDefined();
     expect(Switch).toBeDefined();
     expect(Textarea).toBeDefined();
+    expect(RadioGroup).toBeDefined();
+    expect(RadioGroupItem).toBeDefined();
+    expect(Accordion).toBeDefined();
+    expect(AccordionItem).toBeDefined();
+    expect(AccordionTrigger).toBeDefined();
+    expect(AccordionContent).toBeDefined();
+    expect(Alert).toBeDefined();
+    expect(AlertDescription).toBeDefined();
+    expect(AlertTitle).toBeDefined();
+    expect(Icon).toBeDefined();
+    expect(IconButton).toBeDefined();
+    expect(SectionTitle).toBeDefined();
     expect(Type).toBeDefined();
   });
 
-  it('exports SelectMenuOption companion', () => {
-    expect(SelectMenuOption).toBeDefined();
-  });
-
-  it('exports classes utility', () => {
-    expect(classes).toBeDefined();
-    expect(classes('a', 'b')).toBe('a b');
-    expect(classes('a', null, 'b')).toBe('a b');
+  it('exports cn utility', () => {
+    expect(cn).toBeDefined();
+    expect(cn('a', 'b')).toBe('a b');
   });
 });
