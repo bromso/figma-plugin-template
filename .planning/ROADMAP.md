@@ -58,10 +58,10 @@ Plans:
   2. `turbo run build` produces `dist/plugin.js` and `dist/index.html` with zero external imports (fully inlined)
   3. `bun run dev` starts parallel watch mode for both plugin and UI builds
   4. Built plugin loads and functions correctly in Figma Desktop
-**Plans**: TBD
+**Plans**: 1 plan
 
 Plans:
-- [ ] 03-01: TBD
+- [ ] 03-01-PLAN.md — Upgrade Vite to v6, verify build outputs and dev mode
 
 ### Phase 4: Biome & VS Code Config
 **Goal**: Developers get automatic formatting on save and lint feedback in VS Code immediately after cloning
@@ -102,6 +102,6 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5
 |-------|----------------|--------|-----------|
 | 1. Monorepo Scaffolding | 1/1 | Complete   | 2026-04-09 |
 | 2. Package Extraction | 0/2 | Not started | - |
-| 3. Build Pipeline Verification | 0/0 | Not started | - |
+| 3. Build Pipeline Verification | 0/1 | Not started | - |
 | 4. Biome & VS Code Config | 0/0 | Not started | - |
 | 5. Vitest & DX Polish | 0/0 | Not started | - |
