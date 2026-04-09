@@ -43,5 +43,10 @@ export default defineConfig(async ({ mode }) => {
         plugins: [postcssUrl({ url: "inline" })],
       },
     },
+    resolve: {
+      alias: {
+        "@": uiSrcPath,
+      },
+    },
   };
 });
