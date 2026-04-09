@@ -46,7 +46,7 @@ Full details: [milestones/v1.1-ROADMAP.md](milestones/v1.1-ROADMAP.md)
 
 - [x] **Phase 10: Vite 8 + TypeScript 6 + Figma Typings** - Upgrade build toolchain foundation (completed 2026-04-09)
 - [x] **Phase 11: React 19** - Upgrade React and type definitions (completed 2026-04-09)
-- [ ] **Phase 12: Tailwind CSS 4.x + Bundle Analysis** - Replace Sass, configure design system, add analyze script
+- [x] **Phase 12: Tailwind CSS 4.x + Bundle Analysis** - Replace Sass, configure design system, add analyze script (completed 2026-04-09)
 - [ ] **Phase 13: shadcn/ui Component Migration** - Install shadcn/ui, apply Figma tokens, replace react-figma-ui
 - [ ] **Phase 14: Storybook 10 Upgrade** - Migrate Storybook to ESM-only v10 with new components
 - [ ] **Phase 15: Full-Stack Verification** - Confirm tests, build, Storybook, and Figma runtime all pass
@@ -91,8 +91,8 @@ Plans:
   4. `bun run analyze` generates a visual bundle report for the UI output
 **Plans**: 2 plans
 Plans:
-- [ ] 12-01-PLAN.md — Install Tailwind CSS 4.x, replace Sass/SCSS with Tailwind utilities, verify single-file build
-- [ ] 12-02-PLAN.md — Add bundle analysis tooling and visual verification checkpoint
+- [x] 12-01-PLAN.md — Install Tailwind CSS 4.x, replace Sass/SCSS with Tailwind utilities, verify single-file build
+- [x] 12-02-PLAN.md — Add bundle analysis tooling and visual verification checkpoint
 
 ### Phase 13: shadcn/ui Component Migration
 **Goal**: shadcn/ui with Radix primitives replaces react-figma-ui, Figma design tokens are applied, all 14 component equivalents exist, and unmaintained packages are removed
@@ -145,7 +145,7 @@ Plans:
 | 9. License, Security, Contributing & README | v1.1 | 2/2 | Complete | 2026-04-09 |
 | 10. Vite 8 + TypeScript 6 + Figma Typings | v1.2 | 2/2 | Complete    | 2026-04-09 |
 | 11. React 19 | v1.2 | 1/1 | Complete    | 2026-04-09 |
-| 12. Tailwind CSS 4.x + Bundle Analysis | v1.2 | 0/2 | Not started | - |
+| 12. Tailwind CSS 4.x + Bundle Analysis | v1.2 | 2/2 | Complete    | 2026-04-09 |
 | 13. shadcn/ui Component Migration | v1.2 | 0/? | Not started | - |
 | 14. Storybook 10 Upgrade | v1.2 | 0/? | Not started | - |
 | 15. Full-Stack Verification | v1.2 | 0/? | Not started | - |
