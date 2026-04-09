@@ -14,7 +14,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Monorepo Scaffolding** - Root workspace config, Bun workspaces, turbo.json with task pipeline (completed 2026-04-09)
 - [ ] **Phase 2: Package Extraction** - Extract common and ui packages in dependency order with correct exports
-- [ ] **Phase 3: Build Pipeline Verification** - Vite 6 upgrade and verified dual single-file build output
+- [x] **Phase 3: Build Pipeline Verification** - Vite 6 upgrade and verified dual single-file build output (completed 2026-04-09)
 - [ ] **Phase 4: Biome & VS Code Config** - Biome linting/formatting and VS Code workspace integration
 - [ ] **Phase 5: Vitest & DX Polish** - Per-package test setup and remaining VS Code developer experience
 
@@ -61,7 +61,7 @@ Plans:
 **Plans**: 1 plan
 
 Plans:
-- [ ] 03-01-PLAN.md — Upgrade Vite to v6, verify build outputs and dev mode
+- [x] 03-01-PLAN.md — Upgrade Vite to v6, verify build outputs and dev mode
 
 ### Phase 4: Biome & VS Code Config
 **Goal**: Developers get automatic formatting on save and lint feedback in VS Code immediately after cloning
@@ -102,6 +102,6 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5
 |-------|----------------|--------|-----------|
 | 1. Monorepo Scaffolding | 1/1 | Complete   | 2026-04-09 |
 | 2. Package Extraction | 0/2 | Not started | - |
-| 3. Build Pipeline Verification | 0/1 | Not started | - |
+| 3. Build Pipeline Verification | 1/1 | Complete   | 2026-04-09 |
 | 4. Biome & VS Code Config | 0/0 | Not started | - |
 | 5. Vitest & DX Polish | 0/0 | Not started | - |

@@ -20,9 +20,9 @@ Requirements for monorepo & DX overhaul. Each maps to roadmap phases.
 
 - [x] **BUILD-01**: Root `turbo.json` with `build`, `dev`, `lint`, `test`, `test:watch` tasks
 - [x] **BUILD-02**: Build tasks use `"dependsOn": ["^build"]` for topological ordering
-- [ ] **BUILD-03**: Vite upgraded from v5 to v6 with all plugins compatible
-- [ ] **BUILD-04**: Both Vite builds (plugin + UI) produce valid single-file output in `dist/`
-- [ ] **BUILD-05**: `bun run dev` starts parallel watch mode for plugin and UI builds
+- [x] **BUILD-03**: Vite upgraded from v5 to v6 with all plugins compatible
+- [x] **BUILD-04**: Both Vite builds (plugin + UI) produce valid single-file output in `dist/`
+- [x] **BUILD-05**: `bun run dev` starts parallel watch mode for plugin and UI builds
 - [x] **BUILD-06**: Old lockfiles (`package-lock.json`, `pnpm-lock.yaml`) removed; Bun is sole package manager
 - [x] **BUILD-07**: `packageManager` field set correctly in root `package.json`
 
@@ -85,9 +85,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 | MONO-06 | Phase 4 | Pending |
 | BUILD-01 | Phase 1 | Complete |
 | BUILD-02 | Phase 1 | Complete |
-| BUILD-03 | Phase 3 | Pending |
-| BUILD-04 | Phase 3 | Pending |
-| BUILD-05 | Phase 3 | Pending |
+| BUILD-03 | Phase 3 | Complete |
+| BUILD-04 | Phase 3 | Complete |
+| BUILD-05 | Phase 3 | Complete |
 | BUILD-06 | Phase 1 | Complete |
 | BUILD-07 | Phase 1 | Complete |
 | LINT-01 | Phase 4 | Pending |
