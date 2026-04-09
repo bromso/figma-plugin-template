@@ -62,7 +62,10 @@ Full details: [milestones/v1.1-ROADMAP.md](milestones/v1.1-ROADMAP.md)
   2. `bun run types` type-checks cleanly under TypeScript 6.0
   3. `@figma/plugin-typings` is at 1.123 and new Figma API symbols resolve in the plugin sandbox code
   4. Both Vite configs (`vite.config.ui.ts` and `vite.config.plugin.ts`) run without deprecation errors
-**Plans**: TBD
+**Plans**: 2 plans
+Plans:
+- [ ] 10-01-PLAN.md — Upgrade Vite 8, TypeScript 6, Figma typings, and update configs
+- [ ] 10-02-PLAN.md — Add root types script and full verification
 
 ### Phase 11: React 19
 **Goal**: React is upgraded to version 19 with correct type definitions, and existing UI code compiles and renders correctly
@@ -137,7 +140,7 @@ Full details: [milestones/v1.1-ROADMAP.md](milestones/v1.1-ROADMAP.md)
 | 7. Storybook Setup and Stories | v1.1 | 2/2 | Complete | 2026-04-09 |
 | 8. Claude Skills Optimization | v1.1 | 2/2 | Complete | 2026-04-09 |
 | 9. License, Security, Contributing & README | v1.1 | 2/2 | Complete | 2026-04-09 |
-| 10. Vite 8 + TypeScript 6 + Figma Typings | v1.2 | 0/? | Not started | - |
+| 10. Vite 8 + TypeScript 6 + Figma Typings | v1.2 | 0/2 | Not started | - |
 | 11. React 19 | v1.2 | 0/? | Not started | - |
 | 12. Tailwind CSS 4.x + Bundle Analysis | v1.2 | 0/? | Not started | - |
 | 13. shadcn/ui Component Migration | v1.2 | 0/? | Not started | - |
