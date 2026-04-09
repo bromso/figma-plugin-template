@@ -76,8 +76,9 @@ Plans:
   2. `@types/react` and `@types/react-dom` are at the React 19-compatible versions
   3. `bun run types` passes with no new TypeScript errors after the React upgrade
   4. The plugin UI renders in the browser (`bun run dev:ui-only`) without console errors
-**Plans**: TBD
-**UI hint**: yes
+**Plans**: 1 plan
+Plans:
+- [ ] 11-01-PLAN.md — Bump React to 19.x and verify types, tests, and build
 
 ### Phase 12: Tailwind CSS 4.x + Bundle Analysis
 **Goal**: Sass is replaced with Tailwind CSS 4.x configured for the single-file iframe constraint, and a bundle analysis script is available
@@ -141,7 +142,7 @@ Plans:
 | 8. Claude Skills Optimization | v1.1 | 2/2 | Complete | 2026-04-09 |
 | 9. License, Security, Contributing & README | v1.1 | 2/2 | Complete | 2026-04-09 |
 | 10. Vite 8 + TypeScript 6 + Figma Typings | v1.2 | 2/2 | Complete    | 2026-04-09 |
-| 11. React 19 | v1.2 | 0/? | Not started | - |
+| 11. React 19 | v1.2 | 0/1 | Not started | - |
 | 12. Tailwind CSS 4.x + Bundle Analysis | v1.2 | 0/? | Not started | - |
 | 13. shadcn/ui Component Migration | v1.2 | 0/? | Not started | - |
 | 14. Storybook 10 Upgrade | v1.2 | 0/? | Not started | - |
