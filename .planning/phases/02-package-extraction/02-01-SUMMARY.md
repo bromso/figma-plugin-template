@@ -83,7 +83,7 @@ Each task was committed atomically:
 1. **Task 1: Create package.json and tsconfig files for all three packages** - `4467b94` (feat)
 2. **Task 2: Populate packages/common source and create packages/ui barrel** - `a5bf4e8` (feat)
 
-**Plan metadata:** (pending — docs commit)
+**Plan metadata:** `15bcd24` (docs: complete workspace package setup plan)
 
 ## Files Created/Modified
 - `packages/common/package.json` - @repo/common package with JIT exports to ./src/index.ts, monorepo-networker dependency
@@ -122,6 +122,10 @@ None — no external service configuration required.
 - packages/ui barrel exists and is ready for file migration
 - apps/figma-plugin has all required scripts — ready to receive migrated Vite config and source files
 - Blocker: packages/ui/src/index.ts barrel exports reference files that don't yet exist (resolved in Plan 02)
+
+## Self-Check: PASSED
+
+All created files verified to exist. Both task commits verified in git log.
 
 ---
 *Phase: 02-package-extraction*
