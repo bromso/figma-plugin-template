@@ -73,11 +73,12 @@ Plans:
   3. VS Code prompts to install recommended extensions (Biome, Vitest, Vite) on first open
   4. VS Code tasks panel shows dev and build shortcuts that execute correctly
   5. `.code-workspace` file opens all workspace folders in VS Code multi-root mode
-**Plans**: TBD
+**Plans**: 2 plans
 **UI hint**: yes
 
 Plans:
-- [ ] 04-01: TBD
+- [ ] 04-01-PLAN.md — Install Biome 2.x, create root biome.json, add per-package lint scripts
+- [ ] 04-02-PLAN.md — VS Code settings, extensions, tasks, and .code-workspace multi-root config
 
 ### Phase 5: Vitest & DX Polish
 **Goal**: Every testable package has a working test suite with watch mode, and VS Code debug configurations work end-to-end
@@ -103,5 +104,5 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5
 | 1. Monorepo Scaffolding | 1/1 | Complete   | 2026-04-09 |
 | 2. Package Extraction | 0/2 | Not started | - |
 | 3. Build Pipeline Verification | 1/1 | Complete   | 2026-04-09 |
-| 4. Biome & VS Code Config | 0/0 | Not started | - |
+| 4. Biome & VS Code Config | 0/2 | Not started | - |
 | 5. Vitest & DX Polish | 0/0 | Not started | - |
