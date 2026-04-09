@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+/* Tailwind v4 auto-scan: scan this directory for utility classes.
+   Required because Vite root is set to this directory but the build
+   runs from apps/figma-plugin. */
+@source ".";
