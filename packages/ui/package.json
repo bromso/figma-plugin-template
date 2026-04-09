@@ -6,6 +6,9 @@
     ".": "./src/index.ts",
     "./*": "./src/*"
   },
+  "scripts": {
+    "lint": "biome check ."
+  },
   "dependencies": {
     "@repo/common": "workspace:*",
     "monorepo-networker": "^2.1.0",

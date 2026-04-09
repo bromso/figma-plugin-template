@@ -9,7 +9,8 @@
     "dev:ui-watch": "vite build --watch -c vite.config.ui.ts",
     "dev:plugin-watch": "vite build --watch -c vite.config.plugin.ts",
     "dev:ui-only": "vite serve -c vite.config.ui.ts",
-    "types": "tsc --noEmit && tsc --noEmit -p tsconfig.node.json"
+    "types": "tsc --noEmit && tsc --noEmit -p tsconfig.node.json",
+    "lint": "biome check ."
   },
   "dependencies": {
     "@repo/common": "workspace:*",
