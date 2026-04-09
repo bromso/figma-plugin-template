@@ -1,0 +1,12 @@
+{
+  "name": "@repo/common",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./*": "./src/*"
+  },
+  "dependencies": {
+    "monorepo-networker": "^2.1.0"
+  }
+}
