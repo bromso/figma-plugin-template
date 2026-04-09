@@ -14,7 +14,7 @@ Requirements for monorepo & DX overhaul. Each maps to roadmap phases.
 - [x] **MONO-03**: Internal packages use `workspace:*` protocol for dependencies
 - [x] **MONO-04**: Each package has `package.json` with explicit `exports` field
 - [x] **MONO-05**: Internal packages use `@repo/` namespace (`@repo/ui`, `@repo/common`)
-- [ ] **MONO-06**: VS Code `.code-workspace` file with multi-root workspace configuration
+- [x] **MONO-06**: VS Code `.code-workspace` file with multi-root workspace configuration
 
 ### Build Pipeline
 
@@ -42,10 +42,10 @@ Requirements for monorepo & DX overhaul. Each maps to roadmap phases.
 
 ### VS Code DX
 
-- [ ] **VSDX-01**: `.vscode/settings.json` with Biome as default formatter and formatOnSave
-- [ ] **VSDX-02**: `.vscode/extensions.json` recommending Biome, Vitest, and Vite extensions
+- [x] **VSDX-01**: `.vscode/settings.json` with Biome as default formatter and formatOnSave
+- [x] **VSDX-02**: `.vscode/extensions.json` recommending Biome, Vitest, and Vite extensions
 - [ ] **VSDX-03**: `.vscode/launch.json` with debug configurations for plugin and UI
-- [ ] **VSDX-04**: `.vscode/tasks.json` with dev shortcuts (`bun run dev`, `bun run build`)
+- [x] **VSDX-04**: `.vscode/tasks.json` with dev shortcuts (`bun run dev`, `bun run build`)
 
 ## Future Requirements
 
@@ -82,7 +82,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | MONO-03 | Phase 2 | Complete |
 | MONO-04 | Phase 2 | Complete |
 | MONO-05 | Phase 2 | Complete |
-| MONO-06 | Phase 4 | Pending |
+| MONO-06 | Phase 4 | Complete |
 | BUILD-01 | Phase 1 | Complete |
 | BUILD-02 | Phase 1 | Complete |
 | BUILD-03 | Phase 3 | Complete |
@@ -98,10 +98,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 | TEST-03 | Phase 5 | Pending |
 | TEST-04 | Phase 5 | Pending |
 | TEST-05 | Phase 5 | Pending |
-| VSDX-01 | Phase 4 | Pending |
-| VSDX-02 | Phase 4 | Pending |
+| VSDX-01 | Phase 4 | Complete |
+| VSDX-02 | Phase 4 | Complete |
 | VSDX-03 | Phase 5 | Pending |
-| VSDX-04 | Phase 4 | Pending |
+| VSDX-04 | Phase 4 | Complete |
 
 **Coverage:**
 - v1.0 requirements: 25 total
