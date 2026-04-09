@@ -29,10 +29,10 @@ Decimal phases appear between their surrounding integers in numeric order.
   2. `turbo run build` recognizes the workspace and executes tasks in topological order
   3. No `package-lock.json` or `pnpm-lock.yaml` exists; `bun.lock` is the sole lockfile
   4. Root `package.json` has correct `packageManager` field (no `v` prefix) and `"private": true`
-**Plans**: TBD
+**Plans**: 1 plan
 
 Plans:
-- [ ] 01-01: TBD
+- [ ] 01-01-PLAN.md — Root workspace config, turbo.json, directory scaffolding, lockfile migration
 
 ### Phase 2: Package Extraction
 **Goal**: Shared code lives in `packages/common` and `packages/ui` as JIT source-only packages with proper workspace imports
@@ -98,7 +98,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Monorepo Scaffolding | 0/0 | Not started | - |
+| 1. Monorepo Scaffolding | 0/1 | Planning complete | - |
 | 2. Package Extraction | 0/0 | Not started | - |
 | 3. Build Pipeline Verification | 0/0 | Not started | - |
 | 4. Biome & VS Code Config | 0/0 | Not started | - |
