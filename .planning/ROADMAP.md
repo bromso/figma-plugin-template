@@ -92,7 +92,7 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 05-01-PLAN.md — Install Vitest per-package, create configs, write smoke tests
+- [x] 05-01-PLAN.md — Install Vitest per-package, create configs, write smoke tests
 - [ ] 05-02-PLAN.md — VS Code launch.json with debug configurations
 
 ## Progress
@@ -106,4 +106,4 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5
 | 2. Package Extraction | 0/2 | Not started | - |
 | 3. Build Pipeline Verification | 1/1 | Complete   | 2026-04-09 |
 | 4. Biome & VS Code Config | 2/2 | Complete   | 2026-04-09 |
-| 5. Vitest & DX Polish | 0/2 | Not started | - |
+| 5. Vitest & DX Polish | 1/2 | In Progress|  |

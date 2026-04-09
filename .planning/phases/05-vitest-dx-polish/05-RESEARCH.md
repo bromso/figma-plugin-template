@@ -405,22 +405,25 @@ describe("Button", () => {
 
 ---
 
-## Open Questions
+## Open Questions (RESOLVED)
 
 1. **Vitest binary location after Bun workspace install**
    - What we know: Bun hoists dependencies to the workspace root `node_modules/` in most cases. When installed per-package, the binary typically appears at root `node_modules/.bin/vitest`.
    - What's unclear: Whether Bun places the binary at root `node_modules/.bin/` or per-package `node_modules/.bin/`. This affects the `program` path in `.vscode/launch.json`.
    - Recommendation: During Wave 1, run `ls node_modules/.bin/vitest packages/common/node_modules/.bin/vitest packages/ui/node_modules/.bin/vitest 2>/dev/null` to determine the actual location and adjust launch.json accordingly.
+   - RESOLVED: The plan tasks for `.vscode/launch.json` use `${workspaceRoot}/node_modules/.bin/vitest` (Bun hoists to root) and include an inline verification step (`ls node_modules/.bin/vitest`) to confirm the path before writing the file. If hoisting does not occur, the executor adjusts to the per-package `.bin` path as documented in Pitfall 5.
 
 2. **CSS Module handling in Vitest for packages/ui**
    - What we know: Vitest processes CSS modules by default (returns an identity proxy). SCSS preprocessing requires the `sass` package.
    - What's unclear: Whether Button.module.scss will resolve correctly without an explicit Vite plugin chain in the test config.
    - Recommendation: Add `sass` as a devDependency in `packages/ui`, and note in the plan that if `.module.scss` imports fail, adding `css: { modules: { ... } }` or mocking CSS in `setupFiles` is the fallback.
+   - RESOLVED: The plan install task adds `sass` as a devDependency alongside `happy-dom`. The `packages/ui/vitest.config.ts` relies on Vitest's default CSS module identity transform (no explicit config needed). If `.module.scss` imports still fail during implementation, Pitfall 3's fallback (mock CSS in `setupFiles`) is the documented escape hatch.
 
 3. **Figma plugin debug via VS Code attach**
    - What we know: Figma supports `--remote-debugging-port=9222` when launched from CLI. The "Developer VM" mode routes through the browser JS engine.
    - What's unclear: Whether the Figma desktop app on the developer's machine supports the attach workflow or only Chrome DevTools.
    - Recommendation: Document the attach configuration as the advanced option in launch.json, with a comment noting it requires Figma launched via CLI with `--remote-debugging-port=9222`.
+   - RESOLVED: The plan includes the attach configuration as the third entry in `.vscode/launch.json` with an inline comment marking it as the advanced/optional workflow. The common case (Chrome DevTools via Figma's built-in console) is documented in the config name and description. No blocking dependency — the config is additive and harmless if the attach workflow is unsupported on the developer's machine.
 
 ---
 

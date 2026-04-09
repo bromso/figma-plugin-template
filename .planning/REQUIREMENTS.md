@@ -34,11 +34,11 @@ Requirements for monorepo & DX overhaul. Each maps to roadmap phases.
 
 ### Testing
 
-- [ ] **TEST-01**: Vitest configured with per-package `vitest.config.ts` files
-- [ ] **TEST-02**: Each testable package has its own `test` script
-- [ ] **TEST-03**: `test:watch` task declared with `cache: false, persistent: true` in turbo.json
-- [ ] **TEST-04**: `packages/common` tests run in node environment
-- [ ] **TEST-05**: `packages/ui` tests run with DOM environment (happy-dom)
+- [x] **TEST-01**: Vitest configured with per-package `vitest.config.ts` files
+- [x] **TEST-02**: Each testable package has its own `test` script
+- [x] **TEST-03**: `test:watch` task declared with `cache: false, persistent: true` in turbo.json
+- [x] **TEST-04**: `packages/common` tests run in node environment
+- [x] **TEST-05**: `packages/ui` tests run with DOM environment (happy-dom)
 
 ### VS Code DX
 
@@ -93,11 +93,11 @@ Which phases cover which requirements. Updated during roadmap creation.
 | LINT-01 | Phase 4 | Complete |
 | LINT-02 | Phase 4 | Complete |
 | LINT-03 | Phase 4 | Complete |
-| TEST-01 | Phase 5 | Pending |
-| TEST-02 | Phase 5 | Pending |
-| TEST-03 | Phase 5 | Pending |
-| TEST-04 | Phase 5 | Pending |
-| TEST-05 | Phase 5 | Pending |
+| TEST-01 | Phase 5 | Complete |
+| TEST-02 | Phase 5 | Complete |
+| TEST-03 | Phase 5 | Complete |
+| TEST-04 | Phase 5 | Complete |
+| TEST-05 | Phase 5 | Complete |
 | VSDX-01 | Phase 4 | Complete |
 | VSDX-02 | Phase 4 | Complete |
 | VSDX-03 | Phase 5 | Pending |
