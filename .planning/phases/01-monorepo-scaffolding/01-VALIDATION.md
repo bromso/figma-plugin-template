@@ -39,7 +39,7 @@ created: 2026-04-09
 | Task ID | Plan | Wave | Requirement | Test Type | Automated Command | Status |
 |---------|------|------|-------------|-----------|-------------------|--------|
 | 01-01-01 | 01 | 1 | MONO-02 | integration | `bun install` | ⬜ pending |
-| 01-01-02 | 01 | 1 | MONO-05 | integration | `grep packageManager package.json` | ⬜ pending |
+| 01-01-02 | 01 | 1 | BUILD-07 | integration | `grep packageManager package.json` | ⬜ pending |
 | 01-01-03 | 01 | 1 | BUILD-01 | integration | `turbo run build --dry-run` | ⬜ pending |
 | 01-01-04 | 01 | 1 | BUILD-06 | file check | `test ! -f package-lock.json && test ! -f pnpm-lock.yaml` | ⬜ pending |
 

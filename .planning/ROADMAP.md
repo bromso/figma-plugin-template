@@ -23,7 +23,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 ### Phase 1: Monorepo Scaffolding
 **Goal**: A working Turborepo + Bun workspace where `bun install` succeeds and `turbo` recognizes all packages
 **Depends on**: Nothing (first phase)
-**Requirements**: MONO-02, MONO-05, BUILD-01, BUILD-02, BUILD-06, BUILD-07
+**Requirements**: MONO-02, BUILD-01, BUILD-02, BUILD-06, BUILD-07
 **Success Criteria** (what must be TRUE):
   1. `bun install` succeeds at the repo root and resolves all workspace packages
   2. `turbo run build` recognizes the workspace and executes tasks in topological order
@@ -37,11 +37,12 @@ Plans:
 ### Phase 2: Package Extraction
 **Goal**: Shared code lives in `packages/common` and `packages/ui` as JIT source-only packages with proper workspace imports
 **Depends on**: Phase 1
-**Requirements**: MONO-01, MONO-03, MONO-04
+**Requirements**: MONO-01, MONO-03, MONO-04, MONO-05
 **Success Criteria** (what must be TRUE):
   1. `apps/figma-plugin`, `packages/common`, and `packages/ui` directories exist with correct `package.json` files
   2. Each package has an `exports` field pointing to source TypeScript entry points
   3. `packages/ui` depends on `@repo/common` via `workspace:*` and TypeScript resolves cross-package imports
+  4. Internal packages use `@repo/` namespace (`@repo/ui`, `@repo/common`)
 **Plans**: TBD
 
 Plans:

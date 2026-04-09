@@ -81,7 +81,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | MONO-02 | Phase 1 | Pending |
 | MONO-03 | Phase 2 | Pending |
 | MONO-04 | Phase 2 | Pending |
-| MONO-05 | Phase 1 | Pending |
+| MONO-05 | Phase 2 | Pending |
 | MONO-06 | Phase 4 | Pending |
 | BUILD-01 | Phase 1 | Pending |
 | BUILD-02 | Phase 1 | Pending |
@@ -110,4 +110,4 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 ---
 *Requirements defined: 2026-04-09*
-*Last updated: 2026-04-09 after roadmap creation*
+*Last updated: 2026-04-09 — MONO-05 moved from Phase 1 to Phase 2 (no packages exist in Phase 1 to use @repo/ namespace)*
