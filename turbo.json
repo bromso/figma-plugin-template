@@ -5,6 +5,11 @@
       "dependsOn": ["^build"],
       "outputs": ["dist/**"]
     },
+    "analyze": {
+      "dependsOn": ["^build"],
+      "outputs": ["stats.html"],
+      "cache": false
+    },
     "dev": {
       "cache": false,
       "persistent": true

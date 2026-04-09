@@ -38,6 +38,7 @@
     "lint": "turbo run lint",
     "test": "turbo run test",
     "test:watch": "turbo run test:watch",
+    "analyze": "turbo run analyze",
     "types": "turbo run types"
   },
   "workspaces": [
