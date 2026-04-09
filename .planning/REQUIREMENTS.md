@@ -77,37 +77,37 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| MONO-01 | — | Pending |
-| MONO-02 | — | Pending |
-| MONO-03 | — | Pending |
-| MONO-04 | — | Pending |
-| MONO-05 | — | Pending |
-| MONO-06 | — | Pending |
-| BUILD-01 | — | Pending |
-| BUILD-02 | — | Pending |
-| BUILD-03 | — | Pending |
-| BUILD-04 | — | Pending |
-| BUILD-05 | — | Pending |
-| BUILD-06 | — | Pending |
-| BUILD-07 | — | Pending |
-| LINT-01 | — | Pending |
-| LINT-02 | — | Pending |
-| LINT-03 | — | Pending |
-| TEST-01 | — | Pending |
-| TEST-02 | — | Pending |
-| TEST-03 | — | Pending |
-| TEST-04 | — | Pending |
-| TEST-05 | — | Pending |
-| VSDX-01 | — | Pending |
-| VSDX-02 | — | Pending |
-| VSDX-03 | — | Pending |
-| VSDX-04 | — | Pending |
+| MONO-01 | Phase 2 | Pending |
+| MONO-02 | Phase 1 | Pending |
+| MONO-03 | Phase 2 | Pending |
+| MONO-04 | Phase 2 | Pending |
+| MONO-05 | Phase 1 | Pending |
+| MONO-06 | Phase 4 | Pending |
+| BUILD-01 | Phase 1 | Pending |
+| BUILD-02 | Phase 1 | Pending |
+| BUILD-03 | Phase 3 | Pending |
+| BUILD-04 | Phase 3 | Pending |
+| BUILD-05 | Phase 3 | Pending |
+| BUILD-06 | Phase 1 | Pending |
+| BUILD-07 | Phase 1 | Pending |
+| LINT-01 | Phase 4 | Pending |
+| LINT-02 | Phase 4 | Pending |
+| LINT-03 | Phase 4 | Pending |
+| TEST-01 | Phase 5 | Pending |
+| TEST-02 | Phase 5 | Pending |
+| TEST-03 | Phase 5 | Pending |
+| TEST-04 | Phase 5 | Pending |
+| TEST-05 | Phase 5 | Pending |
+| VSDX-01 | Phase 4 | Pending |
+| VSDX-02 | Phase 4 | Pending |
+| VSDX-03 | Phase 5 | Pending |
+| VSDX-04 | Phase 4 | Pending |
 
 **Coverage:**
 - v1.0 requirements: 25 total
-- Mapped to phases: 0
-- Unmapped: 25
+- Mapped to phases: 25
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-04-09*
-*Last updated: 2026-04-09 after initial definition*
+*Last updated: 2026-04-09 after roadmap creation*
