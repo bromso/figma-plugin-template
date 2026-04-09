@@ -47,7 +47,7 @@ Plans:
 
 Plans:
 - [x] 02-01-PLAN.md — Create workspace packages with package.json, tsconfig, and common source
-- [ ] 02-02-PLAN.md — Move source files, update import paths, update Vite configs
+- [x] 02-02-PLAN.md — Move source files, update import paths, update Vite configs
 
 ### Phase 3: Build Pipeline Verification
 **Goal**: Both Vite builds produce valid single-file output loadable in Figma Desktop after Vite 6 upgrade
