@@ -1,5 +1,5 @@
 import type { Preview } from '@storybook/react-vite';
-import '@repo/ui'; // side-effect: loads figma-plugin-ds CSS
+import '@repo/ui'; // side-effect: loads Tailwind CSS
 
 const preview: Preview = {
   tags: ['autodocs'],

@@ -7,7 +7,6 @@
     "./*": "./src/*"
   },
   "scripts": {
-    "postinstall": "node -e \"const fs=require('fs'),p=require('path');const d=p.resolve(__dirname,'node_modules/figma-plugin-ds/dist/modules');if(fs.existsSync(d)){for(const f of['disclosure','selectMenu']){const t=p.join(d,f);if(!fs.existsSync(t))fs.symlinkSync(f+'.js',t)}}\"",
     "lint": "biome check .",
     "test": "vitest run",
     "test:watch": "vitest"
@@ -16,13 +15,11 @@
     "@repo/common": "workspace:*",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "figma-plugin-ds": "^1.0.1",
     "lucide-react": "^1.8.0",
     "monorepo-networker": "^2.1.0",
     "radix-ui": "^1.4.3",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
-    "react-figma-ui": "^1.1.0",
     "tailwind-merge": "^3.5.0"
   },
   "devDependencies": {
