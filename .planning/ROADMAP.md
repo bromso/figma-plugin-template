@@ -16,7 +16,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [ ] **Phase 2: Package Extraction** - Extract common and ui packages in dependency order with correct exports
 - [x] **Phase 3: Build Pipeline Verification** - Vite 6 upgrade and verified dual single-file build output (completed 2026-04-09)
 - [x] **Phase 4: Biome & VS Code Config** - Biome linting/formatting and VS Code workspace integration (completed 2026-04-09)
-- [ ] **Phase 5: Vitest & DX Polish** - Per-package test setup and remaining VS Code developer experience
+- [x] **Phase 5: Vitest & DX Polish** - Per-package test setup and remaining VS Code developer experience (completed 2026-04-09)
 
 ## Phase Details
 
@@ -93,7 +93,7 @@ Plans:
 
 Plans:
 - [x] 05-01-PLAN.md — Install Vitest per-package, create configs, write smoke tests
-- [ ] 05-02-PLAN.md — VS Code launch.json with debug configurations
+- [x] 05-02-PLAN.md — VS Code launch.json with debug configurations
 
 ## Progress
 
@@ -106,4 +106,4 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5
 | 2. Package Extraction | 0/2 | Not started | - |
 | 3. Build Pipeline Verification | 1/1 | Complete   | 2026-04-09 |
 | 4. Biome & VS Code Config | 2/2 | Complete   | 2026-04-09 |
-| 5. Vitest & DX Polish | 1/2 | In Progress|  |
+| 5. Vitest & DX Polish | 2/2 | Complete   | 2026-04-09 |

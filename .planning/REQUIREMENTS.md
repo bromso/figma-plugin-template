@@ -44,7 +44,7 @@ Requirements for monorepo & DX overhaul. Each maps to roadmap phases.
 
 - [x] **VSDX-01**: `.vscode/settings.json` with Biome as default formatter and formatOnSave
 - [x] **VSDX-02**: `.vscode/extensions.json` recommending Biome, Vitest, and Vite extensions
-- [ ] **VSDX-03**: `.vscode/launch.json` with debug configurations for plugin and UI
+- [x] **VSDX-03**: `.vscode/launch.json` with debug configurations for plugin and UI
 - [x] **VSDX-04**: `.vscode/tasks.json` with dev shortcuts (`bun run dev`, `bun run build`)
 
 ## Future Requirements
@@ -100,7 +100,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | TEST-05 | Phase 5 | Complete |
 | VSDX-01 | Phase 4 | Complete |
 | VSDX-02 | Phase 4 | Complete |
-| VSDX-03 | Phase 5 | Pending |
+| VSDX-03 | Phase 5 | Complete |
 | VSDX-04 | Phase 4 | Complete |
 
 **Coverage:**
