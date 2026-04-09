@@ -1,4 +1,3 @@
-import styles from './app.module.scss';
 import {
   Button,
   Checkbox,
@@ -20,8 +19,8 @@ import {
 
 function App() {
   return (
-    <div className={styles.container}>
-      <div className={styles.group}>
+    <div className="overflow-y-auto h-full px-4 py-2">
+      <div className="flex flex-col gap-2 mb-6">
         <SectionTitle>Inputs</SectionTitle>
         <Input placeholder="Type something" />
         <Textarea placeholder="Longer text..." rows={3} />
@@ -39,14 +38,14 @@ function App() {
         />
       </div>
 
-      <div className={styles.group}>
+      <div className="flex flex-col gap-2 mb-6">
         <SectionTitle>Buttons</SectionTitle>
         <Button tint="primary">Primary action</Button>
         <Button>Secondary action</Button>
         <IconButton iconProps={{ iconName: 'plus' }} aria-label="Add item" />
       </div>
 
-      <div className={styles.group}>
+      <div className="flex flex-col gap-2 mb-6">
         <SectionTitle>Display</SectionTitle>
         <Icon iconName="star" />
         <Label>Field label</Label>
@@ -54,7 +53,7 @@ function App() {
         <OnboardingTip iconProps={{ iconName: 'info' }}>This is a tip for new users.</OnboardingTip>
       </div>
 
-      <div className={styles.group}>
+      <div className="flex flex-col gap-2 mb-6">
         <SectionTitle>Layout</SectionTitle>
         <Disclosure
           tips={[{ heading: 'More info', content: 'Details here.' }]}
