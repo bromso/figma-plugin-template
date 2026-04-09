@@ -1,9 +1,9 @@
-import { defineConfig } from "vite";
 import path from "node:path";
-import { viteSingleFile } from "vite-plugin-singlefile";
 import react from "@vitejs/plugin-react";
-import richSvg from "vite-plugin-react-rich-svg";
 import postcssUrl from "postcss-url";
+import { defineConfig } from "vite";
+import richSvg from "vite-plugin-react-rich-svg";
+import { viteSingleFile } from "vite-plugin-singlefile";
 
 const uiSrcPath = path.resolve(__dirname, "../../packages/ui/src");
 
@@ -33,10 +33,7 @@ export default defineConfig(({ mode }) => ({
             // Sass importers do not go through Vite's resolve.alias
             findFileUrl(url: string) {
               if (!url.startsWith("@ui/")) return null;
-              const resolved = path.resolve(
-                uiSrcPath,
-                url.replace(/^@ui\//, ""),
-              );
+              const resolved = path.resolve(uiSrcPath, url.replace(/^@ui\//, ""));
               return new URL(`file://${resolved}`);
             },
           },

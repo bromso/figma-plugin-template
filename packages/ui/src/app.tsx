@@ -1,12 +1,11 @@
 import { PLUGIN } from "@repo/common/networkSides";
-import { UI_CHANNEL } from "./app.network";
-import { Button } from "./components/Button";
-import { Networker, NetworkError } from "monorepo-networker";
+import { NetworkError, Networker } from "monorepo-networker";
 import { useEffect, useState } from "react";
-
+import { UI_CHANNEL } from "./app.network";
 import figmaLogo from "./assets/figma.png";
 import ReactLogo from "./assets/react.svg?component";
 import viteLogo from "./assets/vite.svg?url";
+import { Button } from "./components/Button";
 
 import "./styles/main.scss";
 
@@ -23,13 +22,13 @@ function App() {
   return (
     <div className="homepage">
       <div>
-        <a href="https://www.figma.com" target="_blank">
+        <a href="https://www.figma.com" target="_blank" rel="noopener">
           <img src={figmaLogo} className="logo figma" alt="Figma logo" />
         </a>
-        <a href="https://vitejs.dev" target="_blank">
+        <a href="https://vitejs.dev" target="_blank" rel="noopener">
           <img src={viteLogo} className="logo vite" alt="Vite logo" />
         </a>
-        <a href="https://reactjs.org" target="_blank">
+        <a href="https://reactjs.org" target="_blank" rel="noopener">
           <ReactLogo className="logo react" title="React logo" />
         </a>
       </div>
@@ -37,9 +36,7 @@ function App() {
       <h1>Figma + Vite + React</h1>
 
       <div className="card">
-        <Button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </Button>
+        <Button onClick={() => setCount((count) => count + 1)}>count is {count}</Button>
         <Button
           onClick={async () => {
             const response = await UI_CHANNEL.request(PLUGIN, "ping", []);
@@ -61,11 +58,7 @@ function App() {
         <Button
           onClick={async () => {
             try {
-              const result = await UI_CHANNEL.request(
-                PLUGIN,
-                "exportSelection",
-                []
-              );
+              const result = await UI_CHANNEL.request(PLUGIN, "exportSelection", []);
               console.log("Export: ", { result });
             } catch (err) {
               if (err instanceof NetworkError) {

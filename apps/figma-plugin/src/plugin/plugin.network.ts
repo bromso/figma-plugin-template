@@ -26,7 +26,7 @@ PLUGIN_CHANNEL.registerMessageHandler("createRect", (width, height) => {
     const rect = figma.createRectangle();
     rect.x = 0;
     rect.y = 0;
-    rect.name = "Plugin Rectangle # " + Math.floor(Math.random() * 9999);
+    rect.name = `Plugin Rectangle # ${Math.floor(Math.random() * 9999)}`;
     rect.fills = [
       {
         type: "SOLID",
@@ -56,5 +56,5 @@ PLUGIN_CHANNEL.registerMessageHandler("exportSelection", async () => {
     contentsOnly: false,
   });
 
-  return "data:image/png;base64," + figma.base64Encode(bytes);
+  return `data:image/png;base64,${figma.base64Encode(bytes)}`;
 });

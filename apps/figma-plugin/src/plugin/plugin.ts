@@ -1,6 +1,6 @@
 import { PLUGIN, UI } from "@repo/common/networkSides";
-import { PLUGIN_CHANNEL } from "./plugin.network";
 import { Networker } from "monorepo-networker";
+import { PLUGIN_CHANNEL } from "./plugin.network";
 
 async function bootstrap() {
   Networker.initialize(PLUGIN, PLUGIN_CHANNEL);
