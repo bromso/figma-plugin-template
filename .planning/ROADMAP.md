@@ -89,10 +89,11 @@ Plans:
   2. `turbo run test:watch` starts persistent watch mode without caching
   3. `packages/common` tests run in node environment; `packages/ui` tests run in happy-dom environment
   4. VS Code launch configurations can debug both plugin sandbox and UI processes
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 05-01: TBD
+- [ ] 05-01-PLAN.md — Install Vitest per-package, create configs, write smoke tests
+- [ ] 05-02-PLAN.md — VS Code launch.json with debug configurations
 
 ## Progress
 
@@ -105,4 +106,4 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5
 | 2. Package Extraction | 0/2 | Not started | - |
 | 3. Build Pipeline Verification | 1/1 | Complete   | 2026-04-09 |
 | 4. Biome & VS Code Config | 2/2 | Complete   | 2026-04-09 |
-| 5. Vitest & DX Polish | 0/0 | Not started | - |
+| 5. Vitest & DX Polish | 0/2 | Not started | - |
