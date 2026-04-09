@@ -12,7 +12,7 @@ Migrate the existing flat Figma plugin template into a Turborepo monorepo with B
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Monorepo Scaffolding** - Root workspace config, Bun workspaces, turbo.json with task pipeline
+- [x] **Phase 1: Monorepo Scaffolding** - Root workspace config, Bun workspaces, turbo.json with task pipeline (completed 2026-04-09)
 - [ ] **Phase 2: Package Extraction** - Extract common and ui packages in dependency order with correct exports
 - [ ] **Phase 3: Build Pipeline Verification** - Vite 6 upgrade and verified dual single-file build output
 - [ ] **Phase 4: Biome & VS Code Config** - Biome linting/formatting and VS Code workspace integration
@@ -32,7 +32,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans**: 1 plan
 
 Plans:
-- [ ] 01-01-PLAN.md — Root workspace config, turbo.json, directory scaffolding, lockfile migration
+- [x] 01-01-PLAN.md — Root workspace config, turbo.json, directory scaffolding, lockfile migration
 
 ### Phase 2: Package Extraction
 **Goal**: Shared code lives in `packages/common` and `packages/ui` as JIT source-only packages with proper workspace imports
@@ -99,7 +99,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Monorepo Scaffolding | 0/1 | Planning complete | - |
+| 1. Monorepo Scaffolding | 1/1 | Complete   | 2026-04-09 |
 | 2. Package Extraction | 0/0 | Not started | - |
 | 3. Build Pipeline Verification | 0/0 | Not started | - |
 | 4. Biome & VS Code Config | 0/0 | Not started | - |
