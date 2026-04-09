@@ -47,7 +47,7 @@ Full details: [milestones/v1.1-ROADMAP.md](milestones/v1.1-ROADMAP.md)
 - [x] **Phase 10: Vite 8 + TypeScript 6 + Figma Typings** - Upgrade build toolchain foundation (completed 2026-04-09)
 - [x] **Phase 11: React 19** - Upgrade React and type definitions (completed 2026-04-09)
 - [x] **Phase 12: Tailwind CSS 4.x + Bundle Analysis** - Replace Sass, configure design system, add analyze script (completed 2026-04-09)
-- [ ] **Phase 13: shadcn/ui Component Migration** - Install shadcn/ui, apply Figma tokens, replace react-figma-ui
+- [x] **Phase 13: shadcn/ui Component Migration** - Install shadcn/ui, apply Figma tokens, replace react-figma-ui (completed 2026-04-09)
 - [ ] **Phase 14: Storybook 10 Upgrade** - Migrate Storybook to ESM-only v10 with new components
 - [ ] **Phase 15: Full-Stack Verification** - Confirm tests, build, Storybook, and Figma runtime all pass
 
@@ -106,9 +106,9 @@ Plans:
   5. The plugin UI rendered via `bun run dev:ui-only` shows visually correct Figma-native-looking components
 **Plans**: 3 plans
 Plans:
-- [ ] 13-01-PLAN.md — Install shadcn/ui dependencies, cn() utility, components.json, @/ alias, Figma design tokens
-- [ ] 13-02-PLAN.md — Add 10 shadcn/ui components via CLI and 4 custom Figma components
-- [ ] 13-03-PLAN.md — Rewire exports/app/tests, remove react-figma-ui, visual verification
+- [x] 13-01-PLAN.md — Install shadcn/ui dependencies, cn() utility, components.json, @/ alias, Figma design tokens
+- [x] 13-02-PLAN.md — Add 10 shadcn/ui components via CLI and 4 custom Figma components
+- [x] 13-03-PLAN.md — Rewire exports/app/tests, remove react-figma-ui, visual verification
 **UI hint**: yes
 
 ### Phase 14: Storybook 10 Upgrade
@@ -150,6 +150,6 @@ Plans:
 | 10. Vite 8 + TypeScript 6 + Figma Typings | v1.2 | 2/2 | Complete    | 2026-04-09 |
 | 11. React 19 | v1.2 | 1/1 | Complete    | 2026-04-09 |
 | 12. Tailwind CSS 4.x + Bundle Analysis | v1.2 | 2/2 | Complete    | 2026-04-09 |
-| 13. shadcn/ui Component Migration | v1.2 | 0/3 | Not started | - |
+| 13. shadcn/ui Component Migration | v1.2 | 3/3 | Complete    | 2026-04-09 |
 | 14. Storybook 10 Upgrade | v1.2 | 0/? | Not started | - |
 | 15. Full-Stack Verification | v1.2 | 0/? | Not started | - |
