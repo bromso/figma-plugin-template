@@ -363,22 +363,16 @@ build: {
 
 ---
 
-## Open Questions
+## Open Questions (RESOLVED)
 
 1. **Should `bun run types` be promoted to root-level turbo task?**
-   - What we know: The success criterion says `bun run types type-checks cleanly`. The script exists in `apps/figma-plugin/package.json` but not at root.
-   - What's unclear: Does the intent mean root-level or package-level?
-   - Recommendation: Add `"types"` to both root `package.json` scripts AND `turbo.json` tasks, delegating to the figma-plugin package. This matches the pattern of other tasks (build, lint, test).
+   - RESOLVED: Yes — Plan 10-02 adds root-level turbo `types` task and root `package.json` script, delegating to the figma-plugin package. Matches existing patterns (build, lint, test).
 
 2. **Should vite-plugin-react-rich-svg be tested or preemptively swapped for vite-plugin-svgr?**
-   - What we know: rich-svg peerDeps don't include Vite 8; no Vite 8 release exists for it.
-   - What's unclear: Whether the plugin actually fails at runtime or just emits a peer dep warning.
-   - Recommendation: Keep rich-svg and verify with smoke test. Only switch to vite-plugin-svgr if build fails. Phase 12+ already restructures the UI so any forced migration can be deferred.
+   - RESOLVED: Keep rich-svg, verify with smoke test in Plan 10-02. Swap to vite-plugin-svgr only if build fails. Phase 12+ restructures UI anyway.
 
 3. **@figma/plugin-typings version: 1.123 vs 1.124?**
-   - What we know: Requirement says "1.123" but 1.124.0 is the latest on npm. Already installed at 1.124.0.
-   - What's unclear: Whether there are any breaking type changes between 1.83 and 1.124 that could cause type errors in existing plugin code.
-   - Recommendation: Target `^1.124.0` (the latest). If tsc errors appear after upgrade, they reveal real API misuse.
+   - RESOLVED: Target `^1.124.0` (latest stable). Plan 10-01 updates package.json accordingly.
 
 ---
 
