@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.2
 milestone_name: Dependency Upgrades & Bundle Optimization
 status: ready-to-plan
-stopped_at: Milestone v1.2 started — defining requirements
-last_updated: "2026-04-09T20:34:10.582Z"
+stopped_at: Roadmap created for v1.2 — 6 phases defined (10-15)
+last_updated: "2026-04-09T00:00:00.000Z"
 last_activity: 2026-04-09
 progress:
-  total_phases: 4
-  completed_phases: 4
-  total_plans: 8
-  completed_plans: 8
-  percent: 100
+  total_phases: 6
+  completed_phases: 0
+  total_plans: 0
+  completed_plans: 0
+  percent: 0
 ---
 
 # Project State
@@ -21,14 +21,14 @@ progress:
 See: .planning/PROJECT.md (updated 2026-04-09)
 
 **Core value:** A ready-to-use Figma plugin template with modern tooling and excellent developer experience
-**Current focus:** Defining requirements for v1.2
+**Current focus:** Phase 10 — Vite 8 + TypeScript 6 + Figma Typings
 
 ## Current Position
 
-Phase: Not started (defining requirements)
-Plan: —
-Status: Defining requirements
-Last activity: 2026-04-09 — Milestone v1.2 started
+Phase: 10 of 15 (Vite 8 + TypeScript 6 + Figma Typings)
+Plan: — (not yet planned)
+Status: Ready to plan
+Last activity: 2026-04-09 — v1.2 roadmap created, 6 phases defined
 
 Progress: [░░░░░░░░░░] 0%
 
@@ -36,7 +36,7 @@ Progress: [░░░░░░░░░░] 0%
 
 **Velocity:**
 
-- Total plans completed: 16 (v1.0)
+- Total plans completed: 16 (v1.0 + v1.1)
 - Average duration: ~25 min
 - Total execution time: ~3.5 hours (v1.0)
 
@@ -44,15 +44,8 @@ Progress: [░░░░░░░░░░] 0%
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 01 | 1 | ~8 min | 8 min |
-| 02 | 2 | ~17 min | 8.5 min |
-| 03 | 1 | ~25 min | 25 min |
-| 04 | 2 | ~21 min | 10.5 min |
-| 05 | 2 | ~128 min | 64 min |
-| 06 | 2 | - | - |
-| 07 | 2 | - | - |
-| 08 | 2 | - | - |
-| 09 | 2 | - | - |
+| 01-05 | 8 | ~199 min | ~25 min |
+| 06-09 | 8 | - | - |
 
 **Recent Trend:**
 
@@ -68,10 +61,9 @@ Progress: [░░░░░░░░░░] 0%
 Decisions are logged in PROJECT.md Key Decisions table.
 Recent decisions affecting current work:
 
-- [Phase 02]: JIT source-only packages — workspace imports, resolve.alias for Vite builds
-- [Phase 03]: Vite 6 + @vitejs/plugin-react ^4.0.0 (4.7.0) — v6.x requires Vite 8
-- [Phase 03]: Sass findFileUrl importer for @ui alias in SCSS @use directives
-- [Phase 05]: Vitest binary is per-package (not hoisted) — launch.json references packages/ui path
+- [Phase 03]: Vite 6 + @vitejs/plugin-react ^4.0.0 — v1.2 upgrades this to Vite 8
+- [Phase 03]: Sass findFileUrl importer for @ui alias — removed in v1.2 (Sass replaced by Tailwind)
+- [Phase 06]: react-figma-ui integrated — v1.2 replaces it with shadcn/ui
 
 ### Pending Todos
 
@@ -79,13 +71,15 @@ None yet.
 
 ### Blockers/Concerns
 
-- react-figma-ui CSS uses unscoped BEM names — audit for collisions before import (Phase 6)
-- Storybook 10 Bun detection requires `bun.lockb` stub at repo root (Phase 7)
-- Storybook must NOT include vite-plugin-singlefile — independent Vite instance required (Phase 7)
-- react-figma-ui prop API (Select name, OnboardingTip name) — verify at install time (Phase 6)
+- Vite 8 Rolldown integration may require updates to both `vite.config.ui.ts` and `vite.config.plugin.ts` (Phase 10)
+- vite-plugin-singlefile compatibility with Vite 8 must be verified (Phase 10)
+- vite-plugin-react-rich-svg compatibility with Vite 8 must be verified (Phase 10)
+- Storybook 10 Bun detection requires `bun.lockb` stub at repo root — still applies (Phase 14)
+- Tailwind CSS 4.x uses CSS-first config (no `tailwind.config.js`) — single-file inlining must be verified (Phase 12)
+- shadcn/ui CLI may not support Bun workspaces directly — manual install path may be needed (Phase 13)
 
 ## Session Continuity
 
 Last session: 2026-04-09
-Stopped at: v1.1 roadmap created — ready to plan Phase 6
+Stopped at: v1.2 roadmap created — ready to plan Phase 10
 Resume file: None

@@ -47,19 +47,19 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| BUILD-01 | TBD | Pending |
-| BUILD-02 | TBD | Pending |
-| BUILD-03 | TBD | Pending |
-| BUILD-04 | TBD | Pending |
-| FW-01 | TBD | Pending |
-| FW-02 | TBD | Pending |
-| FW-03 | TBD | Pending |
-| UI-01 | TBD | Pending |
-| UI-02 | TBD | Pending |
-| UI-03 | TBD | Pending |
-| UI-04 | TBD | Pending |
-| FIG-01 | TBD | Pending |
-| VER-01 | TBD | Pending |
-| VER-02 | TBD | Pending |
-| VER-03 | TBD | Pending |
-| VER-04 | TBD | Pending |
+| BUILD-01 | Phase 10 | Pending |
+| BUILD-02 | Phase 10 | Pending |
+| FIG-01 | Phase 10 | Pending |
+| FW-01 | Phase 11 | Pending |
+| BUILD-03 | Phase 12 | Pending |
+| BUILD-04 | Phase 12 | Pending |
+| FW-03 | Phase 12 | Pending |
+| UI-01 | Phase 13 | Pending |
+| UI-02 | Phase 13 | Pending |
+| UI-03 | Phase 13 | Pending |
+| UI-04 | Phase 13 | Pending |
+| FW-02 | Phase 14 | Pending |
+| VER-01 | Phase 15 | Pending |
+| VER-02 | Phase 15 | Pending |
+| VER-03 | Phase 15 | Pending |
+| VER-04 | Phase 15 | Pending |
