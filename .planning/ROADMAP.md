@@ -45,7 +45,7 @@ Full details: [milestones/v1.1-ROADMAP.md](milestones/v1.1-ROADMAP.md)
 - All upgrades before verification phase
 
 - [x] **Phase 10: Vite 8 + TypeScript 6 + Figma Typings** - Upgrade build toolchain foundation (completed 2026-04-09)
-- [ ] **Phase 11: React 19** - Upgrade React and type definitions
+- [x] **Phase 11: React 19** - Upgrade React and type definitions (completed 2026-04-09)
 - [ ] **Phase 12: Tailwind CSS 4.x + Bundle Analysis** - Replace Sass, configure design system, add analyze script
 - [ ] **Phase 13: shadcn/ui Component Migration** - Install shadcn/ui, apply Figma tokens, replace react-figma-ui
 - [ ] **Phase 14: Storybook 10 Upgrade** - Migrate Storybook to ESM-only v10 with new components
@@ -78,7 +78,7 @@ Plans:
   4. The plugin UI renders in the browser (`bun run dev:ui-only`) without console errors
 **Plans**: 1 plan
 Plans:
-- [ ] 11-01-PLAN.md — Bump React to 19.x and verify types, tests, and build
+- [x] 11-01-PLAN.md — Bump React to 19.x and verify types, tests, and build
 
 ### Phase 12: Tailwind CSS 4.x + Bundle Analysis
 **Goal**: Sass is replaced with Tailwind CSS 4.x configured for the single-file iframe constraint, and a bundle analysis script is available
@@ -142,7 +142,7 @@ Plans:
 | 8. Claude Skills Optimization | v1.1 | 2/2 | Complete | 2026-04-09 |
 | 9. License, Security, Contributing & README | v1.1 | 2/2 | Complete | 2026-04-09 |
 | 10. Vite 8 + TypeScript 6 + Figma Typings | v1.2 | 2/2 | Complete    | 2026-04-09 |
-| 11. React 19 | v1.2 | 0/1 | Not started | - |
+| 11. React 19 | v1.2 | 1/1 | Complete    | 2026-04-09 |
 | 12. Tailwind CSS 4.x + Bundle Analysis | v1.2 | 0/? | Not started | - |
 | 13. shadcn/ui Component Migration | v1.2 | 0/? | Not started | - |
 | 14. Storybook 10 Upgrade | v1.2 | 0/? | Not started | - |
