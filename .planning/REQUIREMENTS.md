@@ -9,11 +9,11 @@ Requirements for monorepo & DX overhaul. Each maps to roadmap phases.
 
 ### Monorepo Structure
 
-- [ ] **MONO-01**: Project uses `apps/figma-plugin` + `packages/ui` + `packages/common` directory layout
+- [x] **MONO-01**: Project uses `apps/figma-plugin` + `packages/ui` + `packages/common` directory layout
 - [x] **MONO-02**: Root `package.json` declares Bun workspaces (`apps/*`, `packages/*`) with `"private": true`
-- [ ] **MONO-03**: Internal packages use `workspace:*` protocol for dependencies
-- [ ] **MONO-04**: Each package has `package.json` with explicit `exports` field
-- [ ] **MONO-05**: Internal packages use `@repo/` namespace (`@repo/ui`, `@repo/common`)
+- [x] **MONO-03**: Internal packages use `workspace:*` protocol for dependencies
+- [x] **MONO-04**: Each package has `package.json` with explicit `exports` field
+- [x] **MONO-05**: Internal packages use `@repo/` namespace (`@repo/ui`, `@repo/common`)
 - [ ] **MONO-06**: VS Code `.code-workspace` file with multi-root workspace configuration
 
 ### Build Pipeline
@@ -77,11 +77,11 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| MONO-01 | Phase 2 | Pending |
+| MONO-01 | Phase 2 | Complete |
 | MONO-02 | Phase 1 | Complete |
-| MONO-03 | Phase 2 | Pending |
-| MONO-04 | Phase 2 | Pending |
-| MONO-05 | Phase 2 | Pending |
+| MONO-03 | Phase 2 | Complete |
+| MONO-04 | Phase 2 | Complete |
+| MONO-05 | Phase 2 | Complete |
 | MONO-06 | Phase 4 | Pending |
 | BUILD-01 | Phase 1 | Complete |
 | BUILD-02 | Phase 1 | Complete |
