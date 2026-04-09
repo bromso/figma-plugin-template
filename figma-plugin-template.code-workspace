@@ -1,0 +1,12 @@
+{
+  "folders": [
+    { "name": "root", "path": "." },
+    { "name": "apps/figma-plugin", "path": "apps/figma-plugin" },
+    { "name": "packages/common", "path": "packages/common" },
+    { "name": "packages/ui", "path": "packages/ui" }
+  ],
+  "settings": {
+    "editor.defaultFormatter": "biomejs.biome",
+    "editor.formatOnSave": true
+  }
+}

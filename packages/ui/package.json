@@ -1,0 +1,34 @@
+{
+  "name": "@repo/ui",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./*": "./src/*"
+  },
+  "scripts": {
+    "postinstall": "node -e \"const fs=require('fs'),p=require('path');const d=p.resolve(__dirname,'node_modules/figma-plugin-ds/dist/modules');if(fs.existsSync(d)){for(const f of['disclosure','selectMenu']){const t=p.join(d,f);if(!fs.existsSync(t))fs.symlinkSync(f+'.js',t)}}\"",
+    "lint": "biome check .",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "@repo/common": "workspace:*",
+    "figma-plugin-ds": "^1.0.1",
+    "monorepo-networker": "^2.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-figma-ui": "^1.1.0"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "@vitejs/plugin-react": "^4.0.0",
+    "happy-dom": "^20.8.9",
+    "sass": "^1.99.0",
+    "typescript": "^5.3.0",
+    "vitest": "^4.1.4"
+  }
+}

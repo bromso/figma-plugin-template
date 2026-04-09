@@ -1,0 +1,21 @@
+{
+  "name": "@repo/common",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./networkSides": "./src/networkSides.ts",
+    "./*": "./src/*"
+  },
+  "scripts": {
+    "lint": "biome check .",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "monorepo-networker": "^2.1.0"
+  },
+  "devDependencies": {
+    "vitest": "^4.1.4"
+  }
+}
