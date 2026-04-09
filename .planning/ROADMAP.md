@@ -89,8 +89,10 @@ Plans:
   2. `bun run dev:ui-only` serves the UI with Tailwind styles applied correctly in the browser
   3. `bun run build` produces a single `index.html` with all Tailwind styles inlined (no external CSS references)
   4. `bun run analyze` generates a visual bundle report for the UI output
-**Plans**: TBD
-**UI hint**: yes
+**Plans**: 2 plans
+Plans:
+- [ ] 12-01-PLAN.md — Install Tailwind CSS 4.x, replace Sass/SCSS with Tailwind utilities, verify single-file build
+- [ ] 12-02-PLAN.md — Add bundle analysis tooling and visual verification checkpoint
 
 ### Phase 13: shadcn/ui Component Migration
 **Goal**: shadcn/ui with Radix primitives replaces react-figma-ui, Figma design tokens are applied, all 14 component equivalents exist, and unmaintained packages are removed
@@ -143,7 +145,7 @@ Plans:
 | 9. License, Security, Contributing & README | v1.1 | 2/2 | Complete | 2026-04-09 |
 | 10. Vite 8 + TypeScript 6 + Figma Typings | v1.2 | 2/2 | Complete    | 2026-04-09 |
 | 11. React 19 | v1.2 | 1/1 | Complete    | 2026-04-09 |
-| 12. Tailwind CSS 4.x + Bundle Analysis | v1.2 | 0/? | Not started | - |
+| 12. Tailwind CSS 4.x + Bundle Analysis | v1.2 | 0/2 | Not started | - |
 | 13. shadcn/ui Component Migration | v1.2 | 0/? | Not started | - |
 | 14. Storybook 10 Upgrade | v1.2 | 0/? | Not started | - |
 | 15. Full-Stack Verification | v1.2 | 0/? | Not started | - |
