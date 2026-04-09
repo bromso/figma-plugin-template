@@ -104,7 +104,11 @@ Plans:
   3. All 14 component equivalents are present and usable: Button, Checkbox, Input, Label, Select, Switch, Textarea, Radio, Icon, IconButton, Disclosure/Accordion, SectionTitle, OnboardingTip/Alert, Type/Text
   4. The postinstall ESM workaround script is removed; `bun install` runs without errors
   5. The plugin UI rendered via `bun run dev:ui-only` shows visually correct Figma-native-looking components
-**Plans**: TBD
+**Plans**: 3 plans
+Plans:
+- [ ] 13-01-PLAN.md — Install shadcn/ui dependencies, cn() utility, components.json, @/ alias, Figma design tokens
+- [ ] 13-02-PLAN.md — Add 10 shadcn/ui components via CLI and 4 custom Figma components
+- [ ] 13-03-PLAN.md — Rewire exports/app/tests, remove react-figma-ui, visual verification
 **UI hint**: yes
 
 ### Phase 14: Storybook 10 Upgrade
@@ -146,6 +150,6 @@ Plans:
 | 10. Vite 8 + TypeScript 6 + Figma Typings | v1.2 | 2/2 | Complete    | 2026-04-09 |
 | 11. React 19 | v1.2 | 1/1 | Complete    | 2026-04-09 |
 | 12. Tailwind CSS 4.x + Bundle Analysis | v1.2 | 2/2 | Complete    | 2026-04-09 |
-| 13. shadcn/ui Component Migration | v1.2 | 0/? | Not started | - |
+| 13. shadcn/ui Component Migration | v1.2 | 0/3 | Not started | - |
 | 14. Storybook 10 Upgrade | v1.2 | 0/? | Not started | - |
 | 15. Full-Stack Verification | v1.2 | 0/? | Not started | - |
