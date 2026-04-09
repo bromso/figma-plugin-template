@@ -1,140 +1,121 @@
-<!-- Logo -->
-<p align="center">
-  <img src="https://raw.githubusercontent.com/CoconutGoodie/figma-plugin-react-vite/master/.github/assets/logo.png" height="100px" alt="Logo"/>
-</p>
-<h1 align="center">Figma Plugin Boilerplate: React + Vite</h1>
+# figma-plugin-template
 
-<!-- Slogan -->
-<p align="center">
-   Create scalable Figma plugins with ease, using the power of React + Vite!
-</p>
+Figma/FigJam plugin boilerplate with React, Vite, TypeScript, and Turborepo monorepo.
 
-<!-- Badges -->
-<p align="center">
+## Features
 
-  <!-- Github Badges -->
-  <img src="https://raw.githubusercontent.com/TheSpawnProject/TheSpawnLanguage/master/.github/assets/github-badge.png" height="20px"/>
-  <a href="https://github.com/CoconutGoodie/figma-plugin-react-vite/commits/master">
-    <img src="https://img.shields.io/github/last-commit/CoconutGoodie/figma-plugin-react-vite"/>
-  </a>
-  <a href="https://github.com/CoconutGoodie/figma-plugin-react-vite/issues">
-    <img src="https://img.shields.io/github/issues/CoconutGoodie/figma-plugin-react-vite"/>
-  </a>
+- **Turborepo monorepo** with Bun package manager — fast installs, cached builds
+- **React + TypeScript + Vite** build pipeline
+- **Single-file HTML output** — required by the Figma plugin API (all assets inlined)
+- **14 native Figma UI components** via react-figma-ui (Button, Checkbox, Input, Select, and more)
+- **Storybook** for interactive component documentation
+- **Vitest** for testing (happy-dom for UI, node for common packages)
+- **Biome** for linting and formatting
+- **Type-safe message passing** between plugin and UI via monorepo-networker
 
-  <br/>
+## Quick Start
 
-  <!-- Support Badges -->
-  <img src="https://raw.githubusercontent.com/TheSpawnProject/TheSpawnLanguage/master/.github/assets/support-badge.png" height="20px"/>
-  <a href="https://www.patreon.com/iGoodie">
-    <img src="https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fshieldsio-patreon.vercel.app%2Fapi%3Fusername%3DiGoodie%26type%3Dpatrons"/>
-  </a>
-</p>
+```bash
+# Clone the template
+git clone https://github.com/jonasbroms/figma-plugin-template.git
+cd figma-plugin-template
 
-# 🗝 Key Features
+# Install dependencies
+bun install
 
-1. **_Logical Sides in Mind:_** Figma plugins that render a UI work on two different processes (split into code.js and index.html in Figma docs). This boilerplate keeps the sides separated by allowing them to share code (under ./src/common/).
-
-2. **_Intercommunitive:_** Logical sides should be able to communicate with each other without creating huge and unscalable nested if statements. This boilerplate solves it by declaring isolated events and handlers (under `./src/common/networkSides.ts`)! (Using the [Monorepo Networker](https://github.com/CoconutGoodie/monorepo-networker) library)
-
-3. **_Easy to Build:_** Configure the `figma.manifest.ts` config with your plugin credentials once, then just build with your everyday `npm run build` command! The `/dist` folder will be ready to publish already!
-
-4. **_Bundled into One File:_** Figma plugins only accept a single file for `main` (js) and `ui` (html), which makes deployment of multiple files linked to each other impossible. This boilerplate is configured to bundle/inline most of the things you need like rasterize/vector image asset imports, CSS URL statements, and of course, source code imports.
-
-5. **_SVG as Component:_** Yes, you can import SVGs as inlined sources with `*.svg?url`, but what about actually importing them as React components? Easy! You can import an SVG file as a React component with `*.svg?component` (See `/src/ui/app.tsx` for examples) (Using the [vite-plugin-react-rich-svg](https://github.com/iGoodie/vite-plugin-react-rich-svg) plugin)
-
-6. **_Sassy:_** A classic, this boilerplate supports Sass/Scss/Less and modules! Check out `/src/ui/styles/` for 7-1 Sass Template and `/src/ui/components/Button.module.scss` for module examples.
-
-# 💻 How to start coding?
-
-1. First thing after you clone should be to install the dependencies by executing:
-
-```
-npm install
+# Start development
+bun run dev
 ```
 
-2. Create a figma plugin. In Figma, right click while you're in a design file. Follow `Plugins > Development > New Plugin...`. You can also type `"New Plugin...` to the global search (Windows: <kbd>CTRL</kbd> + <kbd>P</kbd>, Mac: <kbd>⌘ Command</kbd> + <kbd>P</kbd>)
-3. Follow the steps on opened window. I recommend using `Default` or `Run once` layout, because you'll only need to save the manifest (for the plugin id it generates). Click "Save as", and save it to a temporary place. Then click "Open folder" to navigate to the folder it generated
-4. Note down the `id` field from the `manifest.json` it generated.
-5. Go to `figma.manifest.ts`, and replace the `id` with the id you noted down. Then configure the manifest there as you like. (See [Official Figma Plugin Manifest doc](https://www.figma.com/plugin-docs/manifest/))
-
-## 🖱 Developing
-
-Development is very straight forward. Just run the dev command, and it will start compiling your files as you code.
+## Project Structure
 
 ```
-npm run dev
+apps/
+  figma-plugin/   — Figma plugin app (Vite builds to dist/)
+  storybook/      — Storybook component documentation
+packages/
+  common/         — Shared types and network events (@repo/common)
+  ui/             — UI components, styles, and app shell (@repo/ui)
 ```
 
-Once dev is ran, `dist/` folder will be created, which includes your `manifest.json`. You can load it in Figma, by `Right Click > Plugins > Development > Import plugin from manifest...`
+Packages are **JIT source-only** — they export raw TypeScript with no build step. Use `@repo/*` workspace imports for cross-package references.
 
-> [!TIP]
-> You can turn on the `Hot reload plugin` option in Figma, to automatically reload when files in `dist/` changes.
+## Commands
 
-### 🦴 Developing without Figma Context
+| Command | Description |
+|---------|-------------|
+| `bun run dev` | Watch mode (plugin + UI via Turborepo) |
+| `bun run build` | Production build |
+| `bun run test` | Run all tests |
+| `bun run test:watch` | Watch mode for tests |
+| `bun run lint` | Lint with Biome |
+| `bun run storybook` | Start Storybook dev server |
+| `turbo run build-storybook` | Build static Storybook (cached) |
 
-If you like developing your UI first, then integrating with Figma context; you can run your UI code in browser just like your every other Vite project by running:
+## Architecture
 
-```
-npm run dev:ui-only
-```
+The plugin runs as **two separate processes** that communicate via message passing:
 
-> [!NOTE]
-> Since Figma context is not available in "ui-only" mode, any attempt to Figma API/SDK calls will look like a crash on your inspector/console.
+- **Plugin side** (`apps/figma-plugin/src/plugin/`) — Runs in Figma's sandbox with access to the Figma API (`figma.*`). No DOM access. Entry: `plugin.ts`.
+- **UI side** (`packages/ui/src/`) — Runs in an iframe. React app with react-figma-ui components. Entry: `main.tsx` → `app.tsx`.
+- **Common** (`packages/common/src/`) — Shared between both sides. Contains network event type definitions.
 
-## 🔨 Building
+### Messaging
 
-Building with the following command line will yield with a `dist` folder, which is ready to be used by Figma:
+Communication uses [monorepo-networker](https://github.com/CoconutGoodie/monorepo-networker):
 
-```
-npm run build
-```
+1. **Define events** in `packages/common/src/networkSides.ts` — each side declares the events it listens to with typed signatures.
+2. **Build channels** in `*.network.ts` files — set up postMessage transport and register handlers.
+3. **Use channels** — `PLUGIN_CHANNEL.emit(UI, "event", [args])` for fire-and-forget, `.request(...)` for request/response (returns a Promise).
 
-Then, `dist/manifest.json` can be used to load the plugin. In Figma, right click while you're in a design file. Follow `Plugins > Development > Import plugin from manifest...`. You can also type `"Import plugin from manifest...` to the global search (Windows: <kbd>CTRL</kbd> + <kbd>P</kbd>, Mac: <kbd>⌘ Command</kbd> + <kbd>P</kbd>). Then select `dist/manifest.json`
+## UI Components
 
-## 📦 Publishing
+`packages/ui` re-exports all 14 [react-figma-ui](https://github.com/CoconutGoodie/react-figma-ui) components:
 
-After building, built `dist` folder is going to contain every artifact you need in order to publish your plugin. Just build, and follow [Figma's Official Post on Publishing Plugins](https://help.figma.com/hc/en-us/articles/360042293394-Publish-plugins-to-the-Figma-Community#Publish_your_plugin).
+`Button`, `Checkbox`, `Disclosure`, `DisclosureItem`, `Icon`, `IconButton`, `Input`, `Label`, `SectionTitle`, `OnboardingTip`, `Radio`, `Select`, `Switch`, `Textarea`, `Type`
 
-## 🕸 File Structure
+Run `bun run storybook` to browse all components interactively with live examples.
 
-- `src`
-  - `src/common/` : Sources that are intended to be used both by plugin and ui logical sides.
-    - `src/common/networkSides.ts` : Definitions of logical sides and the events each one accepts. Whenever a new event type is needed, declare and update here.
-  - `src/plugin/` : Sources of the plugin logical side. Place everything that interracts with figma here.
-  - `src/ui/` : Sources of the ui logical side, a classical Vite + React source base.
-- `scripts`
-  - `scripts/vite/` : Potential custom vite plugins written for your project
-  - `scripts/windows/` : Potential custom Windows OS scripts
-  - `scripts/macos/` : Potential custom Mac OS scripts
-- `figma.manifest.ts` - A module that exports [Figma Plugin Manifest](https://www.figma.com/plugin-docs/manifest/) for the build scripts
+## Plugin Configuration
 
-# 🛑 Caveats
+Edit `apps/figma-plugin/figma.manifest.ts` to set your plugin name, ID, and permissions:
 
-### 1. Make sure to import SVGS as either component, url or raw!
-
-Importing image assets other than `.svg` is easy. However, when you are importing `.svg`, by default it will load as a base64 data-uri, to import as a React component, you must add the query string `?component`.
-
-```tsx
-import MyImage from "@ui/assets/my_image.svg?component"; // <MyImage />
-import myImage from "@ui/assets/my_image.svg?url"; // "data:svg+xml,..."
-import myImageRaw from "@ui/assets/my_image.svg?raw"; // "<svg>...</svg>"
-...
-
-<MyImage className="something" />
-<img src={myImage} />
-<div dangerouslySetInnerHTML={{ __html: myImageRaw }} />
+```ts
+export default {
+  name: "My Plugin",
+  id: "your-plugin-id-from-figma",
+  // ...
+};
 ```
 
----
+Get your plugin ID from Figma: **Plugins > Manage plugins > Create new plugin**.
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/CoconutGoodie/figma-plugin-react-vite/master/.github/assets/preview.png" alt="Preview" />
-</p>
+## Testing in Figma
 
-# 📜 License of the Template
+1. Run `bun run build`
+2. Open the Figma desktop app
+3. Go to **Plugins > Development > Import plugin from manifest**
+4. Select `apps/figma-plugin/dist/manifest.json`
 
-&copy; 2024 Taha Anılcan Metinyurt (iGoodie)
+For active development, use `bun run dev` to keep the build updated automatically.
 
-For any part of this work for which the license is applicable, this work is licensed under the [Attribution-ShareAlike 4.0 International](http://creativecommons.org/licenses/by-sa/4.0/) license. (See LICENSE).
+## Tech Stack
 
-<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a>
+| Tool | Version |
+|------|---------|
+| [Bun](https://bun.sh) | 1.3.11 |
+| [Turborepo](https://turbo.build) | ^2.9.5 |
+| [Vite](https://vitejs.dev) | 6.x |
+| React | Latest |
+| TypeScript | Latest |
+| [Biome](https://biomejs.dev) | 2.4.10 |
+| [Vitest](https://vitest.dev) | 4.x |
+| [Storybook](https://storybook.js.org) | 8.6.18 |
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for setup instructions and development workflow.
+
+## License
+
+This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
