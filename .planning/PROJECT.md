@@ -8,15 +8,15 @@ A Figma plugin boilerplate using React + Vite, designed for building scalable Fi
 
 A ready-to-use Figma plugin template with modern tooling and excellent developer experience that gets you from clone to working plugin in minutes.
 
-## Current State
+## Current Milestone: v1.2 Dependency Upgrades & Bundle Optimization
 
-**v1.1 shipped 2026-04-09** — UI Components & Skill Optimization complete.
+**Goal:** Upgrade all outdated core dependencies to current versions and add bundle analysis tooling.
 
-**What shipped in v1.1:**
-- All 14 react-figma-ui native Figma UI components integrated in packages/ui
-- Storybook 8.6.18 with 15 stories, Controls, Autodocs, and Figma viewport presets
-- Claude Code CLAUDE.md rewritten for monorepo, settings.local.json expanded with 22 skill permissions
-- MIT license, SECURITY.md, CODE_OF_CONDUCT.md, CONTRIBUTING.md, and README.md
+**Target features:**
+- Upgrade Vite 6 → 8, TypeScript 5.3 → 6.0, React 18 → 19, Storybook 8.6 → 10.x
+- Upgrade @figma/plugin-typings 1.83 → 1.123, align Sass versions
+- Add bundle analysis tooling (rollup-plugin-visualizer)
+- Address unmaintained react-figma-ui and figma-plugin-ds packages
 
 ## Requirements
 
@@ -44,7 +44,13 @@ A ready-to-use Figma plugin template with modern tooling and excellent developer
 
 <!-- Current scope. Building toward these. -->
 
-No active requirements — start next milestone with `/gsd-new-milestone`.
+- [ ] Vite 8 with Rolldown integration
+- [ ] TypeScript 6.0
+- [ ] React 19 with updated type definitions
+- [ ] Storybook 10.x (ESM-only, React 19 compatible)
+- [ ] @figma/plugin-typings 1.123
+- [ ] Bundle analysis tooling
+- [ ] Unmaintained dependency remediation (react-figma-ui, figma-plugin-ds)
 
 ### Out of Scope
 
@@ -98,4 +104,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-04-09 after v1.1 milestone completion*
+*Last updated: 2026-04-09 after v1.2 milestone start*

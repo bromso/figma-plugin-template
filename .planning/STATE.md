@@ -1,9 +1,9 @@
 ---
 gsd_state_version: 1.0
-milestone: v1.1
-milestone_name: UI Components & Skill Optimization
-status: executing
-stopped_at: v1.1 roadmap created — ready to plan Phase 6
+milestone: v1.2
+milestone_name: Dependency Upgrades & Bundle Optimization
+status: ready-to-plan
+stopped_at: Milestone v1.2 started — defining requirements
 last_updated: "2026-04-09T20:34:10.582Z"
 last_activity: 2026-04-09
 progress:
@@ -21,14 +21,14 @@ progress:
 See: .planning/PROJECT.md (updated 2026-04-09)
 
 **Core value:** A ready-to-use Figma plugin template with modern tooling and excellent developer experience
-**Current focus:** Phase 09 — License, Security, Contributing & README Update
+**Current focus:** Defining requirements for v1.2
 
 ## Current Position
 
-Phase: 09
-Plan: Not started
-Status: Executing Phase 09
-Last activity: 2026-04-09
+Phase: Not started (defining requirements)
+Plan: —
+Status: Defining requirements
+Last activity: 2026-04-09 — Milestone v1.2 started
 
 Progress: [░░░░░░░░░░] 0%
 
