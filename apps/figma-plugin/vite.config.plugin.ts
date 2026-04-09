@@ -14,22 +14,21 @@ export default defineConfig(({ mode }) => ({
     }),
   ],
   build: {
-    minify: mode === 'production',
-    sourcemap: mode !== 'production' ? 'inline' : false,
-    target: 'es2017',
+    minify: mode === "production",
+    sourcemap: mode !== "production" ? "inline" : false,
+    target: "es2017",
     emptyOutDir: false,
-    outDir: path.resolve("dist"),
+    outDir: path.resolve(__dirname, "dist"),
     rollupOptions: {
-      input: path.resolve('src/plugin/plugin.ts'),
+      input: path.resolve(__dirname, "src/plugin/plugin.ts"),
       output: {
-        entryFileNames: 'plugin.js',
+        entryFileNames: "plugin.js",
       },
     },
   },
   resolve: {
     alias: {
-      "@common": path.resolve("src/common"),
-      "@plugin": path.resolve("src/plugin"),
+      "@plugin": path.resolve(__dirname, "src/plugin"),
     },
   },
 }));

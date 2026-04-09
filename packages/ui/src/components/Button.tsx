@@ -1,4 +1,4 @@
-import { classes } from "@ui/utils/classes.util";
+import { classes } from "../utils/classes.util";
 import { ComponentProps } from "react";
 import styles from "./Button.module.scss";
 

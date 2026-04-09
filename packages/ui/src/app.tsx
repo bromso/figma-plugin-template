@@ -1,14 +1,14 @@
-import { PLUGIN } from "@common/networkSides";
-import { UI_CHANNEL } from "@ui/app.network";
-import { Button } from "@ui/components/Button";
+import { PLUGIN } from "@repo/common/networkSides";
+import { UI_CHANNEL } from "./app.network";
+import { Button } from "./components/Button";
 import { Networker, NetworkError } from "monorepo-networker";
 import { useEffect, useState } from "react";
 
-import figmaLogo from "@ui/assets/figma.png";
-import ReactLogo from "@ui/assets/react.svg?component";
-import viteLogo from "@ui/assets/vite.svg?url";
+import figmaLogo from "./assets/figma.png";
+import ReactLogo from "./assets/react.svg?component";
+import viteLogo from "./assets/vite.svg?url";
 
-import "@ui/styles/main.scss";
+import "./styles/main.scss";
 
 function App() {
   const [count, setCount] = useState(0);

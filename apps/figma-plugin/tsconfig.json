@@ -11,7 +11,10 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "react-jsx",
-    "typeRoots": ["../../node_modules/@figma"]
+    "typeRoots": ["./node_modules/@figma", "../../node_modules/@types"],
+    "paths": {
+      "monorepo-networker": ["./node_modules/monorepo-networker/dist/index.d.ts"]
+    }
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"]
 }

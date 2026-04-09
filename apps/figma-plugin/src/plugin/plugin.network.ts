@@ -1,4 +1,4 @@
-import { PLUGIN, UI } from "@common/networkSides";
+import { PLUGIN, UI } from "@repo/common/networkSides";
 
 export const PLUGIN_CHANNEL = PLUGIN.channelBuilder()
   .emitsTo(UI, (message) => {
