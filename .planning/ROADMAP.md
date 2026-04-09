@@ -43,10 +43,11 @@ Plans:
   2. Each package has an `exports` field pointing to source TypeScript entry points
   3. `packages/ui` depends on `@repo/common` via `workspace:*` and TypeScript resolves cross-package imports
   4. Internal packages use `@repo/` namespace (`@repo/ui`, `@repo/common`)
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 02-01: TBD
+- [ ] 02-01-PLAN.md — Create workspace packages with package.json, tsconfig, and common source
+- [ ] 02-02-PLAN.md — Move source files, update import paths, update Vite configs
 
 ### Phase 3: Build Pipeline Verification
 **Goal**: Both Vite builds produce valid single-file output loadable in Figma Desktop after Vite 6 upgrade
@@ -100,7 +101,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Monorepo Scaffolding | 1/1 | Complete   | 2026-04-09 |
-| 2. Package Extraction | 0/0 | Not started | - |
+| 2. Package Extraction | 0/2 | Not started | - |
 | 3. Build Pipeline Verification | 0/0 | Not started | - |
 | 4. Biome & VS Code Config | 0/0 | Not started | - |
 | 5. Vitest & DX Polish | 0/0 | Not started | - |
