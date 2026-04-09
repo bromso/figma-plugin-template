@@ -16,7 +16,7 @@ export default defineConfig(({ mode }) => ({
     sourcemap: mode !== "production" ? "inline" : false,
     emptyOutDir: false,
     outDir: path.resolve(__dirname, "dist"),
-    rollupOptions: {
+    rolldownOptions: {
       input: path.resolve(uiSrcPath, "index.html"),
     },
   },

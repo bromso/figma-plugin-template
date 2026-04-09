@@ -19,7 +19,7 @@ export default defineConfig(({ mode }) => ({
     target: "es2017",
     emptyOutDir: false,
     outDir: path.resolve(__dirname, "dist"),
-    rollupOptions: {
+    rolldownOptions: {
       input: path.resolve(__dirname, "src/plugin/plugin.ts"),
       output: {
         entryFileNames: "plugin.js",
