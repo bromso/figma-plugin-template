@@ -120,7 +120,10 @@ Plans:
   2. All previously existing component stories render correctly with no console errors
   3. Each shadcn/ui component replacement has at least one story with Autodocs and interactive Controls
   4. Storybook configuration files are migrated to ESM format; no CommonJS `require()` in config
-**Plans**: TBD
+**Plans**: 2 plans
+Plans:
+- [ ] 14-01-PLAN.md — Upgrade Storybook packages to 10.3.5 and update config for ESM v10
+- [ ] 14-02-PLAN.md — Rewrite all stories for shadcn/ui APIs and verify full build
 **UI hint**: yes
 
 ### Phase 15: Full-Stack Verification
@@ -151,5 +154,5 @@ Plans:
 | 11. React 19 | v1.2 | 1/1 | Complete    | 2026-04-09 |
 | 12. Tailwind CSS 4.x + Bundle Analysis | v1.2 | 2/2 | Complete    | 2026-04-09 |
 | 13. shadcn/ui Component Migration | v1.2 | 3/3 | Complete    | 2026-04-09 |
-| 14. Storybook 10 Upgrade | v1.2 | 0/? | Not started | - |
+| 14. Storybook 10 Upgrade | v1.2 | 0/2 | Not started | - |
 | 15. Full-Stack Verification | v1.2 | 0/? | Not started | - |
