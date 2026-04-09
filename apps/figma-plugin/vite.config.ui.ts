@@ -5,9 +5,11 @@ import react from "@vitejs/plugin-react";
 import richSvg from "vite-plugin-react-rich-svg";
 import postcssUrl from "postcss-url";
 
+const uiSrcPath = path.resolve(__dirname, "../../packages/ui/src");
+
 export default defineConfig(({ mode }) => ({
   plugins: [react(), richSvg(), viteSingleFile()],
-  root: path.resolve(__dirname, "../../packages/ui/src"),
+  root: uiSrcPath,
   build: {
     minify: mode === "production",
     cssMinify: mode === "production",
@@ -15,7 +17,7 @@ export default defineConfig(({ mode }) => ({
     emptyOutDir: false,
     outDir: path.resolve(__dirname, "dist"),
     rollupOptions: {
-      input: path.resolve(__dirname, "../../packages/ui/src/index.html"),
+      input: path.resolve(uiSrcPath, "index.html"),
     },
   },
   css: {
@@ -25,6 +27,20 @@ export default defineConfig(({ mode }) => ({
     preprocessorOptions: {
       scss: {
         api: "modern-compiler",
+        importers: [
+          {
+            // Resolve @ui/* aliases in Sass @use/@forward rules
+            // Sass importers do not go through Vite's resolve.alias
+            findFileUrl(url: string) {
+              if (!url.startsWith("@ui/")) return null;
+              const resolved = path.resolve(
+                uiSrcPath,
+                url.replace(/^@ui\//, ""),
+              );
+              return new URL(`file://${resolved}`);
+            },
+          },
+        ],
       },
     },
   },
