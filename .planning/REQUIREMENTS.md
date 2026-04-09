@@ -28,9 +28,9 @@ Requirements for monorepo & DX overhaul. Each maps to roadmap phases.
 
 ### Code Quality
 
-- [ ] **LINT-01**: Root `biome.json` with both linting and formatting enabled
-- [ ] **LINT-02**: Biome configured for TypeScript + React/JSX
-- [ ] **LINT-03**: `bun run lint` checks all packages via Turborepo
+- [x] **LINT-01**: Root `biome.json` with both linting and formatting enabled
+- [x] **LINT-02**: Biome configured for TypeScript + React/JSX
+- [x] **LINT-03**: `bun run lint` checks all packages via Turborepo
 
 ### Testing
 
@@ -90,9 +90,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 | BUILD-05 | Phase 3 | Complete |
 | BUILD-06 | Phase 1 | Complete |
 | BUILD-07 | Phase 1 | Complete |
-| LINT-01 | Phase 4 | Pending |
-| LINT-02 | Phase 4 | Pending |
-| LINT-03 | Phase 4 | Pending |
+| LINT-01 | Phase 4 | Complete |
+| LINT-02 | Phase 4 | Complete |
+| LINT-03 | Phase 4 | Complete |
 | TEST-01 | Phase 5 | Pending |
 | TEST-02 | Phase 5 | Pending |
 | TEST-03 | Phase 5 | Pending |

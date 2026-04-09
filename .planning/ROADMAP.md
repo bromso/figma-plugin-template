@@ -77,7 +77,7 @@ Plans:
 **UI hint**: yes
 
 Plans:
-- [ ] 04-01-PLAN.md — Install Biome 2.x, create root biome.json, add per-package lint scripts
+- [x] 04-01-PLAN.md — Install Biome 2.x, create root biome.json, add per-package lint scripts
 - [ ] 04-02-PLAN.md — VS Code settings, extensions, tasks, and .code-workspace multi-root config
 
 ### Phase 5: Vitest & DX Polish
@@ -104,5 +104,5 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5
 | 1. Monorepo Scaffolding | 1/1 | Complete   | 2026-04-09 |
 | 2. Package Extraction | 0/2 | Not started | - |
 | 3. Build Pipeline Verification | 1/1 | Complete   | 2026-04-09 |
-| 4. Biome & VS Code Config | 0/2 | Not started | - |
+| 4. Biome & VS Code Config | 1/2 | In Progress|  |
 | 5. Vitest & DX Polish | 0/0 | Not started | - |
