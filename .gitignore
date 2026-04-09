@@ -31,3 +31,6 @@ dist-ssr
 
 # Storybook build output
 storybook-static
+
+# Claude Code local skills (duplicates of .agents/skills/)
+.claude/skills/
