@@ -1,7 +1,7 @@
 // shadcn/ui components
 
 // Custom Figma components
-export { Icon, type IconProps } from "./components/figma/icon";
+export { Icon, type IconProps, type StaticIconName } from "./components/figma/icon";
 export { IconButton } from "./components/figma/icon-button";
 export { SectionTitle } from "./components/figma/section-title";
 export { Type } from "./components/figma/type";
