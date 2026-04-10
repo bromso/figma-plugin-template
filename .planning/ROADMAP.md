@@ -49,7 +49,7 @@ Full details: [milestones/v1.1-ROADMAP.md](milestones/v1.1-ROADMAP.md)
 - [x] **Phase 12: Tailwind CSS 4.x + Bundle Analysis** - Replace Sass, configure design system, add analyze script (completed 2026-04-09)
 - [x] **Phase 13: shadcn/ui Component Migration** - Install shadcn/ui, apply Figma tokens, replace react-figma-ui (completed 2026-04-09)
 - [x] **Phase 14: Storybook 10 Upgrade** - Migrate Storybook to ESM-only v10 with new components (completed 2026-04-10)
-- [ ] **Phase 15: Full-Stack Verification** - Confirm tests, build, Storybook, and Figma runtime all pass
+- [x] **Phase 15: Full-Stack Verification** - Confirm tests, build, Storybook, and Figma runtime all pass (completed 2026-04-10)
 
 ## Phase Details
 
@@ -138,7 +138,7 @@ Plans:
 **Plans**: 2 plans
 Plans:
 - [ ] 15-01-PLAN.md — Run tests, lint, and production build; verify single-file output
-- [ ] 15-02-PLAN.md — Build Storybook and visual verification checkpoint (Storybook + Figma)
+- [x] 15-02-PLAN.md — Build Storybook and visual verification checkpoint (Storybook + Figma)
 
 ## Progress
 
@@ -158,4 +158,4 @@ Plans:
 | 12. Tailwind CSS 4.x + Bundle Analysis | v1.2 | 2/2 | Complete    | 2026-04-09 |
 | 13. shadcn/ui Component Migration | v1.2 | 3/3 | Complete    | 2026-04-09 |
 | 14. Storybook 10 Upgrade | v1.2 | 2/2 | Complete    | 2026-04-10 |
-| 15. Full-Stack Verification | v1.2 | 0/2 | Not started | - |
+| 15. Full-Stack Verification | v1.2 | 1/2 | Complete    | 2026-04-10 |
