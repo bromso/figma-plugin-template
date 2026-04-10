@@ -11,7 +11,7 @@ export {
   AccordionItem,
   AccordionTrigger,
 } from "./components/ui/accordion";
-export { Alert, AlertDescription, AlertTitle } from "./components/ui/alert";
+export { Alert, AlertAction, AlertDescription, AlertTitle } from "./components/ui/alert";
 export { Button, type ButtonProps, buttonVariants } from "./components/ui/button";
 export { Checkbox } from "./components/ui/checkbox";
 export { Input } from "./components/ui/input";
