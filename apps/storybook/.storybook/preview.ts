@@ -1,5 +1,5 @@
 import type { Preview } from 'storybook';
-import '@repo/ui'; // side-effect: loads Tailwind CSS
+import '@repo/ui/styles.css'; // loads Tailwind CSS + Figma design tokens
 
 const preview: Preview = {
   tags: ['autodocs'],
