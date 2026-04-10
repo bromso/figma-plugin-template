@@ -11,8 +11,11 @@ A ready-to-use Figma plugin template with modern tooling and excellent developer
 ## Current State
 
 **Latest milestone:** v1.2 Dependency Upgrades & Bundle Optimization (shipped 2026-04-10)
+**In progress:** v1.3 Code Audit Resolution (planned 2026-04-10)
 
 All core dependencies upgraded. Sass replaced with Tailwind CSS 4.x. react-figma-ui replaced with shadcn/ui + Radix primitives. Storybook upgraded to v10. Bundle analysis tooling added.
+
+**Next milestone (v1.3):** Resolve v1.2 audit findings — bug fixes, type safety (tsc on packages/ui), bundle optimization, React Compiler opt-in, and interaction test coverage.
 
 ## Requirements
 
