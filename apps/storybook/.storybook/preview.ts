@@ -1,4 +1,4 @@
-import type { Preview } from '@storybook/react-vite';
+import type { Preview } from 'storybook';
 import '@repo/ui'; // side-effect: loads Tailwind CSS
 
 const preview: Preview = {
