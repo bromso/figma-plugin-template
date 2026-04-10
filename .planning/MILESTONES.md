@@ -1,5 +1,25 @@
 # Milestones
 
+## v1.2 Dependency Upgrades & Bundle Optimization (Shipped: 2026-04-10)
+
+**Phases completed:** 6 phases, 12 plans, 10 tasks
+
+**Key accomplishments:**
+
+- One-liner:
+- Added root `bun run types` to turbo.json and package.json; verified full Phase 10 upgrade — Vite 8, TypeScript 6, Figma typings 1.124 all confirmed working with 11 tests passing and all dist artifacts generated.
+- Task 1 — Dependency bumps:
+- One-liner:
+- One-liner:
+- One-liner:
+- One-liner:
+- One-liner:
+- One-liner:
+- One-liner:
+- One-liner:
+
+---
+
 ## v1.0 Monorepo & DX Overhaul (Shipped: 2026-04-09)
 
 **Phases completed:** 5 phases, 8 plans, 5 tasks

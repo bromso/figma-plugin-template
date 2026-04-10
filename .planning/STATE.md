@@ -4,7 +4,7 @@ milestone: v1.2
 milestone_name: Dependency Upgrades & Bundle Optimization
 status: executing
 stopped_at: v1.2 roadmap created — ready to plan Phase 10
-last_updated: "2026-04-10T00:29:36.947Z"
+last_updated: "2026-04-10T00:39:44.162Z"
 last_activity: 2026-04-10
 progress:
   total_phases: 6

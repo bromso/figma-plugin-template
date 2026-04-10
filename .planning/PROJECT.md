@@ -8,15 +8,11 @@ A Figma plugin boilerplate using React + Vite, designed for building scalable Fi
 
 A ready-to-use Figma plugin template with modern tooling and excellent developer experience that gets you from clone to working plugin in minutes.
 
-## Current Milestone: v1.2 Dependency Upgrades & Bundle Optimization
+## Current State
 
-**Goal:** Upgrade all outdated core dependencies to current versions and add bundle analysis tooling.
+**Latest milestone:** v1.2 Dependency Upgrades & Bundle Optimization (shipped 2026-04-10)
 
-**Target features:**
-- Upgrade Vite 6 → 8, TypeScript 5.3 → 6.0, React 18 → 19, Storybook 8.6 → 10.x
-- Upgrade @figma/plugin-typings 1.83 → 1.123, align Sass versions
-- Add bundle analysis tooling (rollup-plugin-visualizer)
-- Address unmaintained react-figma-ui and figma-plugin-ds packages
+All core dependencies upgraded. Sass replaced with Tailwind CSS 4.x. react-figma-ui replaced with shadcn/ui + Radix primitives. Storybook upgraded to v10. Bundle analysis tooling added.
 
 ## Requirements
 
@@ -39,18 +35,20 @@ A ready-to-use Figma plugin template with modern tooling and excellent developer
 - ✓ Storybook component documentation — v1.1
 - ✓ Claude skills optimization — v1.1
 - ✓ License, security, contributing docs — v1.1
+- ✓ Vite 8 with Rolldown — v1.2
+- ✓ TypeScript 6.0 — v1.2
+- ✓ React 19 — v1.2
+- ✓ @figma/plugin-typings 1.124 — v1.2
+- ✓ Tailwind CSS 4.x (replaced Sass) — v1.2
+- ✓ shadcn/ui + Radix (replaced react-figma-ui) — v1.2
+- ✓ Storybook 10.x ESM-only — v1.2
+- ✓ Bundle analysis tooling — v1.2
 
 ### Active
 
 <!-- Current scope. Building toward these. -->
 
-- [ ] Vite 8 with Rolldown integration
-- [ ] TypeScript 6.0
-- [ ] React 19 with updated type definitions
-- [ ] Storybook 10.x (ESM-only, React 19 compatible)
-- [ ] @figma/plugin-typings 1.123
-- [ ] Bundle analysis tooling
-- [ ] Unmaintained dependency remediation (react-figma-ui, figma-plugin-ds)
+(None — next milestone not yet defined)
 
 ### Out of Scope
 
@@ -60,14 +58,18 @@ A ready-to-use Figma plugin template with modern tooling and excellent developer
 
 ## Context
 
-- Turborepo monorepo: `apps/figma-plugin`, `packages/common`, `packages/ui`
+- Turborepo monorepo: `apps/figma-plugin`, `apps/storybook`, `packages/common`, `packages/ui`
 - Bun 1.3.11 as package manager (sole lockfile: `bun.lock`)
-- Vite 6 with two configs in `apps/figma-plugin/` producing single-file output to `dist/`
+- Vite 8 with Rolldown, two configs in `apps/figma-plugin/` producing single-file output to `dist/`
+- TypeScript 6.0, React 19.2, Storybook 10.3
+- Tailwind CSS 4.x with @tailwindcss/vite plugin (replaced Sass)
+- shadcn/ui + Radix primitives with Figma OKLCH design tokens (replaced react-figma-ui)
 - Biome 2.4.10 for linting + formatting (root `biome.json`)
-- Vitest 3.x with 7 tests across 2 packages (node + happy-dom environments)
+- Vitest 4.x with 7 tests across 2 packages (node + happy-dom environments)
 - VS Code multi-root workspace with format-on-save, debug configs, task shortcuts
 - JIT source-only packages — `@repo/common` and `@repo/ui` export raw TypeScript
-- Plugin side uses `@figma/plugin-typings` for Figma API access
+- Plugin side uses `@figma/plugin-typings` 1.124 for Figma API access
+- Bundle analysis via `bun run analyze` (rollup-plugin-visualizer)
 
 ## Constraints
 
@@ -85,6 +87,10 @@ A ready-to-use Figma plugin template with modern tooling and excellent developer
 | Three-package split (common, ui, plugin-app) | Clean separation of concerns, reusable packages | ✓ Good — JIT source-only pattern eliminates build steps |
 | Vite 6 upgrade | Required for ESM plugin compatibility | ✓ Good — fixed vite-plugin-react-rich-svg ESM loading |
 | happy-dom over jsdom | 2-4x faster for UI component tests | ✓ Good — 5 UI tests run in milliseconds |
+| Vite 8 + Rolldown | Performance + future-proofing | ✓ Good — rolldownOptions, no deprecation warnings |
+| Tailwind CSS 4.x over Sass | Modern utility-first CSS, simpler config | ✓ Good — CSS-first config, @theme inline for tokens |
+| shadcn/ui over react-figma-ui | Active maintenance, Radix primitives, composable | ✓ Good — 14 components, OKLCH Figma tokens |
+| Storybook 10 | ESM-only, React 19 support | ✓ Good — all 14 stories with Autodocs + Controls |
 
 ## Evolution
 
@@ -104,4 +110,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-04-09 after v1.2 milestone start*
+*Last updated: 2026-04-10 after v1.2 milestone completion*
