@@ -1,4 +1,4 @@
-import { Icon as IconifyIcon, addCollection } from "@iconify/react/offline";
+import { addCollection, Icon as IconifyIcon } from "@iconify/react/offline";
 import type { IconifyJSON } from "@iconify/types";
 import type * as React from "react";
 import { cn } from "@/lib/utils";

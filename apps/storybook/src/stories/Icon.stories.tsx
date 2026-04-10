@@ -12,25 +12,25 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    iconName: "info",
+    name: "lucide:info",
   },
 };
 
 export const Plus: Story = {
   args: {
-    iconName: "plus",
+    name: "lucide:plus",
   },
 };
 
 export const Star: Story = {
   args: {
-    iconName: "star",
+    name: "lucide:star",
   },
 };
 
 export const Spinning: Story = {
   args: {
-    iconName: "info",
+    name: "lucide:info",
     spin: true,
   },
 };

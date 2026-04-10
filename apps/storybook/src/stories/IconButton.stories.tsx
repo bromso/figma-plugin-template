@@ -13,7 +13,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     iconProps: {
-      iconName: "plus",
+      name: "lucide:plus",
     },
   },
 };
@@ -21,7 +21,7 @@ export const Default: Story = {
 export const Selected: Story = {
   args: {
     iconProps: {
-      iconName: "star",
+      name: "lucide:star",
     },
     selected: true,
   },
@@ -30,7 +30,7 @@ export const Selected: Story = {
 export const Info: Story = {
   args: {
     iconProps: {
-      iconName: "info",
+      name: "lucide:info",
     },
   },
 };
