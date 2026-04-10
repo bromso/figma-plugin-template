@@ -11,7 +11,10 @@ async function bootstrap() {
 
   const App = (await import("./app")).default;
 
-  const rootElement = document.getElementById("root") as HTMLElement;
+  const rootElement = document.getElementById("root");
+  if (!rootElement) {
+    throw new Error("Root element #root not found in index.html");
+  }
   const root = ReactDOM.createRoot(rootElement);
 
   root.render(
