@@ -64,18 +64,18 @@ function App() {
         <SectionTitle>Buttons</SectionTitle>
         <Button variant="default">Primary action</Button>
         <Button variant="secondary">Secondary action</Button>
-        <IconButton iconProps={{ iconName: "plus" }} aria-label="Add item" />
+        <IconButton iconProps={{ name: "lucide:plus" }} aria-label="Add item" />
       </div>
 
       <div className="flex flex-col gap-2 mb-6">
         <SectionTitle>Display</SectionTitle>
-        <Icon iconName="star" />
+        <Icon name="lucide:star" />
         <Label>Field label</Label>
         <Type size="large" weight="bold">
           Heading text
         </Type>
         <Alert>
-          <Icon iconName="info" className="size-4" />
+          <Icon name="lucide:info" className="size-4" />
           <AlertDescription>This is a tip for new users.</AlertDescription>
         </Alert>
       </div>

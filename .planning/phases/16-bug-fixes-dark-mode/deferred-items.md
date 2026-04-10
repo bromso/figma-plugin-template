@@ -25,6 +25,22 @@ Discovered while running `bunx tsc --noEmit` in `packages/ui/` to verify BUG-02 
 - **Scope:** Will resolve automatically once Error 1 is fixed.
 - **Resolution venue:** Phase 17 TYPE-01.
 
+## Pre-existing lint errors (discovered during 16-04)
+
+Discovered while running `bun run lint` at the end of plan 04 (iconify migration). These errors exist outside Plan 04's `files_modified` scope and belong to other Wave 2 plans that may still be in flight or have completed independently.
+
+### Error 3: `packages/ui/src/__tests__/button-props.test.ts` — useImportType
+
+- **File:** `packages/ui/src/__tests__/button-props.test.ts:2`
+- **Error:** `lint/style/useImportType` — test imports a type-only symbol without `import type`.
+- **Scope:** Belongs to Plan 02 (BUG-02 ButtonProps export). Plan 04 did not create or modify this file.
+- **Resolution venue:** Plan 02 cleanup or a subsequent lint sweep.
+
+### Error 4: `apps/design-plugin` formatter
+
+- **Scope:** Biome formatter reported a diff in the design-plugin workspace. Plan 04 did not modify any file under `apps/design-plugin/`.
+- **Resolution venue:** The owning plan (likely 06 postcss-url or 01 main null-guard, whichever touches the files) or a global format sweep.
+
 ## Scope boundary
 
-Per the executor scope rules: "Only auto-fix issues DIRECTLY caused by the current task's changes." BUG-02 added a named `ButtonProps` type export — it did not touch `monorepo-networker`, `networkSides.ts`, or `app.network.tsx`. These errors exist independently of the BUG-02 fix.
+Per the executor scope rules: "Only auto-fix issues DIRECTLY caused by the current task's changes." Plan 04 fixed the one Plan-04-owned lint error (`icon.tsx` organizeImports) automatically; remaining errors belong to sibling plans and are documented here for the orchestrator.
