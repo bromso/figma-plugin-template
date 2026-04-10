@@ -48,7 +48,7 @@ Full details: [milestones/v1.1-ROADMAP.md](milestones/v1.1-ROADMAP.md)
 - [x] **Phase 11: React 19** - Upgrade React and type definitions (completed 2026-04-09)
 - [x] **Phase 12: Tailwind CSS 4.x + Bundle Analysis** - Replace Sass, configure design system, add analyze script (completed 2026-04-09)
 - [x] **Phase 13: shadcn/ui Component Migration** - Install shadcn/ui, apply Figma tokens, replace react-figma-ui (completed 2026-04-09)
-- [ ] **Phase 14: Storybook 10 Upgrade** - Migrate Storybook to ESM-only v10 with new components
+- [x] **Phase 14: Storybook 10 Upgrade** - Migrate Storybook to ESM-only v10 with new components (completed 2026-04-10)
 - [ ] **Phase 15: Full-Stack Verification** - Confirm tests, build, Storybook, and Figma runtime all pass
 
 ## Phase Details
@@ -122,8 +122,8 @@ Plans:
   4. Storybook configuration files are migrated to ESM format; no CommonJS `require()` in config
 **Plans**: 2 plans
 Plans:
-- [ ] 14-01-PLAN.md — Upgrade Storybook packages to 10.3.5 and update config for ESM v10
-- [ ] 14-02-PLAN.md — Rewrite all stories for shadcn/ui APIs and verify full build
+- [x] 14-01-PLAN.md — Upgrade Storybook packages to 10.3.5 and update config for ESM v10
+- [x] 14-02-PLAN.md — Rewrite all stories for shadcn/ui APIs and verify full build
 **UI hint**: yes
 
 ### Phase 15: Full-Stack Verification
@@ -154,5 +154,5 @@ Plans:
 | 11. React 19 | v1.2 | 1/1 | Complete    | 2026-04-09 |
 | 12. Tailwind CSS 4.x + Bundle Analysis | v1.2 | 2/2 | Complete    | 2026-04-09 |
 | 13. shadcn/ui Component Migration | v1.2 | 3/3 | Complete    | 2026-04-09 |
-| 14. Storybook 10 Upgrade | v1.2 | 0/2 | Not started | - |
+| 14. Storybook 10 Upgrade | v1.2 | 2/2 | Complete    | 2026-04-10 |
 | 15. Full-Stack Verification | v1.2 | 0/? | Not started | - |
