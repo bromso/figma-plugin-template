@@ -41,6 +41,24 @@ Discovered while running `bun run lint` at the end of plan 04 (iconify migration
 - **Scope:** Biome formatter reported a diff in the design-plugin workspace. Plan 04 did not modify any file under `apps/design-plugin/`.
 - **Resolution venue:** The owning plan (likely 06 postcss-url or 01 main null-guard, whichever touches the files) or a global format sweep.
 
+## Pre-existing Biome format errors (discovered during 16-07 wave 2 build)
+
+Discovered while running `bun run lint` in the wave-2 dark-mode worktree. These errors exist on the phase base `aab8ea8` BEFORE any THEME-01 changes and are unrelated to `packages/ui/src/styles.css` (Biome ignores CSS files anyway).
+
+### Error 5: `button-props.test.ts` import formatting
+
+- **File:** `packages/ui/src/__tests__/button-props.test.ts:2`
+- **Error:** `import { type ButtonProps }` should be `import type { ButtonProps }` (Biome `useImportType` / formatter).
+- **Scope:** File was added by plan 16-02 (BUG-02). Not caused by THEME-01 (plan 07).
+- **Resolution venue:** Fix in a follow-up commit on master after wave 2 merge, or amend 16-02.
+
+### Error 6: `main.test.ts` multi-line expect formatting
+
+- **File:** `packages/ui/src/main.test.ts:24-26`
+- **Error:** `expect(() => resolveRoot()).toThrow("...")` split across 3 lines; Biome formatter wants it on 1 line.
+- **Scope:** File was added by plan 16-01 (BUG-01). Not caused by THEME-01 (plan 07).
+- **Resolution venue:** Fix in a follow-up commit on master after wave 2 merge, or amend 16-01.
+
 ## Scope boundary
 
-Per the executor scope rules: "Only auto-fix issues DIRECTLY caused by the current task's changes." Plan 04 fixed the one Plan-04-owned lint error (`icon.tsx` organizeImports) automatically; remaining errors belong to sibling plans and are documented here for the orchestrator.
+Per the executor scope rules: "Only auto-fix issues DIRECTLY caused by the current task's changes." Plans 02, 04, and 07 each fixed only their own-owned lint/format errors; remaining errors belong to sibling plans or pre-existing declaration issues and are documented above for downstream resolution.
