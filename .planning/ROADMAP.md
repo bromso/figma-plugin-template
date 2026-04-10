@@ -135,7 +135,10 @@ Plans:
   2. `bun run build` produces `dist/plugin.js` and `dist/index.html` as valid single-file outputs with no external references
   3. All Storybook stories render with the new shadcn/ui components, Controls work, and Autodocs pages load
   4. The plugin loaded in Figma renders a UI that is visually consistent with native Figma plugin appearance
-**Plans**: TBD
+**Plans**: 2 plans
+Plans:
+- [ ] 15-01-PLAN.md — Run tests, lint, and production build; verify single-file output
+- [ ] 15-02-PLAN.md — Build Storybook and visual verification checkpoint (Storybook + Figma)
 
 ## Progress
 
@@ -155,4 +158,4 @@ Plans:
 | 12. Tailwind CSS 4.x + Bundle Analysis | v1.2 | 2/2 | Complete    | 2026-04-09 |
 | 13. shadcn/ui Component Migration | v1.2 | 3/3 | Complete    | 2026-04-09 |
 | 14. Storybook 10 Upgrade | v1.2 | 2/2 | Complete    | 2026-04-10 |
-| 15. Full-Stack Verification | v1.2 | 0/? | Not started | - |
+| 15. Full-Stack Verification | v1.2 | 0/2 | Not started | - |
