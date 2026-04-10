@@ -1,16 +1,10 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@repo/ui';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@repo/ui";
+import type { Meta, StoryObj } from "@storybook/react";
 
 const meta = {
   component: Select,
-  title: 'Components/Select',
-  tags: ['autodocs'],
+  title: "Components/Select",
+  tags: ["autodocs"],
 } satisfies Meta<typeof Select>;
 
 export default meta;

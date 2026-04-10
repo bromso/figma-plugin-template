@@ -1,10 +1,10 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { Label, RadioGroup, RadioGroupItem } from '@repo/ui';
+import { Label, RadioGroup, RadioGroupItem } from "@repo/ui";
+import type { Meta, StoryObj } from "@storybook/react";
 
 const meta = {
   component: RadioGroup,
-  title: 'Components/RadioGroup',
-  tags: ['autodocs'],
+  title: "Components/RadioGroup",
+  tags: ["autodocs"],
 } satisfies Meta<typeof RadioGroup>;
 
 export default meta;

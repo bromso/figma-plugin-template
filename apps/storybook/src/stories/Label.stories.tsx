@@ -1,9 +1,10 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { Label } from '@repo/ui';
+import { Label } from "@repo/ui";
+import type { Meta, StoryObj } from "@storybook/react";
 
 const meta = {
   component: Label,
-  title: 'Components/Label',
+  title: "Components/Label",
+  tags: ["autodocs"],
 } satisfies Meta<typeof Label>;
 
 export default meta;
@@ -11,6 +12,6 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    children: 'Layer name',
+    children: "Layer name",
   },
 };

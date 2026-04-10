@@ -1,33 +1,38 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { Checkbox } from '@repo/ui';
+import { Checkbox, Label } from "@repo/ui";
+import type { Meta, StoryObj } from "@storybook/react";
 
 const meta = {
   component: Checkbox,
-  title: 'Components/Checkbox',
+  title: "Components/Checkbox",
+  tags: ["autodocs"],
 } satisfies Meta<typeof Checkbox>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: {
-    children: 'Enable option',
-    id: 'checkbox-default',
-  },
+  render: () => (
+    <div className="flex items-center gap-2">
+      <Checkbox id="checkbox-default" />
+      <Label htmlFor="checkbox-default">Enable option</Label>
+    </div>
+  ),
 };
 
 export const Checked: Story = {
-  args: {
-    children: 'Already checked',
-    id: 'checkbox-checked',
-    defaultChecked: true,
-  },
+  render: () => (
+    <div className="flex items-center gap-2">
+      <Checkbox id="checkbox-checked" defaultChecked />
+      <Label htmlFor="checkbox-checked">Already checked</Label>
+    </div>
+  ),
 };
 
 export const Disabled: Story = {
-  args: {
-    children: 'Disabled checkbox',
-    id: 'checkbox-disabled',
-    disabled: true,
-  },
+  render: () => (
+    <div className="flex items-center gap-2">
+      <Checkbox id="checkbox-disabled" disabled />
+      <Label htmlFor="checkbox-disabled">Disabled checkbox</Label>
+    </div>
+  ),
 };

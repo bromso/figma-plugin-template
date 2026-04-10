@@ -1,33 +1,38 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { Switch } from '@repo/ui';
+import { Label, Switch } from "@repo/ui";
+import type { Meta, StoryObj } from "@storybook/react";
 
 const meta = {
   component: Switch,
-  title: 'Components/Switch',
+  title: "Components/Switch",
+  tags: ["autodocs"],
 } satisfies Meta<typeof Switch>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: {
-    children: 'Enable feature',
-    id: 'switch-default',
-  },
+  render: () => (
+    <div className="flex items-center gap-2">
+      <Switch id="switch-default" />
+      <Label htmlFor="switch-default">Enable feature</Label>
+    </div>
+  ),
 };
 
 export const On: Story = {
-  args: {
-    children: 'Feature enabled',
-    id: 'switch-on',
-    defaultChecked: true,
-  },
+  render: () => (
+    <div className="flex items-center gap-2">
+      <Switch id="switch-on" defaultChecked />
+      <Label htmlFor="switch-on">Feature enabled</Label>
+    </div>
+  ),
 };
 
 export const Disabled: Story = {
-  args: {
-    children: 'Locked setting',
-    id: 'switch-disabled',
-    disabled: true,
-  },
+  render: () => (
+    <div className="flex items-center gap-2">
+      <Switch id="switch-disabled" disabled />
+      <Label htmlFor="switch-disabled">Locked setting</Label>
+    </div>
+  ),
 };

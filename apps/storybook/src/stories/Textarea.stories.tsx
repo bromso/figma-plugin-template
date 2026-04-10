@@ -1,9 +1,10 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { Textarea } from '@repo/ui';
+import { Textarea } from "@repo/ui";
+import type { Meta, StoryObj } from "@storybook/react";
 
 const meta = {
   component: Textarea,
-  title: 'Components/Textarea',
+  title: "Components/Textarea",
+  tags: ["autodocs"],
 } satisfies Meta<typeof Textarea>;
 
 export default meta;
@@ -11,21 +12,21 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    placeholder: 'Enter your message…',
+    placeholder: "Enter your message…",
     rows: 3,
   },
 };
 
 export const WithValue: Story = {
   args: {
-    defaultValue: 'Hello, this is some existing content.',
+    defaultValue: "Hello, this is some existing content.",
     rows: 4,
   },
 };
 
 export const Disabled: Story = {
   args: {
-    defaultValue: 'Read-only content',
+    defaultValue: "Read-only content",
     disabled: true,
     rows: 3,
   },

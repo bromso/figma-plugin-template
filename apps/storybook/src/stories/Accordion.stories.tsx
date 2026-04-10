@@ -1,15 +1,10 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from '@repo/ui';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@repo/ui";
+import type { Meta, StoryObj } from "@storybook/react";
 
 const meta = {
   component: Accordion,
-  title: 'Components/Accordion',
-  tags: ['autodocs'],
+  title: "Components/Accordion",
+  tags: ["autodocs"],
 } satisfies Meta<typeof Accordion>;
 
 export default meta;
@@ -36,7 +31,7 @@ export const Default: Story = {
 
 export const Multiple: Story = {
   render: () => (
-    <Accordion type="multiple" defaultValue={['item-1']} className="w-full">
+    <Accordion type="multiple" defaultValue={["item-1"]} className="w-full">
       <AccordionItem value="item-1">
         <AccordionTrigger>Section 1</AccordionTrigger>
         <AccordionContent>Content for section 1</AccordionContent>

@@ -1,9 +1,10 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { Icon } from '@repo/ui';
+import { Icon } from "@repo/ui";
+import type { Meta, StoryObj } from "@storybook/react";
 
 const meta = {
   component: Icon,
-  title: 'Components/Icon',
+  title: "Components/Icon",
+  tags: ["autodocs"],
 } satisfies Meta<typeof Icon>;
 
 export default meta;
@@ -11,26 +12,25 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    iconName: 'search',
+    iconName: "info",
   },
 };
 
-export const Alert: Story = {
+export const Plus: Story = {
   args: {
-    iconName: 'alert',
+    iconName: "plus",
   },
 };
 
-export const Spinner: Story = {
+export const Star: Story = {
   args: {
-    iconName: 'spinner',
+    iconName: "star",
+  },
+};
+
+export const Spinning: Story = {
+  args: {
+    iconName: "info",
     spin: true,
-  },
-};
-
-export const Colored: Story = {
-  args: {
-    iconName: 'star-on',
-    colorName: 'blue',
   },
 };

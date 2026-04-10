@@ -1,9 +1,10 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { IconButton } from '@repo/ui';
+import { IconButton } from "@repo/ui";
+import type { Meta, StoryObj } from "@storybook/react";
 
 const meta = {
   component: IconButton,
-  title: 'Components/IconButton',
+  title: "Components/IconButton",
+  tags: ["autodocs"],
 } satisfies Meta<typeof IconButton>;
 
 export default meta;
@@ -12,7 +13,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     iconProps: {
-      iconName: 'search',
+      iconName: "plus",
     },
   },
 };
@@ -20,16 +21,16 @@ export const Default: Story = {
 export const Selected: Story = {
   args: {
     iconProps: {
-      iconName: 'star-on',
+      iconName: "star",
     },
     selected: true,
   },
 };
 
-export const Settings: Story = {
+export const Info: Story = {
   args: {
     iconProps: {
-      iconName: 'settings',
+      iconName: "info",
     },
   },
 };

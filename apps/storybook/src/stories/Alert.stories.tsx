@@ -1,10 +1,10 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { Alert, AlertDescription, AlertTitle } from '@repo/ui';
+import { Alert, AlertDescription, AlertTitle } from "@repo/ui";
+import type { Meta, StoryObj } from "@storybook/react";
 
 const meta = {
   component: Alert,
-  title: 'Components/Alert',
-  tags: ['autodocs'],
+  title: "Components/Alert",
+  tags: ["autodocs"],
 } satisfies Meta<typeof Alert>;
 
 export default meta;
@@ -23,9 +23,7 @@ export const Destructive: Story = {
   render: () => (
     <Alert variant="destructive">
       <AlertTitle>Warning</AlertTitle>
-      <AlertDescription>
-        No layers selected. Please select at least one layer.
-      </AlertDescription>
+      <AlertDescription>No layers selected. Please select at least one layer.</AlertDescription>
     </Alert>
   ),
 };
