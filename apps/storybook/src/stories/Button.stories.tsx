@@ -4,6 +4,7 @@ import { Button } from '@repo/ui';
 const meta = {
   component: Button,
   title: 'Components/Button',
+  tags: ['autodocs'],
 } satisfies Meta<typeof Button>;
 
 export default meta;
@@ -15,23 +16,37 @@ export const Default: Story = {
   },
 };
 
-export const Primary: Story = {
+export const Outline: Story = {
   args: {
-    children: 'Primary',
-    tint: 'primary',
+    children: 'Outline',
+    variant: 'outline',
   },
 };
 
 export const Secondary: Story = {
   args: {
     children: 'Secondary',
-    tint: 'secondary',
+    variant: 'secondary',
   },
 };
 
 export const Destructive: Story = {
   args: {
     children: 'Delete',
-    destructive: true,
+    variant: 'destructive',
+  },
+};
+
+export const Ghost: Story = {
+  args: {
+    children: 'Ghost',
+    variant: 'ghost',
+  },
+};
+
+export const Small: Story = {
+  args: {
+    children: 'Small',
+    size: 'sm',
   },
 };

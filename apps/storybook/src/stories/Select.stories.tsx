@@ -1,51 +1,48 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Select, SelectMenuOption } from '@repo/ui';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@repo/ui';
 
 const meta = {
   component: Select,
   title: 'Components/Select',
+  tags: ['autodocs'],
 } satisfies Meta<typeof Select>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-type Option = { value: string; label: string };
-
-const defaultOptions: Option[] = [
-  { value: 'option1', label: 'Option 1' },
-  { value: 'option2', label: 'Option 2' },
-  { value: 'option3', label: 'Option 3' },
-];
-
 export const Default: Story = {
-  render: (args) => (
-    <Select
-      {...args}
-      options={defaultOptions}
-      render={(option) => (
-        <SelectMenuOption key={option.value} value={option.value}>
-          {option.label}
-        </SelectMenuOption>
-      )}
-    />
+  render: () => (
+    <Select>
+      <SelectTrigger className="w-[180px]">
+        <SelectValue placeholder="Choose option" />
+      </SelectTrigger>
+      <SelectContent>
+        <SelectItem value="option1">Option 1</SelectItem>
+        <SelectItem value="option2">Option 2</SelectItem>
+        <SelectItem value="option3">Option 3</SelectItem>
+      </SelectContent>
+    </Select>
   ),
 };
 
 export const ManyOptions: Story = {
-  render: (args) => (
-    <Select
-      {...args}
-      options={[
-        { value: 'left', label: 'Left' },
-        { value: 'center', label: 'Center' },
-        { value: 'right', label: 'Right' },
-        { value: 'justify', label: 'Justify' },
-      ]}
-      render={(option) => (
-        <SelectMenuOption key={option.value} value={option.value}>
-          {option.label}
-        </SelectMenuOption>
-      )}
-    />
+  render: () => (
+    <Select>
+      <SelectTrigger className="w-[180px]">
+        <SelectValue placeholder="Text align" />
+      </SelectTrigger>
+      <SelectContent>
+        <SelectItem value="left">Left</SelectItem>
+        <SelectItem value="center">Center</SelectItem>
+        <SelectItem value="right">Right</SelectItem>
+        <SelectItem value="justify">Justify</SelectItem>
+      </SelectContent>
+    </Select>
   ),
 };

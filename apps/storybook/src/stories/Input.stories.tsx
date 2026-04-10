@@ -4,6 +4,7 @@ import { Input } from '@repo/ui';
 const meta = {
   component: Input,
   title: 'Components/Input',
+  tags: ['autodocs'],
 } satisfies Meta<typeof Input>;
 
 export default meta;
@@ -19,15 +20,6 @@ export const WithValue: Story = {
   args: {
     defaultValue: 'Hello Figma',
     placeholder: 'Enter a value…',
-  },
-};
-
-export const WithIcon: Story = {
-  args: {
-    placeholder: 'Search…',
-    iconProps: {
-      iconName: 'search',
-    },
   },
 };
 
