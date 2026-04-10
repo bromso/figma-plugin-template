@@ -21,7 +21,7 @@ export default defineConfig(async ({ mode }) => {
         gzipSize: true,
         template: "treemap",
         filename: "stats.html",
-      }),
+      })
     );
   }
 

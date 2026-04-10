@@ -1,15 +1,11 @@
-import { cn } from "@/lib/utils";
 import type React from "react";
+import { cn } from "@/lib/utils";
 
 interface SectionTitleProps extends React.HTMLAttributes<HTMLParagraphElement> {
   children: React.ReactNode;
 }
 
-export function SectionTitle({
-  children,
-  className,
-  ...props
-}: SectionTitleProps) {
+export function SectionTitle({ children, className, ...props }: SectionTitleProps) {
   return (
     <p
       className={cn(

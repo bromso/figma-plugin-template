@@ -1,5 +1,5 @@
-import { cn } from "@/lib/utils";
 import type React from "react";
+import { cn } from "@/lib/utils";
 
 const sizeMap = {
   xsmall: "text-[11px]",
@@ -28,10 +28,7 @@ export function Type({
   ...props
 }: TypeProps) {
   return (
-    <p
-      className={cn(sizeMap[size], weightMap[weight], "font-sans", className)}
-      {...props}
-    >
+    <p className={cn(sizeMap[size], weightMap[weight], "font-sans", className)} {...props}>
       {children}
     </p>
   );

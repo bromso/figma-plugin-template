@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it } from "vitest";
 import {
   Accordion,
   AccordionContent,
@@ -9,6 +9,7 @@ import {
   AlertTitle,
   Button,
   Checkbox,
+  cn,
   Icon,
   IconButton,
   Input,
@@ -24,11 +25,10 @@ import {
   Switch,
   Textarea,
   Type,
-  cn,
-} from '../index';
+} from "../index";
 
-describe('@repo/ui exports', () => {
-  it('exports all shadcn/ui and custom components', () => {
+describe("@repo/ui exports", () => {
+  it("exports all shadcn/ui and custom components", () => {
     expect(Button).toBeDefined();
     expect(Checkbox).toBeDefined();
     expect(Input).toBeDefined();
@@ -55,8 +55,8 @@ describe('@repo/ui exports', () => {
     expect(Type).toBeDefined();
   });
 
-  it('exports cn utility', () => {
+  it("exports cn utility", () => {
     expect(cn).toBeDefined();
-    expect(cn('a', 'b')).toBe('a b');
+    expect(cn("a", "b")).toBe("a b");
   });
 });

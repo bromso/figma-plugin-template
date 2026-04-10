@@ -22,7 +22,7 @@ import {
   Switch,
   Textarea,
   Type,
-} from './index';
+} from "./index";
 
 function App() {
   return (
@@ -64,14 +64,16 @@ function App() {
         <SectionTitle>Buttons</SectionTitle>
         <Button variant="default">Primary action</Button>
         <Button variant="secondary">Secondary action</Button>
-        <IconButton iconProps={{ iconName: 'plus' }} aria-label="Add item" />
+        <IconButton iconProps={{ iconName: "plus" }} aria-label="Add item" />
       </div>
 
       <div className="flex flex-col gap-2 mb-6">
         <SectionTitle>Display</SectionTitle>
         <Icon iconName="star" />
         <Label>Field label</Label>
-        <Type size="large" weight="bold">Heading text</Type>
+        <Type size="large" weight="bold">
+          Heading text
+        </Type>
         <Alert>
           <Icon iconName="info" className="size-4" />
           <AlertDescription>This is a tip for new users.</AlertDescription>

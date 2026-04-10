@@ -1,6 +1,6 @@
-import { cn } from "@/lib/utils";
-import { Info, Plus, Star, type LucideProps } from "lucide-react";
+import { Info, type LucideProps, Plus, Star } from "lucide-react";
 import type { ComponentType } from "react";
+import { cn } from "@/lib/utils";
 
 const iconMap: Record<string, ComponentType<LucideProps>> = {
   plus: Plus,
@@ -16,10 +16,5 @@ export interface IconProps extends LucideProps {
 export function Icon({ iconName, spin, className, ...props }: IconProps) {
   const LucideIcon = iconMap[iconName];
   if (!LucideIcon) return null;
-  return (
-    <LucideIcon
-      className={cn("size-4", spin && "animate-spin", className)}
-      {...props}
-    />
-  );
+  return <LucideIcon className={cn("size-4", spin && "animate-spin", className)} {...props} />;
 }
