@@ -28,3 +28,25 @@ Discovered while running `bunx tsc --noEmit` in `packages/ui/` to verify BUG-02 
 ## Scope boundary
 
 Per the executor scope rules: "Only auto-fix issues DIRECTLY caused by the current task's changes." BUG-02 added a named `ButtonProps` type export — it did not touch `monorepo-networker`, `networkSides.ts`, or `app.network.tsx`. These errors exist independently of the BUG-02 fix.
+
+## Pre-existing Biome format errors (discovered during 16-07 wave 2 build)
+
+Discovered while running `bun run lint` in the wave-2 dark-mode worktree. These errors exist on the phase base `aab8ea8` BEFORE any THEME-01 changes and are unrelated to `packages/ui/src/styles.css` (Biome ignores CSS files anyway).
+
+### Error 1: `button-props.test.ts` import formatting
+
+- **File:** `packages/ui/src/__tests__/button-props.test.ts:2`
+- **Error:** `import { type ButtonProps }` should be `import type { ButtonProps }` (Biome `useImportType` / formatter).
+- **Scope:** File was added by plan 16-02 (BUG-02). Not caused by THEME-01 (plan 07).
+- **Resolution venue:** Fix in a follow-up commit on master after wave 2 merge, or amend 16-02.
+
+### Error 2: `main.test.ts` multi-line expect formatting
+
+- **File:** `packages/ui/src/main.test.ts:24-26`
+- **Error:** `expect(() => resolveRoot()).toThrow("...")` split across 3 lines; Biome formatter wants it on 1 line.
+- **Scope:** File was added by plan 16-01 (BUG-01). Not caused by THEME-01 (plan 07).
+- **Resolution venue:** Fix in a follow-up commit on master after wave 2 merge, or amend 16-01.
+
+## Scope boundary (THEME-01)
+
+Per the executor scope rules: "Only auto-fix issues DIRECTLY caused by the current task's changes." THEME-01 (plan 07) only added two insertions to `packages/ui/src/styles.css`. Biome ignores `.css` files per project config, so THEME-01's changes cannot trigger lint failures. The above errors pre-date plan 07 on its base commit and are sibling-plan artifacts.
