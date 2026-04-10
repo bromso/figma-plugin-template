@@ -9,8 +9,8 @@
         "turbo": "^2.9.5",
       },
     },
-    "apps/figma-plugin": {
-      "name": "@repo/figma-plugin",
+    "apps/design-plugin": {
+      "name": "@repo/design-plugin",
       "dependencies": {
         "@repo/common": "workspace:*",
         "@repo/ui": "workspace:*",
@@ -58,6 +58,8 @@
     "packages/ui": {
       "name": "@repo/ui",
       "dependencies": {
+        "@iconify-json/lucide": "^1.2.102",
+        "@iconify/react": "^6.0.2",
         "@repo/common": "workspace:*",
         "class-variance-authority": "^0.7.1",
         "clsx": "^2.1.1",
@@ -239,6 +241,12 @@
     "@floating-ui/utils": ["@floating-ui/utils@0.2.11", "", {}, "sha512-RiB/yIh78pcIxl6lLMG0CgBXAZ2Y0eVHqMPYugu+9U0AeT6YBeiJpf7lbdJNIugFP5SIjwNRgo4DhR1Qxi26Gg=="],
 
     "@hono/node-server": ["@hono/node-server@1.19.13", "", { "peerDependencies": { "hono": "^4" } }, "sha512-TsQLe4i2gvoTtrHje625ngThGBySOgSK3Xo2XRYOdqGN1teR8+I7vchQC46uLJi8OF62YTYA3AhSpumtkhsaKQ=="],
+
+    "@iconify-json/lucide": ["@iconify-json/lucide@1.2.102", "", { "dependencies": { "@iconify/types": "*" } }, "sha512-Dm3EEqu5NrmzyDMB2U1+8yroEj2/dB9V4KlH0m/szwwF/ofSf0cPaGTZqkd1aExXjCor+vU53ttRMCGuXf+/cg=="],
+
+    "@iconify/react": ["@iconify/react@6.0.2", "", { "dependencies": { "@iconify/types": "^2.0.0" }, "peerDependencies": { "react": ">=16" } }, "sha512-SMmC2sactfpJD427WJEDN6PMyznTFMhByK9yLW0gOTtnjzzbsi/Ke/XqsumsavFPwNiXs8jSiYeZTmLCLwO+Fg=="],
+
+    "@iconify/types": ["@iconify/types@2.0.0", "", {}, "sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg=="],
 
     "@inquirer/ansi": ["@inquirer/ansi@1.0.2", "", {}, "sha512-S8qNSZiYzFd0wAcyG5AXCvUHC5Sr7xpZ9wZ2py9XR88jUz8wooStVx5M6dRzczbBWjic9NP7+rY0Xi7qqK/aMQ=="],
 
@@ -440,7 +448,7 @@
 
     "@repo/common": ["@repo/common@workspace:packages/common"],
 
-    "@repo/figma-plugin": ["@repo/figma-plugin@workspace:apps/figma-plugin"],
+    "@repo/design-plugin": ["@repo/design-plugin@workspace:apps/design-plugin"],
 
     "@repo/storybook": ["@repo/storybook@workspace:apps/storybook"],
 
