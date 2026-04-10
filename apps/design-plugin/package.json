@@ -1,5 +1,5 @@
 {
-  "name": "@repo/figma-plugin",
+  "name": "@repo/design-plugin",
   "private": true,
   "scripts": {
     "build": "bun run build:ui && bun run build:plugin",
