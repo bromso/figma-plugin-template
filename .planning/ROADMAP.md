@@ -78,7 +78,14 @@ Full details: [milestones/v1.2-ROADMAP.md](milestones/v1.2-ROADMAP.md)
   5. `index.html` has conformant `<!DOCTYPE html>` + `<html>/<head>/<body>` structure
   6. `postcssUrl` uses `pathToFileURL` for path encoding
   7. Dark mode tokens either defined under `.dark` or all `dark:` variants removed with documented decision
-**Plans**: TBD
+**Plans**: 7 plans
+- [ ] 16-01 — BUG-01 main.tsx null guard + test
+- [ ] 16-02 — BUG-02 ButtonProps named export
+- [ ] 16-03 — BUG-03 AlertAction barrel re-export
+- [ ] 16-04 — BUG-04 Iconify migration (offline preload, StaticIconName, call-site rename)
+- [ ] 16-05 — BUG-05 Conformant index.html + singlefile verification
+- [ ] 16-06 — BUG-06 postcss-url pathToFileURL callback + spaces smoke test
+- [ ] 16-07 — THEME-01 html.figma-dark OKLCH tokens + Tailwind @custom-variant
 
 ### Phase 17: Type Safety
 **Goal**: TypeScript is actively type-checked in `packages/ui`, and `Icon` supports runtime registration with a typed extensibility API
