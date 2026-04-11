@@ -58,7 +58,7 @@ Full details: [milestones/v1.2-ROADMAP.md](milestones/v1.2-ROADMAP.md)
 - Bundle analysis (Phase 18) before React Compiler (Phase 19) to measure baseline and compiler impact
 - React Compiler (Phase 19) before test coverage (Phase 20) so tests validate compiled output
 
-- [ ] **Phase 16: Bug Fixes + Dark Mode** — Resolve all code review findings and dark mode token gap
+- [x] **Phase 16: Bug Fixes + Dark Mode** — Resolve all code review findings and dark mode token gap (completed 2026-04-11)
 - [ ] **Phase 17: Type Safety** — Add tsc script to packages/ui and implement registerIcon() API
 - [ ] **Phase 18: Bundle Analysis + Optimization** — Document bundle, fix Radix imports, named Lucide imports
 - [ ] **Phase 19: React 19 Compiler** — Opt in to React Compiler and remove redundant manual memoization
@@ -79,10 +79,10 @@ Full details: [milestones/v1.2-ROADMAP.md](milestones/v1.2-ROADMAP.md)
   6. `postcssUrl` uses `pathToFileURL` for path encoding
   7. Dark mode tokens either defined under `.dark` or all `dark:` variants removed with documented decision
 **Plans**: 7 plans
-- [ ] 16-01 — BUG-01 main.tsx null guard + test
-- [ ] 16-02 — BUG-02 ButtonProps named export
-- [ ] 16-03 — BUG-03 AlertAction barrel re-export
-- [ ] 16-04 — BUG-04 Iconify migration (offline preload, StaticIconName, call-site rename)
+- [x] 16-01 — BUG-01 main.tsx null guard + test
+- [x] 16-02 — BUG-02 ButtonProps named export
+- [x] 16-03 — BUG-03 AlertAction barrel re-export
+- [x] 16-04 — BUG-04 Iconify migration (offline preload, StaticIconName, call-site rename)
 - [ ] 16-05 — BUG-05 Conformant index.html + singlefile verification
 - [ ] 16-06 — BUG-06 postcss-url pathToFileURL callback + spaces smoke test
 - [ ] 16-07 — THEME-01 html.figma-dark OKLCH tokens + Tailwind @custom-variant
@@ -159,7 +159,7 @@ Full details: [milestones/v1.2-ROADMAP.md](milestones/v1.2-ROADMAP.md)
 | 13. shadcn/ui Component Migration | v1.2 | 3/3 | Complete | 2026-04-09 |
 | 14. Storybook 10 Upgrade | v1.2 | 2/2 | Complete | 2026-04-10 |
 | 15. Full-Stack Verification | v1.2 | 2/2 | Complete | 2026-04-10 |
-| 16. Bug Fixes + Dark Mode | v1.3 | 0/? | Not started | - |
+| 16. Bug Fixes + Dark Mode | v1.3 | 7/7 | Complete    | 2026-04-11 |
 | 17. Type Safety | v1.3 | 0/? | Not started | - |
 | 18. Bundle Analysis + Optimization | v1.3 | 0/? | Not started | - |
 | 19. React 19 Compiler | v1.3 | 0/? | Not started | - |
