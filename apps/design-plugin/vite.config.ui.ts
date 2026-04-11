@@ -23,10 +23,7 @@ const MIME_BY_EXT: Record<string, string> = {
   png: "image/png",
 };
 
-function inlineAssetAsDataUri(asset: {
-  absolutePath?: string;
-  url?: string;
-}): string | undefined {
+function inlineAssetAsDataUri(asset: { absolutePath?: string; url?: string }): string | undefined {
   if (!asset.absolutePath) return undefined;
   try {
     // pathToFileURL percent-encodes spaces and other special chars.
@@ -42,9 +39,9 @@ function inlineAssetAsDataUri(asset: {
     return `data:${mime};base64,${content.toString("base64")}`;
   } catch (err) {
     console.warn(
-      `[postcss-url] Failed to inline asset at ${asset.absolutePath} (${pathToFileURL(
-        asset.absolutePath
-      ).href}):`,
+      `[postcss-url] Failed to inline asset at ${asset.absolutePath} (${
+        pathToFileURL(asset.absolutePath).href
+      }):`,
       err
     );
     return undefined;

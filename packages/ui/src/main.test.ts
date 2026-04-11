@@ -21,9 +21,7 @@ describe("BUG-01: main.tsx root element null guard", () => {
   });
 
   it("throws a descriptive Error when #root is missing", () => {
-    expect(() => resolveRoot()).toThrow(
-      "Root element #root not found in index.html"
-    );
+    expect(() => resolveRoot()).toThrow("Root element #root not found in index.html");
   });
 
   it("returns the element when #root exists", () => {

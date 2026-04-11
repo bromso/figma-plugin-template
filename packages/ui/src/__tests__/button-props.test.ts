@@ -1,5 +1,5 @@
 import { describe, expectTypeOf, it } from "vitest";
-import { type ButtonProps } from "../index";
+import type { ButtonProps } from "../index";
 
 describe("@repo/ui ButtonProps type export", () => {
   it("exports ButtonProps as a real named type from the barrel", () => {
