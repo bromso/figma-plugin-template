@@ -28,23 +28,23 @@
 
 ## Testing
 
-- [ ] **TEST-01**: `@testing-library/react` interaction tests exist for Button, Select, and Accordion (≥2 tests each covering user-event flows)
-- [ ] **TEST-02**: Storybook 10 `play()` interaction tests exist for Accordion (expand) and Select (open + select option)
+- [x] **TEST-01**: `@testing-library/react` interaction tests exist for Button, Select, and Accordion (≥2 tests each covering user-event flows)
+- [x] **TEST-02**: Storybook 10 `play()` interaction tests exist for Accordion (expand) and Select (open + select option)
 
 ## Developer Experience
 
-- [ ] **DX-01**: `styles.css` has a comment explaining `@source "."` (or uses explicit globs)
-- [ ] **DX-02**: `vite.config.ui.ts` has `// MUST be last` comment above `viteSingleFile()`
-- [ ] **DX-03**: `docs/WORKTREE-FLOW.md` documents the GSD worktree merge edge case
+- [x] **DX-01**: `styles.css` has a comment explaining `@source "."` (or uses explicit globs)
+- [x] **DX-02**: `vite.config.ui.ts` has `// MUST be last` comment above `viteSingleFile()`
+- [x] **DX-03**: `docs/WORKTREE-FLOW.md` documents the GSD worktree merge edge case
 
 ## Dependency Hygiene
 
-- [ ] **DEP-01**: `vite-plugin-react-rich-svg` migrated to `vite-plugin-svgr`, OR risk documented in package.json with the Vite version it was last verified on
-- [ ] **DEP-02**: `bun run build-storybook` produces no chunk size warnings (manualChunks configured in `.storybook/main.ts`)
+- [x] **DEP-01**: `vite-plugin-react-rich-svg` risk documented in vite.config.ui.ts with last verified Vite version (8.0.8, 2026-04-19)
+- [x] **DEP-02**: `bun run build-storybook` produces no chunk size warnings (manualChunks + chunkSizeWarningLimit configured in `.storybook/main.ts`)
 
 ## UI Component Polish
 
-- [ ] **UI-05**: `Type` component accepts polymorphic `as` prop (`<Type as="h2">` renders `<h2>`)
+- [x] **UI-05**: `Type` component accepts polymorphic `as` prop (`<Type as="h2">` renders `<h2>`)
 
 ## Out of Scope
 
@@ -72,11 +72,11 @@
 | PERF-03 | Phase 18 | Satisfied |
 | PERF-04 | Phase 19 | Satisfied |
 | PERF-05 | Phase 19 | Satisfied (N/A) |
-| TEST-01 | Phase 20 | Pending |
-| TEST-02 | Phase 20 | Pending |
-| DX-01 | Phase 20 | Pending |
-| DX-02 | Phase 20 | Pending |
-| DX-03 | Phase 20 | Pending |
-| DEP-01 | Phase 20 | Pending |
-| DEP-02 | Phase 20 | Pending |
-| UI-05 | Phase 20 | Pending |
+| TEST-01 | Phase 20 | Satisfied |
+| TEST-02 | Phase 20 | Satisfied |
+| DX-01 | Phase 20 | Satisfied |
+| DX-02 | Phase 20 | Satisfied |
+| DX-03 | Phase 20 | Satisfied |
+| DEP-01 | Phase 20 | Satisfied |
+| DEP-02 | Phase 20 | Satisfied |
+| UI-05 | Phase 20 | Satisfied |

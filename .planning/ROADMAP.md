@@ -5,7 +5,7 @@
 - ✅ **v1.0 Monorepo & DX Overhaul** — Phases 1-5 (shipped 2026-04-09)
 - ✅ **v1.1 UI Components & Skill Optimization** — Phases 6-9 (shipped 2026-04-09)
 - ✅ **v1.2 Dependency Upgrades & Bundle Optimization** — Phases 10-15 (shipped 2026-04-10)
-- 🚧 **v1.3 Code Audit Resolution** — Phases 16-20 (in progress)
+- ✅ **v1.3 Code Audit Resolution** — Phases 16-20 (shipped 2026-04-19)
 
 ## Phases
 
@@ -48,7 +48,7 @@ Full details: [milestones/v1.2-ROADMAP.md](milestones/v1.2-ROADMAP.md)
 
 </details>
 
-### 🚧 v1.3 Code Audit Resolution (In Progress)
+### ✅ v1.3 Code Audit Resolution (Shipped 2026-04-19)
 
 **Milestone Goal:** Resolve all findings from the post-v1.2 code audit: eliminate runtime bugs, close type safety gaps, reduce bundle size, enable React Compiler, and establish meaningful test coverage.
 
@@ -62,7 +62,7 @@ Full details: [milestones/v1.2-ROADMAP.md](milestones/v1.2-ROADMAP.md)
 - [x] **Phase 17: Type Safety** — tsc pipeline wiring + registerIcons API + StaticIconNameMap (completed 2026-04-19)
 - [x] **Phase 18: Bundle Analysis + Optimization** — Bundle documented, Radix unified, Lucide named (completed 2026-04-19)
 - [x] **Phase 19: React 19 Compiler** — React Compiler active, no memoization to remove (completed 2026-04-19)
-- [ ] **Phase 20: Tests + DX + Dependency Hygiene** — Interaction tests, Storybook play tests, polymorphic Type, docs, dep cleanup
+- [x] **Phase 20: Tests + DX + Dependency Hygiene** — 27 tests, play functions, polymorphic Type, DX docs, dep hygiene (completed 2026-04-19)
 
 ## Phase Details
 
@@ -142,7 +142,8 @@ Full details: [milestones/v1.2-ROADMAP.md](milestones/v1.2-ROADMAP.md)
   8. `docs/WORKTREE-FLOW.md` exists documenting the known worktree merge edge case
   9. `vite-plugin-react-rich-svg` migrated to `vite-plugin-svgr` OR risk documented in package.json with last-verified Vite version
   10. `bun run build-storybook` produces no chunk size warnings (manualChunks configured)
-**Plans**: TBD
+**Plans**: 1 plan
+- [x] 20-01 — Interaction tests (Button/Accordion/Select), polymorphic Type, Storybook play(), DX docs, dep hygiene
 
 ## Progress
 
@@ -167,4 +168,4 @@ Full details: [milestones/v1.2-ROADMAP.md](milestones/v1.2-ROADMAP.md)
 | 17. Type Safety | v1.3 | 2/2 | Complete | 2026-04-19 |
 | 18. Bundle Analysis + Optimization | v1.3 | 1/1 | Complete | 2026-04-19 |
 | 19. React 19 Compiler | v1.3 | 1/1 | Complete | 2026-04-19 |
-| 20. Tests + DX + Dependency Hygiene | v1.3 | 0/? | Not started | - |
+| 20. Tests + DX + Dependency Hygiene | v1.3 | 1/1 | Complete | 2026-04-19 |
