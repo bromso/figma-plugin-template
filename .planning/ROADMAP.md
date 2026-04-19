@@ -59,7 +59,7 @@ Full details: [milestones/v1.2-ROADMAP.md](milestones/v1.2-ROADMAP.md)
 - React Compiler (Phase 19) before test coverage (Phase 20) so tests validate compiled output
 
 - [x] **Phase 16: Bug Fixes + Dark Mode** — Resolve all code review findings and dark mode token gap (completed 2026-04-11)
-- [ ] **Phase 17: Type Safety** — Add tsc script to packages/ui and implement registerIcon() API
+- [x] **Phase 17: Type Safety** — tsc pipeline wiring + registerIcons API + StaticIconNameMap (completed 2026-04-19)
 - [ ] **Phase 18: Bundle Analysis + Optimization** — Document bundle, fix Radix imports, named Lucide imports
 - [ ] **Phase 19: React 19 Compiler** — Opt in to React Compiler and remove redundant manual memoization
 - [ ] **Phase 20: Tests + DX + Dependency Hygiene** — Interaction tests, Storybook play tests, polymorphic Type, docs, dep cleanup
@@ -98,7 +98,9 @@ Full details: [milestones/v1.2-ROADMAP.md](milestones/v1.2-ROADMAP.md)
   4. `Icon` component supports `registerIcon(name, component)` runtime registration
   5. A typed `ICONS` const and `StaticIconName` type are exported for static consumers
   6. `<Icon name="unknown" />` warns and returns null without throwing
-**Plans**: TBD
+**Plans**: 2 plans
+- [x] 17-01 — TYPE-01 tsc pipeline wiring (tsconfig.node.json, types scripts, @types/node, latent error fixes)
+- [x] 17-02 — TYPE-02 registerIcons API + StaticIconNameMap + ICONS + unknown-name guard + tests
 
 ### Phase 18: Bundle Analysis + Optimization
 **Goal**: Bundle size is documented and optimized by fixing Radix import strategy and ensuring tree-shakeable Lucide imports
@@ -160,7 +162,7 @@ Full details: [milestones/v1.2-ROADMAP.md](milestones/v1.2-ROADMAP.md)
 | 14. Storybook 10 Upgrade | v1.2 | 2/2 | Complete | 2026-04-10 |
 | 15. Full-Stack Verification | v1.2 | 2/2 | Complete | 2026-04-10 |
 | 16. Bug Fixes + Dark Mode | v1.3 | 7/7 | Complete    | 2026-04-11 |
-| 17. Type Safety | v1.3 | 0/? | Not started | - |
+| 17. Type Safety | v1.3 | 2/2 | Complete | 2026-04-19 |
 | 18. Bundle Analysis + Optimization | v1.3 | 0/? | Not started | - |
 | 19. React 19 Compiler | v1.3 | 0/? | Not started | - |
 | 20. Tests + DX + Dependency Hygiene | v1.3 | 0/? | Not started | - |

@@ -2,21 +2,21 @@
 
 ## Bug Fixes (from v1.2 code audit)
 
-- [ ] **BUG-01**: `main.tsx` null-guards `getElementById("root")` instead of unchecked `as HTMLElement` cast
-- [ ] **BUG-02**: `ButtonProps` defined in `button.tsx` and importable from `@repo/ui` (no phantom re-export)
-- [ ] **BUG-03**: `AlertAction` exported from `@repo/ui` index
-- [ ] **BUG-04**: `Icon` component `name` prop narrowed to `keyof typeof iconMap` — invalid names fail at compile time
-- [ ] **BUG-05**: `index.html` is a conformant document with `<!DOCTYPE html>`, `<html>`, `<head>`, `<body>`
-- [ ] **BUG-06**: `postcssUrl` uses `pathToFileURL()` from `node:url` — build works on paths containing spaces
+- [x] **BUG-01**: `main.tsx` null-guards `getElementById("root")` instead of unchecked `as HTMLElement` cast
+- [x] **BUG-02**: `ButtonProps` defined in `button.tsx` and importable from `@repo/ui` (no phantom re-export)
+- [x] **BUG-03**: `AlertAction` exported from `@repo/ui` index
+- [x] **BUG-04**: `Icon` component `name` prop narrowed to `keyof typeof iconMap` — invalid names fail at compile time
+- [x] **BUG-05**: `index.html` is a conformant document with `<!DOCTYPE html>`, `<html>`, `<head>`, `<body>`
+- [x] **BUG-06**: `postcssUrl` uses `pathToFileURL()` from `node:url` — build works on paths containing spaces
 
 ## Theme
 
-- [ ] **THEME-01**: Dark mode is either fully supported (tokens defined under `.dark`) or all `dark:` variants are removed with documented decision
+- [x] **THEME-01**: Dark mode is either fully supported (tokens defined under `.dark`) or all `dark:` variants are removed with documented decision
 
 ## Type Safety
 
-- [ ] **TYPE-01**: `packages/ui` has a `types` script running `tsc --noEmit`, wired into Turborepo pipeline
-- [ ] **TYPE-02**: `Icon` component supports runtime extension via `registerIcon(name, component)` API, with typed `ICONS` const and `StaticIconName` type for static consumers
+- [x] **TYPE-01**: `packages/ui` has a `types` script running `tsc --noEmit`, wired into Turborepo pipeline
+- [x] **TYPE-02**: `Icon` component supports runtime extension via `registerIcons(iconifyData)` API (thin wrapper around iconify's `addCollection`), with typed `ICONS` const, extensible `StaticIconNameMap` interface, and `StaticIconName = keyof StaticIconNameMap` for static consumers
 
 ## Performance
 
@@ -58,15 +58,15 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| BUG-01 | Phase 16 | Pending |
-| BUG-02 | Phase 16 | Pending |
-| BUG-03 | Phase 16 | Pending |
-| BUG-04 | Phase 16 | Pending |
-| BUG-05 | Phase 16 | Pending |
-| BUG-06 | Phase 16 | Pending |
-| THEME-01 | Phase 16 | Pending |
-| TYPE-01 | Phase 17 | Pending |
-| TYPE-02 | Phase 17 | Pending |
+| BUG-01 | Phase 16 | Satisfied |
+| BUG-02 | Phase 16 | Satisfied |
+| BUG-03 | Phase 16 | Satisfied |
+| BUG-04 | Phase 16 | Satisfied |
+| BUG-05 | Phase 16 | Satisfied |
+| BUG-06 | Phase 16 | Satisfied |
+| THEME-01 | Phase 16 | Satisfied |
+| TYPE-01 | Phase 17 | Satisfied |
+| TYPE-02 | Phase 17 | Satisfied |
 | PERF-01 | Phase 18 | Pending |
 | PERF-02 | Phase 18 | Pending |
 | PERF-03 | Phase 18 | Pending |
