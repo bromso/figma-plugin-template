@@ -36,17 +36,19 @@ addCollection(lucideSubset);
 
 export type StaticIconName = "lucide:plus" | "lucide:info" | "lucide:star";
 
-export interface IconProps extends Omit<React.ComponentProps<"svg">, "name"> {
+export interface IconProps {
   name: StaticIconName;
   spin?: boolean;
+  className?: string;
+  style?: React.CSSProperties;
 }
 
-export function Icon({ name, spin, className, ...props }: IconProps) {
+export function Icon({ name, spin, className, style }: IconProps) {
   return (
     <IconifyIcon
       icon={name}
       className={cn("size-4", spin && "animate-spin", className)}
-      {...props}
+      style={style}
     />
   );
 }
