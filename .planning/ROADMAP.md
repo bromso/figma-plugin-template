@@ -61,7 +61,7 @@ Full details: [milestones/v1.2-ROADMAP.md](milestones/v1.2-ROADMAP.md)
 - [x] **Phase 16: Bug Fixes + Dark Mode** — Resolve all code review findings and dark mode token gap (completed 2026-04-11)
 - [x] **Phase 17: Type Safety** — tsc pipeline wiring + registerIcons API + StaticIconNameMap (completed 2026-04-19)
 - [x] **Phase 18: Bundle Analysis + Optimization** — Bundle documented, Radix unified, Lucide named (completed 2026-04-19)
-- [ ] **Phase 19: React 19 Compiler** — Opt in to React Compiler and remove redundant manual memoization
+- [x] **Phase 19: React 19 Compiler** — React Compiler active, no memoization to remove (completed 2026-04-19)
 - [ ] **Phase 20: Tests + DX + Dependency Hygiene** — Interaction tests, Storybook play tests, polymorphic Type, docs, dep cleanup
 
 ## Phase Details
@@ -124,7 +124,8 @@ Full details: [milestones/v1.2-ROADMAP.md](milestones/v1.2-ROADMAP.md)
   3. Redundant `useMemo`/`useCallback` calls removed where the compiler handles memoization
   4. Any retained manual memoization has `// react-compiler: skip — reason` comments
   5. Existing tests still pass after compiler opt-in
-**Plans**: TBD
+**Plans**: 1 plan
+- [x] 19-01 — Install babel-plugin-react-compiler + @rolldown/plugin-babel, configure reactCompilerPreset in vite.config.ui.ts. No useMemo/useCallback existed to remove.
 
 ### Phase 20: Tests + DX + Dependency Hygiene
 **Goal**: Meaningful interaction test coverage exists for UI components, DX gaps are documented, and unmaintained deps are resolved
@@ -165,5 +166,5 @@ Full details: [milestones/v1.2-ROADMAP.md](milestones/v1.2-ROADMAP.md)
 | 16. Bug Fixes + Dark Mode | v1.3 | 7/7 | Complete    | 2026-04-11 |
 | 17. Type Safety | v1.3 | 2/2 | Complete | 2026-04-19 |
 | 18. Bundle Analysis + Optimization | v1.3 | 1/1 | Complete | 2026-04-19 |
-| 19. React 19 Compiler | v1.3 | 0/? | Not started | - |
+| 19. React 19 Compiler | v1.3 | 1/1 | Complete | 2026-04-19 |
 | 20. Tests + DX + Dependency Hygiene | v1.3 | 0/? | Not started | - |
