@@ -4,7 +4,7 @@ import { pathToFileURL } from "node:url";
 import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
 import postcssUrl from "postcss-url";
-import type { PluginOption } from "vite";
+import type { PluginOption, UserConfig } from "vite";
 import { defineConfig } from "vite";
 import richSvg from "vite-plugin-react-rich-svg";
 import { viteSingleFile } from "vite-plugin-singlefile";
@@ -51,7 +51,7 @@ function inlineAssetAsDataUri(asset: { absolutePath?: string; url?: string }): s
 const uiSrcPath = path.resolve(__dirname, "../../packages/ui/src");
 const isAnalyze = process.env.ANALYZE === "true";
 
-export default defineConfig(async ({ mode }) => {
+export default defineConfig(async ({ mode }): Promise<UserConfig> => {
   const plugins: PluginOption[] = [react(), richSvg(), tailwindcss(), viteSingleFile()];
 
   if (isAnalyze) {

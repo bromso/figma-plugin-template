@@ -3,15 +3,13 @@ import type { IconifyJSON } from "@iconify/types";
 import type * as React from "react";
 import { cn } from "@/lib/utils";
 
-// BUG-04 — Curated lucide subset preloaded at module init.
+// ---------------------------------------------------------------------------
+// Static icon registry
+// ---------------------------------------------------------------------------
+
+// Curated lucide subset preloaded at module init.
 // Using @iconify/react/offline means this bundle has ZERO network code:
 // no references to api.iconify.design, no fetch, no XMLHttpRequest.
-// To expand the whitelist, add more entries to `lucideSubset.icons` and
-// append their names to `StaticIconName`.
-//
-// TODO(Phase 17): Phase 17 restructures StaticIconName into a
-// `interface StaticIconNameMap` that consumers can augment via module
-// augmentation, and ships a `registerIcons(iconifyData)` helper.
 //
 // Body strings are copied verbatim from
 // node_modules/@iconify-json/lucide/icons.json (v1.2.102) keys plus/info/star.
@@ -34,7 +32,82 @@ const lucideSubset: IconifyJSON = {
 
 addCollection(lucideSubset);
 
-export type StaticIconName = "lucide:plus" | "lucide:info" | "lucide:star";
+// ---------------------------------------------------------------------------
+// Type-safe icon name system
+// ---------------------------------------------------------------------------
+
+/**
+ * Extensible icon name registry. Consumers widen this via module augmentation:
+ *
+ * ```ts
+ * import type {} from "@repo/ui";
+ *
+ * declare module "@repo/ui" {
+ *   interface StaticIconNameMap {
+ *     "mdi:home": true;
+ *     "mdi:account": true;
+ *   }
+ * }
+ * ```
+ *
+ * Uses the same pattern as `@tanstack/react-router` (Register),
+ * `react-i18next` (Resources), and `next-auth` (Session).
+ */
+export interface StaticIconNameMap {
+  "lucide:plus": true;
+  "lucide:info": true;
+  "lucide:star": true;
+}
+
+export type StaticIconName = keyof StaticIconNameMap;
+
+/** Typed const for referencing built-in icons without raw string literals. */
+export const ICONS = {
+  plus: "lucide:plus",
+  info: "lucide:info",
+  star: "lucide:star",
+} as const satisfies Record<string, StaticIconName>;
+
+// ---------------------------------------------------------------------------
+// Runtime icon registration
+// ---------------------------------------------------------------------------
+
+/** Tracks all icon names registered via addCollection for unknown-name guard. */
+const registeredNames = new Set<string>();
+
+// Seed with the built-in lucide subset
+for (const name of Object.keys(lucideSubset.icons)) {
+  registeredNames.add(`${lucideSubset.prefix}:${name}`);
+}
+
+/**
+ * Register an iconify icon collection for use with `<Icon>`.
+ *
+ * Call this once at module init (e.g., in `main.tsx` before `createRoot`):
+ * ```ts
+ * import lucideIcons from "@iconify-json/lucide";
+ * registerIcons(lucideIcons);
+ * ```
+ *
+ * @returns `true` if the collection was accepted by iconify's internal registry.
+ */
+export function registerIcons(data: IconifyJSON): boolean {
+  const result = addCollection(data);
+  for (const name of Object.keys(data.icons)) {
+    registeredNames.add(`${data.prefix}:${name}`);
+  }
+  return result as unknown as boolean;
+}
+
+// ---------------------------------------------------------------------------
+// Unknown-name warning (dedup'd per name)
+// ---------------------------------------------------------------------------
+
+const warnedNames = new Set<string>();
+
+// ---------------------------------------------------------------------------
+// Icon component
+// ---------------------------------------------------------------------------
 
 export interface IconProps {
   name: StaticIconName;
@@ -44,6 +117,16 @@ export interface IconProps {
 }
 
 export function Icon({ name, spin, className, style }: IconProps) {
+  if (!registeredNames.has(name)) {
+    if (!warnedNames.has(name)) {
+      warnedNames.add(name);
+      console.warn(
+        `[@repo/ui] Unknown icon name: "${name}". Did you forget to call registerIcons()?`,
+      );
+    }
+    return null;
+  }
+
   return (
     <IconifyIcon
       icon={name}
