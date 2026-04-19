@@ -16,6 +16,20 @@ const config: StorybookConfig = {
           '@': path.resolve(__dirname, '../../../packages/ui/src'),
         },
       },
+      build: {
+        chunkSizeWarningLimit: 1500,
+        rollupOptions: {
+          output: {
+            manualChunks(id: string) {
+              if (id.includes('node_modules')) {
+                if (id.includes('react-dom')) return 'vendor-react-dom';
+                if (id.includes('radix-ui') || id.includes('@radix-ui')) return 'vendor-radix';
+                if (id.includes('@storybook')) return 'vendor-storybook';
+              }
+            },
+          },
+        },
+      },
     });
   },
 };

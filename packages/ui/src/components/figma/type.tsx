@@ -14,7 +14,10 @@ const weightMap = {
   bold: "font-semibold",
 } as const;
 
-interface TypeProps extends React.HTMLAttributes<HTMLParagraphElement> {
+type TypeElement = "p" | "span" | "div" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "label";
+
+interface TypeProps extends React.HTMLAttributes<HTMLElement> {
+  as?: TypeElement;
   size?: keyof typeof sizeMap;
   weight?: keyof typeof weightMap;
   children: React.ReactNode;
@@ -22,14 +25,15 @@ interface TypeProps extends React.HTMLAttributes<HTMLParagraphElement> {
 
 export function Type({
   children,
+  as: Tag = "p",
   size = "small",
   weight = "normal",
   className,
   ...props
 }: TypeProps) {
   return (
-    <p className={cn(sizeMap[size], weightMap[weight], "font-sans", className)} {...props}>
+    <Tag className={cn(sizeMap[size], weightMap[weight], "font-sans", className)} {...props}>
       {children}
-    </p>
+    </Tag>
   );
 }

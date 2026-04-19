@@ -7,6 +7,9 @@ import react, { reactCompilerPreset } from "@vitejs/plugin-react";
 import postcssUrl from "postcss-url";
 import type { PluginOption, UserConfig } from "vite";
 import { defineConfig } from "vite";
+// RISK: vite-plugin-react-rich-svg peerDeps declare vite ^5||^6||^7.
+// We use Vite 8. Last verified working: Vite 8.0.8 (2026-04-19).
+// If it breaks after a Vite update, migrate to vite-plugin-svgr.
 import richSvg from "vite-plugin-react-rich-svg";
 import { viteSingleFile } from "vite-plugin-singlefile";
 
@@ -61,6 +64,7 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
     }),
     richSvg(),
     tailwindcss(),
+    // MUST be last — viteSingleFile inlines all assets into index.html
     viteSingleFile(),
   ];
 

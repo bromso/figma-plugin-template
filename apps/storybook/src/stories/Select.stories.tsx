@@ -1,5 +1,6 @@
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@repo/ui";
 import type { Meta, StoryObj } from "@storybook/react";
+import { expect, userEvent, within } from "storybook/test";
 
 const meta = {
   component: Select,
@@ -13,7 +14,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   render: () => (
     <Select>
-      <SelectTrigger className="w-[180px]">
+      <SelectTrigger className="w-[180px]" aria-label="Options">
         <SelectValue placeholder="Choose option" />
       </SelectTrigger>
       <SelectContent>
@@ -23,6 +24,14 @@ export const Default: Story = {
       </SelectContent>
     </Select>
   ),
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const trigger = canvas.getByLabelText("Options");
+    await userEvent.click(trigger);
+    const option = await within(document.body).findByRole("option", { name: "Option 2" });
+    await expect(option).toBeVisible();
+    await userEvent.click(option);
+  },
 };
 
 export const ManyOptions: Story = {
