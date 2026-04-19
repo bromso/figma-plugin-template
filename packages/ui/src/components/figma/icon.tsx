@@ -121,7 +121,7 @@ export function Icon({ name, spin, className, style }: IconProps) {
     if (!warnedNames.has(name)) {
       warnedNames.add(name);
       console.warn(
-        `[@repo/ui] Unknown icon name: "${name}". Did you forget to call registerIcons()?`,
+        `[@repo/ui] Unknown icon name: "${name}". Did you forget to call registerIcons()?`
       );
     }
     return null;

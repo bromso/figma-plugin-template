@@ -1,7 +1,7 @@
 import { render } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { Icon, ICONS, registerIcons } from "./icon";
 import type { StaticIconName, StaticIconNameMap } from "./icon";
+import { ICONS, Icon, registerIcons } from "./icon";
 
 describe("TYPE-02: Icon registration API", () => {
   const warnSpy = vi.spyOn(console, "warn").mockImplementation(() => {});
@@ -52,9 +52,7 @@ describe("TYPE-02: Icon registration API", () => {
       expect(result === undefined || result === true).toBe(true);
 
       // The icon should now render (it's in the registeredNames set)
-      const { container } = render(
-        <Icon name={"test:check" as StaticIconName} />,
-      );
+      const { container } = render(<Icon name={"test:check" as StaticIconName} />);
       // Iconify offline renders an SVG when the icon is in its registry
       const svg = container.querySelector("svg");
       expect(svg).not.toBeNull();
@@ -63,21 +61,15 @@ describe("TYPE-02: Icon registration API", () => {
 
   describe("unknown-name guard", () => {
     it("warns and returns null for unregistered icon names", () => {
-      const { container } = render(
-        <Icon name={"bogus:missing" as StaticIconName} />,
-      );
+      const { container } = render(<Icon name={"bogus:missing" as StaticIconName} />);
 
       // Should return null — no SVG rendered
       expect(container.querySelector("svg")).toBeNull();
       expect(container.innerHTML).toBe("");
 
       // Should have warned
-      expect(warnSpy).toHaveBeenCalledWith(
-        expect.stringContaining("bogus:missing"),
-      );
-      expect(warnSpy).toHaveBeenCalledWith(
-        expect.stringContaining("registerIcons"),
-      );
+      expect(warnSpy).toHaveBeenCalledWith(expect.stringContaining("bogus:missing"));
+      expect(warnSpy).toHaveBeenCalledWith(expect.stringContaining("registerIcons"));
     });
 
     it("deduplicates warnings for the same unknown name", () => {
@@ -88,9 +80,7 @@ describe("TYPE-02: Icon registration API", () => {
       render(<Icon name={name} />);
 
       // Should only warn once despite 3 renders
-      const calls = warnSpy.mock.calls.filter((args) =>
-        String(args[0]).includes("dedup:test"),
-      );
+      const calls = warnSpy.mock.calls.filter((args) => String(args[0]).includes("dedup:test"));
       expect(calls).toHaveLength(1);
     });
   });

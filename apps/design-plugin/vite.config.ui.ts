@@ -1,8 +1,9 @@
 import fs from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
+import babel from "@rolldown/plugin-babel";
 import tailwindcss from "@tailwindcss/vite";
-import react from "@vitejs/plugin-react";
+import react, { reactCompilerPreset } from "@vitejs/plugin-react";
 import postcssUrl from "postcss-url";
 import type { PluginOption, UserConfig } from "vite";
 import { defineConfig } from "vite";
@@ -52,7 +53,16 @@ const uiSrcPath = path.resolve(__dirname, "../../packages/ui/src");
 const isAnalyze = process.env.ANALYZE === "true";
 
 export default defineConfig(async ({ mode }): Promise<UserConfig> => {
-  const plugins: PluginOption[] = [react(), richSvg(), tailwindcss(), viteSingleFile()];
+  const plugins: PluginOption[] = [
+    react(),
+    babel({
+      presets: [reactCompilerPreset()],
+      parserOpts: { plugins: ["jsx", "typescript"] },
+    }),
+    richSvg(),
+    tailwindcss(),
+    viteSingleFile(),
+  ];
 
   if (isAnalyze) {
     const { visualizer } = await import("rollup-plugin-visualizer");

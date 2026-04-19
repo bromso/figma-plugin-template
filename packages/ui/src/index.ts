@@ -2,10 +2,10 @@
 
 // Custom Figma components
 export {
-  Icon,
   ICONS,
-  registerIcons,
+  Icon,
   type IconProps,
+  registerIcons,
   type StaticIconName,
   type StaticIconNameMap,
 } from "./components/figma/icon";
