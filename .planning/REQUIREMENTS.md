@@ -20,9 +20,9 @@
 
 ## Performance
 
-- [ ] **PERF-01**: Bundle analysis report exists documenting total size, top 5 modules, Radix strategy, and Lucide import strategy
-- [ ] **PERF-02**: Radix primitives use the unified `radix-ui` package, not individual `@radix-ui/react-*` packages
-- [ ] **PERF-03**: Lucide icons are imported by name only — no wildcard or namespace imports
+- [x] **PERF-01**: Bundle analysis report exists documenting total size, top 5 modules, Radix strategy, and Lucide import strategy
+- [x] **PERF-02**: Radix primitives use the unified `radix-ui` package, not individual `@radix-ui/react-*` packages
+- [x] **PERF-03**: Lucide icons are imported by name only — no wildcard or namespace imports
 - [ ] **PERF-04**: React 19 Compiler (`babel-plugin-react-compiler`) is active in the Vite build
 - [ ] **PERF-05**: Redundant `useMemo`/`useCallback` removed where React Compiler handles memoization; retained ones have `// react-compiler: skip — reason` comments
 
@@ -67,9 +67,9 @@
 | THEME-01 | Phase 16 | Satisfied |
 | TYPE-01 | Phase 17 | Satisfied |
 | TYPE-02 | Phase 17 | Satisfied |
-| PERF-01 | Phase 18 | Pending |
-| PERF-02 | Phase 18 | Pending |
-| PERF-03 | Phase 18 | Pending |
+| PERF-01 | Phase 18 | Satisfied |
+| PERF-02 | Phase 18 | Satisfied |
+| PERF-03 | Phase 18 | Satisfied |
 | PERF-04 | Phase 19 | Pending |
 | PERF-05 | Phase 19 | Pending |
 | TEST-01 | Phase 20 | Pending |

@@ -60,7 +60,7 @@ Full details: [milestones/v1.2-ROADMAP.md](milestones/v1.2-ROADMAP.md)
 
 - [x] **Phase 16: Bug Fixes + Dark Mode** — Resolve all code review findings and dark mode token gap (completed 2026-04-11)
 - [x] **Phase 17: Type Safety** — tsc pipeline wiring + registerIcons API + StaticIconNameMap (completed 2026-04-19)
-- [ ] **Phase 18: Bundle Analysis + Optimization** — Document bundle, fix Radix imports, named Lucide imports
+- [x] **Phase 18: Bundle Analysis + Optimization** — Bundle documented, Radix unified, Lucide named (completed 2026-04-19)
 - [ ] **Phase 19: React 19 Compiler** — Opt in to React Compiler and remove redundant manual memoization
 - [ ] **Phase 20: Tests + DX + Dependency Hygiene** — Interaction tests, Storybook play tests, polymorphic Type, docs, dep cleanup
 
@@ -111,7 +111,8 @@ Full details: [milestones/v1.2-ROADMAP.md](milestones/v1.2-ROADMAP.md)
   2. `packages/ui/package.json` uses unified `radix-ui` package (no individual `@radix-ui/react-*` packages)
   3. All Lucide imports are named (`import { Plus }`) — no wildcard or namespace imports
   4. `bun run build` succeeds with the new import strategy
-**Plans**: TBD
+**Plans**: 1 plan
+- [x] 18-01 — Bundle analysis report + verification of Radix/Lucide strategies (all pre-satisfied from Phase 13)
 
 ### Phase 19: React 19 Compiler
 **Goal**: React 19 Compiler is active in the build pipeline and redundant manual memoization is removed
@@ -163,6 +164,6 @@ Full details: [milestones/v1.2-ROADMAP.md](milestones/v1.2-ROADMAP.md)
 | 15. Full-Stack Verification | v1.2 | 2/2 | Complete | 2026-04-10 |
 | 16. Bug Fixes + Dark Mode | v1.3 | 7/7 | Complete    | 2026-04-11 |
 | 17. Type Safety | v1.3 | 2/2 | Complete | 2026-04-19 |
-| 18. Bundle Analysis + Optimization | v1.3 | 0/? | Not started | - |
+| 18. Bundle Analysis + Optimization | v1.3 | 1/1 | Complete | 2026-04-19 |
 | 19. React 19 Compiler | v1.3 | 0/? | Not started | - |
 | 20. Tests + DX + Dependency Hygiene | v1.3 | 0/? | Not started | - |
