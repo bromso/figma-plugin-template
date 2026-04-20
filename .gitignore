@@ -41,5 +41,5 @@ storybook-static
 # Windsurf skills (auto-generated symlinks from npx skills add)
 .windsurf/
 
-# Planning tool config (local workflow state)
-.planning/config.json
+# Planning artifacts (development history, not needed by template users)
+.planning/
