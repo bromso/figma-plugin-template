@@ -37,3 +37,9 @@ storybook-static
 
 # Claude Code local skills (duplicates of .agents/skills/)
 .claude/skills/
+
+# Windsurf skills (auto-generated symlinks from npx skills add)
+.windsurf/
+
+# Planning tool config (local workflow state)
+.planning/config.json
