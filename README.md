@@ -1,5 +1,6 @@
 # figma-plugin-template
 
+[![CI](https://github.com/bromso/figma-plugin-template/actions/workflows/ci.yml/badge.svg)](https://github.com/bromso/figma-plugin-template/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/github/license/bromso/figma-plugin-template)](LICENSE)
 ![Bun](https://img.shields.io/badge/bun-1.3-f9f1e1?logo=bun)
 ![TypeScript](https://img.shields.io/badge/typescript-6-3178c6?logo=typescript&logoColor=white)
