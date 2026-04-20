@@ -17,7 +17,7 @@
     "monorepo-networker": "^2.1.0"
   },
   "devDependencies": {
-    "@types/node": "^24.0.0",
+    "@types/node": "^25.0.0",
     "typescript": "^6.0.0",
     "vitest": "^4.1.4"
   }
