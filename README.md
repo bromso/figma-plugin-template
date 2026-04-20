@@ -1,5 +1,15 @@
 # figma-plugin-template
 
+[![License: MIT](https://img.shields.io/github/license/bromso/figma-plugin-template)](LICENSE)
+![Bun](https://img.shields.io/badge/bun-1.3-f9f1e1?logo=bun)
+![TypeScript](https://img.shields.io/badge/typescript-6-3178c6?logo=typescript&logoColor=white)
+![React](https://img.shields.io/badge/react-19-61dafb?logo=react&logoColor=black)
+![Vite](https://img.shields.io/badge/vite-8-646cff?logo=vite&logoColor=white)
+![Turborepo](https://img.shields.io/badge/turborepo-2-ef4444?logo=turborepo&logoColor=white)
+![Biome](https://img.shields.io/badge/biome-2-60a5fa?logo=biome&logoColor=white)
+![Storybook](https://img.shields.io/badge/storybook-10-ff4785?logo=storybook&logoColor=white)
+![Figma](https://img.shields.io/badge/figma-plugin-a259ff?logo=figma&logoColor=white)
+
 Figma/FigJam plugin boilerplate with React, Vite, TypeScript, and Turborepo monorepo.
 
 ## Features
@@ -7,8 +17,8 @@ Figma/FigJam plugin boilerplate with React, Vite, TypeScript, and Turborepo mono
 - **Turborepo monorepo** with Bun package manager — fast installs, cached builds
 - **React + TypeScript + Vite** build pipeline
 - **Single-file HTML output** — required by the Figma plugin API (all assets inlined)
-- **14 native Figma UI components** via react-figma-ui (Button, Checkbox, Input, Select, and more)
-- **Storybook** for interactive component documentation
+- **14+ UI components** via shadcn/ui + custom Figma components (Button, Input, Select, Accordion, Icon, and more)
+- **Storybook 10** for interactive component documentation with play tests
 - **Vitest** for testing (happy-dom for UI, node for common packages)
 - **Biome** for linting and formatting
 - **Type-safe message passing** between plugin and UI via monorepo-networker
@@ -17,7 +27,7 @@ Figma/FigJam plugin boilerplate with React, Vite, TypeScript, and Turborepo mono
 
 ```bash
 # Clone the template
-git clone https://github.com/jonasbroms/figma-plugin-template.git
+git clone https://github.com/bromso/figma-plugin-template.git
 cd figma-plugin-template
 
 # Install dependencies
@@ -31,7 +41,7 @@ bun run dev
 
 ```
 apps/
-  figma-plugin/   — Figma plugin app (Vite builds to dist/)
+  design-plugin/  — Figma plugin app (Vite builds to dist/)
   storybook/      — Storybook component documentation
 packages/
   common/         — Shared types and network events (@repo/common)
@@ -56,8 +66,8 @@ Packages are **JIT source-only** — they export raw TypeScript with no build st
 
 The plugin runs as **two separate processes** that communicate via message passing:
 
-- **Plugin side** (`apps/figma-plugin/src/plugin/`) — Runs in Figma's sandbox with access to the Figma API (`figma.*`). No DOM access. Entry: `plugin.ts`.
-- **UI side** (`packages/ui/src/`) — Runs in an iframe. React app with react-figma-ui components. Entry: `main.tsx` → `app.tsx`.
+- **Plugin side** (`apps/design-plugin/src/plugin/`) — Runs in Figma's sandbox with access to the Figma API (`figma.*`). No DOM access. Entry: `plugin.ts`.
+- **UI side** (`packages/ui/src/`) — Runs in an iframe. React app with shadcn/ui components. Entry: `main.tsx` → `app.tsx`.
 - **Common** (`packages/common/src/`) — Shared between both sides. Contains network event type definitions.
 
 ### Messaging
@@ -70,15 +80,17 @@ Communication uses [monorepo-networker](https://github.com/CoconutGoodie/monorep
 
 ## UI Components
 
-`packages/ui` re-exports all 14 [react-figma-ui](https://github.com/CoconutGoodie/react-figma-ui) components:
+`packages/ui` provides 14+ components via [shadcn/ui](https://ui.shadcn.com) and custom Figma-specific components:
 
-`Button`, `Checkbox`, `Disclosure`, `DisclosureItem`, `Icon`, `IconButton`, `Input`, `Label`, `SectionTitle`, `OnboardingTip`, `Radio`, `Select`, `Switch`, `Textarea`, `Type`
+**shadcn/ui:** `Accordion`, `Alert`, `Button`, `Checkbox`, `Input`, `Label`, `RadioGroup`, `Select`, `Switch`, `Textarea`
+
+**Custom Figma:** `Icon`, `IconButton`, `SectionTitle`, `Type`
 
 Run `bun run storybook` to browse all components interactively with live examples.
 
 ## Plugin Configuration
 
-Edit `apps/figma-plugin/figma.manifest.ts` to set your plugin name, ID, and permissions:
+Edit `apps/design-plugin/figma.manifest.ts` to set your plugin name, ID, and permissions:
 
 ```ts
 export default {
@@ -95,22 +107,9 @@ Get your plugin ID from Figma: **Plugins > Manage plugins > Create new plugin**.
 1. Run `bun run build`
 2. Open the Figma desktop app
 3. Go to **Plugins > Development > Import plugin from manifest**
-4. Select `apps/figma-plugin/dist/manifest.json`
+4. Select `apps/design-plugin/dist/manifest.json`
 
 For active development, use `bun run dev` to keep the build updated automatically.
-
-## Tech Stack
-
-| Tool | Version |
-|------|---------|
-| [Bun](https://bun.sh) | 1.3.11 |
-| [Turborepo](https://turbo.build) | ^2.9.5 |
-| [Vite](https://vitejs.dev) | 6.x |
-| React | Latest |
-| TypeScript | Latest |
-| [Biome](https://biomejs.dev) | 2.4.10 |
-| [Vitest](https://vitest.dev) | 4.x |
-| [Storybook](https://storybook.js.org) | 8.6.18 |
 
 ## Contributing
 
