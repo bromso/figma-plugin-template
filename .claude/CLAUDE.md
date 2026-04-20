@@ -2,6 +2,42 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Building Your Plugin (No Coding Required)
+
+This template comes with AI skills that let you describe what you want and have Claude build it for you.
+
+### Quick Start
+
+1. Open this project in Claude Code
+2. Describe your plugin idea: "I want a plugin that..."
+3. Claude will ask a few questions, then build the entire plugin
+4. Follow the installation guide to test it in Figma
+
+### Example Prompts
+
+- "Build a plugin that renames all selected layers to lowercase"
+- "I want a plugin that lets me pick a color and apply it to selected frames"
+- "Make a plugin that counts how many text layers are on the current page"
+- "Add a settings panel to my plugin with a dropdown for font selection"
+- "My plugin button doesn't do anything — can you fix it?"
+
+### Available Skills
+
+- **build-figma-plugin** — Build a complete plugin from a plain English description
+- **frontend-design** — Generate polished, intentional UI for your plugin
+- **shadcn** — Generate and compose UI components correctly
+- **find-skills** — Discover and install new capabilities
+- **skill-creator** — Create your own custom skills
+- **figma-use** — Required before Figma MCP tool calls
+- **figma-api** — Figma REST API reference
+
+### MCP Servers (pre-configured)
+
+- **Figma Dev Mode** — Lets Claude read your Figma files directly (requires `FIGMA_API_KEY` in `.claude/settings.json`)
+- **Context7** — Fetches up-to-date library documentation to reduce errors
+
+---
+
 ## Project Overview
 
 Figma/FigJam plugin boilerplate using React, Vite, TypeScript, and Turborepo monorepo. Based on [CoconutGoodie/figma-plugin-react-vite](https://github.com/CoconutGoodie/figma-plugin-react-vite). Uses react-figma-ui for native Figma UI components and Storybook for component documentation.
@@ -97,12 +133,18 @@ CSS Modules (`*.module.scss`) for component-scoped styles. react-figma-ui provid
 
 `apps/figma-plugin/figma.manifest.ts` exports the Figma plugin manifest. Update `id` with your plugin's ID from Figma. This generates `dist/manifest.json` at build time.
 
-## Available Figma Skills
+## Available Skills
 
-The following Claude Code skills are available for Figma workflows:
+### Plugin Development
+- `build-figma-plugin` — Build a complete Figma plugin from a plain English description (custom skill with architecture references)
+- `frontend-design` — Generate polished, distinctive UI (avoids generic AI aesthetics)
+- `shadcn` — Correct shadcn/ui component generation and composition
+
+### Figma Integration
 - `figma-use` — Required before any `use_figma` tool call
 - `figma-implement-design` — Translate Figma designs to code
-- `figma-generate-design` — Push code layouts to Figma
-- `figma-generate-library` — Build design system in Figma from code
 - `figma-api` — Figma REST API reference
-- `figma-code-connect` — Map Figma components to code snippets
+
+### Meta / Discovery
+- `find-skills` — Discover and install new skills from the skills ecosystem
+- `skill-creator` — Create new custom skills for recurring patterns
