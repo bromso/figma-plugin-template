@@ -30,6 +30,9 @@
       "!**/node_modules",
       "!**/dist",
       "!**/.turbo",
+      "!**/.next",
+      "!**/.source",
+      "!**/out",
       "!**/bun.lock"
     ]
   }
