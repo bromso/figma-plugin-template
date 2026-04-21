@@ -74,6 +74,17 @@ To test changes: run `bun run build` again, then re-run the plugin in Figma (no 
 
 ---
 
+### Step 5: Create a Changeset
+
+After the plugin is built and working, create a changeset to track this change:
+
+Run `bun changeset` and when prompted:
+- Select `figma-plugin-template` as the changed package
+- Choose `minor` (new plugin feature)
+- Write a one-line summary of the plugin (e.g., "Add layer rename plugin")
+
+Commit the changeset file with `git add .changeset/ && git commit -m "chore: add changeset"`.
+
 ## When the User Asks to Change Something
 
 Follow the same flow: understand what they want to change, modify the relevant files, rebuild, and confirm it works. Always run `bun run build` after changes.

@@ -38,6 +38,16 @@ This template comes with AI skills that let you describe what you want and have 
 
 ---
 
+## Git & Versioning
+
+- **Always create feature branches** -- never commit directly to master
+- **Branch naming**: `feat/`, `fix/`, `chore/`, `docs/` prefixes
+- **Conventional commits**: `feat: ...`, `fix: ...`, `chore: ...`, `docs: ...`
+- **After making user-facing changes**, run `bun changeset` and commit the changeset file
+- **Don't bump versions manually** -- changesets handles version bumps and CHANGELOG
+
+---
+
 ## Project Overview
 
 Figma/FigJam plugin boilerplate using React, Vite, TypeScript, and Turborepo monorepo. Based on [CoconutGoodie/figma-plugin-react-vite](https://github.com/CoconutGoodie/figma-plugin-react-vite). Uses react-figma-ui for native Figma UI components and Storybook for component documentation.
