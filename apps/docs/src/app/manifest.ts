@@ -13,12 +13,12 @@ export default function manifest(): MetadataRoute.Manifest {
     theme_color: "#a259ff",
     icons: [
       {
-        src: "/figma-plugin-template/icon-192.png",
+        src: "/figma-plugin-template/android-chrome-192x192.png",
         sizes: "192x192",
         type: "image/png",
       },
       {
-        src: "/figma-plugin-template/icon-512.png",
+        src: "/figma-plugin-template/android-chrome-512x512.png",
         sizes: "512x512",
         type: "image/png",
       },

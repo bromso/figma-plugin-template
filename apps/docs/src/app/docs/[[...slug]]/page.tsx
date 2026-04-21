@@ -27,6 +27,7 @@ export default async function Page(props: PageProps) {
     headline: page.data.title,
     description: page.data.description,
     url,
+    image: `${SITE_URL}/figma-plugi-template.webp`,
     publisher: {
       "@type": "Organization",
       name: "Figma Plugin Template",
@@ -86,11 +87,15 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
       url,
       siteName: "Figma Plugin Template",
       type: "article",
+      images: [
+        { url: "/figma-plugi-template.webp", width: 1200, height: 630, alt: page.data.title },
+      ],
     },
     twitter: {
-      card: "summary",
+      card: "summary_large_image",
       title: page.data.title,
       description: page.data.description,
+      images: ["/figma-plugi-template.webp"],
     },
   };
 }
