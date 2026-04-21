@@ -1,0 +1,19 @@
+{
+  "title": "Documentation",
+  "pages": [
+    "---Getting Started---",
+    "getting-started/index",
+    "getting-started/testing-in-figma",
+    "---Guides---",
+    "guides/architecture",
+    "guides/ui-components",
+    "guides/messaging",
+    "guides/plugin-config",
+    "---AI Skills---",
+    "ai/skills",
+    "ai/using-claude",
+    "---Project---",
+    "project/versioning",
+    "project/contributing"
+  ]
+}
