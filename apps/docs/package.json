@@ -13,6 +13,7 @@
     "fumadocs-core": "^14.7.0",
     "fumadocs-mdx": "^11.10.0",
     "fumadocs-ui": "^14.7.0",
+    "@ducanh2912/next-pwa": "^10.2.9",
     "next": "^15.5.0",
     "react": "^19.2.5",
     "react-dom": "^19.2.5"

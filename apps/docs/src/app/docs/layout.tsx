@@ -5,7 +5,7 @@ import { source } from "@/lib/source";
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
-    <DocsLayout tree={source.getPageTree()} {...baseOptions()}>
+    <DocsLayout tree={source.getPageTree()} sidebar={{ collapsible: true }} {...baseOptions()}>
       {children}
     </DocsLayout>
   );

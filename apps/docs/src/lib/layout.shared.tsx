@@ -1,15 +1,15 @@
 import type { BaseLayoutProps } from "fumadocs-ui/layouts/shared";
-// In fumadocs v14, exports are at fumadocs-ui/layouts/shared (not /shared/index)
 
 export function baseOptions(): BaseLayoutProps {
   return {
     nav: {
       title: "Figma Plugin Template",
     },
+    githubUrl: "https://github.com/bromso/figma-plugin-template",
     links: [
       {
-        text: "GitHub",
-        url: "https://github.com/bromso/figma-plugin-template",
+        text: "Storybook",
+        url: "https://bromso.github.io/figma-plugin-template/storybook",
       },
     ],
   };
