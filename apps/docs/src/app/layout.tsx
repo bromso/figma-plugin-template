@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 import "./global.css";
 
 const SITE_URL = "https://bromso.github.io/figma-plugin-template";
+const BASE = process.env.GITHUB_PAGES === "true" ? "/figma-plugin-template" : "";
 
 export const metadata: Metadata = {
   title: {
@@ -14,11 +15,11 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   icons: {
     icon: [
-      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: `${BASE}/favicon-32x32.png`, sizes: "32x32", type: "image/png" },
+      { url: `${BASE}/favicon-16x16.png`, sizes: "16x16", type: "image/png" },
     ],
-    shortcut: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
+    shortcut: `${BASE}/favicon.ico`,
+    apple: `${BASE}/apple-touch-icon.png`,
   },
   openGraph: {
     type: "website",
