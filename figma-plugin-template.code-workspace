@@ -1,9 +1,14 @@
 {
   "folders": [
     { "name": "root", "path": "." },
-    { "name": "apps/figma-plugin", "path": "apps/figma-plugin" },
-    { "name": "packages/common", "path": "packages/common" },
-    { "name": "packages/ui", "path": "packages/ui" }
+    { "name": "Claude", "path": ".claude/" },
+    { "name": "Versioning", "path": ".changeset/" },
+    { "name": "VS Code", "path": ".vscode/" },
+    { "name": "Plugin/Design", "path": "apps/design-plugin" },
+    { "name": "Common", "path": "packages/common" },
+    { "name": "Design System", "path": "packages/ui" },
+    { "name": "Storybook", "path": "packages/ui" },
+    { "name": "Documentation", "path": "apps/docs" }
   ],
   "settings": {
     "editor.defaultFormatter": "biomejs.biome",

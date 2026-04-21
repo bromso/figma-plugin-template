@@ -9,9 +9,10 @@
     "guides/ui-components",
     "guides/messaging",
     "guides/plugin-config",
-    "---AI Skills---",
-    "ai/skills",
-    "ai/using-claude",
+    "---Skills---",
+    "skills/index",
+    "skills/using-claude",
+    "skills/mcp-servers",
     "---Project---",
     "project/versioning",
     "project/contributing"
