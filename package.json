@@ -50,6 +50,8 @@
     "test:watch": "turbo run test:watch",
     "analyze": "turbo run analyze",
     "types": "turbo run types",
+    "docs": "bun run --filter @repo/docs dev",
+    "docs:build": "bun run --filter @repo/docs build",
     "changeset": "changeset",
     "version-packages": "changeset version",
     "release": "changeset tag",
