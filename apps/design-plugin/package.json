@@ -1,5 +1,6 @@
 {
   "name": "@repo/design-plugin",
+  "version": "0.0.0",
   "private": true,
   "scripts": {
     "build": "bun run build:ui && bun run build:plugin",
