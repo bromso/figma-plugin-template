@@ -11,7 +11,7 @@ Thank you for your interest in contributing to figma-plugin-template! We welcome
 ## Getting Started
 
 ```bash
-git clone https://github.com/jonasbroms/figma-plugin-template.git
+git clone https://github.com/bromso/figma-plugin-template.git
 cd figma-plugin-template
 bun install
 bun run build
@@ -34,7 +34,7 @@ This is a Turborepo monorepo:
 
 ```
 apps/
-  figma-plugin/   — The Figma plugin application
+  design-plugin/  — The Figma plugin application
   storybook/      — Storybook for component documentation
 packages/
   common/         — Shared types and network events (@repo/common)
@@ -64,8 +64,47 @@ Packages are **JIT source-only** — they export raw TypeScript with no build st
 5. Push and open a PR against `master`
 6. Describe what changed and why in the PR description
 
+## Branch Naming
+
+| Prefix | Purpose | Example |
+|--------|---------|---------|
+| `feat/` | New features | `feat/color-picker-plugin` |
+| `fix/` | Bug fixes | `fix/icon-render-crash` |
+| `chore/` | Maintenance, deps | `chore/update-react-19` |
+| `docs/` | Documentation | `docs/add-api-guide` |
+
+## Commit Messages
+
+Use [conventional commits](https://www.conventionalcommits.org/):
+
+```
+feat: add color picker component
+fix: resolve icon rendering in dark mode
+chore: update dependencies
+docs: add plugin testing guide
+```
+
+## Versioning
+
+This project uses [changesets](https://github.com/changesets/changesets) for versioning.
+
+**After making changes**, run:
+
+```bash
+bun changeset
+```
+
+This creates a changeset file describing your changes. Commit it with your PR.
+
+A GitHub Action will automatically create a "Version Packages" PR that bumps the version and updates CHANGELOG.md. Merging that PR creates a new release.
+
+**Version types:**
+- **Major** (2.0.0): Breaking changes to template structure
+- **Minor** (1.4.0): New features, components, or skills
+- **Patch** (1.3.1): Bug fixes, dependency updates
+
 ## Code Style
 
-- **Biome** handles linting and formatting — run `bun run lint` before committing
+- **Biome** handles linting and formatting — pre-commit hooks run automatically
 - Use **TypeScript strict mode**
 - Use `@repo/*` imports for cross-package references (not relative paths)
