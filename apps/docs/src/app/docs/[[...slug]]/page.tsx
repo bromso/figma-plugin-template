@@ -17,25 +17,50 @@ export default async function Page(props: PageProps) {
   if (!page) notFound();
 
   const MDX = page.data.body;
+  const slug = params.slug?.join("/") || "";
+  const url = `${SITE_URL}/docs/${slug}`;
+
+  // JSON-LD structured data — all values are static/trusted (from MDX frontmatter)
+  const jsonLd = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    headline: page.data.title,
+    description: page.data.description,
+    url,
+    publisher: {
+      "@type": "Organization",
+      name: "Figma Plugin Template",
+      url: REPO_URL,
+    },
+    isPartOf: {
+      "@type": "WebSite",
+      name: "Figma Plugin Template Docs",
+      url: SITE_URL,
+    },
+  });
 
   return (
-    <DocsPage
-      toc={page.data.toc}
-      tableOfContent={{ style: "normal" }}
-      editOnGithub={{
-        owner: "bromso",
-        repo: "figma-plugin-template",
-        sha: "master",
-        path: `apps/docs/content/docs/${page.file.path}`,
-      }}
-      breadcrumb={{ enabled: true }}
-      footer={{ enabled: true }}
-    >
-      <DocsTitle>{page.data.title}</DocsTitle>
-      <DocsBody>
-        <MDX components={getMDXComponents()} />
-      </DocsBody>
-    </DocsPage>
+    <>
+      {/* biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD from trusted MDX frontmatter */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd }} />
+      <DocsPage
+        toc={page.data.toc}
+        tableOfContent={{ style: "normal" }}
+        editOnGithub={{
+          owner: "bromso",
+          repo: "figma-plugin-template",
+          sha: "master",
+          path: `apps/docs/content/docs/${page.file.path}`,
+        }}
+        breadcrumb={{ enabled: true }}
+        footer={{ enabled: true }}
+      >
+        <DocsTitle>{page.data.title}</DocsTitle>
+        <DocsBody>
+          <MDX components={getMDXComponents()} />
+        </DocsBody>
+      </DocsPage>
+    </>
   );
 }
 
@@ -66,20 +91,6 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
       card: "summary",
       title: page.data.title,
       description: page.data.description,
-    },
-    other: {
-      "script:ld+json": JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "TechArticle",
-        headline: page.data.title,
-        description: page.data.description,
-        url,
-        publisher: {
-          "@type": "Organization",
-          name: "Figma Plugin Template",
-          url: REPO_URL,
-        },
-      }),
     },
   };
 }
