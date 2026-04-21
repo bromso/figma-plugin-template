@@ -13,8 +13,24 @@
     "paths": {
       "@/*": ["./src/*"],
       "collections/*": ["./.source/*"]
-    }
+    },
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.mjs", ".source/**/*.ts"],
+  "include": [
+    "**/*.mjs",
+    "**/*.ts",
+    "**/*.tsx",
+    ".source/**/*.ts",
+    "next-env.d.ts",
+    ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts"
+  ],
   "exclude": ["node_modules", ".next", "out"]
 }

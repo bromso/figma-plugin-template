@@ -35,6 +35,11 @@ stats.html
 # Storybook build output
 storybook-static
 
+# Next.js / Fumadocs build output
+.next/
+out/
+.source/
+
 # Claude Code local skills (duplicates of .agents/skills/)
 .claude/skills/
 
