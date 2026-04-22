@@ -15,6 +15,7 @@
     "ai/agents",
     "ai/plugins",
     "ai/mcp-servers",
+    "ai/extending-claude",
     "---Project---",
     "project/versioning",
     "project/contributing"

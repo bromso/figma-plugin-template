@@ -7,10 +7,11 @@ description: Configure Model Context Protocol servers to give Claude access to F
 
 MCP (Model Context Protocol) servers extend what Claude can do by connecting it to external tools and data sources. Instead of copying and pasting information into your conversation, MCP servers let Claude access it directly.
 
-This template comes with two MCP servers pre-configured in `.claude/settings.json`:
+This template comes with three MCP servers pre-configured in `.claude/settings.json`:
 
 - **Figma Dev Mode** — Claude can read your Figma files, inspect layers, and extract design tokens
 - **Context7** — Claude gets up-to-date library documentation so it doesn't use outdated APIs
+- **Sequential Thinking** — Claude reasons through complex problems step-by-step
 
 ## Figma Dev Mode
 
@@ -74,6 +75,27 @@ No setup needed. Context7 works out of the box:
 
 Context7 is maintained by [Upstash](https://upstash.com) and supports most popular JavaScript/TypeScript libraries.
 
+## Sequential Thinking
+
+Sequential Thinking helps Claude break down complex problems into step-by-step reasoning. Instead of jumping to a solution, Claude works through the logic one piece at a time — which leads to better results for tricky plugin features.
+
+### Configuration
+
+No setup needed. Sequential Thinking works out of the box:
+
+```json
+{
+  "mcpServers": {
+    "sequential-thinking": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"]
+    }
+  }
+}
+```
+
+This is especially useful when your plugin needs complex logic, like transforming data between formats or handling multiple edge cases.
+
 ## Troubleshooting
 
 ### "FIGMA_API_KEY is not set"
@@ -120,4 +142,6 @@ You can add more MCP servers to `.claude/settings.json`. Each entry needs a `com
 
 The `env` field is optional — only include it if the server requires environment variables.
 
-Browse available MCP servers at the [MCP Server Registry](https://github.com/modelcontextprotocol/servers) or build your own following the [MCP specification](https://modelcontextprotocol.io).
+Browse available MCP servers at the [MCP Server Registry](https://registry.modelcontextprotocol.io) or build your own following the [MCP specification](https://modelcontextprotocol.io).
+
+Looking for more servers to install? See [Extending Claude](/docs/ai/extending-claude) for optional add-ons like GitHub, Playwright, and more.
