@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 const meta = {
   component: Alert,
-  title: "Components/Alert",
+  title: "Feedback/Alert",
   tags: ["autodocs"],
 } satisfies Meta<typeof Alert>;
 
