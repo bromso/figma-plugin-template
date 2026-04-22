@@ -39,7 +39,7 @@ jobs:
           GITHUB_PAGES: "true"
 
       - name: Build Storybook
-        run: bunx turbo run build-storybook
+        run: bunx turbo run build-storybook --filter=@repo/storybook
         env:
           GITHUB_PAGES: "true"
 
