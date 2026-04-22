@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 const meta = {
   component: SectionTitle,
-  title: "Layout/SectionTitle",
+  title: "Custom/SectionTitle",
   tags: ["autodocs"],
 } satisfies Meta<typeof SectionTitle>;
 

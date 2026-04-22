@@ -4,7 +4,7 @@ import { expect, userEvent, within } from "storybook/test";
 
 const meta = {
   component: Accordion,
-  title: "Data Display/Accordion",
+  title: "Surfaces/Accordion",
   tags: ["autodocs"],
 } satisfies Meta<typeof Accordion>;
 
