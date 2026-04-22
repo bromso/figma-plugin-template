@@ -5,6 +5,8 @@ on:
     branches: [master]
     paths:
       - "apps/docs/**"
+      - "apps/storybook/**"
+      - "packages/ui/**"
       - ".github/workflows/docs.yml"
   workflow_dispatch:
 
@@ -20,7 +22,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
 
@@ -35,6 +37,14 @@ jobs:
         run: bun run docs:build
         env:
           GITHUB_PAGES: "true"
+
+      - name: Build Storybook
+        run: bunx turbo run build-storybook
+        env:
+          GITHUB_PAGES: "true"
+
+      - name: Copy Storybook into docs output
+        run: cp -r apps/storybook/storybook-static apps/docs/out/storybook
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
