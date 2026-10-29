@@ -65,16 +65,16 @@ function CommandInput({
 }: React.ComponentProps<typeof CommandPrimitive.Input>) {
   return (
     <div data-slot="command-input-wrapper" className="px-2 pt-2">
-      <InputGroup className="h-6! rounded-md! border-transparent bg-white/10 text-figma-text-menu shadow-none! *:data-[slot=input-group-addon]:pl-1.5!">
+      <InputGroup className="h-6! rounded-md! border-transparent bg-figma-bg-menu-hover dark:bg-figma-bg-menu-hover has-disabled:bg-figma-bg-menu-hover text-figma-text-menu shadow-none! *:data-[slot=input-group-addon]:pl-1.5!">
         <CommandPrimitive.Input
           data-slot="command-input"
           className={cn(
-            "w-full bg-transparent text-sm font-medium tracking-ui3 text-figma-text-menu outline-hidden placeholder:text-figma-text-menu-secondary disabled:cursor-not-allowed disabled:opacity-50",
+            "w-full pr-2 bg-transparent text-sm font-medium tracking-ui3 text-figma-text-menu outline-hidden placeholder:text-figma-text-menu-secondary disabled:cursor-not-allowed disabled:opacity-50",
             className
           )}
           {...props}
         />
-        <InputGroupAddon>
+        <InputGroupAddon className="py-0">
           <SearchIcon className="size-4 shrink-0 text-figma-icon-menu" />
         </InputGroupAddon>
       </InputGroup>
@@ -116,7 +116,7 @@ function CommandGroup({
     <CommandPrimitive.Group
       data-slot="command-group"
       className={cn(
-        "overflow-hidden p-0 text-figma-text-menu **:[[cmdk-group-heading]]:flex **:[[cmdk-group-heading]]:h-6 **:[[cmdk-group-heading]]:items-center **:[[cmdk-group-heading]]:px-4 **:[[cmdk-group-heading]]:text-sm **:[[cmdk-group-heading]]:text-figma-text-menu-secondary",
+        "overflow-hidden p-0 text-figma-text-menu **:[[cmdk-group-heading]]:flex **:[[cmdk-group-heading]]:h-6 **:[[cmdk-group-heading]]:items-center **:[[cmdk-group-heading]]:px-4 **:[[cmdk-group-heading]]:text-sm **:[[cmdk-group-heading]]:text-figma-text-menu-secondary **:[[cmdk-group-heading]]:font-medium **:[[cmdk-group-heading]]:tracking-ui3",
         className
       )}
       {...props}
