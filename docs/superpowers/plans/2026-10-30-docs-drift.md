@@ -1158,9 +1158,31 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 
 ---
 
-### Task 9: Fact-check review, final verification, PR
+### Task 9: Biome exclusion, fact-check review, final verification, PR
 
-**Files:** none new.
+**Files:**
+- Modify: `biome.json` (`files.includes`)
+
+- [ ] **Step 0: Exclude the generated PWA files from Biome**
+
+`bun run docs:build` writes `sw.js`, `workbox-*.js` and `swe-worker-*.js` into `apps/docs/public/`. They are gitignored but Biome still lints them, so `bun run lint` fails with about 70 errors whenever it runs after a docs build (it happened in Tasks 1 and 6). In `biome.json`, inside `files.includes`, after `"!**/bun.lock"` add:
+
+```json
+    "!**/public/sw.js",
+    "!**/public/sw.js.map",
+    "!**/public/workbox-*.js",
+    "!**/public/workbox-*.js.map",
+    "!**/public/swe-worker-*.js"
+```
+
+Verify: `bun run docs:build >/dev/null 2>&1; bun run lint 2>&1 | grep -E "Tasks:|✖|rror"` → `Tasks: 4 successful, 4 total` without deleting anything first. Commit:
+
+```bash
+git add biome.json
+git commit -m "chore: keep Biome off the generated docs service-worker files
+
+Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
+```
 
 - [ ] **Step 1: Fact-check review (controller dispatches a reviewer)**
 
