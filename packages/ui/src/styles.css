@@ -74,8 +74,12 @@
   --ui3-icon-brand: var(--figma-color-icon-brand, #007be5);
   --ui3-icon-onbrand: var(--figma-color-icon-onbrand, #ffffff);
   --ui3-icon-menu: var(--figma-color-icon-menu, #ffffff);
+}
 
-  /* shadcn tokens → UI3 */
+:root,
+.dark,
+html.figma-dark {
+  /* shadcn tokens → UI3. Also on .dark so the aliases re-resolve inside a nested dark wrapper. */
   --background: var(--ui3-bg);
   --foreground: var(--ui3-text);
   --card: var(--ui3-bg);
@@ -273,7 +277,9 @@ html.figma-dark {
     font-weight: var(--font-weight-medium);
     letter-spacing: var(--tracking-ui3);
   }
-  * {
+  *,
+  ::before,
+  ::after {
     border-color: var(--color-border);
   }
 }
