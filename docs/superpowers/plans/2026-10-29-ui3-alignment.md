@@ -1899,6 +1899,8 @@ function DialogContent({
 
 - [ ] **Step 3: Verify** (shared command; `dialog.test.tsx` and `alert-dialog.test.tsx` render Title + Description inside Header and assert roles and text, which still holds).
 
+Review outcome: the default width moved into the base classes (`w-80`, with `data-[size=lg]:w-[480px]` as the only variant) because a variant-prefixed `data-[size=default]:w-80` outranks any caller `w-*`; Content also gets `max-h-[calc(100%-2rem)]` for short plugin windows; the AlertDialog media header is a two-column grid (`grid-cols-[auto_1fr]`, media `row-span-2`, title and description `col-start-2`) instead of a single flex row; Feedback/Dialog story body gets `p-4` and its description moves into the body.
+
 - [ ] **Step 4: Parity story**
 
 `apps/storybook/src/stories/UI3/Dialog.parity.stories.tsx`:
