@@ -1,5 +1,8 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+/* shadcn's data-* variants (data-checked → [data-state="checked"] etc.), accordion
+   keyframes and the no-scrollbar utility. Radix state styling depends on these. */
+@import "shadcn/tailwind.css";
 
 /* Tailwind v4 content scan, relative to this file. The build runs from
    apps/design-plugin, so the default auto-detection would miss these sources. */
