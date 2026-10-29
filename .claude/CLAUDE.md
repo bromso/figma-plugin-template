@@ -27,7 +27,7 @@ This template comes with an AI skill that lets you describe what you want and ha
 
 ### MCP Servers (pre-configured)
 
-- **Figma Dev Mode** — Lets Claude read your Figma files directly (requires `FIGMA_API_KEY` in `.claude/settings.json`)
+- **Figma** (`figma-developer-mcp`) — Lets Claude read your Figma files directly (requires `FIGMA_API_KEY` in `.claude/settings.json`)
 - **Context7** — Fetches up-to-date library documentation to reduce errors
 - **Sequential Thinking** — Lets Claude work through multi-step problems before acting
 
@@ -40,7 +40,7 @@ This template comes with an AI skill that lets you describe what you want and ha
 - **Conventional commits**: `feat: ...`, `fix: ...`, `chore: ...`, `docs: ...`
 - **After making user-facing changes**, run `bun changeset` and commit the changeset file
 - **Don't bump versions manually** -- changesets handles version bumps and CHANGELOG
-- **Releases**: merging to master runs `release.yml`, which opens a "chore: version packages" PR from the pending changesets; merging that PR bumps the versions and writes the CHANGELOGs
+- **Releases**: merging to master runs `release.yml`, which opens (or updates) a "chore: version packages" PR containing the version bumps and CHANGELOG entries from the pending changesets; merging that PR lands them on master
 
 ---
 
@@ -52,12 +52,12 @@ Figma/FigJam plugin boilerplate using React, Bun, TypeScript, and Turborepo mono
 
 All commands use **Bun** as the package manager. Run from the repo root.
 
-- `bun run dev` — Watch mode for both plugin and UI (parallel Turborepo builds)
-- `bun run build` — Production build (UI + plugin to `apps/design-plugin/dist/`)
+- `bun run dev` — Watch-mode plugin build (UI + sandbox via `build.ts --watch`) and the docs site dev server (port 3000), run in parallel by Turborepo
+- `bun run build` — Production build of the plugin (UI + sandbox to `apps/design-plugin/dist/`) and the docs site
 - `bun run analyze` — Production build plus `dist/meta-*.json` bundle size reports
 - `bun run test` — Run all tests across all packages (bun test)
 - `bun run test:watch` — Watch mode for tests
-- `bun run types` — Type-check all packages
+- `bun run types` — Type-check the plugin, `ui` and `common` packages (`tsc --noEmit`)
 - `bun run lint` — Lint all packages (Biome)
 - `bun run docs` — Start the documentation site (Next.js, port 3000)
 - `bun run storybook` — Start Storybook (apps/storybook, port 6006)
@@ -76,6 +76,7 @@ All commands use **Bun** as the package manager. Run from the repo root.
 apps/
   design-plugin/    — Figma plugin app (build.ts bundles to dist/)
   storybook/        — Storybook component documentation
+  docs/             — Documentation site (Next.js + Fumadocs, port 3000)
 packages/
   common/           — Shared types and network event definitions (@repo/common)
   ui/               — UI components, styles, and app shell (@repo/ui)
@@ -99,7 +100,7 @@ The plugin runs as **two separate processes** that communicate via message passi
 
 ### UI Components
 
-`packages/ui/src/index.ts` exports 46 shadcn/ui components (`packages/ui/src/components/ui/`, from Accordion to Tooltip, including Dialog, DropdownMenu, Tabs, Command and Sidebar) and four custom Figma components (`packages/ui/src/components/figma/`): `Icon`, `IconButton`, `SectionTitle`, `Type`. Sixteen of the shadcn components are edited to match Figma's UI3 kit (Button, Input, Textarea, Checkbox, RadioGroup, Switch, Select, Tabs, Badge, Tooltip, DropdownMenu, ContextMenu, Menubar, Command, Dialog, AlertDialog); the rest use the same tokens and scale. Always import from `@repo/ui`; never add another UI library.
+`packages/ui/src/index.ts` exports 46 shadcn/ui component files (`packages/ui/src/components/ui/`, from Accordion to Tooltip, including Dialog, DropdownMenu, Tabs, Command and Sidebar) and four custom Figma components (`packages/ui/src/components/figma/`): `Icon`, `IconButton`, `SectionTitle`, `Type`. Sixteen of the shadcn components are edited to match Figma's UI3 kit (Button, Input, Textarea, Checkbox, RadioGroup, Switch, Select, Tabs, Badge, Tooltip, DropdownMenu, ContextMenu, Menubar, Command, Dialog, AlertDialog); the rest use the same tokens and scale. Always import from `@repo/ui`; never add another UI library.
 
 Icons come from a registered Lucide subset (`lucide:plus`, `lucide:info`, `lucide:star`, `lucide:ellipsis`); add more with `registerIcons()`.
 
@@ -126,7 +127,7 @@ Bun does not downlevel syntax: `dist/plugin.js` ships modern JavaScript unchange
 
 ### Styling and theming
 
-Tailwind CSS 4 only; there are no CSS Modules. `packages/ui/src/styles.css` defines `--ui3-*` tokens as `var(--figma-color-*, <UI3 kit fallback>)`, so inside Figma (`showUI` with `themeColors: true`) the colors follow the user's theme live, and in Storybook or tests the fallbacks apply. The tokens are exposed as `figma-*` Tailwind colors (`bg-figma-bg-secondary`, `text-figma-text-secondary`, `border-figma-border`, …) and also back the shadcn aliases (`bg-background`, `text-muted-foreground`, …). Menus and tooltips are dark in both themes by design. The scale is 24 px controls, 11 px Inter at weight 450, 5 px radius (13 px for menus and dialogs). Never hard-code a color. Full explanation: `apps/docs/content/docs/guides/theming.mdx`; the bound-versus-static token table is `packages/ui/src/figma-variables.md`.
+The UI package uses Tailwind CSS 4 only; there are no CSS Modules. `packages/ui/src/styles.css` defines `--ui3-*` tokens, most as `var(--figma-color-*, <UI3 kit fallback>)` and the rest (menu, tooltip and translucent-border tokens) as static values because Figma injects no variable for them, so inside Figma (`showUI` with `themeColors: true`) the bound colors follow the user's theme live, and in Storybook or tests the fallbacks apply. The tokens are exposed as `figma-*` Tailwind colors (`bg-figma-bg-secondary`, `text-figma-text-secondary`, `border-figma-border`, …) and also back the shadcn aliases (`bg-background`, `text-muted-foreground`, …). Menus and tooltips are dark in both themes by design. The scale is 24 px controls, 11 px Inter at weight 450, 5 px radius (13 px for menus and dialogs). Never hard-code a color. Full explanation: `apps/docs/content/docs/guides/theming.mdx`; the bound-versus-static token table is `packages/ui/src/figma-variables.md`.
 
 ## Tooling
 
@@ -135,7 +136,7 @@ Tailwind CSS 4 only; there are no CSS Modules. `packages/ui/src/styles.css` defi
 - **Biome 2.4.12** — Linting and formatting (root `biome.json`)
 - **bun test** — Testing framework (happy-dom via preload for UI, plain runtime for common)
 - **Storybook 10.3.5** — Component documentation with a light/dark toolbar and `UI3/*` parity stories against kit screenshots
-- **Tailwind CSS 4.3** — Styling, via `bun-plugin-tailwind` in the plugin build and the Vite plugin in Storybook
+- **Tailwind CSS 4** — Styling for the plugin UI and Storybook, via `bun-plugin-tailwind` in the plugin build and `@tailwindcss/vite` in Storybook (the docs site uses its own Tailwind 3 setup)
 - **Changesets** — Versioning and CHANGELOGs, released by `release.yml`
 
 ## Plugin Configuration
