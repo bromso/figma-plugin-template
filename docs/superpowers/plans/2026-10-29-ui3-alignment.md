@@ -1609,7 +1609,7 @@ Shared menu classes (used verbatim in Tasks 15, 16, 17):
 MENU_PANEL  = "z-50 min-w-52 origin-(--radix-dropdown-menu-content-transform-origin) overflow-x-hidden overflow-y-auto rounded-xl bg-figma-bg-menu py-2 text-figma-text-menu shadow-menu duration-100 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95"
 MENU_ROW    = "relative mx-2 flex min-h-6 cursor-default items-center gap-1 rounded-md px-2 text-sm font-medium tracking-ui3 outline-hidden select-none focus:bg-figma-bg-menu-selected focus:text-figma-text-menu data-open:bg-figma-bg-menu-selected data-open:text-figma-text-menu data-disabled:pointer-events-none data-disabled:text-figma-text-menu-secondary [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 [&_svg]:text-figma-icon-menu"
 MENU_CHECK  = MENU_ROW + " pl-6"                       (indicator sits absolutely at left-1)
-MENU_LABEL  = "flex h-6 items-center px-4 text-sm text-figma-text-menu-secondary"
+MENU_LABEL  = "flex h-6 items-center px-4 text-sm font-medium tracking-ui3 text-figma-text-menu-secondary"   (16 px aligns with plain rows; Select uses pl-8 because every row has the check gutter)
 MENU_SEP    = "my-2 h-px bg-figma-border-menu"
 MENU_SHORT  = "ml-auto text-sm tracking-ui3 text-figma-text-menu-secondary group-focus/dropdown-menu-item:text-figma-text-menu"
 ```
