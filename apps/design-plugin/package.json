@@ -3,16 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "bun run build:ui && bun run build:plugin",
-    "build:bun": "NODE_ENV=production bun build.ts",
-    "build:ui": "vite build -c vite.config.ui.ts",
-    "build:plugin": "vite build -c vite.config.plugin.ts",
-    "dev": "bun run --parallel dev:ui-watch dev:plugin-watch",
-    "dev:ui-watch": "vite build --watch -c vite.config.ui.ts",
-    "dev:plugin-watch": "vite build --watch -c vite.config.plugin.ts",
-    "dev:ui-only": "vite serve -c vite.config.ui.ts",
-    "types": "tsc --noEmit && tsc --noEmit -p tsconfig.node.json",
-    "analyze": "ANALYZE=true vite build -c vite.config.ui.ts",
+    "build": "NODE_ENV=production bun build.ts",
+    "dev": "bun build.ts --watch",
+    "dev:ui-only": "bun ../../packages/ui/src/index.html",
+    "types": "tsc --noEmit",
+    "analyze": "NODE_ENV=production bun build.ts --analyze",
     "lint": "biome check ."
   },
   "dependencies": {

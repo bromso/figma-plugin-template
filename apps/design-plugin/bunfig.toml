@@ -1,0 +1,4 @@
+# Used by `bun run dev:ui-only` (Bun's dev server with HMR). Production builds
+# pass the plugin explicitly in build.ts.
+[serve.static]
+plugins = ["bun-plugin-tailwind"]
