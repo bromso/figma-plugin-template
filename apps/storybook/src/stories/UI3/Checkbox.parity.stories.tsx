@@ -24,7 +24,7 @@ export const Parity: StoryObj = {
   render: () => (
     <ParityFrame
       reference={ref}
-      caption="Checkbox: Checked / Unchecked / Mixed × Default / Focused / Disabled, with label and description"
+      caption="Checkbox: Checked / Unchecked / Mixed × Default / Disabled, with label"
     >
       <Row id="c1" label="On, Normal" defaultChecked />
       <Row id="c2" label="Off, Normal" />

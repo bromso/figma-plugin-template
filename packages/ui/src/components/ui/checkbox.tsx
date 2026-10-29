@@ -9,7 +9,7 @@ function Checkbox({ className, ...props }: React.ComponentProps<typeof CheckboxP
     <CheckboxPrimitive.Root
       data-slot="checkbox"
       className={cn(
-        "peer relative flex size-4 shrink-0 items-center justify-center rounded-md border border-figma-border-strong bg-background text-primary-foreground transition-colors outline-none after:absolute after:-inset-1 focus-visible:border-figma-border-selected focus-visible:ring-1 focus-visible:ring-figma-border-selected focus-visible:ring-offset-1 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:border-figma-border-translucent disabled:bg-figma-bg-disabled disabled:text-figma-text-disabled aria-invalid:border-figma-border-danger data-checked:border-figma-border-selected-strong data-checked:bg-primary data-[state=indeterminate]:border-figma-border-selected-strong data-[state=indeterminate]:bg-primary",
+        "group/checkbox peer relative flex size-4 shrink-0 items-center justify-center rounded-md border border-figma-border-strong bg-background text-primary-foreground transition-colors outline-none after:absolute after:-inset-1 focus-visible:border-figma-border-selected focus-visible:ring-1 focus-visible:ring-figma-border-selected focus-visible:ring-offset-1 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:border-figma-border-translucent disabled:bg-figma-bg-disabled disabled:text-figma-text-disabled aria-invalid:border-figma-border-danger enabled:data-checked:border-figma-border-selected-strong enabled:data-checked:bg-primary enabled:data-[state=indeterminate]:border-figma-border-selected-strong enabled:data-[state=indeterminate]:bg-primary",
         className
       )}
       {...props}
@@ -18,7 +18,8 @@ function Checkbox({ className, ...props }: React.ComponentProps<typeof CheckboxP
         data-slot="checkbox-indicator"
         className="grid place-content-center text-current transition-none [&>svg]:size-3 [&>svg]:stroke-[2.5]"
       >
-        {props.checked === "indeterminate" ? <MinusIcon /> : <CheckIcon />}
+        <CheckIcon className="group-data-[state=indeterminate]/checkbox:hidden" />
+        <MinusIcon className="hidden group-data-[state=indeterminate]/checkbox:block" />
       </CheckboxPrimitive.Indicator>
     </CheckboxPrimitive.Root>
   );
