@@ -35,8 +35,9 @@ In `apps/design-plugin/src/plugin/plugin.ts`, find the `figma.showUI` call:
 
 ```ts
 figma.showUI(__html__, {
-  width: 400,    // Width in pixels
-  height: 500,   // Height in pixels
+  width: 320,    // Width in pixels
+  height: 480,   // Height in pixels
+  themeColors: true, // required: injects Figma's light/dark colour variables
   title: "My Plugin",
 });
 ```
@@ -44,7 +45,8 @@ figma.showUI(__html__, {
 Common sizes:
 - **Small utility:** 300 x 200
 - **Standard plugin:** 400 x 500
-- **Full panel:** 800 x 650
+- **Template default (UI3 properties panel):** 320 x 480
+- **Wide panel:** 480 x 650
 
 ## Editor types
 
