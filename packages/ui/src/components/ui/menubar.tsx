@@ -5,6 +5,7 @@ import { CheckIcon, ChevronRightIcon } from "lucide-react";
 import { Menubar as MenubarPrimitive } from "radix-ui";
 import type * as React from "react";
 
+/** UI3 menubar: 24 px segmented track (bg-secondary, 2 px inset) holding 20 px triggers; concentric 5/3 px radii. */
 function Menubar({ className, ...props }: React.ComponentProps<typeof MenubarPrimitive.Root>) {
   return (
     <MenubarPrimitive.Root
@@ -42,7 +43,7 @@ function MenubarTrigger({
     <MenubarPrimitive.Trigger
       data-slot="menubar-trigger"
       className={cn(
-        "flex h-5 items-center rounded-[3px] px-2 text-sm font-medium tracking-ui3 outline-hidden select-none hover:bg-figma-bg-hover focus-visible:bg-figma-bg-hover aria-expanded:bg-figma-bg-pressed",
+        "flex h-5 items-center rounded-[3px] px-2 text-sm font-medium tracking-ui3 outline-hidden select-none hover:bg-figma-bg-tertiary focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-figma-border-selected aria-expanded:bg-figma-bg-pressed",
         className
       )}
       {...props}
@@ -50,11 +51,12 @@ function MenubarTrigger({
   );
 }
 
+/** UI3 menu surface: dark in both themes, 13 px radius, 8 px vertical padding, 24 px rows; anchored to the bar under its trigger. */
 function MenubarContent({
   className,
   align = "start",
-  alignOffset = -4,
-  sideOffset = 8,
+  alignOffset = -2,
+  sideOffset = 6,
   ...props
 }: React.ComponentProps<typeof MenubarPrimitive.Content>) {
   return (
@@ -65,7 +67,7 @@ function MenubarContent({
         alignOffset={alignOffset}
         sideOffset={sideOffset}
         className={cn(
-          "z-50 min-w-52 origin-(--radix-menubar-content-transform-origin) overflow-x-hidden overflow-y-auto rounded-xl bg-figma-bg-menu py-2 text-figma-text-menu shadow-menu duration-100 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95",
+          "z-50 max-h-(--radix-menubar-content-available-height) min-w-52 origin-(--radix-menubar-content-transform-origin) overflow-x-hidden overflow-y-auto rounded-xl bg-figma-bg-menu py-2 text-figma-text-menu shadow-menu duration-100 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95",
           className
         )}
         {...props}
