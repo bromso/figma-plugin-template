@@ -57,3 +57,6 @@ out/
 
 # Planning artifacts (development history, not needed by template users)
 .planning/
+
+# Superpowers brainstorm mockups (local only)
+.superpowers/

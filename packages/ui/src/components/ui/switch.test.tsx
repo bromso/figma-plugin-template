@@ -26,4 +26,36 @@ describe("Switch interaction tests", () => {
     await userEvent.click(screen.getByRole("switch", { name: "Toggle" }));
     expect(onCheckedChange).not.toHaveBeenCalled();
   });
+
+  it("renders data-size=default by default and data-size=sm when size is sm", () => {
+    const { rerender } = render(<Switch aria-label="Toggle" />);
+    expect(screen.getByRole("switch", { name: "Toggle" })).toHaveAttribute("data-size", "default");
+
+    rerender(<Switch size="sm" aria-label="Toggle" />);
+    expect(screen.getByRole("switch", { name: "Toggle" })).toHaveAttribute("data-size", "sm");
+  });
+
+  it("renders as checked on the root and thumb when defaultChecked is true", () => {
+    render(<Switch defaultChecked aria-label="Toggle" />);
+    const root = screen.getByRole("switch", { name: "Toggle" });
+    expect(root).toHaveAttribute("data-state", "checked");
+    expect(root.querySelector('[data-slot="switch-thumb"]')).toHaveAttribute(
+      "data-state",
+      "checked"
+    );
+  });
+
+  it("sets data-disabled on the root when disabled", () => {
+    render(<Switch disabled aria-label="Toggle" />);
+    expect(screen.getByRole("switch", { name: "Toggle" })).toHaveAttribute("data-disabled");
+  });
+
+  it("toggles aria-checked when Space is pressed on the focused switch", async () => {
+    render(<Switch aria-label="Toggle" />);
+    const root = screen.getByRole("switch", { name: "Toggle" });
+    expect(root).toHaveAttribute("aria-checked", "false");
+    root.focus();
+    await userEvent.keyboard(" ");
+    expect(root).toHaveAttribute("aria-checked", "true");
+  });
 });

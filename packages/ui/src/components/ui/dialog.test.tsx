@@ -44,4 +44,41 @@ describe("Dialog interaction tests", () => {
     await userEvent.click(screen.getByRole("button", { name: "Close" }));
     expect(screen.queryByText("Dialog Title")).not.toBeInTheDocument();
   });
+
+  it("defaults to the default data-size and switches to lg", async () => {
+    const { rerender } = render(
+      <Dialog open>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Dialog Title</DialogTitle>
+          </DialogHeader>
+        </DialogContent>
+      </Dialog>
+    );
+    expect(screen.getByRole("dialog")).toHaveAttribute("data-size", "default");
+
+    rerender(
+      <Dialog open>
+        <DialogContent size="lg">
+          <DialogHeader>
+            <DialogTitle>Dialog Title</DialogTitle>
+          </DialogHeader>
+        </DialogContent>
+      </Dialog>
+    );
+    expect(screen.getByRole("dialog")).toHaveAttribute("data-size", "lg");
+  });
+
+  it("hides the close button when showCloseButton is false", async () => {
+    render(
+      <Dialog open>
+        <DialogContent showCloseButton={false}>
+          <DialogHeader>
+            <DialogTitle>Dialog Title</DialogTitle>
+          </DialogHeader>
+        </DialogContent>
+      </Dialog>
+    );
+    expect(screen.queryByRole("button", { name: "Close" })).not.toBeInTheDocument();
+  });
 });

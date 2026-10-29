@@ -25,6 +25,17 @@ describe("Button interaction tests", () => {
   it("renders with variant class", () => {
     render(<Button variant="outline">Outline</Button>);
     const btn = screen.getByRole("button", { name: "Outline" });
-    expect(btn.className).toContain("border-border");
+    expect(btn.className).toContain("border-figma-border-translucent");
+  });
+
+  it("renders the child element with button classes when asChild", () => {
+    render(
+      <Button asChild>
+        <a href="#x">Link</a>
+      </Button>
+    );
+    const a = screen.getByRole("link", { name: "Link" });
+    expect(a.getAttribute("data-slot")).toBe("button");
+    expect(a.className).toContain("h-6");
   });
 });

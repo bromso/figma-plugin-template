@@ -116,8 +116,9 @@ In `plugin.ts`, configure the plugin window:
 
 ```typescript
 figma.showUI(__html__, {
-  width: 400,    // pixels — typical plugin width
-  height: 500,   // pixels — adjust to content
+  width: 320,    // pixels — the template's UI3 panel width
+  height: 480,   // pixels — adjust to content
+  themeColors: true, // required: Figma injects its light/dark colour variables only when set
   title: "My Plugin Name",
 });
 ```

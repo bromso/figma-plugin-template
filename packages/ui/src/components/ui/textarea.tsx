@@ -1,12 +1,13 @@
 import { cn } from "@repo/ui/lib/utils";
 import type * as React from "react";
 
+/** UI3 multi-line input: same surface and states as Input, grows in 16 px line steps. */
 function Textarea({ className, ...props }: React.ComponentProps<"textarea">) {
   return (
     <textarea
       data-slot="textarea"
       className={cn(
-        "flex field-sizing-content min-h-16 w-full rounded-lg border border-input bg-transparent px-2.5 py-2 text-base transition-colors outline-none placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:bg-input/50 disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 md:text-sm dark:bg-input/30 dark:disabled:bg-input/80 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40",
+        "flex field-sizing-content min-h-16 w-full rounded-md border border-transparent bg-figma-bg-secondary px-2 py-1 text-sm font-medium tracking-ui3 text-foreground transition-colors outline-none placeholder:text-figma-text-secondary hover:border-figma-border focus-visible:border-figma-border-selected disabled:cursor-not-allowed disabled:border-figma-border-translucent disabled:bg-transparent disabled:text-figma-text-disabled aria-invalid:border-figma-border-danger",
         className
       )}
       {...props}

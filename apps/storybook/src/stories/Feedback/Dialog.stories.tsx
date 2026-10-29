@@ -30,11 +30,11 @@ export const Default: Story = {
       <DialogContent>
         <DialogHeader>
           <DialogTitle>Edit Profile</DialogTitle>
+        </DialogHeader>
+        <div className="grid gap-4 p-4">
           <DialogDescription>
             Make changes to your profile here. Click save when you're done.
           </DialogDescription>
-        </DialogHeader>
-        <div className="grid gap-4 py-4">
           <div className="grid gap-2">
             <Label htmlFor="name">Name</Label>
             <Input id="name" defaultValue="John Doe" />
