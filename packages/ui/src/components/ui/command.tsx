@@ -42,17 +42,17 @@ function CommandDialog({
 }) {
   return (
     <Dialog {...props}>
-      <DialogHeader className="sr-only">
-        <DialogTitle>{title}</DialogTitle>
-        <DialogDescription>{description}</DialogDescription>
-      </DialogHeader>
       <DialogContent
         className={cn(
-          "top-1/3 w-[320px] translate-y-0 overflow-hidden rounded-xl! border-0 bg-figma-bg-menu p-0 text-figma-text-menu",
+          "top-1/3 translate-y-0 overflow-hidden bg-figma-bg-menu p-0 text-figma-text-menu shadow-menu",
           className
         )}
         showCloseButton={showCloseButton}
       >
+        <DialogHeader className="sr-only">
+          <DialogTitle>{title}</DialogTitle>
+          <DialogDescription>{description}</DialogDescription>
+        </DialogHeader>
         {children}
       </DialogContent>
     </Dialog>
