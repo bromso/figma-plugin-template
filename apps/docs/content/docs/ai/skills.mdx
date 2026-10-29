@@ -1,51 +1,25 @@
 ---
 title: Skills
-description: Pre-installed Claude Code skills that help you build Figma plugins without writing code.
+description: The Claude Code skill that ships with this template, and how to add more.
 ---
 
 ## What are skills?
 
-Skills are instructions that teach Claude how to perform specific tasks. This template comes with skills pre-installed so Claude already knows how to build Figma plugins.
+Skills are instructions that teach Claude how to perform specific tasks. This template ships one skill, written for this repository, so Claude already knows how to build a Figma plugin with it.
 
-## Installed skills
+## Installed skill
 
 ### build-figma-plugin
 
-The main skill. Describe your plugin idea in plain English and Claude generates everything:
+Describe your plugin idea in plain English and Claude generates everything:
 - Plugin code (Figma API interactions)
-- UI code (React components)
+- UI code (React components from `@repo/ui`, styled to Figma's UI3 look)
 - Message types (communication between plugin and UI)
-- Build validation (ensures the output works)
+- Build validation (build, type-check, lint and tests)
 - Installation guide (how to load it into Figma)
 
-This is a custom skill built specifically for this template.
+It lives in `.agents/skills/build-figma-plugin/` with reference documents on the architecture, the UI components and the Figma API patterns the template uses.
 
-### frontend-design
+## Adding skills
 
-Generates polished, intentional UI that avoids the "generic AI look". Guides typography, color, and layout decisions.
-
-[GitHub](https://github.com/anthropics/skills) · [skills.sh](https://skills.sh)
-
-### shadcn
-
-Knows how to correctly generate and compose shadcn/ui components — the same component library this template uses.
-
-[GitHub](https://github.com/shadcn/ui) · [skills.sh](https://skills.sh)
-
-### find-skills
-
-Discover and install new skills from the [skills ecosystem](https://skills.sh). If you need a capability that's not built in, this skill helps you find it.
-
-[GitHub](https://github.com/vercel-labs/skills) · [skills.sh](https://skills.sh)
-
-### skill-creator
-
-For power users: create your own custom skills for patterns you use repeatedly.
-
-[GitHub](https://github.com/anthropics/skills) · [skills.sh](https://skills.sh)
-
-### figma-use + figma-api
-
-Reference skills that help Claude understand the Figma API and use Figma-related MCP tools.
-
-[figma-use on GitHub](https://github.com/figma/mcp-server-guide) · [figma-api on GitHub](https://github.com/yuyz0112/public-api-skills)
+Third-party skills are not vendored into the repository. If you want one, install it into your own Claude Code setup, for example from [skills.sh](https://skills.sh) or the [Anthropic skills repository](https://github.com/anthropics/skills), and it will be available alongside the template's skill. The superpowers plugin's `writing-skills` skill is a good way to create your own.
