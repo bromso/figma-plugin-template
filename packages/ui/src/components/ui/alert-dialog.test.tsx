@@ -76,4 +76,21 @@ describe("AlertDialog interaction tests", () => {
     await userEvent.click(screen.getByText("Continue"));
     expect(onAction).toHaveBeenCalledOnce();
   });
+
+  it("sets data-size to sm when size is sm", () => {
+    render(
+      <AlertDialog open>
+        <AlertDialogContent size="sm">
+          <AlertDialogHeader>
+            <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction>Continue</AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+    );
+    expect(screen.getByRole("alertdialog")).toHaveAttribute("data-size", "sm");
+  });
 });

@@ -47,7 +47,7 @@ function AlertDialogContent({
         data-slot="alert-dialog-content"
         data-size={size}
         className={cn(
-          "group/alert-dialog-content fixed top-1/2 left-1/2 z-50 flex max-w-[calc(100%-2rem)] -translate-x-1/2 -translate-y-1/2 flex-col rounded-xl bg-background text-foreground shadow-dialog ring-1 ring-figma-border-translucent duration-100 outline-none data-[size=default]:w-80 data-[size=sm]:w-80 data-[size=lg]:w-[480px] data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95",
+          "group/alert-dialog-content fixed top-1/2 left-1/2 z-50 flex w-80 max-h-[calc(100%-2rem)] max-w-[calc(100%-2rem)] -translate-x-1/2 -translate-y-1/2 flex-col rounded-xl bg-background text-foreground shadow-dialog ring-1 ring-figma-border-translucent duration-100 outline-none data-[size=lg]:w-[480px] data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95",
           className
         )}
         {...props}
@@ -61,7 +61,7 @@ function AlertDialogHeader({ className, ...props }: React.ComponentProps<"div">)
     <div
       data-slot="alert-dialog-header"
       className={cn(
-        "flex min-h-10 shrink-0 flex-col justify-center gap-0.5 border-b border-figma-border px-4 py-2 text-left has-data-[slot=alert-dialog-media]:flex-row has-data-[slot=alert-dialog-media]:items-center has-data-[slot=alert-dialog-media]:gap-3",
+        "flex min-h-10 shrink-0 flex-col justify-center gap-0.5 border-b border-figma-border px-4 py-2 text-left has-data-[slot=alert-dialog-media]:grid has-data-[slot=alert-dialog-media]:grid-cols-[auto_1fr] has-data-[slot=alert-dialog-media]:items-center has-data-[slot=alert-dialog-media]:gap-x-3 has-data-[slot=alert-dialog-media]:gap-y-0.5",
         className
       )}
       {...props}
@@ -87,7 +87,7 @@ function AlertDialogMedia({ className, ...props }: React.ComponentProps<"div">) 
     <div
       data-slot="alert-dialog-media"
       className={cn(
-        "inline-flex size-6 shrink-0 items-center justify-center rounded-md bg-figma-bg-secondary *:[svg:not([class*='size-'])]:size-4",
+        "inline-flex size-6 shrink-0 items-center justify-center rounded-md bg-figma-bg-secondary row-span-2 *:[svg:not([class*='size-'])]:size-4",
         className
       )}
       {...props}
@@ -102,7 +102,10 @@ function AlertDialogTitle({
   return (
     <AlertDialogPrimitive.Title
       data-slot="alert-dialog-title"
-      className={cn("text-sm leading-4 font-semibold tracking-ui3", className)}
+      className={cn(
+        "text-sm leading-4 font-semibold tracking-ui3 group-has-data-[slot=alert-dialog-media]/alert-dialog-content:col-start-2",
+        className
+      )}
       {...props}
     />
   );
@@ -116,7 +119,7 @@ function AlertDialogDescription({
     <AlertDialogPrimitive.Description
       data-slot="alert-dialog-description"
       className={cn(
-        "text-sm text-figma-text-secondary *:[a]:text-figma-text-brand *:[a]:underline-offset-2 *:[a]:hover:underline",
+        "text-sm text-figma-text-secondary *:[a]:text-figma-text-brand *:[a]:underline-offset-2 *:[a]:hover:underline group-has-data-[slot=alert-dialog-media]/alert-dialog-content:col-start-2",
         className
       )}
       {...props}
