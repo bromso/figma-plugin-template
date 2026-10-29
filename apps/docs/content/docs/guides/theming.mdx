@@ -47,7 +47,7 @@ The tokens are exposed to Tailwind as `--color-figma-*`, which gives you the `fi
 
 Figma documents variables for the bg, text, border and icon families. The template binds to those. It documents nothing for menus, tooltips or translucent borders, so those tokens are not bound to Figma and keep the UI3 kit's values: the same in both themes, except `bg-menu-selected` and `border-translucent`, which have a light and a dark value. That is the intended look: Figma's own menus and tooltips are dark whether the app is light or dark.
 
-| Family | Binds to Figma | Static in both themes |
+| Family | Binds to Figma | Static (not bound to Figma) |
 | --- | --- | --- |
 | Backgrounds | `bg`, `bg-secondary`, `bg-tertiary`, `bg-hover`, `bg-pressed`, `bg-selected`, `bg-disabled`, `bg-brand`, `bg-brand-hover`, `bg-brand-pressed`, `bg-danger`, `bg-danger-hover` | `bg-menu`, `bg-menu-hover`, `bg-menu-selected`, `bg-tooltip` |
 | Text | `text`, `text-secondary`, `text-tertiary`, `text-disabled`, `text-brand`, `text-onbrand`, `text-danger`, `text-ondanger` | `text-menu`, `text-menu-secondary`, `text-menu-danger`, `text-menu-disabled`, `text-tooltip`, `text-tooltip-secondary` |

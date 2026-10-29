@@ -847,7 +847,7 @@ description: The 50 components available for your plugin's interface, and how th
 
 ## Overview
 
-The template includes 50 UI components that look native inside Figma: 46 from [shadcn/ui](https://ui.shadcn.com) and four custom Figma components. They are styled with Tailwind CSS 4 to Figma's UI3 design and take their colors from Figma's theme; see [Theming and the UI3 look](/docs/guides/theming).
+The template includes 50 UI components that look native inside Figma: 46 from [shadcn/ui](https://ui.shadcn.com) and four custom Figma components. They are styled with Tailwind CSS 4 to Figma's UI3 design and take their colors from Figma's theme; see [Theming and the UI3 Look](/docs/guides/theming).
 
 Import them from `@repo/ui`:
 
