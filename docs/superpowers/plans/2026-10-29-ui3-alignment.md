@@ -1372,6 +1372,8 @@ export { Tabs, TabsContent, TabsList, TabsTrigger, tabsListVariants };
 
 - [ ] **Step 2: Verify** (shared command; `tabs.test.tsx` asserts behaviour).
 
+Review outcome: the `line` list gets `group-data-horizontal/tabs:h-auto` and the indicator `after:-bottom-[2px]` so the 2 px bar sits on the divider; `data-active:hover:bg-figma-bg-secondary` keeps the selected pill's fill on hover. The pre-UI3 vertical `line` indicator (side rail) is dropped on purpose: it is not a UI3 pattern and no consumer uses it, so the component comment states `line` is horizontal only.
+
 - [ ] **Step 3: Parity story**
 
 `apps/storybook/src/stories/UI3/Tabs.parity.stories.tsx`:
