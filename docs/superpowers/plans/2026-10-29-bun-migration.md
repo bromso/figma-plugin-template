@@ -382,7 +382,7 @@ Run the plugin in a Figma Design file. Expected: an 800×650 window titled "My F
 
 Open the plugin console (**Plugins → Development → Show/Hide console**). Expected: `Bootstrapped @ Plugin-side` and `Plugin side said Hey there, UI!`-style logs, no red errors.
 
-Result: ______
+Result: PASS on rendering (2026-10-29, Jonas, screenshot): all four sections styled, icons present, no errors reported. Dark mode FAILED, and Jonas confirmed it had never worked on the Vite build either. Root cause (Figma docs, CSS Variables and Theming): `figma.showUI` was never called with `themeColors: true`, so Figma never adds `html.figma-dark`. Fixed out of plan in commit `7eec96d` (two lines in `plugin.ts`). Dark-mode re-check after the fix: pending.
 
 - [ ] **Step 4: Criterion 2 — sandbox handlers behave**
 
@@ -414,7 +414,7 @@ If the iframe context is awkward, skip the console step and accept criterion 2 o
 
 Remove the temporary button and imports from `app.tsx` afterwards. `git diff --stat` must show `app.tsx` unchanged.
 
-Result: ______
+Result: PASS (2026-10-29, Jonas, screenshot): `Plugin Rectangle # 1093` created, viewport zoomed, plugin closed. Console step for `exportSelection` skipped per the plan's allowance. Temporary button reverted; `app.tsx` unchanged.
 
 - [ ] **Step 5: Criterion 3 — React Compiler output behaves identically**
 
@@ -429,7 +429,7 @@ If anything fails that passes with `reactCompiler: false`, set `reactCompiler: f
 
 and commit as `fix(design-plugin): disable experimental React Compiler in Bun build`.
 
-Result: ______
+Result: PASS (2026-10-29, Jonas): all controls respond, no console errors; `reactCompiler: true` stays on. Production bundle contains 6 `useMemoCache` call sites, confirming the compiler ran.
 
 - [ ] **Step 6: Gate decision**
 
