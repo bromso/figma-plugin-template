@@ -1202,7 +1202,7 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 - [ ] **Step 1: `SelectTrigger`** — change the `size` type to `"sm" | "default" | "lg"`, replace the className string with:
 
 ```
-"flex w-fit items-center justify-between rounded-md border border-figma-border bg-background pl-2 pr-0 text-sm font-medium tracking-ui3 whitespace-nowrap transition-colors outline-none select-none hover:border-figma-border-strong focus-visible:border-figma-border-selected disabled:cursor-not-allowed disabled:border-figma-border-translucent disabled:text-figma-text-disabled aria-invalid:border-figma-border-danger data-placeholder:text-figma-text-secondary data-[size=default]:h-6 data-[size=lg]:h-8 data-[size=sm]:h-5 *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-1 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
+"flex w-fit items-center justify-between rounded-md border border-figma-border bg-background pl-2 pr-0 text-sm font-medium tracking-ui3 whitespace-nowrap transition-colors outline-none select-none hover:border-figma-border-strong focus-visible:border-figma-border-selected disabled:cursor-not-allowed disabled:border-figma-border-translucent disabled:text-figma-text-disabled aria-invalid:border-figma-border-danger data-placeholder:text-figma-text-secondary h-6 data-[size=lg]:h-8 data-[size=sm]:h-5 *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-1 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
 ```
 
 and replace the icon block with a 24 px slot:
