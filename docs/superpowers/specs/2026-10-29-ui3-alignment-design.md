@@ -60,6 +60,7 @@ the plan). Kit CSS variable names are shown; Figma injects the same names with a
 | `color-text-brand` | `#007be5` | link-style actions |
 | `color-text-onbrand` | `#ffffff` | text on brand |
 | `color-text-menu` / `-secondary` | `#fff` / `rgba(255,255,255,.7)` | menu text / shortcuts |
+| `color-text-menu-disabled` / `-danger` | `rgba(255,255,255,.4)` / `#ffafa3` | disabled menu rows / destructive rows (same in both themes; the page-level danger text fails contrast on the dark panel) |
 | `color-text-tooltip` / `-secondary` | `#fff` / `rgba(255,255,255,.7)` | tooltip text / hotkey |
 | `color-border` | `#e6e6e6` | dropdown trigger, badge, dialog dividers |
 | `color-bordertranslucent` | `rgba(0,0,0,.1)` | secondary button |
