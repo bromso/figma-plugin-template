@@ -5,7 +5,6 @@
 import { watch } from "node:fs";
 import { rm } from "node:fs/promises";
 import path from "node:path";
-import { pathToFileURL } from "node:url";
 import tailwind from "bun-plugin-tailwind";
 import type manifestShape from "./figma.manifest";
 
@@ -70,17 +69,16 @@ async function buildPlugin() {
   await writeMetafile("meta-plugin.json", result.metafile);
 }
 
-async function loadManifest(): Promise<Manifest> {
-  // Query string busts Bun's module cache so edits are picked up in --watch.
-  // file:// URL keeps this valid on Windows, where a drive path plus "?t=" would not resolve.
-  const mod = (await import(`${pathToFileURL(manifestFile).href}?t=${Date.now()}`)) as {
-    default: Manifest;
-  };
+function loadManifest(): Manifest {
+  // Drop the cached module so edits are picked up in --watch. A plain path works on
+  // every platform; a `?t=` query on a file:// URL does not bust Bun's module cache.
+  delete require.cache[manifestFile];
+  const mod = require(manifestFile) as { default: Manifest };
   return mod.default;
 }
 
 async function writeManifest() {
-  const manifest = await loadManifest();
+  const manifest = loadManifest();
   await Bun.write(path.join(outdir, "manifest.json"), `${JSON.stringify(manifest, null, 2)}\n`);
 }
 
