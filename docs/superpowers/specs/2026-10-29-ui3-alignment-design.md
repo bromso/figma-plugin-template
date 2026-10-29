@@ -104,6 +104,7 @@ Dark values are whatever Figma injects; the fallback dark palette is taken from 
 4. **Global scale.** `@theme` overrides: `--text-xs: 9px/12px` (small), `--text-sm` and `--text-base: 11px/16px` (body; shadcn uses `text-base` for input bodies), `--text-lg: 13px/20px` (large), `--text-xl: 15px/24px`; `--radius-sm: 2px`, `--radius-md` and `--radius-lg: 5px` (shadcn puts `rounded-lg` on controls), `--radius-xl: 13px` (panels); `--font-weight-medium: 450`, `--font-weight-semibold: 550`; `--spacing` stays 4 px. These make unmatched components shrink and round consistently without edits.
 5. **Font.** `@font-face` for Inter variable (Latin subset, woff2) with `font-weight: 100 900`, inlined by the Bun build as a data URI. `--font-sans: "Inter", system-ui, sans-serif`. Letter-spacing utility `tracking-ui3` = 0.005em.
 6. **Elevation tokens:** `--shadow-tooltip`, `--shadow-menu`, `--shadow-dialog` in `@theme`.
+7. **shadcn base variants.** `styles.css` imports `shadcn/tailwind.css`, which defines the `data-open`, `data-closed`, `data-checked`, `data-unchecked`, `data-selected`, `data-disabled`, `data-active`, `data-horizontal` and `data-vertical` custom variants (mapping to Radix `data-state`/`data-orientation` attributes), the accordion keyframes and the `no-scrollbar` utility. Without it, 220 variant usages across the shadcn components compile to selectors Radix never emits; this was a pre-existing gap found during Task 8 and fixed in the token layer.
 
 ### 2. Component pass (`packages/ui/src/components/ui/*.tsx`)
 
