@@ -39,7 +39,7 @@
       "urlFilter": "*figma*",
       "skipFiles": ["<node_internals>/**"],
       "pathMapping": {
-        "/": "${workspaceFolder}/apps/figma-plugin/src/"
+        "/": "${workspaceFolder}/apps/design-plugin/src/"
       }
     }
   ]

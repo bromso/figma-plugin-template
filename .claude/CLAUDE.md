@@ -57,7 +57,7 @@ Figma/FigJam plugin boilerplate using React, Bun, TypeScript, and Turborepo mono
 All commands use **Bun** as the package manager. Run from the repo root.
 
 - `bun run dev` — Watch mode for both plugin and UI (parallel Turborepo builds)
-- `bun run build` — Production build (UI + plugin to `apps/figma-plugin/dist/`)
+- `bun run build` — Production build (UI + plugin to `apps/design-plugin/dist/`)
 - `bun run test` — Run all tests across all packages (bun test)
 - `bun run test:watch` — Watch mode for tests
 - `bun run lint` — Lint all packages (Biome)
@@ -93,7 +93,7 @@ Packages are **JIT source-only** — they export raw TypeScript (no build step).
 
 The plugin runs as **two separate processes** that communicate via message passing:
 
-- **Plugin side** (`apps/figma-plugin/src/plugin/`) — Runs in Figma's sandbox with access to the Figma API (`figma.*`). No DOM access. Entry: `plugin.ts`.
+- **Plugin side** (`apps/design-plugin/src/plugin/`) — Runs in Figma's sandbox with access to the Figma API (`figma.*`). No DOM access. Entry: `plugin.ts`.
 - **UI side** (`packages/ui/src/`) — Runs in an iframe. React app with react-figma-ui components. Entry: `main.tsx` → `app.tsx`.
 - **Common** (`packages/common/src/`) — Shared between both sides. Contains network event type definitions.
 
@@ -139,7 +139,7 @@ CSS Modules (`*.module.scss`) for component-scoped styles. react-figma-ui provid
 
 ## Plugin Configuration
 
-`apps/figma-plugin/figma.manifest.ts` exports the Figma plugin manifest. Update `id` with your plugin's ID from Figma. This generates `dist/manifest.json` at build time.
+`apps/design-plugin/figma.manifest.ts` exports the Figma plugin manifest. Update `id` with your plugin's ID from Figma. This generates `dist/manifest.json` at build time.
 
 ## Available Skills
 

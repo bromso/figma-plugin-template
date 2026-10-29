@@ -51,7 +51,7 @@
 - [ ] **Step 1: Create the worktree from the spec branch**
 
 ```bash
-cd /Users/jonasbroms/Sites/figma-plugin-template
+cd <path-to-your-clone>
 git worktree add ../figma-plugin-template-bun -b feat/bun-build docs/bun-migration-spec
 cd ../figma-plugin-template-bun
 bun --version
