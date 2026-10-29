@@ -36,11 +36,11 @@ function App() {
           <Label htmlFor="cb1">Option A</Label>
         </div>
         <RadioGroup defaultValue="a">
-          <div className="flex items-center gap-2">
+          <div className="flex h-6 items-center gap-2">
             <RadioGroupItem value="a" id="r1" />
             <Label htmlFor="r1">Option A</Label>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex h-6 items-center gap-2">
             <RadioGroupItem value="b" id="r2" />
             <Label htmlFor="r2">Option B</Label>
           </div>
