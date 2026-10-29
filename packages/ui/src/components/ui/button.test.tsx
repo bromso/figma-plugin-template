@@ -25,6 +25,6 @@ describe("Button interaction tests", () => {
   it("renders with variant class", () => {
     render(<Button variant="outline">Outline</Button>);
     const btn = screen.getByRole("button", { name: "Outline" });
-    expect(btn.className).toContain("border-border");
+    expect(btn.className).toContain("border-figma-border-translucent");
   });
 });
