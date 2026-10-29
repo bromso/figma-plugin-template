@@ -27,6 +27,9 @@ export const Parity: StoryObj = {
       <Row id="s2" label="Off, Normal" />
       <Row id="s3" label="On, Disabled" defaultChecked disabled />
       <Row id="s4" label="Off, Disabled" disabled />
+      <p className="text-figma-text-secondary">
+        Tab to a switch to see the focus ring. Radix Switch has no mixed state.
+      </p>
     </ParityFrame>
   ),
 };

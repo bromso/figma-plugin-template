@@ -6,8 +6,8 @@ import type * as React from "react";
 import { cn } from "@/lib/utils";
 
 /**
- * UI3 switch: 32 × 16 track, 14 px knob with 1 px inset. On = brand fill, white knob.
- * Off = outlined track and knob in the strong border colour. Kit ref 2015:24698.
+ * UI3 switch: 32×16 track (sm 24×12) with 1 px border; 14 px knob (sm 10) flush inside it.
+ * On = brand fill, white knob. Off = outlined track and knob in the strong border colour. Kit ref 2015:24698.
  */
 function Switch({
   className,
@@ -21,7 +21,7 @@ function Switch({
       data-slot="switch"
       data-size={size}
       className={cn(
-        "peer group/switch relative inline-flex shrink-0 items-center rounded-full border transition-colors outline-none after:absolute after:-inset-1 focus-visible:border-figma-border-selected focus-visible:ring-1 focus-visible:ring-figma-border-selected focus-visible:ring-offset-1 focus-visible:ring-offset-background data-[size=default]:h-4 data-[size=default]:w-8 data-[size=sm]:h-3 data-[size=sm]:w-6 data-checked:border-transparent data-checked:bg-primary data-unchecked:border-figma-border-strong data-unchecked:bg-background data-disabled:cursor-not-allowed data-disabled:border-figma-border-translucent data-disabled:bg-figma-bg-disabled",
+        "peer group/switch relative inline-flex shrink-0 items-center rounded-full border transition-colors outline-none after:absolute after:-inset-1 focus-visible:border-figma-border-selected focus-visible:ring-1 focus-visible:ring-figma-border-selected focus-visible:ring-offset-1 focus-visible:ring-offset-background data-[size=default]:h-4 data-[size=default]:w-8 data-[size=sm]:h-3 data-[size=sm]:w-6 data-checked:border-transparent data-checked:bg-primary data-unchecked:border-figma-border-strong data-unchecked:bg-background aria-invalid:border-figma-border-danger data-disabled:cursor-not-allowed data-disabled:border-figma-border-translucent data-disabled:bg-figma-bg-disabled",
         className
       )}
       {...props}
