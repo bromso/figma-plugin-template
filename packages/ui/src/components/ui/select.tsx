@@ -21,6 +21,7 @@ function SelectValue({ ...props }: React.ComponentProps<typeof SelectPrimitive.V
   return <SelectPrimitive.Value data-slot="select-value" {...props} />;
 }
 
+/** UI3 dropdown: 24 px (sm 20, lg 32), 5 px radius, 1 px border, 24 px chevron slot. Kit ref 2012:32973. */
 function SelectTrigger({
   className,
   size = "default",
@@ -34,14 +35,14 @@ function SelectTrigger({
       data-slot="select-trigger"
       data-size={size}
       className={cn(
-        "flex w-fit items-center justify-between rounded-md border border-figma-border bg-background pl-2 pr-0 text-sm font-medium tracking-ui3 whitespace-nowrap transition-colors outline-none select-none hover:border-figma-border-strong focus-visible:border-figma-border-selected disabled:cursor-not-allowed disabled:border-figma-border-translucent disabled:text-figma-text-disabled aria-invalid:border-figma-border-danger data-placeholder:text-figma-text-secondary h-6 data-[size=lg]:h-8 data-[size=sm]:h-5 *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-1 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        "group flex w-fit items-center justify-between rounded-md border border-figma-border bg-background pl-2 pr-0 text-sm font-medium tracking-ui3 whitespace-nowrap transition-colors outline-none select-none hover:border-figma-border-strong focus-visible:border-figma-border-selected disabled:cursor-not-allowed disabled:border-figma-border-translucent disabled:text-figma-text-disabled aria-invalid:border-figma-border-danger data-placeholder:text-figma-text-secondary disabled:data-placeholder:text-figma-text-disabled h-6 data-[size=lg]:h-8 data-[size=sm]:h-5 *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-1 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
         className
       )}
       {...props}
     >
       {children}
       <SelectPrimitive.Icon asChild>
-        <span className="flex size-6 shrink-0 items-center justify-center text-figma-icon">
+        <span className="flex h-full w-6 shrink-0 items-center justify-center text-figma-icon group-disabled:text-figma-text-disabled">
           <ChevronDownIcon className="size-4" />
         </span>
       </SelectPrimitive.Icon>
@@ -49,6 +50,7 @@ function SelectTrigger({
   );
 }
 
+/** UI3 menu surface: dark in both themes, 13 px radius, 8 px vertical padding, 24 px rows. */
 function SelectContent({
   className,
   children,
@@ -75,8 +77,7 @@ function SelectContent({
         <SelectPrimitive.Viewport
           data-position={position}
           className={cn(
-            "data-[position=popper]:h-(--radix-select-trigger-height) data-[position=popper]:w-full data-[position=popper]:min-w-(--radix-select-trigger-width)",
-            position === "popper" && ""
+            "data-[position=popper]:h-(--radix-select-trigger-height) data-[position=popper]:w-full data-[position=popper]:min-w-(--radix-select-trigger-width)"
           )}
         >
           {children}
@@ -91,7 +92,10 @@ function SelectLabel({ className, ...props }: React.ComponentProps<typeof Select
   return (
     <SelectPrimitive.Label
       data-slot="select-label"
-      className={cn("flex h-6 items-center px-4 text-sm text-figma-text-menu-secondary", className)}
+      className={cn(
+        "flex h-6 items-center pr-4 pl-8 text-sm font-medium tracking-ui3 text-figma-text-menu-secondary",
+        className
+      )}
       {...props}
     />
   );

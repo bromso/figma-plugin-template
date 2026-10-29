@@ -55,6 +55,15 @@ export const Parity: StoryObj = {
           <SelectItem value="a">Large</SelectItem>
         </SelectContent>
       </Select>
+      <Select defaultValue="a">
+        <SelectTrigger size="sm" className="w-[117px]">
+          <SelectValue />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="a">Small</SelectItem>
+        </SelectContent>
+      </Select>
+      <p className="text-figma-text-secondary">Open the first dropdown to compare the dark list.</p>
     </ParityFrame>
   ),
 };
