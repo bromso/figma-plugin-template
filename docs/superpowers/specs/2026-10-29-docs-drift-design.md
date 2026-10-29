@@ -12,7 +12,6 @@ PR #16 replaced Vite and Vitest with Bun, and PR #17 aligned `packages/ui` with 
 - Every `bun run storybook` instruction (CLAUDE.md, README, CONTRIBUTING.md, two docs pages) points at a root script that does not exist.
 - Component counts are "14+" or "27+ tests" where the truth is 46 shadcn components plus 4 custom ones and about 133 tests.
 - The `build-figma-plugin` skill's UI cheat-sheet and app-shell pattern produce roomy, non-UI3 output (`p-4` shells, `text-muted-foreground`, no `figma-*` utilities), and its validation step skips `bun run test`.
-- The `frontend-design` skill, recommended for plugin UI, instructs Claude to avoid Inter and to pick bold aesthetics, which contradicts the UI3 look.
 - Nothing explains how theming binds to Figma, the `figma-*` utilities, the dark menus, the 24 px scale, the 320×480 default, the parity stories, or `packages/ui/src/figma-variables.md`.
 - Editor config: the `.code-workspace` points Storybook at `packages/ui`, references a root folder name that does not exist, a Tailwind config path that does not exist and a dead GraphQL entry; `.vscode/launch.json` has a UI debug target for a dev server that no longer exists.
 
@@ -22,7 +21,7 @@ PR #16 replaced Vite and Vitest with Bun, and PR #17 aligned `packages/ui` with 
 | --- | --- |
 | Scope | Fix every wrong statement, add the missing UI3 topics, realign the `build-figma-plugin` skill. Superseding the April 2026 UI3 plans and adding drift-prevention tooling are out of scope. |
 | Single source of truth for theming | A new docs-site page, `apps/docs/content/docs/guides/theming.mdx`. CLAUDE.md, README, the skill references and `figma-variables.md` carry short summaries that link to it. |
-| `frontend-design` skill | No longer recommended for plugin UI; `build-figma-plugin` is the UI authority. The skill stays installed for non-plugin surfaces. |
+| Third-party skills | Removed from the repository in PR #19 (`frontend-design`, `shadcn`, `skill-creator`, `template-skill`, `skills-lock.json`). `build-figma-plugin` is the only shipped skill and the UI authority. CLAUDE.md and the docs Skills page were updated in that PR; this PR only has to keep them consistent. |
 | Delivery | One PR on `docs/stream-2-drift`, written truth-first: the theming page, then the summaries and links, then the light corrections. |
 | Changeset | None. No package code changes. |
 
@@ -39,7 +38,7 @@ PR #16 replaced Vite and Vitest with Bun, and PR #17 aligned `packages/ui` with 
 
 ## Files that get summaries and a link
 
-- **`.claude/CLAUDE.md`.** Project Overview describes a shadcn/Tailwind 4 library. "UI Components (react-figma-ui)" becomes "UI Components": 46 shadcn components plus Icon, IconButton, SectionTitle and Type, exported from `packages/ui/src/index.ts`. "Styling" becomes a Theming paragraph with the link. Commands: Storybook via `turbo run storybook` or `bun run --filter @repo/storybook storybook`; the plugin package is `@repo/design-plugin`; add `bun run types`, `bun run analyze`, `bun run docs`. Tooling versions corrected. Available skills reduced to what `.agents/skills/` contains. Three MCP servers. One sentence on the release flow (`bun changeset`, `release.yml`, the Version Packages PR). `frontend-design` removed from the plugin-UI guidance.
+- **`.claude/CLAUDE.md`.** Project Overview describes a shadcn/Tailwind 4 library. "UI Components (react-figma-ui)" becomes "UI Components": 46 shadcn components plus Icon, IconButton, SectionTitle and Type, exported from `packages/ui/src/index.ts`. "Styling" becomes a Theming paragraph with the link. Commands: Storybook via `turbo run storybook` or `bun run --filter @repo/storybook storybook`; the plugin package is `@repo/design-plugin`; add `bun run types`, `bun run analyze`, `bun run docs`. Tooling versions corrected. Three MCP servers. One sentence on the release flow (`bun changeset`, `release.yml`, the Version Packages PR). The skills sections already describe the single shipped skill after PR #19; keep them as they are.
 - **`README.md`.** 50 components, the Storybook command, manifest fields `documentAccess` and `networkAccess`, a "Figma-native UI" paragraph with the link, the release flow.
 - **`.agents/skills/build-figma-plugin/SKILL.md`.** Validation step runs `bun run test`. New UI3 rules: use the exported components; colour only through `figma-*` utilities or the shadcn aliases; 24 px rows and 8 px gutters; keep `themeColors: true`; never hard-code colours or window chrome.
 - **`.agents/skills/build-figma-plugin/references/ui-components.md`.** Cheat-sheet rewritten around `figma-*` utilities and the UI3 scale; app-shell pattern replaced by the sampler's panel structure; full component inventory grouped as Storybook groups it; icon list includes `lucide:ellipsis` and the `ICONS` export; size mapping for `xs`/`sm`/default/`lg`.
@@ -71,4 +70,3 @@ PR #16 replaced Vite and Vitest with Bun, and PR #17 aligned `packages/ui` with 
 - Dependency updates (second half of stream 2, separate spec).
 - Marking `docs/plans/2026-04-23-ui3-theming*` as superseded and other structural cleanup (stream 3).
 - Tooling that generates counts or inventories from code.
-- Removing the `frontend-design` skill.
