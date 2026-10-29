@@ -2,15 +2,11 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "type": "node",
+      "type": "node-terminal",
       "request": "launch",
-      "name": "Debug Vitest (current file)",
-      "autoAttachChildProcesses": true,
-      "skipFiles": ["<node_internals>/**", "**/node_modules/**"],
-      "program": "${workspaceFolder}/packages/ui/node_modules/.bin/vitest",
-      "args": ["run", "${relativeFile}"],
-      "smartStep": true,
-      "console": "integratedTerminal"
+      "name": "Debug bun test (current file)",
+      "command": "bun test --inspect-brk ${relativeFile}",
+      "cwd": "${workspaceFolder}"
     },
     {
       "type": "chrome",

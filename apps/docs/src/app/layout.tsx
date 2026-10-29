@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 import "./global.css";
 
 const SITE_URL = "https://bromso.github.io/figma-plugin-template";
+const SITE_DESCRIPTION = "Build Figma plugins with React, Bun, TypeScript, and AI skills";
 const BASE = process.env.GITHUB_PAGES === "true" ? "/figma-plugin-template" : "";
 
 export const metadata: Metadata = {
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
     default: "Figma Plugin Template",
     template: "%s | Figma Plugin Template",
   },
-  description: "Build Figma plugins with React, Vite, TypeScript, and AI skills",
+  description: SITE_DESCRIPTION,
   metadataBase: new URL(SITE_URL),
   icons: {
     icon: [
@@ -26,7 +27,7 @@ export const metadata: Metadata = {
     type: "website",
     siteName: "Figma Plugin Template",
     title: "Figma Plugin Template",
-    description: "Build Figma plugins with React, Vite, TypeScript, and AI skills",
+    description: SITE_DESCRIPTION,
     url: SITE_URL,
     images: [
       {
@@ -41,7 +42,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Figma Plugin Template",
-    description: "Build Figma plugins with React, Vite, TypeScript, and AI skills",
+    description: SITE_DESCRIPTION,
     images: ["/figma-plugi-template.webp"],
   },
 };
@@ -51,7 +52,7 @@ const websiteJsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "WebSite",
   name: "Figma Plugin Template Docs",
-  description: "Build Figma plugins with React, Vite, TypeScript, and AI skills",
+  description: SITE_DESCRIPTION,
   url: SITE_URL,
   image: `${SITE_URL}/figma-plugi-template.webp`,
   publisher: {

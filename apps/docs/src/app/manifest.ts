@@ -6,7 +6,7 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: "Figma Plugin Template Docs",
     short_name: "FPT Docs",
-    description: "Build Figma plugins with React, Vite, TypeScript, and AI skills",
+    description: "Build Figma plugins with React, Bun, TypeScript, and AI skills",
     start_url: "/figma-plugin-template/docs",
     display: "standalone",
     background_color: "#0a0a0a",

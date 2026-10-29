@@ -5,7 +5,7 @@ Thank you for your interest in contributing to figma-plugin-template! We welcome
 ## Prerequisites
 
 - Node.js >= 18
-- [Bun](https://bun.sh) >= 1.0
+- [Bun](https://bun.sh) >= 1.4.2
 - Figma desktop app (for plugin testing)
 
 ## Getting Started
@@ -23,7 +23,7 @@ bun run build
 |---------|-------------|
 | `bun run dev` | Watch mode (plugin + UI via Turborepo) |
 | `bun run build` | Production build to `apps/figma-plugin/dist/` |
-| `bun run test` | Run all tests (Vitest) |
+| `bun run test` | Run all tests (bun test) |
 | `bun run test:watch` | Watch mode for tests |
 | `bun run lint` | Lint with Biome |
 | `bun run storybook` | Start Storybook dev server |

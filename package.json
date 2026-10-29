@@ -1,7 +1,7 @@
 {
   "name": "figma-plugin-template",
   "version": "1.3.0",
-  "description": "Figma/FigJam plugin boilerplate with React, Vite, TypeScript, and Turborepo monorepo",
+  "description": "Figma/FigJam plugin boilerplate with React, Bun, TypeScript, and Turborepo monorepo",
   "private": true,
   "license": "MIT",
   "author": "Jonas Bröms",
@@ -14,13 +14,11 @@
     "figma-plugin",
     "figjam",
     "react",
-    "vite",
     "typescript",
     "turborepo",
     "monorepo",
     "bun",
     "biome",
-    "vitest",
     "boilerplate",
     "template"
   ],
