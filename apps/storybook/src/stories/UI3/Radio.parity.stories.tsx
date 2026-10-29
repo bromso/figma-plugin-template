@@ -9,18 +9,20 @@ export default meta;
 export const Parity: StoryObj = {
   render: () => (
     <ParityFrame reference={ref} caption="Radio button: On / Off × Default / Focused, with labels">
-      <RadioGroup defaultValue="a">
-        {["a", "b", "c"].map((v) => (
-          <div key={v} className="flex h-6 items-center gap-2">
-            <RadioGroupItem value={v} id={`r-${v}`} />
-            <Label htmlFor={`r-${v}`}>Option {v.toUpperCase()}</Label>
+      {(col) => (
+        <RadioGroup defaultValue="a">
+          {["a", "b", "c"].map((v) => (
+            <div key={v} className="flex h-6 items-center gap-2">
+              <RadioGroupItem value={v} id={`r-${v}-${col}`} />
+              <Label htmlFor={`r-${v}-${col}`}>Option {v.toUpperCase()}</Label>
+            </div>
+          ))}
+          <div className="flex h-6 items-center gap-2">
+            <RadioGroupItem value="d" id={`r-d-${col}`} disabled />
+            <Label htmlFor={`r-d-${col}`}>Disabled</Label>
           </div>
-        ))}
-        <div className="flex h-6 items-center gap-2">
-          <RadioGroupItem value="d" id="r-d" disabled />
-          <Label htmlFor="r-d">Disabled</Label>
-        </div>
-      </RadioGroup>
+        </RadioGroup>
+      )}
     </ParityFrame>
   ),
 };

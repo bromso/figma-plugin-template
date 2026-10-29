@@ -5,10 +5,10 @@ type ParityFrameProps = {
   /**
    * Component rendered twice, once per theme. Use inline (non-portaled) states here.
    * When the content has ids (e.g. `id`/`htmlFor` pairs), pass a function instead and
-   * suffix every id with the given column so the light and dark copies don't collide,
-   * e.g. `id={\`c1-${column}\`}`.
+   * suffix every id with the given col so the light and dark copies don't collide,
+   * e.g. `id={\`c1-${col}\`}`.
    */
-  children: ReactNode | ((column: "light" | "dark") => ReactNode);
+  children: ReactNode | ((col: "light" | "dark") => ReactNode);
   /** Reference PNG imported from ./refs */
   reference: string;
   /** What the reference shows, e.g. "Button set: variants × states" */
