@@ -5,7 +5,7 @@ import type * as React from "react";
 
 /** UI3 badge small: 16 px, 4 px padding, 5 px radius, body/medium. Kit ref 2012:35028. */
 const badgeVariants = cva(
-  "group/badge inline-flex h-4 w-fit shrink-0 items-center justify-center gap-1 overflow-hidden rounded-md border border-transparent px-1 text-sm font-medium tracking-ui3 whitespace-nowrap transition-colors focus-visible:border-figma-border-selected [&>svg]:pointer-events-none [&>svg]:size-3",
+  "group/badge inline-flex h-4 w-fit shrink-0 items-center justify-center gap-1 overflow-hidden rounded-md border border-transparent px-1 text-sm font-medium tracking-ui3 whitespace-nowrap transition-colors outline-none focus-visible:border-figma-border-selected focus-visible:ring-1 focus-visible:ring-figma-border-selected focus-visible:ring-offset-1 focus-visible:ring-offset-background [&>svg]:pointer-events-none [&>svg]:size-3",
   {
     variants: {
       variant: {

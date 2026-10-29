@@ -10,7 +10,7 @@ export const Parity: StoryObj = {
   render: () => (
     <ParityFrame
       reference={ref}
-      caption="Badge small: Default, Brand, Invert, FigJam, Component, Danger, Warn, Success… strong and subtle"
+      caption="Badge small. Implemented: Default (= outline), Default strong (ghost), Selected (secondary), Danger strong (destructive), link. Kit-only: Inverted, FigJam, Component, Warn, Success"
     >
       <div className="flex flex-wrap gap-2">
         <Badge>Default</Badge>
