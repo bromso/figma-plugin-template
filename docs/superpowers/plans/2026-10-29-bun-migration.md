@@ -924,7 +924,7 @@ In `.vscode/extensions.json` remove the two lines `"vitest.explorer",` and `"ant
 
 - [ ] **Step 5: Spell-check dictionary**
 
-In `cspell.json` add `"bunfig",` to the `words` array in alphabetical position (after `"bromso",`).
+In `cspell.json` add `"bunfig",` to the `words` array in alphabetical position (after `"bromso",`). (`cspell.json` has no vite or vitest entries, so nothing to remove.)
 
 - [ ] **Step 6: styles.css comment**
 
@@ -946,6 +946,24 @@ with
 ```
 
 (Keep whatever `@source` value Task 2 step 7 settled on.)
+
+- [ ] **Step 6b: Root package.json, docs-app metadata, manifest name (added after the Task 6 review)**
+
+Root `package.json`: change the `description` to `Figma/FigJam plugin boilerplate with React, Bun, TypeScript, and Turborepo monorepo`; in `keywords` delete `"vite"` and `"vitest"` (`"bun"` is already present).
+
+`apps/docs/content/docs/index.mdx` line 3, `apps/docs/src/app/layout.tsx` (every occurrence: lines 14, 29, 44, 54) and `apps/docs/src/app/manifest.ts` line 9: replace `React, Vite, TypeScript` with `React, Bun, TypeScript`. In `layout.tsx`, hoist the repeated string into one `const SITE_DESCRIPTION = "Build Figma plugins with React, Bun, TypeScript, and AI skills";` next to `SITE_URL` and reference it in all four places.
+
+`apps/docs/content/docs/project/contributing.mdx` line 50: `- Vitest tests (27+ tests)` → `- bun test suites (90+ tests)`.
+
+`apps/design-plugin/figma.manifest.ts` line 3: `name: "Figma-Plugin-React-Vite"` → `name: "Figma Plugin Template"` (the user-visible plugin name in Figma; the old name advertised Vite). Keep the `id`.
+
+Verify:
+
+```bash
+grep -rn 'React, Vite\|Vitest tests\|Figma-Plugin-React-Vite\|"vitest"\|"vite"' package.json apps/docs/content apps/docs/src apps/design-plugin/figma.manifest.ts
+```
+
+Expected: nothing.
 
 - [ ] **Step 7: Verify and commit**
 
