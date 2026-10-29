@@ -1,5 +1,5 @@
+import { afterEach, describe, expect, it, vi } from "bun:test";
 import { render } from "@testing-library/react";
-import { afterEach, describe, expect, it, vi } from "vitest";
 import type { StaticIconName, StaticIconNameMap } from "./icon";
 import { ICONS, Icon, registerIcons } from "./icon";
 

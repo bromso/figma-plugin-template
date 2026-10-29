@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it } from "vitest";
+import { beforeEach, describe, expect, it } from "bun:test";
 
 // BUG-01: main.tsx must throw a descriptive Error when #root is missing
 // instead of using an unchecked `as HTMLElement` cast.

@@ -1,6 +1,6 @@
+import { describe, expect, it, vi } from "bun:test";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { describe, expect, it, vi } from "vitest";
 import { Input } from "./input";
 
 describe("Input interaction tests", () => {

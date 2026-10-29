@@ -1,4 +1,4 @@
-import { describe, expectTypeOf, it } from "vitest";
+import { describe, expectTypeOf, it } from "bun:test";
 import type { ButtonProps } from "../index";
 
 describe("@repo/ui ButtonProps type export", () => {

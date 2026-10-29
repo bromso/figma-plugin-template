@@ -10,8 +10,8 @@
   },
   "scripts": {
     "lint": "biome check .",
-    "test": "vitest run",
-    "test:watch": "vitest",
+    "test": "bun test",
+    "test:watch": "bun test --watch",
     "types": "tsc --noEmit && tsc --noEmit -p tsconfig.node.json"
   },
   "dependencies": {
