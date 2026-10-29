@@ -1736,11 +1736,11 @@ Parity: covered by the `UI3/Menu` story (Task 15) plus the existing `Navigation/
 - [ ] **Step 1: Bar and triggers**
 
 - `Menubar` (line ~12): className → `"flex h-6 items-center gap-0.5 rounded-md bg-figma-bg-secondary p-0.5"`.
-- `MenubarTrigger` (~42): className → `"flex h-5 items-center rounded-[3px] px-2 text-sm font-medium tracking-ui3 outline-hidden select-none hover:bg-figma-bg-hover focus-visible:bg-figma-bg-hover aria-expanded:bg-figma-bg-pressed"`.
+- `MenubarTrigger` (~42): className → `"flex h-5 items-center rounded-[3px] px-2 text-sm font-medium tracking-ui3 outline-hidden select-none hover:bg-figma-bg-tertiary focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-figma-border-selected aria-expanded:bg-figma-bg-pressed"` (review outcome: `bg-hover` equals `bg-secondary` in both themes, so hover and focus on the bar were invisible).
 
 - [ ] **Step 2: Menu content** (same shared classes; group name `menubar-item`, origin `--radix-menubar-content-transform-origin`):
 
-- `MenubarContent` (~65): `MENU_PANEL`.
+- `MenubarContent` (~65): `MENU_PANEL` with `max-h-(--radix-menubar-content-available-height)` after `z-50`; defaults `alignOffset={-2}` and `sideOffset={6}` (review outcome: the old −4/8 were tuned for the bordered 3 px-padded bar).
 - `MenubarItem` (~89): `MENU_ROW` + ` group/menubar-item data-inset:pl-6 ` + `MENU_DANGER`.
 - `MenubarCheckboxItem` (~111) and `MenubarRadioItem` (~140): `MENU_CHECK` with `group/menubar-item`; their indicator spans (~117, ~145) → `"pointer-events-none absolute left-1 flex size-4 items-center justify-center [&_svg:not([class*='size-'])]:size-4"`.
 - `MenubarLabel` (~166): `MENU_LABEL` + ` data-inset:pl-8`.
