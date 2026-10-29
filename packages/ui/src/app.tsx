@@ -1,12 +1,20 @@
 import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-  Alert,
-  AlertDescription,
+  Badge,
   Button,
   Checkbox,
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuShortcut,
+  DropdownMenuTrigger,
   Icon,
   IconButton,
   Input,
@@ -20,76 +28,133 @@ import {
   SelectTrigger,
   SelectValue,
   Switch,
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
   Textarea,
-  Type,
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
 } from "./index";
 
+/** Component sampler laid out like a Figma properties panel: 8 px gutters, 24 px rows. */
 function App() {
   return (
-    <div className="overflow-y-auto h-full px-4 py-2">
-      <div className="flex flex-col gap-2 mb-6">
-        <SectionTitle>Inputs</SectionTitle>
-        <Input placeholder="Type something" />
-        <Textarea placeholder="Longer text..." rows={3} />
-        <div className="flex items-center gap-2">
-          <Checkbox id="cb1" defaultChecked />
-          <Label htmlFor="cb1">Option A</Label>
-        </div>
-        <RadioGroup defaultValue="a">
-          <div className="flex h-6 items-center gap-2">
-            <RadioGroupItem value="a" id="r1" />
-            <Label htmlFor="r1">Option A</Label>
+    <TooltipProvider>
+      <div className="flex h-full flex-col overflow-y-auto bg-background text-foreground">
+        <Tabs defaultValue="design" className="gap-0">
+          <div className="flex h-10 items-center justify-between border-b border-figma-border px-2">
+            <TabsList>
+              <TabsTrigger value="design">Design</TabsTrigger>
+              <TabsTrigger value="proto">Prototype</TabsTrigger>
+            </TabsList>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <IconButton iconProps={{ name: "lucide:plus" }} aria-label="More" />
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuItem>
+                  Copy<DropdownMenuShortcut>⌘C</DropdownMenuShortcut>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  Paste<DropdownMenuShortcut>⌘V</DropdownMenuShortcut>
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>
+                  Group selection<DropdownMenuShortcut>⌘G</DropdownMenuShortcut>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
-          <div className="flex h-6 items-center gap-2">
-            <RadioGroupItem value="b" id="r2" />
-            <Label htmlFor="r2">Option B</Label>
-          </div>
-        </RadioGroup>
-        <div className="flex items-center gap-2">
-          <Switch id="sw1" defaultChecked />
-          <Label htmlFor="sw1">Enable feature</Label>
-        </div>
-        <Select defaultValue="a">
-          <SelectTrigger>
-            <SelectValue placeholder="Choose..." />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="a">Option A</SelectItem>
-            <SelectItem value="b">Option B</SelectItem>
-          </SelectContent>
-        </Select>
-      </div>
 
-      <div className="flex flex-col gap-2 mb-6">
-        <SectionTitle>Buttons</SectionTitle>
-        <Button variant="default">Primary action</Button>
-        <Button variant="secondary">Secondary action</Button>
-        <IconButton iconProps={{ name: "lucide:plus" }} aria-label="Add item" />
-      </div>
+          <TabsContent value="design" className="flex flex-col">
+            <section className="flex flex-col gap-2 border-b border-figma-border p-2 pb-4">
+              <SectionTitle>Layer</SectionTitle>
+              <Input placeholder="Layer name" />
+              <Textarea placeholder="Description" rows={2} />
+              <Select defaultValue="fill">
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Choose…" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="fill">Fill container</SelectItem>
+                  <SelectItem value="hug">Hug contents</SelectItem>
+                  <SelectItem value="fixed">Fixed</SelectItem>
+                </SelectContent>
+              </Select>
+            </section>
 
-      <div className="flex flex-col gap-2 mb-6">
-        <SectionTitle>Display</SectionTitle>
-        <Icon name="lucide:star" />
-        <Label>Field label</Label>
-        <Type size="large" weight="bold">
-          Heading text
-        </Type>
-        <Alert>
-          <Icon name="lucide:info" className="size-4" />
-          <AlertDescription>This is a tip for new users.</AlertDescription>
-        </Alert>
-      </div>
+            <section className="flex flex-col border-b border-figma-border p-2 pb-4">
+              <SectionTitle>Options</SectionTitle>
+              <div className="flex h-6 items-center gap-2">
+                <Checkbox id="clip" defaultChecked />
+                <Label htmlFor="clip">Clip content</Label>
+              </div>
+              <div className="flex h-6 items-center gap-2">
+                <Checkbox id="auto" />
+                <Label htmlFor="auto">Auto layout</Label>
+              </div>
+              <RadioGroup defaultValue="a">
+                <div className="flex h-6 items-center gap-2">
+                  <RadioGroupItem value="a" id="r1" />
+                  <Label htmlFor="r1">Option A</Label>
+                </div>
+                <div className="flex h-6 items-center gap-2">
+                  <RadioGroupItem value="b" id="r2" />
+                  <Label htmlFor="r2">Option B</Label>
+                </div>
+              </RadioGroup>
+              <div className="flex h-6 items-center gap-2">
+                <Switch id="sw" defaultChecked />
+                <Label htmlFor="sw">Enable feature</Label>
+              </div>
+            </section>
 
-      <div className="flex flex-col gap-2 mb-6">
-        <SectionTitle>Layout</SectionTitle>
-        <Accordion type="single" collapsible defaultValue="item-1">
-          <AccordionItem value="item-1">
-            <AccordionTrigger>More info</AccordionTrigger>
-            <AccordionContent>Details here.</AccordionContent>
-          </AccordionItem>
-        </Accordion>
+            <section className="flex flex-col gap-2 p-2">
+              <SectionTitle>Actions</SectionTitle>
+              <div className="flex items-center gap-2">
+                <Badge>Default</Badge>
+                <Badge variant="secondary">New</Badge>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Icon name="lucide:info" className="size-4 text-figma-icon-secondary" />
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    Tooltip text <span className="text-figma-text-tooltip-secondary">⌘V</span>
+                  </TooltipContent>
+                </Tooltip>
+              </div>
+              <div className="flex gap-2">
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Button variant="secondary">Rename…</Button>
+                  </DialogTrigger>
+                  <DialogContent>
+                    <DialogHeader>
+                      <DialogTitle>Rename layers</DialogTitle>
+                    </DialogHeader>
+                    <div className="flex flex-col gap-2 p-4">
+                      <DialogDescription>Give the selected layers a new name.</DialogDescription>
+                      <Input placeholder="New name" />
+                    </div>
+                    <DialogFooter>
+                      <Button variant="secondary">Cancel</Button>
+                      <Button>Rename</Button>
+                    </DialogFooter>
+                  </DialogContent>
+                </Dialog>
+                <Button className="flex-1">Create</Button>
+              </div>
+            </section>
+          </TabsContent>
+          <TabsContent value="proto" className="p-2 text-figma-text-secondary">
+            Prototype settings go here.
+          </TabsContent>
+        </Tabs>
       </div>
-    </div>
+    </TooltipProvider>
   );
 }
 

@@ -3,21 +3,20 @@ import { render, screen } from "@testing-library/react";
 import App from "../app";
 
 describe("App (component sampler)", () => {
-  it("renders without crashing", () => {
+  it("renders the panel sections", () => {
     render(<App />);
-    expect(screen.getByText("Inputs")).toBeInTheDocument();
-    expect(screen.getByText("Buttons")).toBeInTheDocument();
-    expect(screen.getByText("Display")).toBeInTheDocument();
-    expect(screen.getByText("Layout")).toBeInTheDocument();
+    expect(screen.getByText("Layer")).toBeInTheDocument();
+    expect(screen.getByText("Options")).toBeInTheDocument();
+    expect(screen.getByText("Actions")).toBeInTheDocument();
   });
 
-  it("renders primary button", () => {
+  it("renders the primary action", () => {
     render(<App />);
-    expect(screen.getByText("Primary action")).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Create" })).toBeInTheDocument();
   });
 
-  it("renders onboarding tip", () => {
+  it("renders the tab bar", () => {
     render(<App />);
-    expect(screen.getByText("This is a tip for new users.")).toBeInTheDocument();
+    expect(screen.getByRole("tab", { name: "Design" })).toBeInTheDocument();
   });
 });
