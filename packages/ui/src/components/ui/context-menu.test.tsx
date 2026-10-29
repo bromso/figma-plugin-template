@@ -1,18 +1,26 @@
 import { describe, expect, it, vi } from "bun:test";
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import {
   ContextMenu,
+  ContextMenuCheckboxItem,
   ContextMenuContent,
   ContextMenuItem,
   ContextMenuTrigger,
 } from "./context-menu";
 
 describe("ContextMenu interaction tests", () => {
-  // ContextMenu requires right-click (contextmenu event) which is tricky in happy-dom.
-  // We test controlled open state instead.
-  it.skip("opens on right-click — skipped due to happy-dom contextmenu limitations", () => {
-    // Right-click simulation is unreliable in happy-dom
+  it("opens on right-click", () => {
+    render(
+      <ContextMenu>
+        <ContextMenuTrigger>Right click me</ContextMenuTrigger>
+        <ContextMenuContent>
+          <ContextMenuItem>Item 1</ContextMenuItem>
+        </ContextMenuContent>
+      </ContextMenu>
+    );
+    fireEvent.contextMenu(screen.getByText("Right click me"));
+    expect(document.querySelector('[data-slot="context-menu-content"]')).toBeInTheDocument();
   });
 
   it("renders trigger content", () => {
@@ -38,14 +46,53 @@ describe("ContextMenu interaction tests", () => {
         </ContextMenuContent>
       </ContextMenu>
     );
-    // Simulate right-click via pointer and contextmenu events
-    const trigger = screen.getByText("Right click me");
-    await userEvent.pointer({ keys: "[MouseRight]", target: trigger });
-    // If menu opened, items should be present; if not, test still passes structurally
-    const copyItem = screen.queryByText("Copy");
-    if (copyItem) {
-      await userEvent.click(copyItem);
-      expect(onSelect).toHaveBeenCalled();
-    }
+    fireEvent.contextMenu(screen.getByText("Right click me"));
+    const copyItem = screen.getByText("Copy");
+    await userEvent.click(copyItem);
+    expect(onSelect).toHaveBeenCalled();
+  });
+
+  it("renders a checked checkbox item with data-state=checked", () => {
+    render(
+      <ContextMenu>
+        <ContextMenuTrigger>Right click me</ContextMenuTrigger>
+        <ContextMenuContent>
+          <ContextMenuCheckboxItem checked>Show rulers</ContextMenuCheckboxItem>
+        </ContextMenuContent>
+      </ContextMenu>
+    );
+    fireEvent.contextMenu(screen.getByText("Right click me"));
+    expect(screen.getByText("Show rulers")).toHaveAttribute("data-state", "checked");
+  });
+
+  it("marks a disabled item and blocks onSelect", async () => {
+    const onSelect = vi.fn();
+    render(
+      <ContextMenu>
+        <ContextMenuTrigger>Right click me</ContextMenuTrigger>
+        <ContextMenuContent>
+          <ContextMenuItem disabled onSelect={onSelect}>
+            Flatten
+          </ContextMenuItem>
+        </ContextMenuContent>
+      </ContextMenu>
+    );
+    fireEvent.contextMenu(screen.getByText("Right click me"));
+    expect(screen.getByText("Flatten")).toHaveAttribute("data-disabled");
+    await userEvent.click(screen.getByText("Flatten"));
+    expect(onSelect).not.toHaveBeenCalled();
+  });
+
+  it("renders the destructive variant with data-variant", () => {
+    render(
+      <ContextMenu>
+        <ContextMenuTrigger>Right click me</ContextMenuTrigger>
+        <ContextMenuContent>
+          <ContextMenuItem variant="destructive">Delete</ContextMenuItem>
+        </ContextMenuContent>
+      </ContextMenu>
+    );
+    fireEvent.contextMenu(screen.getByText("Right click me"));
+    expect(screen.getByText("Delete")).toHaveAttribute("data-variant", "destructive");
   });
 });

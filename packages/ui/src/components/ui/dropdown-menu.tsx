@@ -19,6 +19,7 @@ function DropdownMenuTrigger({
   return <DropdownMenuPrimitive.Trigger data-slot="dropdown-menu-trigger" {...props} />;
 }
 
+/** UI3 menu surface: dark in both themes, 13 px radius, 8 px vertical padding, 24 px rows. */
 function DropdownMenuContent({
   className,
   align = "start",
