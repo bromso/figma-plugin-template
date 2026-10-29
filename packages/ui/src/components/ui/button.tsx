@@ -8,22 +8,23 @@ import type * as React from "react";
  * Kit refs: Primary 2012:48558, Secondary 2012:48574.
  */
 const buttonVariants = cva(
-  "group/button inline-flex shrink-0 items-center justify-center gap-1 rounded-md border border-transparent text-sm font-medium tracking-ui3 whitespace-nowrap transition-colors outline-none select-none focus-visible:border-figma-border-selected disabled:pointer-events-none disabled:border-transparent disabled:bg-figma-bg-disabled disabled:text-figma-text-disabled aria-invalid:border-figma-border-danger [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+  "group/button inline-flex shrink-0 items-center justify-center gap-1 rounded-md border border-transparent text-sm font-medium tracking-ui3 whitespace-nowrap transition-colors outline-none select-none focus-visible:border-figma-border-selected focus-visible:ring-1 focus-visible:ring-figma-border-selected focus-visible:ring-offset-1 focus-visible:ring-offset-background disabled:pointer-events-none disabled:text-figma-text-disabled aria-invalid:border-figma-border-danger [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
   {
     variants: {
       variant: {
         default:
-          "bg-primary text-primary-foreground hover:bg-figma-bg-brand-hover active:bg-figma-bg-brand-pressed focus-visible:border-figma-border-selected-strong",
+          "bg-primary text-primary-foreground hover:bg-figma-bg-brand-hover active:bg-figma-bg-brand-pressed disabled:border-transparent disabled:bg-figma-bg-disabled",
         secondary:
-          "border-figma-border-translucent bg-transparent text-foreground hover:bg-figma-bg-hover active:bg-figma-bg-pressed aria-expanded:bg-figma-bg-pressed",
+          "border-figma-border-translucent bg-transparent text-foreground hover:bg-figma-bg-hover active:bg-figma-bg-pressed aria-expanded:bg-figma-bg-pressed disabled:bg-transparent",
         outline:
-          "border-figma-border-translucent bg-transparent text-foreground hover:bg-figma-bg-hover active:bg-figma-bg-pressed aria-expanded:bg-figma-bg-pressed",
+          "border-figma-border-translucent bg-transparent text-foreground hover:bg-figma-bg-hover active:bg-figma-bg-pressed aria-expanded:bg-figma-bg-pressed disabled:bg-transparent",
         ghost:
-          "bg-transparent text-foreground hover:bg-figma-bg-hover active:bg-figma-bg-pressed aria-expanded:bg-figma-bg-pressed",
+          "bg-transparent text-foreground hover:bg-figma-bg-hover active:bg-figma-bg-pressed aria-expanded:bg-figma-bg-pressed disabled:bg-transparent",
         destructive:
-          "bg-figma-bg-danger text-figma-text-ondanger hover:bg-figma-bg-danger-hover focus-visible:border-figma-border-danger",
-        link: "text-figma-text-brand underline-offset-2 hover:underline",
+          "bg-figma-bg-danger text-figma-text-ondanger hover:bg-figma-bg-danger-hover disabled:border-transparent disabled:bg-figma-bg-disabled",
+        link: "text-figma-text-brand underline-offset-2 hover:underline disabled:no-underline",
       },
+      // sm/xs and icon-sm/icon-xs are kept as aliases for compatibility with existing call sites.
       size: {
         default: "h-6 px-2",
         sm: "h-5 px-1.5 text-xs [&_svg:not([class*='size-'])]:size-3",

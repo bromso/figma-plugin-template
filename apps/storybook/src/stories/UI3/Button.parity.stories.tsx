@@ -18,7 +18,19 @@ export const Parity: StoryObj = {
         <Button variant="secondary">Button</Button>
         <Button variant="ghost">Button</Button>
         <Button variant="destructive">Button</Button>
-        <Button disabled>Button</Button>
+        <Button variant="link">Button</Button>
+      </div>
+      <div className="flex flex-wrap gap-2">
+        <Button disabled>Disabled</Button>
+        <Button variant="secondary" disabled>
+          Disabled
+        </Button>
+        <Button variant="ghost" disabled>
+          Disabled
+        </Button>
+        <Button variant="destructive" disabled>
+          Disabled
+        </Button>
       </div>
       <div className="flex flex-wrap gap-2">
         <Button>
