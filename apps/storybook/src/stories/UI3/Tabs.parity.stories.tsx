@@ -14,6 +14,9 @@ export const Parity: StoryObj = {
           <TabsTrigger value="design">Active tab</TabsTrigger>
           <TabsTrigger value="proto">Second tab</TabsTrigger>
           <TabsTrigger value="inspect">Third tab</TabsTrigger>
+          <TabsTrigger value="off" disabled>
+            Disabled
+          </TabsTrigger>
         </TabsList>
         <TabsContent value="design">Design content</TabsContent>
         <TabsContent value="proto">Prototype content</TabsContent>
