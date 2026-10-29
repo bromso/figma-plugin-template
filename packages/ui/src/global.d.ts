@@ -1,10 +1,11 @@
 /// <reference types="bun" />
 
 import type { TestingLibraryMatchers } from "@testing-library/jest-dom/matchers";
+import type { AsymmetricMatcher, expect } from "bun:test";
+
+type StringMatcher = ReturnType<typeof expect.stringContaining>;
 
 declare module "bun:test" {
-  // biome-ignore lint/suspicious/noEmptyInterface: module augmentation, not an alias
-  interface Matchers<T> extends TestingLibraryMatchers<typeof expect.stringContaining, T> {}
-  // biome-ignore lint/suspicious/noEmptyInterface: module augmentation, not an alias
-  interface AsymmetricMatchers extends TestingLibraryMatchers<unknown, unknown> {}
+  interface Matchers<T> extends TestingLibraryMatchers<StringMatcher, T> {}
+  interface AsymmetricMatchers extends TestingLibraryMatchers<StringMatcher, AsymmetricMatcher> {}
 }
