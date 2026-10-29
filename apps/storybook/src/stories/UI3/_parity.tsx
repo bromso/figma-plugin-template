@@ -1,3 +1,4 @@
+import { cn } from "@repo/ui";
 import type { ReactNode } from "react";
 
 type ParityFrameProps = {
@@ -16,22 +17,18 @@ const col = "flex min-w-[240px] flex-col gap-2 rounded-xl p-4";
 export function ParityFrame({ children, reference, caption, portaled }: ParityFrameProps) {
   return (
     <div className="flex flex-wrap items-start gap-6 font-sans text-sm text-foreground">
-      <div className={`${col} bg-figma-bg ring-1 ring-figma-border`}>
+      <div className={cn(col, "bg-figma-bg ring-1 ring-figma-border")}>
         <span className="text-figma-text-secondary">Light</span>
         {children}
       </div>
       {!portaled && (
-        <div className={`dark ${col} bg-figma-bg ring-1 ring-figma-border`}>
+        <div className={cn("dark", col, "bg-figma-bg ring-1 ring-figma-border")}>
           <span className="text-figma-text-secondary">Dark</span>
           {children}
         </div>
       )}
       <figure className="m-0 flex max-w-[560px] flex-col gap-2">
-        <img
-          src={reference}
-          alt={caption}
-          className="max-w-full rounded-md ring-1 ring-figma-border"
-        />
+        <img src={reference} alt="" className="max-w-full rounded-md ring-1 ring-figma-border" />
         <figcaption className="text-figma-text-secondary">Kit reference: {caption}</figcaption>
       </figure>
       {portaled && (

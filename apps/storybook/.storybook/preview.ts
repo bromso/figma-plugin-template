@@ -22,7 +22,6 @@ const preview: Preview = {
     (Story, context) => {
       const dark = context.globals.theme === "dark";
       document.documentElement.classList.toggle("dark", dark);
-      document.body.style.background = "var(--color-background)";
       return Story();
     },
   ],
