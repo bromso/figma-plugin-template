@@ -2129,7 +2129,7 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 
 **Files:** none planned; fix only what renders broken.
 
-- [ ] **Step 1: Controller builds Storybook and Jonas pages through every existing story in light and dark** using the toolbar toggle. Anything that overflows, clips, or is unreadable at the new scale gets a minimal class fix in its own `fix(ui): …` commit. Known candidates: `calendar.tsx` (day cells assume 32 px), `input-otp.tsx` (slot size), `sidebar.tsx` (hard-coded widths), `slider.tsx` (thumb 16 px is fine), `pagination.tsx` (uses `buttonVariants`, follows automatically).
+- [ ] **Step 1: Controller builds Storybook and Jonas pages through every existing story in light and dark** using the toolbar toggle. Anything that overflows, clips, or is unreadable at the new scale gets a minimal class fix in its own `fix(ui): …` commit. Known candidates from the Task 4 review: `sheet.tsx:99`, `drawer.tsx:89`, `card.tsx:40` titles are `text-base font-medium` and now equal body text, so change them to `text-lg` or `font-semibold`; `calendar.tsx:77,83` weekday labels are `text-[0.8rem]` (12.8 px) and now larger than the 11 px day numbers, so change to `text-sm`; `input-group.tsx:25` uses `rounded-[calc(var(--radius)-5px)]` which is now 0 px, so change to `rounded-sm`; `input-otp.tsx:55` digits at 11 px may want `text-lg`; `sidebar.tsx` hard-coded widths; every unmatched `text-xs` is now 9 px, check kbd, sidebar badges and chart tooltips.
 
 - [ ] **Step 2: Verify** shared command plus `bun run lint`.
 
