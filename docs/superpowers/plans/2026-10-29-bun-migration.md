@@ -724,7 +724,7 @@ Replace the `"devDependencies"` object in `apps/design-plugin/package.json` with
 
 - [ ] **Step 3: Remove Vite and Vitest from packages/ui**
 
-In `packages/ui/package.json` remove these devDependencies lines:
+In `packages/ui/package.json` remove each of these devDependency keys (Task 4's `bun add` sorted the file alphabetically, so they are no longer contiguous; delete them one by one):
 
 ```json
     "@vitejs/plugin-react": "^6.0.0",
@@ -734,7 +734,7 @@ In `packages/ui/package.json` remove these devDependencies lines:
     "vitest": "^4.1.4"
 ```
 
-and change `"types": "tsc --noEmit && tsc --noEmit -p tsconfig.node.json"` to `"types": "tsc --noEmit"`.
+Also change `"tailwindcss": "^4.2.3"` to `"tailwindcss": "^4.3.3"` so it matches `apps/design-plugin` (one Tailwind source of truth). Then change `"types": "tsc --noEmit && tsc --noEmit -p tsconfig.node.json"` to `"types": "tsc --noEmit"`.
 
 - [ ] **Step 4: Remove Vitest from packages/common**
 
@@ -745,7 +745,7 @@ In `packages/common/package.json` remove:
     "vitest": "^4.1.4"
 ```
 
-add `"@types/bun": "^1.4.4"` to devDependencies, and change `"types"` to `"tsc --noEmit"`.
+and change `"types"` to `"tsc --noEmit"`. (`@types/bun` and `"types": ["bun"]` in `tsconfig.json` were already added by the Task 4 review fix; do not add them again.)
 
 - [ ] **Step 5: Reinstall and confirm Vite survives only in Storybook**
 
@@ -755,6 +755,14 @@ grep -n '"vite"\|vitest\|@vitejs\|happy-dom"' apps/*/package.json packages/*/pac
 ```
 
 Expected: matches only in `apps/storybook/package.json`.
+
+Also confirm only one happy-dom remains in the lockfile:
+
+```bash
+grep -o '"happy-dom@[0-9.]*"' bun.lock | sort -u
+```
+
+Expected: a single line, `"happy-dom.0.4"` (the registrator's copy); the old 20.9.0 entry must be gone.
 
 - [ ] **Step 6: Make sure the UI package's tsconfig still includes the new d.ts**
 
@@ -778,9 +786,7 @@ bunx turbo run build-storybook --filter=@repo/storybook
 
 Expected: every command exits 0. Storybook still builds because it kept its own Vite.
 
-Fix the two likely `types` failures only if they appear:
-- `Cannot find type definition file for 'node'` in `packages/ui` → add `"types": ["bun"]` to its `compilerOptions`.
-- `import.meta.dir` not on type → confirms `@types/bun` is missing from that package; add it.
+Note on TypeScript 6: `types` defaults to `[]`, so `@types/*` packages are not auto-included. `packages/common` already sets `"types": ["bun"]` and `packages/ui` already has `/// <reference types="bun" />` in `src/global.d.ts` (both from the Task 4 review fix). If `types` still fails after removing `@types/node`, the failing package needs the same treatment; do not re-add `@types/node`.
 
 - [ ] **Step 8: Commit**
 
@@ -845,6 +851,8 @@ Only build-system wording changes. Stale paths and component counts elsewhere ar
 
 - [ ] **Step 1: README**
 
+Line 5, replace the Bun badge `![Bun](https://img.shields.io/badge/bun-1.3-f9f1e1?logo=bun)` with `![Bun](https://img.shields.io/badge/bun-1.4-f9f1e1?logo=bun)`.
+
 Line 8, replace the Vite badge:
 
 ```md
@@ -867,6 +875,8 @@ Line 45: `  design-plugin/  — Figma plugin app (Vite builds to dist/)` → `  
 
 - [ ] **Step 2: CONTRIBUTING**
 
+Line 8: `- [Bun](https://bun.sh) >= 1.0` → `- [Bun](https://bun.sh) >= 1.4.2`
+
 Line 26: `| \`bun run test\` | Run all tests (Vitest) |` → `| \`bun run test\` | Run all tests (bun test) |`
 
 - [ ] **Step 3: CLAUDE.md build-system sections**
@@ -886,7 +896,11 @@ Turborepo orchestrates tasks. The plugin is built by one script, `apps/design-pl
 `bun run dev` runs the same script with `--watch`; `bun run analyze` adds `dist/meta-*.json` size reports. Figma requires the UI to be a single HTML file — never add external file references.
 
 Storybook (`apps/storybook`) is the only workspace that still uses Vite.
+
+Bun does not downlevel syntax: `dist/plugin.js` ships modern JavaScript unchanged (verified running in Figma's sandbox), so there is no `target: es2017` any more.
 ```
+
+Line 135: `- **Bun 1.3.11** — Package manager (sole lockfile: `bun.lock`)` → `- **Bun 1.4.2** — Package manager, bundler and test runner (sole lockfile: `bun.lock`)`
 
 Line 138: `- **Vitest 4.x** — Testing framework (happy-dom for UI, node for common)` → `- **bun test** — Testing framework (happy-dom via preload for UI, plain runtime for common)`
 
@@ -1014,6 +1028,9 @@ Plan: docs/superpowers/plans/2026-10-29-bun-migration.md
 - [ ] Plugin imported from `dist/manifest.json` renders in Figma desktop, light and dark
 - [ ] createRect handler creates a rectangle
 - [ ] Storybook builds
+
+## Known follow-ups (not in this PR)
+- 18 React "not wrapped in act(...)" warnings from Radix overlay tests (alert-dialog, dialog, hover-card, sheet, tooltip). Pre-existing async updates; fix by awaiting `findBy*`/`waitFor` in those tests. Tracked for stream 2.
 
 🤖 Generated with [Claude Code](https://claude.com/claude-code)
 PRBODY
