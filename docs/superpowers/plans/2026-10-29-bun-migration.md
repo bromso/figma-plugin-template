@@ -1048,6 +1048,7 @@ Plan: docs/superpowers/plans/2026-10-29-bun-migration.md
 - [ ] Storybook builds
 
 ## Known follow-ups (not in this PR)
+- `biome.json` does not exclude the PWA files that `next build` writes into `apps/docs/public` (`sw.js`, `swe-worker-*.js`, `workbox-*.js`, all gitignored). Running `bun run lint` after a docs build therefore fails with ~70 errors. CI is unaffected (lint runs before build). Fix in stream 2 by adding `!**/public/sw.js`, `!**/public/swe-worker-*.js`, `!**/public/workbox-*.js` to `files.includes`.
 - 18 React "not wrapped in act(...)" warnings from Radix overlay tests (alert-dialog, dialog, hover-card, sheet, tooltip). Pre-existing async updates; fix by awaiting `findBy*`/`waitFor` in those tests. Tracked for stream 2.
 
 🤖 Generated with [Claude Code](https://claude.com/claude-code)
