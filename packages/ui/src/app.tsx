@@ -3,6 +3,7 @@ import {
   Button,
   Checkbox,
   Dialog,
+  DialogClose,
   DialogContent,
   DialogDescription,
   DialogFooter,
@@ -15,7 +16,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuShortcut,
   DropdownMenuTrigger,
-  Icon,
   IconButton,
   Input,
   Label,
@@ -43,8 +43,8 @@ import {
 function App() {
   return (
     <TooltipProvider>
-      <div className="flex h-full flex-col overflow-y-auto bg-background text-foreground">
-        <Tabs defaultValue="design" className="gap-0">
+      <div className="flex h-full flex-col bg-background text-foreground">
+        <Tabs defaultValue="design" className="min-h-0 flex-1 gap-0">
           <div className="flex h-10 items-center justify-between border-b border-figma-border px-2">
             <TabsList>
               <TabsTrigger value="design">Design</TabsTrigger>
@@ -52,7 +52,7 @@ function App() {
             </TabsList>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <IconButton iconProps={{ name: "lucide:plus" }} aria-label="More" />
+                <IconButton iconProps={{ name: "lucide:ellipsis" }} aria-label="More" />
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
                 <DropdownMenuItem>
@@ -69,13 +69,13 @@ function App() {
             </DropdownMenu>
           </div>
 
-          <TabsContent value="design" className="flex flex-col">
+          <TabsContent value="design" className="flex min-h-0 flex-col overflow-y-auto">
             <section className="flex flex-col gap-2 border-b border-figma-border p-2 pb-4">
               <SectionTitle>Layer</SectionTitle>
-              <Input placeholder="Layer name" />
-              <Textarea placeholder="Description" rows={2} />
+              <Input placeholder="Layer name" aria-label="Layer name" />
+              <Textarea placeholder="Description" aria-label="Description" rows={2} />
               <Select defaultValue="fill">
-                <SelectTrigger className="w-full">
+                <SelectTrigger className="w-full" aria-label="Sizing">
                   <SelectValue placeholder="Choose…" />
                 </SelectTrigger>
                 <SelectContent>
@@ -119,7 +119,11 @@ function App() {
                 <Badge variant="secondary">New</Badge>
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <Icon name="lucide:info" className="size-4 text-figma-icon-secondary" />
+                    <IconButton
+                      size="icon-sm"
+                      iconProps={{ name: "lucide:info", className: "text-figma-icon-secondary" }}
+                      aria-label="More info"
+                    />
                   </TooltipTrigger>
                   <TooltipContent>
                     Tooltip text <span className="text-figma-text-tooltip-secondary">⌘V</span>
@@ -137,11 +141,15 @@ function App() {
                     </DialogHeader>
                     <div className="flex flex-col gap-2 p-4">
                       <DialogDescription>Give the selected layers a new name.</DialogDescription>
-                      <Input placeholder="New name" />
+                      <Input placeholder="New name" aria-label="New name" />
                     </div>
                     <DialogFooter>
-                      <Button variant="secondary">Cancel</Button>
-                      <Button>Rename</Button>
+                      <DialogClose asChild>
+                        <Button variant="secondary">Cancel</Button>
+                      </DialogClose>
+                      <DialogClose asChild>
+                        <Button>Rename</Button>
+                      </DialogClose>
                     </DialogFooter>
                   </DialogContent>
                 </Dialog>
@@ -149,7 +157,10 @@ function App() {
               </div>
             </section>
           </TabsContent>
-          <TabsContent value="proto" className="p-2 text-figma-text-secondary">
+          <TabsContent
+            value="proto"
+            className="min-h-0 overflow-y-auto p-2 text-figma-text-secondary"
+          >
             Prototype settings go here.
           </TabsContent>
         </Tabs>

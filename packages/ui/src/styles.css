@@ -273,6 +273,11 @@ html.figma-dark {
 }
 
 @layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
   html {
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;

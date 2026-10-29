@@ -9,7 +9,7 @@ export function SectionTitle({ children, className, ...props }: SectionTitleProp
   return (
     <p
       className={cn(
-        "text-[11px] font-semibold uppercase text-muted-foreground tracking-wider",
+        "flex h-8 items-center text-sm font-semibold tracking-ui3 text-foreground",
         className
       )}
       {...props}
