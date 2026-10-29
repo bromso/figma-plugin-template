@@ -382,7 +382,7 @@ Run the plugin in a Figma Design file. Expected: an 800×650 window titled "My F
 
 Open the plugin console (**Plugins → Development → Show/Hide console**). Expected: `Bootstrapped @ Plugin-side` and `Plugin side said Hey there, UI!`-style logs, no red errors.
 
-Result: PASS on rendering (2026-10-29, Jonas, screenshot): all four sections styled, icons present, no errors reported. Dark mode FAILED, and Jonas confirmed it had never worked on the Vite build either. Root cause (Figma docs, CSS Variables and Theming): `figma.showUI` was never called with `themeColors: true`, so Figma never adds `html.figma-dark`. Fixed out of plan in commit `7eec96d` (two lines in `plugin.ts`). Dark-mode re-check after the fix: pending.
+Result: PASS on rendering (2026-10-29, Jonas, screenshot): all four sections styled, icons present, no errors reported. Dark mode FAILED, and Jonas confirmed it had never worked on the Vite build either. Root cause (Figma docs, CSS Variables and Theming): `figma.showUI` was never called with `themeColors: true`, so Figma never adds `html.figma-dark`. Fixed out of plan in commit `7eec96d` (two lines in `plugin.ts`). Dark-mode re-check after the fix: PASS (2026-10-29, Jonas, screenshot): dark background and tokens apply. Component styling still needs alignment with Figma native UI3; deferred to its own phase.
 
 - [ ] **Step 4: Criterion 2 — sandbox handlers behave**
 
