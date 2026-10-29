@@ -1609,8 +1609,11 @@ Shared menu classes (used verbatim in Tasks 15, 16, 17):
 
 ```
 MENU_PANEL  = "z-50 min-w-52 origin-(--radix-dropdown-menu-content-transform-origin) overflow-x-hidden overflow-y-auto rounded-xl bg-figma-bg-menu py-2 text-figma-text-menu shadow-menu duration-100 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95"
-MENU_ROW    = "relative mx-2 flex min-h-6 cursor-default items-center gap-1 rounded-md px-2 text-sm font-medium tracking-ui3 outline-hidden select-none focus:bg-figma-bg-menu-selected focus:text-figma-text-menu data-open:bg-figma-bg-menu-selected data-open:text-figma-text-menu data-disabled:pointer-events-none data-disabled:text-figma-text-menu-secondary [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 [&_svg]:text-figma-icon-menu"
-MENU_CHECK  = MENU_ROW + " pl-6"                       (indicator sits absolutely at left-1)
+MENU_ROW    = "relative mx-2 flex min-h-6 cursor-default items-center gap-1 rounded-md px-2 text-sm font-medium tracking-ui3 outline-hidden select-none focus:bg-figma-bg-menu-selected focus:text-figma-text-menu data-open:bg-figma-bg-menu-selected data-open:text-figma-text-menu data-disabled:pointer-events-none data-disabled:text-figma-text-menu-disabled [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
+              (icons inherit the row colour; the Task 15 review dropped `[&_svg]:text-figma-icon-menu` so disabled and destructive rows tint their icons)
+MENU_CHECK  = MENU_ROW + " pl-6 group/<family>-item"   (indicator sits absolutely at left-1; the group name lets shortcuts inside check rows turn white on focus)
+MENU_DANGER = "data-[variant=destructive]:text-figma-text-menu-danger data-[variant=destructive]:focus:bg-figma-bg-danger data-[variant=destructive]:focus:text-figma-text-ondanger"
+              (uses the menu-specific `--ui3-text-menu-danger` token added in Task 15; `text-figma-text-danger` fails contrast on the dark panel in light mode)
 MENU_LABEL  = "flex h-6 items-center px-4 text-sm font-medium tracking-ui3 text-figma-text-menu-secondary"   (16 px aligns with plain rows; Select uses pl-8 because every row has the check gutter)
 MENU_SEP    = "my-2 h-px bg-figma-border-menu"
 MENU_SHORT  = "ml-auto text-sm tracking-ui3 text-figma-text-menu-secondary group-focus/dropdown-menu-item:text-figma-text-menu"
@@ -1702,13 +1705,13 @@ Parity: the `UI3/Menu` story from Task 15 is the reference for all three menu fa
 - [ ] **Step 1: Apply the shared menu classes** (same mapping as Task 15, with `dropdown-menu` → `context-menu` in the group names and `--radix-dropdown-menu-content-transform-origin` → `--radix-context-menu-content-transform-origin`):
 
 - `ContextMenuContent` (line ~116): className → `MENU_PANEL` (no width classes).
-- `ContextMenuItem` (line ~76): `MENU_ROW` + ` group/context-menu-item data-inset:pl-6 data-[variant=destructive]:text-figma-text-danger data-[variant=destructive]:focus:bg-figma-bg-danger data-[variant=destructive]:focus:text-figma-text-ondanger`.
-- `ContextMenuCheckboxItem` (~138) and `ContextMenuRadioItem` (~167): `MENU_CHECK`; the indicator spans (lines ~144, ~172) → `"pointer-events-none absolute left-1 flex size-4 items-center justify-center"`.
-- `ContextMenuLabel` (~194): `MENU_LABEL` + ` data-inset:pl-6`.
+- `ContextMenuItem` (line ~76): `MENU_ROW` + ` group/context-menu-item data-inset:pl-6 ` + `MENU_DANGER`.
+- `ContextMenuCheckboxItem` (~138) and `ContextMenuRadioItem` (~167): `MENU_CHECK` with `group/context-menu-item`; the indicator spans (lines ~144, ~172) → `"pointer-events-none absolute left-1 flex size-4 items-center justify-center"`.
+- `ContextMenuLabel` (~194): `MENU_LABEL` + ` data-inset:pl-8`.
 - `ContextMenuSeparator` (~209): `MENU_SEP`.
 - `ContextMenuShortcut` (~220): `MENU_SHORT` with `group-focus/context-menu-item`.
-- `ContextMenuSubTrigger` (~97): `MENU_ROW` + ` data-inset:pl-6`.
-- `ContextMenuSubContent` (~52): `MENU_PANEL` with `min-w-40`.
+- `ContextMenuSubTrigger` (~97): `MENU_ROW` + ` data-inset:pl-6 group/context-menu-item`.
+- `ContextMenuSubContent` (~52): `MENU_PANEL` with `min-w-40`, plus `max-h-(--radix-context-menu-content-available-height)` after `z-50`.
 
 - [ ] **Step 2: Verify** (shared command; `context-menu.test.tsx` has one pre-existing skip).
 
@@ -1738,13 +1741,13 @@ Parity: covered by the `UI3/Menu` story (Task 15) plus the existing `Navigation/
 - [ ] **Step 2: Menu content** (same shared classes; group name `menubar-item`, origin `--radix-menubar-content-transform-origin`):
 
 - `MenubarContent` (~65): `MENU_PANEL`.
-- `MenubarItem` (~89): `MENU_ROW` + ` group/menubar-item data-inset:pl-6 data-[variant=destructive]:text-figma-text-danger data-[variant=destructive]:focus:bg-figma-bg-danger data-[variant=destructive]:focus:text-figma-text-ondanger`.
-- `MenubarCheckboxItem` (~111) and `MenubarRadioItem` (~140): `MENU_CHECK`; their indicator spans (~117, ~145) → `"pointer-events-none absolute left-1 flex size-4 items-center justify-center [&_svg:not([class*='size-'])]:size-4"`.
-- `MenubarLabel` (~166): `MENU_LABEL` + ` data-inset:pl-6`.
+- `MenubarItem` (~89): `MENU_ROW` + ` group/menubar-item data-inset:pl-6 ` + `MENU_DANGER`.
+- `MenubarCheckboxItem` (~111) and `MenubarRadioItem` (~140): `MENU_CHECK` with `group/menubar-item`; their indicator spans (~117, ~145) → `"pointer-events-none absolute left-1 flex size-4 items-center justify-center [&_svg:not([class*='size-'])]:size-4"`.
+- `MenubarLabel` (~166): `MENU_LABEL` + ` data-inset:pl-8`.
 - `MenubarSeparator` (~179): `MENU_SEP`.
 - `MenubarShortcut` (~190): `MENU_SHORT` with `group-focus/menubar-item`.
-- `MenubarSubTrigger` (~215): `MENU_ROW` + ` data-inset:pl-6`.
-- `MenubarSubContent` (~234): `MENU_PANEL` with `min-w-40`.
+- `MenubarSubTrigger` (~215): `MENU_ROW` + ` data-inset:pl-6 group/menubar-item`.
+- `MenubarSubContent` (~234): `MENU_PANEL` with `min-w-40`, plus `max-h-(--radix-menubar-content-available-height)` after `z-50`.
 
 - [ ] **Step 3: Verify, commit**
 
