@@ -74,7 +74,7 @@ function CommandInput({
           )}
           {...props}
         />
-        <InputGroupAddon className="py-0">
+        <InputGroupAddon>
           <SearchIcon className="size-4 shrink-0 text-figma-icon-menu" />
         </InputGroupAddon>
       </InputGroup>

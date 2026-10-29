@@ -13,7 +13,7 @@ function InputGroup({ className, ...props }: React.ComponentProps<"div">) {
       data-slot="input-group"
       role="group"
       className={cn(
-        "group/input-group relative flex h-6 w-full min-w-0 items-center rounded-md border border-transparent bg-figma-bg-secondary transition-colors outline-none hover:border-figma-border has-[[data-slot=input-group-control]:focus-visible]:border-figma-border-selected has-disabled:bg-figma-bg-disabled has-disabled:text-figma-text-disabled has-[[data-slot][aria-invalid=true]]:border-figma-border-danger in-data-[slot=combobox-content]:focus-within:border-inherit in-data-[slot=combobox-content]:focus-within:ring-0 in-data-[slot=command]:hover:border-transparent in-data-[slot=command]:has-[[data-slot=input-group-control]:focus-visible]:border-transparent has-[>[data-align=block-end]]:h-auto has-[>[data-align=block-end]]:flex-col has-[>[data-align=block-start]]:h-auto has-[>[data-align=block-start]]:flex-col has-[>textarea]:h-auto has-[>[data-align=block-end]]:[&>input]:pt-3 has-[>[data-align=block-start]]:[&>input]:pb-3 has-[>[data-align=inline-end]]:[&>input]:pr-1.5 has-[>[data-align=inline-start]]:[&>input]:pl-1.5",
+        "group/input-group relative flex h-6 w-full min-w-0 items-center rounded-md border border-transparent bg-figma-bg-secondary transition-colors outline-none hover:border-figma-border has-[[data-slot=input-group-control]:focus-visible]:border-figma-border-selected has-disabled:bg-transparent has-disabled:text-figma-text-disabled has-disabled:border-figma-border-translucent has-[[data-slot][aria-invalid=true]]:border-figma-border-danger in-data-[slot=combobox-content]:focus-within:border-inherit in-data-[slot=command]:hover:border-transparent has-[>[data-align=block-end]]:h-auto has-[>[data-align=block-end]]:flex-col has-[>[data-align=block-start]]:h-auto has-[>[data-align=block-start]]:flex-col has-[>textarea]:h-auto has-[>[data-align=block-end]]:[&>input]:pt-3 has-[>[data-align=block-start]]:[&>input]:pb-3 has-[>[data-align=inline-end]]:[&>input]:pr-1.5 has-[>[data-align=inline-start]]:[&>input]:pl-1.5",
         className
       )}
       {...props}
@@ -22,12 +22,12 @@ function InputGroup({ className, ...props }: React.ComponentProps<"div">) {
 }
 
 const inputGroupAddonVariants = cva(
-  "flex h-auto cursor-text items-center justify-center gap-2 py-0 text-sm font-medium text-figma-text-secondary select-none group-data-[disabled=true]/input-group:text-figma-text-disabled [&>kbd]:rounded-sm [&>svg:not([class*='size-'])]:size-4",
+  "flex h-auto cursor-text items-center justify-center gap-2 py-0 text-sm font-medium text-figma-text-secondary select-none group-has-disabled/input-group:text-figma-text-disabled [&>kbd]:rounded-sm [&>svg:not([class*='size-'])]:size-4",
   {
     variants: {
       align: {
-        "inline-start": "order-first pl-2 has-[>button]:ml-[-0.3rem] has-[>kbd]:ml-[-0.15rem]",
-        "inline-end": "order-last pr-2 has-[>button]:mr-[-0.3rem] has-[>kbd]:mr-[-0.15rem]",
+        "inline-start": "order-first pl-2 has-[>button]:-ml-1.5 has-[>kbd]:ml-[-0.15rem]",
+        "inline-end": "order-last pr-2 has-[>button]:-mr-1.5 has-[>kbd]:mr-[-0.15rem]",
         "block-start":
           "order-first w-full justify-start px-2.5 pt-2 group-has-[>input]/input-group:pt-2 [.border-b]:pb-2",
         "block-end":
@@ -65,10 +65,10 @@ function InputGroupAddon({
 const inputGroupButtonVariants = cva("flex items-center gap-2 text-sm shadow-none", {
   variants: {
     size: {
-      xs: "h-6 gap-1 rounded-sm px-1.5 [&>svg:not([class*='size-'])]:size-3.5",
+      xs: "h-5 gap-1 rounded-sm px-1.5 [&>svg:not([class*='size-'])]:size-3.5",
       sm: "",
-      "icon-xs": "size-6 rounded-sm p-0 has-[>svg]:p-0",
-      "icon-sm": "size-8 p-0 has-[>svg]:p-0",
+      "icon-xs": "size-5 rounded-sm p-0 has-[>svg]:p-0",
+      "icon-sm": "size-6 p-0 has-[>svg]:p-0",
     },
   },
   defaultVariants: {
@@ -99,7 +99,7 @@ function InputGroupText({ className, ...props }: React.ComponentProps<"span">) {
   return (
     <span
       className={cn(
-        "flex items-center gap-2 text-sm text-muted-foreground [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4",
+        "flex items-center gap-2 text-sm text-figma-text-secondary [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4",
         className
       )}
       {...props}
