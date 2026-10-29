@@ -27,8 +27,8 @@ const buttonVariants = cva(
       // sm/xs and icon-sm/icon-xs are kept as aliases for compatibility with existing call sites.
       size: {
         default: "h-6 px-2",
-        sm: "h-5 px-1.5 text-xs [&_svg:not([class*='size-'])]:size-3",
-        xs: "h-5 px-1.5 text-xs [&_svg:not([class*='size-'])]:size-3",
+        sm: "h-5 px-1.5 text-sm [&_svg:not([class*='size-'])]:size-3",
+        xs: "h-5 px-1.5 text-sm [&_svg:not([class*='size-'])]:size-3",
         lg: "h-8 px-3",
         icon: "size-6",
         "icon-sm": "size-5 [&_svg:not([class*='size-'])]:size-3",
