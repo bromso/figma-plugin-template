@@ -50,15 +50,15 @@ This template comes with AI skills that let you describe what you want and have 
 
 ## Project Overview
 
-Figma/FigJam plugin boilerplate using React, Vite, TypeScript, and Turborepo monorepo. Based on [CoconutGoodie/figma-plugin-react-vite](https://github.com/CoconutGoodie/figma-plugin-react-vite). Uses react-figma-ui for native Figma UI components and Storybook for component documentation.
+Figma/FigJam plugin boilerplate using React, Bun, TypeScript, and Turborepo monorepo. Based on [CoconutGoodie/figma-plugin-react-vite](https://github.com/CoconutGoodie/figma-plugin-react-vite). Uses react-figma-ui for native Figma UI components and Storybook for component documentation.
 
 ## Commands
 
 All commands use **Bun** as the package manager. Run from the repo root.
 
 - `bun run dev` — Watch mode for both plugin and UI (parallel Turborepo builds)
-- `bun run build` — Production build (UI + plugin to `apps/figma-plugin/dist/`)
-- `bun run test` — Run all tests across all packages (Vitest)
+- `bun run build` — Production build (UI + plugin to `apps/design-plugin/dist/`)
+- `bun run test` — Run all tests across all packages (bun test)
 - `bun run test:watch` — Watch mode for tests
 - `bun run lint` — Lint all packages (Biome)
 - `bun run storybook` — Start Storybook dev server (apps/storybook)
@@ -74,7 +74,7 @@ All commands use **Bun** as the package manager. Run from the repo root.
 
 ```
 apps/
-  figma-plugin/     — Figma plugin app (Vite builds to dist/)
+  design-plugin/    — Figma plugin app (build.ts bundles to dist/)
   storybook/        — Storybook component documentation
 packages/
   common/           — Shared types and network event definitions (@repo/common)
@@ -87,13 +87,13 @@ Use `@repo/*` workspace imports (not relative paths across packages):
 - `import { Button } from '@repo/ui'`
 - `import { NetworkSide } from '@repo/common'`
 
-Packages are **JIT source-only** — they export raw TypeScript (no build step). Vite resolves via workspace symlinks.
+Packages are **JIT source-only** — they export raw TypeScript (no build step). Bun resolves them via workspace links.
 
 ## Architecture
 
 The plugin runs as **two separate processes** that communicate via message passing:
 
-- **Plugin side** (`apps/figma-plugin/src/plugin/`) — Runs in Figma's sandbox with access to the Figma API (`figma.*`). No DOM access. Entry: `plugin.ts`.
+- **Plugin side** (`apps/design-plugin/src/plugin/`) — Runs in Figma's sandbox with access to the Figma API (`figma.*`). No DOM access. Entry: `plugin.ts`.
 - **UI side** (`packages/ui/src/`) — Runs in an iframe. React app with react-figma-ui components. Entry: `main.tsx` → `app.tsx`.
 - **Common** (`packages/common/src/`) — Shared between both sides. Contains network event type definitions.
 
@@ -113,18 +113,16 @@ Communication between sides uses [monorepo-networker](https://github.com/Coconut
 
 ### Build System
 
-Turborepo orchestrates parallel builds. Two Vite configs in `apps/figma-plugin/`:
-- `vite.config.ui.ts` — Builds UI; uses `vite-plugin-singlefile` to inline everything into one HTML file.
-- `vite.config.plugin.ts` — Builds plugin code; generates `dist/manifest.json` from `figma.manifest.ts`.
+Turborepo orchestrates tasks. The plugin is built by one script, `apps/design-plugin/build.ts`, run with Bun:
+- UI: `Bun.build` with the `index.html` entrypoint in standalone mode (`compile: true, target: "browser"`), which inlines all JS, CSS and assets into `dist/index.html`. Tailwind runs via `bun-plugin-tailwind`; React Compiler via `reactCompiler: true`.
+- Plugin sandbox: `Bun.build` of `src/plugin/plugin.ts` as an IIFE to `dist/plugin.js`.
+- Manifest: `dist/manifest.json` written from `figma.manifest.ts`.
 
-Both outputs land in `apps/figma-plugin/dist/`. The singlefile constraint means all assets are inlined — no external file references.
+`bun run dev` runs the same script with `--watch`; `bun run analyze` adds `dist/meta-*.json` size reports. Figma requires the UI to be a single HTML file — never add external file references.
 
-### SVG Imports
+Storybook (`apps/storybook`) is the only workspace that still uses Vite.
 
-SVGs support three import modes via `vite-plugin-react-rich-svg`:
-- `*.svg?component` — React component
-- `*.svg?url` — data URI string
-- `*.svg?raw` — raw SVG markup string
+Bun does not downlevel syntax: `dist/plugin.js` ships modern JavaScript unchanged (verified in Figma's sandbox during the Bun migration), so there is no syntax-target option.
 
 ### Styling
 
@@ -132,16 +130,16 @@ CSS Modules (`*.module.scss`) for component-scoped styles. react-figma-ui provid
 
 ## Tooling
 
-- **Bun 1.3.11** — Package manager (sole lockfile: `bun.lock`)
+- **Bun 1.4.2** — Package manager, bundler and test runner (sole lockfile: `bun.lock`)
 - **Turborepo** — Monorepo task orchestration with caching
 - **Biome 2.4.10** — Linting and formatting (root `biome.json`)
-- **Vitest 4.x** — Testing framework (happy-dom for UI, node for common)
+- **bun test** — Testing framework (happy-dom via preload for UI, plain runtime for common)
 - **Storybook 8.6.18** — Component documentation with react-figma-ui stories
-- **Vite 6** — Build tool with single-file output for Figma plugins
+- **Bun bundler** — Standalone-HTML build for the plugin UI; Vite remains only for Storybook
 
 ## Plugin Configuration
 
-`apps/figma-plugin/figma.manifest.ts` exports the Figma plugin manifest. Update `id` with your plugin's ID from Figma. This generates `dist/manifest.json` at build time.
+`apps/design-plugin/figma.manifest.ts` exports the Figma plugin manifest. Update `id` with your plugin's ID from Figma. This generates `dist/manifest.json` at build time.
 
 ## Available Skills
 

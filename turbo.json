@@ -7,7 +7,7 @@
     },
     "analyze": {
       "dependsOn": ["^build"],
-      "outputs": ["stats.html"],
+      "outputs": ["dist/meta-*.json"],
       "cache": false
     },
     "dev": {

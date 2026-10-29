@@ -5,7 +5,7 @@ Thank you for your interest in contributing to figma-plugin-template! We welcome
 ## Prerequisites
 
 - Node.js >= 18
-- [Bun](https://bun.sh) >= 1.0
+- [Bun](https://bun.sh) >= 1.4.2
 - Figma desktop app (for plugin testing)
 
 ## Getting Started
@@ -22,8 +22,8 @@ bun run build
 | Command | Description |
 |---------|-------------|
 | `bun run dev` | Watch mode (plugin + UI via Turborepo) |
-| `bun run build` | Production build to `apps/figma-plugin/dist/` |
-| `bun run test` | Run all tests (Vitest) |
+| `bun run build` | Production build to `apps/design-plugin/dist/` |
+| `bun run test` | Run all tests (bun test) |
 | `bun run test:watch` | Watch mode for tests |
 | `bun run lint` | Lint with Biome |
 | `bun run storybook` | Start Storybook dev server |
@@ -48,7 +48,7 @@ Packages are **JIT source-only** — they export raw TypeScript with no build st
 1. Run `bun run build` (or `bun run dev` for watch mode)
 2. Open the Figma desktop app
 3. Go to **Plugins > Development > Import plugin from manifest**
-4. Select `apps/figma-plugin/dist/manifest.json`
+4. Select `apps/design-plugin/dist/manifest.json`
 
 ## Submitting a Pull Request
 

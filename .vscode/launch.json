@@ -2,21 +2,32 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "type": "node",
+      "type": "bun",
       "request": "launch",
-      "name": "Debug Vitest (current file)",
-      "autoAttachChildProcesses": true,
-      "skipFiles": ["<node_internals>/**", "**/node_modules/**"],
-      "program": "${workspaceFolder}/packages/ui/node_modules/.bin/vitest",
-      "args": ["run", "${relativeFile}"],
-      "smartStep": true,
-      "console": "integratedTerminal"
+      "name": "Debug bun test (UI file)",
+      "runtime": "bun",
+      "runtimeArgs": ["test"],
+      "program": "${file}",
+      "cwd": "${workspaceFolder}/packages/ui",
+      "watchMode": false,
+      "stopOnEntry": false
+    },
+    {
+      "type": "bun",
+      "request": "launch",
+      "name": "Debug bun test (common file)",
+      "runtime": "bun",
+      "runtimeArgs": ["test"],
+      "program": "${file}",
+      "cwd": "${workspaceFolder}/packages/common",
+      "watchMode": false,
+      "stopOnEntry": false
     },
     {
       "type": "chrome",
       "request": "launch",
       "name": "Debug UI (Chrome)",
-      "url": "http://localhost:5173",
+      "url": "http://localhost:3000",
       "webRoot": "${workspaceFolder}/packages/ui/src",
       "skipFiles": ["<node_internals>/**"]
     },
@@ -28,7 +39,7 @@
       "urlFilter": "*figma*",
       "skipFiles": ["<node_internals>/**"],
       "pathMapping": {
-        "/": "${workspaceFolder}/apps/figma-plugin/src/"
+        "/": "${workspaceFolder}/apps/design-plugin/src/"
       }
     }
   ]

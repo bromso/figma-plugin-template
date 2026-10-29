@@ -1,6 +1,6 @@
+import { describe, expect, it } from "bun:test";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { describe, expect, it } from "vitest";
 import { Menubar, MenubarContent, MenubarItem, MenubarMenu, MenubarTrigger } from "./menubar";
 
 describe("Menubar interaction tests", () => {

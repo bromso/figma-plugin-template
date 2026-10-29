@@ -10,16 +10,15 @@
   },
   "scripts": {
     "lint": "biome check .",
-    "test": "vitest run",
-    "test:watch": "vitest",
-    "types": "tsc --noEmit && tsc --noEmit -p tsconfig.node.json"
+    "test": "bun test",
+    "test:watch": "bun test --watch",
+    "types": "tsc --noEmit"
   },
   "dependencies": {
     "monorepo-networker": "^2.1.0"
   },
   "devDependencies": {
-    "@types/node": "^25.0.0",
-    "typescript": "^6.0.0",
-    "vitest": "^4.1.4"
+    "@types/bun": "^1.4.4",
+    "typescript": "^6.0.0"
   }
 }
