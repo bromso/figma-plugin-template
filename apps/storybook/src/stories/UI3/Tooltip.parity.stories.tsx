@@ -8,9 +8,13 @@ export default meta;
 
 export const Parity: StoryObj = {
   render: () => (
-    <ParityFrame portaled reference={ref} caption="Tooltip: eight directions, with hotkey">
+    <ParityFrame
+      portaled
+      reference={ref}
+      caption="Tooltip: four sides, with hotkey, and a wrapping line"
+    >
       <TooltipProvider>
-        <div className="flex gap-4 py-8">
+        <div className="grid grid-cols-2 gap-x-32 gap-y-16 p-12">
           {(["top", "bottom", "left", "right"] as const).map((side) => (
             <Tooltip key={side} defaultOpen>
               <TooltipTrigger asChild>
@@ -21,6 +25,14 @@ export const Parity: StoryObj = {
               </TooltipContent>
             </Tooltip>
           ))}
+          <Tooltip defaultOpen>
+            <TooltipTrigger asChild>
+              <Button variant="secondary">long</Button>
+            </TooltipTrigger>
+            <TooltipContent side="bottom">
+              Long tooltip text that should wrap onto a second line inside the 200 px limit
+            </TooltipContent>
+          </Tooltip>
         </div>
       </TooltipProvider>
     </ParityFrame>
