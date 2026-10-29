@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Building Your Plugin (No Coding Required)
 
-This template comes with AI skills that let you describe what you want and have Claude build it for you.
+This template comes with an AI skill that lets you describe what you want and have Claude build it for you.
 
 ### Quick Start
 
@@ -23,13 +23,7 @@ This template comes with AI skills that let you describe what you want and have 
 
 ### Available Skills
 
-- **build-figma-plugin** — Build a complete plugin from a plain English description
-- **frontend-design** — Generate polished, intentional UI for your plugin
-- **shadcn** — Generate and compose UI components correctly
-- **find-skills** — Discover and install new capabilities
-- **skill-creator** — Create your own custom skills
-- **figma-use** — Required before Figma MCP tool calls
-- **figma-api** — Figma REST API reference
+- **build-figma-plugin** — Build a complete plugin from a plain English description. This is the only skill shipped with the template; install others into your own Claude Code setup if you want them.
 
 ### MCP Servers (pre-configured)
 
@@ -143,16 +137,4 @@ CSS Modules (`*.module.scss`) for component-scoped styles. react-figma-ui provid
 
 ## Available Skills
 
-### Plugin Development
-- `build-figma-plugin` — Build a complete Figma plugin from a plain English description (custom skill with architecture references)
-- `frontend-design` — Generate polished, distinctive UI (avoids generic AI aesthetics)
-- `shadcn` — Correct shadcn/ui component generation and composition
-
-### Figma Integration
-- `figma-use` — Required before any `use_figma` tool call
-- `figma-implement-design` — Translate Figma designs to code
-- `figma-api` — Figma REST API reference
-
-### Meta / Discovery
-- `find-skills` — Discover and install new skills from the skills ecosystem
-- `skill-creator` — Create new custom skills for recurring patterns
+- `build-figma-plugin` (`.agents/skills/build-figma-plugin/`) — Build a complete Figma plugin from a plain English description; its `references/` cover the architecture, the UI components and the Figma API patterns this template uses. No third-party skills are vendored into the repository.
