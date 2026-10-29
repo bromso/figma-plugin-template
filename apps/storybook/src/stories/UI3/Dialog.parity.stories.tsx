@@ -31,7 +31,7 @@ export const Parity: StoryObj = {
           <DialogHeader>
             <DialogTitle>Rename layers</DialogTitle>
           </DialogHeader>
-          <div className="flex flex-col gap-2 p-4">
+          <div className="flex min-h-0 flex-col gap-2 overflow-y-auto p-4">
             <DialogDescription>Give the selected layers a new name.</DialogDescription>
             <Input placeholder="New name" />
           </div>

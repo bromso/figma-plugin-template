@@ -56,7 +56,7 @@ function DialogContent({
         data-slot="dialog-content"
         data-size={size}
         className={cn(
-          "fixed top-1/2 left-1/2 z-50 flex w-80 max-h-[calc(100%-2rem)] max-w-[calc(100%-2rem)] -translate-x-1/2 -translate-y-1/2 flex-col rounded-xl bg-background text-sm text-foreground shadow-dialog ring-1 ring-figma-border-translucent duration-100 outline-none data-[size=lg]:w-[480px] data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95",
+          "fixed top-1/2 left-1/2 z-50 flex w-80 max-h-[calc(100%-2rem)] max-w-[calc(100%-2rem)] -translate-x-1/2 -translate-y-1/2 flex-col overflow-hidden rounded-xl bg-background text-sm text-foreground shadow-dialog ring-1 ring-figma-border-translucent duration-100 outline-none data-[size=lg]:w-[480px] data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95",
           className
         )}
         {...props}
@@ -79,7 +79,7 @@ function DialogContent({
   );
 }
 
-/** 40 px UI3 header. Put the description in the body, not the header, so the title stays centred against the close button. */
+/** 40 px UI3 header. Put the description in the body, not the header, so the title stays centred against the close button. Give the body wrapper `min-h-0 overflow-y-auto` so it scrolls instead of the window. */
 function DialogHeader({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
