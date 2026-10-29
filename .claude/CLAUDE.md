@@ -50,7 +50,7 @@ This template comes with AI skills that let you describe what you want and have 
 
 ## Project Overview
 
-Figma/FigJam plugin boilerplate using React, Vite, TypeScript, and Turborepo monorepo. Based on [CoconutGoodie/figma-plugin-react-vite](https://github.com/CoconutGoodie/figma-plugin-react-vite). Uses react-figma-ui for native Figma UI components and Storybook for component documentation.
+Figma/FigJam plugin boilerplate using React, Bun, TypeScript, and Turborepo monorepo. Based on [CoconutGoodie/figma-plugin-react-vite](https://github.com/CoconutGoodie/figma-plugin-react-vite). Uses react-figma-ui for native Figma UI components and Storybook for component documentation.
 
 ## Commands
 
@@ -74,7 +74,7 @@ All commands use **Bun** as the package manager. Run from the repo root.
 
 ```
 apps/
-  figma-plugin/     — Figma plugin app (Vite builds to dist/)
+  figma-plugin/     — Figma plugin app (build.ts bundles to dist/)
   storybook/        — Storybook component documentation
 packages/
   common/           — Shared types and network event definitions (@repo/common)
@@ -87,7 +87,7 @@ Use `@repo/*` workspace imports (not relative paths across packages):
 - `import { Button } from '@repo/ui'`
 - `import { NetworkSide } from '@repo/common'`
 
-Packages are **JIT source-only** — they export raw TypeScript (no build step). Vite resolves via workspace symlinks.
+Packages are **JIT source-only** — they export raw TypeScript (no build step). Bun resolves them via workspace links.
 
 ## Architecture
 
