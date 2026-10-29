@@ -934,7 +934,7 @@ function Checkbox({ className, ...props }: React.ComponentProps<typeof CheckboxP
     <CheckboxPrimitive.Root
       data-slot="checkbox"
       className={cn(
-        "peer relative flex size-4 shrink-0 items-center justify-center rounded-md border border-figma-border-strong bg-background text-primary-foreground transition-colors outline-none after:absolute after:-inset-1 focus-visible:border-figma-border-selected disabled:cursor-not-allowed disabled:border-figma-border-translucent disabled:bg-figma-bg-disabled disabled:text-figma-text-disabled aria-invalid:border-figma-border-danger data-checked:border-figma-border-selected-strong data-checked:bg-primary data-[state=indeterminate]:border-figma-border-selected-strong data-[state=indeterminate]:bg-primary",
+        "peer relative flex size-4 shrink-0 items-center justify-center rounded-md border border-figma-border-strong bg-background text-primary-foreground transition-colors outline-none after:absolute after:-inset-1 focus-visible:border-figma-border-selected focus-visible:ring-1 focus-visible:ring-figma-border-selected focus-visible:ring-offset-1 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:border-figma-border-translucent disabled:bg-figma-bg-disabled disabled:text-figma-text-disabled aria-invalid:border-figma-border-danger data-checked:border-figma-border-selected-strong data-checked:bg-primary data-[state=indeterminate]:border-figma-border-selected-strong data-[state=indeterminate]:bg-primary",
         className
       )}
       {...props}
@@ -1036,7 +1036,7 @@ function RadioGroupItem({
     <RadioGroupPrimitive.Item
       data-slot="radio-group-item"
       className={cn(
-        "group/radio-group-item peer relative flex aspect-square size-4 shrink-0 rounded-full border border-figma-border-strong bg-background outline-none after:absolute after:-inset-1 focus-visible:border-figma-border-selected disabled:cursor-not-allowed disabled:border-figma-border-translucent disabled:bg-figma-bg-disabled aria-invalid:border-figma-border-danger",
+        "group/radio-group-item peer relative flex aspect-square size-4 shrink-0 rounded-full border border-figma-border-strong bg-background outline-none after:absolute after:-inset-1 focus-visible:border-figma-border-selected focus-visible:ring-1 focus-visible:ring-figma-border-selected focus-visible:ring-offset-1 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:border-figma-border-translucent disabled:bg-figma-bg-disabled aria-invalid:border-figma-border-danger",
         className
       )}
       {...props}
@@ -1132,7 +1132,7 @@ function Switch({
       data-slot="switch"
       data-size={size}
       className={cn(
-        "peer group/switch relative inline-flex shrink-0 items-center rounded-full border transition-colors outline-none after:absolute after:-inset-1 focus-visible:border-figma-border-selected data-[size=default]:h-4 data-[size=default]:w-8 data-[size=sm]:h-3 data-[size=sm]:w-6 data-checked:border-transparent data-checked:bg-primary data-unchecked:border-figma-border-strong data-unchecked:bg-background data-disabled:cursor-not-allowed data-disabled:border-figma-border-translucent data-disabled:bg-figma-bg-disabled",
+        "peer group/switch relative inline-flex shrink-0 items-center rounded-full border transition-colors outline-none after:absolute after:-inset-1 focus-visible:border-figma-border-selected focus-visible:ring-1 focus-visible:ring-figma-border-selected focus-visible:ring-offset-1 focus-visible:ring-offset-background data-[size=default]:h-4 data-[size=default]:w-8 data-[size=sm]:h-3 data-[size=sm]:w-6 data-checked:border-transparent data-checked:bg-primary data-unchecked:border-figma-border-strong data-unchecked:bg-background data-disabled:cursor-not-allowed data-disabled:border-figma-border-translucent data-disabled:bg-figma-bg-disabled",
         className
       )}
       {...props}
@@ -1348,7 +1348,7 @@ function TabsTrigger({ className, ...props }: React.ComponentProps<typeof TabsPr
     <TabsPrimitive.Trigger
       data-slot="tabs-trigger"
       className={cn(
-        "relative inline-flex h-6 items-center justify-center gap-1 rounded-md border border-transparent px-2 text-sm font-medium tracking-ui3 whitespace-nowrap text-figma-text-secondary transition-colors group-data-vertical/tabs:w-full group-data-vertical/tabs:justify-start hover:bg-figma-bg-hover hover:text-foreground focus-visible:border-figma-border-selected disabled:pointer-events-none disabled:text-figma-text-disabled data-active:bg-figma-bg-secondary data-active:font-semibold data-active:text-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        "relative inline-flex h-6 items-center justify-center gap-1 rounded-md border border-transparent px-2 text-sm font-medium tracking-ui3 whitespace-nowrap text-figma-text-secondary transition-colors group-data-vertical/tabs:w-full group-data-vertical/tabs:justify-start hover:bg-figma-bg-hover hover:text-foreground focus-visible:border-figma-border-selected focus-visible:ring-1 focus-visible:ring-figma-border-selected focus-visible:ring-offset-1 focus-visible:ring-offset-background disabled:pointer-events-none disabled:text-figma-text-disabled data-active:bg-figma-bg-secondary data-active:font-semibold data-active:text-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
         "group-data-[variant=line]/tabs-list:rounded-none group-data-[variant=line]/tabs-list:hover:bg-transparent group-data-[variant=line]/tabs-list:data-active:bg-transparent group-data-[variant=line]/tabs-list:after:absolute group-data-[variant=line]/tabs-list:after:inset-x-2 group-data-[variant=line]/tabs-list:after:-bottom-px group-data-[variant=line]/tabs-list:after:h-0.5 group-data-[variant=line]/tabs-list:after:bg-foreground group-data-[variant=line]/tabs-list:after:opacity-0 group-data-[variant=line]/tabs-list:data-active:after:opacity-100",
         className
       )}
