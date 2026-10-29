@@ -6,7 +6,9 @@ import { watch } from "node:fs";
 import { rm } from "node:fs/promises";
 import path from "node:path";
 import tailwind from "bun-plugin-tailwind";
-import manifest from "./figma.manifest";
+import type manifestShape from "./figma.manifest";
+
+type Manifest = typeof manifestShape;
 
 const root = import.meta.dir;
 const uiSrc = path.resolve(root, "../../packages/ui/src");
@@ -23,8 +25,9 @@ const analyze = args.has("--analyze");
 const sourcemap = isProd ? "none" : "inline";
 
 // Bun's `metafile` option is a boolean; the data comes back on the build result.
-// bun-types documents it as a JSON string in one place and an object in another,
-// so accept both.
+// bun-types declares `BuildOutput.metafile` as an object (`BuildMetafile`), but the
+// `metafile` option's JSDoc example does `JSON.parse(result.metafile!)`, implying a
+// string. Handle both.
 async function writeMetafile(name: string, metafile: Bun.BuildOutput["metafile"]) {
   if (!metafile) return;
   const json = typeof metafile === "string" ? metafile : JSON.stringify(metafile, null, 2);
@@ -43,8 +46,10 @@ async function buildUi() {
     plugins: [tailwind],
     minify: isProd,
     sourcemap,
+    define: { "process.env.NODE_ENV": JSON.stringify(isProd ? "production" : "development") },
     metafile: analyze,
   });
+  for (const log of result.logs) console.warn(log);
   await writeMetafile("meta-ui.json", result.metafile);
 }
 
@@ -57,12 +62,21 @@ async function buildPlugin() {
     naming: "plugin.[ext]",
     minify: isProd,
     sourcemap,
+    define: { "process.env.NODE_ENV": JSON.stringify(isProd ? "production" : "development") },
     metafile: analyze,
   });
+  for (const log of result.logs) console.warn(log);
   await writeMetafile("meta-plugin.json", result.metafile);
 }
 
+async function loadManifest(): Promise<Manifest> {
+  // Query string busts Bun's module cache so edits are picked up in --watch.
+  const mod = (await import(`${manifestFile}?t=${Date.now()}`)) as { default: Manifest };
+  return mod.default;
+}
+
 async function writeManifest() {
+  const manifest = await loadManifest();
   await Bun.write(path.join(outdir, "manifest.json"), `${JSON.stringify(manifest, null, 2)}\n`);
 }
 
@@ -85,6 +99,26 @@ async function runOnce(): Promise<boolean> {
   }
 }
 
+let running = false;
+let rerun = false;
+
+// Serialise builds: a change during an in-flight build queues exactly one more.
+async function rebuild() {
+  if (running) {
+    rerun = true;
+    return;
+  }
+  running = true;
+  try {
+    do {
+      rerun = false;
+      await runOnce();
+    } while (rerun);
+  } finally {
+    running = false;
+  }
+}
+
 await rm(outdir, { recursive: true, force: true });
 
 if (watchMode) {
@@ -92,12 +126,15 @@ if (watchMode) {
   let timer: ReturnType<typeof setTimeout> | undefined;
   const schedule = () => {
     clearTimeout(timer);
-    timer = setTimeout(runOnce, 100);
+    timer = setTimeout(rebuild, 100);
   };
   for (const dir of [uiSrc, commonSrc, pluginSrc]) {
     watch(dir, { recursive: true }, schedule);
   }
-  watch(manifestFile, schedule);
+  // Watch the directory, not the file: atomic-save editors replace the inode.
+  watch(root, (_event, filename) => {
+    if (filename === "figma.manifest.ts") schedule();
+  });
   console.log("[build] watching for changes… (Ctrl+C to stop)");
 } else if (!(await runOnce())) {
   process.exit(1);
