@@ -68,6 +68,8 @@ the plan). Kit CSS variable names are shown; Figma injects the same names with a
 | `color-border-selected` | `#0d99ff` | input focus |
 | `color-border-selected-strong` | `#007be5` | checked checkbox border |
 | `color-border-menu` | `#383838` | menu divider |
+
+Figma injects no menu, tooltip or `border-translucent` variables (checked against the plugin docs on 2026-10-29), so those tokens are static kit values in both themes; `packages/ui/src/figma-variables.md` lists which tokens bind and which stay static.
 | `color-icon-onbrand` | `#ffffff` | switch knob |
 
 Dark values are whatever Figma injects; the fallback dark palette is taken from the kit's dark frames during the token task.

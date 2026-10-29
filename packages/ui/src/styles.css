@@ -30,7 +30,8 @@
    Figma colours track the user's theme live and outside Figma
    (Storybook, tests) the fallback palette applies.
    Never define --figma-color-* here: Figma owns those names.
-   Fallback values: packages/ui/src/figma-variables.md (Task 1).
+   Which names Figma injects, and which stay static, is recorded in
+   packages/ui/src/figma-variables.md.
    ============================================================ */
 :root {
   /* surfaces */
@@ -46,10 +47,10 @@
   --ui3-bg-brand-pressed: var(--figma-color-bg-brand-pressed, #007be5);
   --ui3-bg-danger: var(--figma-color-bg-danger, #f24822);
   --ui3-bg-danger-hover: var(--figma-color-bg-danger-hover, #dc3412);
-  --ui3-bg-menu: var(--figma-color-bg-menu, #1e1e1e);
-  --ui3-bg-menu-hover: var(--figma-color-bg-menu-hover, #383838);
-  --ui3-bg-menu-selected: var(--figma-color-bg-menu-selected, #0d99ff);
-  --ui3-bg-tooltip: var(--figma-color-bg-tooltip, #1e1e1e);
+  --ui3-bg-menu: #1e1e1e; /* static: Figma injects no bg-menu variable */
+  --ui3-bg-menu-hover: #383838; /* static: Figma injects no bg-menu-hover variable */
+  --ui3-bg-menu-selected: #0d99ff; /* static: Figma injects no bg-menu-selected variable */
+  --ui3-bg-tooltip: #1e1e1e; /* static: Figma injects no bg-tooltip variable */
   /* text */
   --ui3-text: var(--figma-color-text, rgba(0, 0, 0, 0.9));
   --ui3-text-secondary: var(--figma-color-text-secondary, rgba(0, 0, 0, 0.5));
@@ -59,26 +60,26 @@
   --ui3-text-onbrand: var(--figma-color-text-onbrand, #ffffff);
   --ui3-text-danger: var(--figma-color-text-danger, #dc3412);
   --ui3-text-ondanger: var(--figma-color-text-ondanger, #ffffff);
-  --ui3-text-menu: var(--figma-color-text-menu, #ffffff);
-  --ui3-text-menu-secondary: var(--figma-color-text-menu-secondary, rgba(255, 255, 255, 0.7));
-  --ui3-text-menu-danger: var(--figma-color-text-menu-danger, #ffafa3);
-  --ui3-text-menu-disabled: var(--figma-color-text-menu-disabled, rgba(255, 255, 255, 0.4));
-  --ui3-text-tooltip: var(--figma-color-text-tooltip, #ffffff);
-  --ui3-text-tooltip-secondary: var(--figma-color-text-tooltip-secondary, rgba(255, 255, 255, 0.7));
+  --ui3-text-menu: #ffffff; /* static: Figma injects no text-menu variable */
+  --ui3-text-menu-secondary: rgba(255, 255, 255, 0.7); /* static: Figma injects no text-menu-secondary variable */
+  --ui3-text-menu-danger: #ffafa3; /* static: Figma injects no text-menu-danger variable */
+  --ui3-text-menu-disabled: rgba(255, 255, 255, 0.4); /* static: Figma injects no text-menu-disabled variable */
+  --ui3-text-tooltip: #ffffff; /* static: Figma injects no text-tooltip variable */
+  --ui3-text-tooltip-secondary: rgba(255, 255, 255, 0.7); /* static: Figma injects no text-tooltip-secondary variable */
   /* borders */
   --ui3-border: var(--figma-color-border, #e6e6e6);
-  --ui3-border-translucent: var(--figma-color-border-translucent, rgba(0, 0, 0, 0.1));
+  --ui3-border-translucent: rgba(0, 0, 0, 0.1); /* static: Figma injects no border-translucent variable */
   --ui3-border-strong: var(--figma-color-border-strong, rgba(0, 0, 0, 0.8));
   --ui3-border-selected: var(--figma-color-border-selected, #0d99ff);
   --ui3-border-selected-strong: var(--figma-color-border-selected-strong, #007be5);
   --ui3-border-danger: var(--figma-color-border-danger, #f24822);
-  --ui3-border-menu: var(--figma-color-border-menu, #383838);
+  --ui3-border-menu: #383838; /* static: Figma injects no border-menu variable */
   /* icons */
   --ui3-icon: var(--figma-color-icon, rgba(0, 0, 0, 0.9));
   --ui3-icon-secondary: var(--figma-color-icon-secondary, rgba(0, 0, 0, 0.5));
   --ui3-icon-brand: var(--figma-color-icon-brand, #007be5);
   --ui3-icon-onbrand: var(--figma-color-icon-onbrand, #ffffff);
-  --ui3-icon-menu: var(--figma-color-icon-menu, #ffffff);
+  --ui3-icon-menu: #ffffff; /* static: Figma injects no icon-menu variable */
 }
 
 :root,
@@ -130,10 +131,10 @@ html.figma-dark {
   --ui3-bg-brand-pressed: var(--figma-color-bg-brand-pressed, #0a6dc2);
   --ui3-bg-danger: var(--figma-color-bg-danger, #f24822);
   --ui3-bg-danger-hover: var(--figma-color-bg-danger-hover, #dc3412);
-  --ui3-bg-menu: var(--figma-color-bg-menu, #1e1e1e);
-  --ui3-bg-menu-hover: var(--figma-color-bg-menu-hover, #383838);
-  --ui3-bg-menu-selected: var(--figma-color-bg-menu-selected, #0c8ce9);
-  --ui3-bg-tooltip: var(--figma-color-bg-tooltip, #1e1e1e);
+  --ui3-bg-menu: #1e1e1e; /* static: Figma injects no bg-menu variable */
+  --ui3-bg-menu-hover: #383838; /* static: Figma injects no bg-menu-hover variable */
+  --ui3-bg-menu-selected: #0c8ce9; /* static: Figma injects no bg-menu-selected variable */
+  --ui3-bg-tooltip: #1e1e1e; /* static: Figma injects no bg-tooltip variable */
   --ui3-text: var(--figma-color-text, #ffffff);
   --ui3-text-secondary: var(--figma-color-text-secondary, rgba(255, 255, 255, 0.7));
   --ui3-text-tertiary: var(--figma-color-text-tertiary, rgba(255, 255, 255, 0.4));
@@ -142,24 +143,24 @@ html.figma-dark {
   --ui3-text-onbrand: var(--figma-color-text-onbrand, #ffffff);
   --ui3-text-danger: var(--figma-color-text-danger, #ffafa3);
   --ui3-text-ondanger: var(--figma-color-text-ondanger, #ffffff);
-  --ui3-text-menu: var(--figma-color-text-menu, #ffffff);
-  --ui3-text-menu-secondary: var(--figma-color-text-menu-secondary, rgba(255, 255, 255, 0.7));
-  --ui3-text-menu-danger: var(--figma-color-text-menu-danger, #ffafa3);
-  --ui3-text-menu-disabled: var(--figma-color-text-menu-disabled, rgba(255, 255, 255, 0.4));
-  --ui3-text-tooltip: var(--figma-color-text-tooltip, #ffffff);
-  --ui3-text-tooltip-secondary: var(--figma-color-text-tooltip-secondary, rgba(255, 255, 255, 0.7));
+  --ui3-text-menu: #ffffff; /* static: Figma injects no text-menu variable */
+  --ui3-text-menu-secondary: rgba(255, 255, 255, 0.7); /* static: Figma injects no text-menu-secondary variable */
+  --ui3-text-menu-danger: #ffafa3; /* static: Figma injects no text-menu-danger variable */
+  --ui3-text-menu-disabled: rgba(255, 255, 255, 0.4); /* static: Figma injects no text-menu-disabled variable */
+  --ui3-text-tooltip: #ffffff; /* static: Figma injects no text-tooltip variable */
+  --ui3-text-tooltip-secondary: rgba(255, 255, 255, 0.7); /* static: Figma injects no text-tooltip-secondary variable */
   --ui3-border: var(--figma-color-border, #444444);
-  --ui3-border-translucent: var(--figma-color-border-translucent, rgba(255, 255, 255, 0.1));
+  --ui3-border-translucent: rgba(255, 255, 255, 0.1); /* static: Figma injects no border-translucent variable */
   --ui3-border-strong: var(--figma-color-border-strong, #e6e6e6);
   --ui3-border-selected: var(--figma-color-border-selected, #0c8ce9);
   --ui3-border-selected-strong: var(--figma-color-border-selected-strong, #0c8ce9);
   --ui3-border-danger: var(--figma-color-border-danger, #f24822);
-  --ui3-border-menu: var(--figma-color-border-menu, #383838);
+  --ui3-border-menu: #383838; /* static: Figma injects no border-menu variable */
   --ui3-icon: var(--figma-color-icon, #ffffff);
   --ui3-icon-secondary: var(--figma-color-icon-secondary, rgba(255, 255, 255, 0.7));
   --ui3-icon-brand: var(--figma-color-icon-brand, #7cc4f8);
   --ui3-icon-onbrand: var(--figma-color-icon-onbrand, #ffffff);
-  --ui3-icon-menu: var(--figma-color-icon-menu, #ffffff);
+  --ui3-icon-menu: #ffffff; /* static: Figma injects no icon-menu variable */
   --chart-1: #0c8ce9;
   --chart-2: #14ae5c;
   --chart-3: #ffcd29;
@@ -295,5 +296,9 @@ html.figma-dark {
   ::before,
   ::after {
     border-color: var(--color-border);
+  }
+  /* UI3 icons are drawn at 1 px; Lucide's 2 px stroke reads heavy at 16 px. Utilities such as stroke-[2.5] still override. */
+  svg.lucide {
+    stroke-width: 1.5;
   }
 }
