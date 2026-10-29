@@ -2090,6 +2090,8 @@ export default App;
 
 - [ ] **Step 2: `plugin.ts`** — in both `showUI` calls change `width: 800, height: 650` to `width: 320, height: 480`.
 
+Review outcome: `Icon` only accepts `name`/`spin`/`className`/`style`, so `TooltipTrigger asChild` on it drops Radix's trigger props and the tooltip never opens; the trigger is an `IconButton size="icon-sm"` instead. `html, body, #root { height: 100% }` is added to `@layer base` and the Tabs root/content get `min-h-0 flex-1` + `overflow-y-auto` so the header stays fixed while the body scrolls. The header button uses a new `lucide:ellipsis` icon, dialog buttons are wrapped in `DialogClose`, inputs get `aria-label`s, and `SectionTitle` becomes a 32 px sentence-case UI3 header (`text-sm font-semibold tracking-ui3 text-foreground`).
+
 - [ ] **Step 3: Verify**
 
 Shared command (the `App.test.tsx` asserts the texts "Inputs", "Buttons", "Display", "Layout", "Primary action", "This is a tip for new users."). Update `packages/ui/src/__tests__/App.test.tsx` to the new sampler:
