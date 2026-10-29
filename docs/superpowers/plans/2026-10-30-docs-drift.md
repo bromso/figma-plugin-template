@@ -24,15 +24,15 @@ Implementers copy these; reviewers re-check them with the commands shown.
 | Custom components in `packages/ui/src/components/figma/` | Icon, IconButton, SectionTitle, Type | `ls packages/ui/src/components/figma/*.tsx \| grep -v test` |
 | Built-in icons | `lucide:plus`, `lucide:info`, `lucide:star`, `lucide:ellipsis`; `ICONS` and `registerIcons` exported | `grep -n "ellipsis\|ICONS\|registerIcons" packages/ui/src/components/figma/icon.tsx packages/ui/src/index.ts` |
 | Tests | 133 `it`/`test` calls | `grep -rhoE "^\s*(it\|test)\(" packages apps/design-plugin --include='*.test.ts' --include='*.test.tsx' \| wc -l` |
-| Root scripts | build, dev, lint, test, test:watch, analyze, types, docs, docs:build, changeset, version-packages, release, prepare. No `storybook` script. | `python3 -c "import json;print(list(json.load(open('package.json'))['scripts']))"` |
+| Root scripts | build, dev, lint, test, test:watch, analyze, types, docs, docs:build, changeset, version-packages, release, prepare, plus `storybook` and `build-storybook` added by the Task 1 fix-up (review outcome: `turbo` is only a devDependency, so `bun run storybook` is the command to document). | `python3 -c "import json;print(list(json.load(open('package.json'))['scripts']))"` |
 | Turbo tasks | build, analyze, dev, lint, test, test:watch, types, storybook, build-storybook, docs:dev, docs:build | `python3 -c "import json;print(list(json.load(open('turbo.json'))['tasks']))"` |
-| Storybook commands | `turbo run storybook` (or `bun run --filter @repo/storybook storybook`), port 6006; `turbo run build-storybook` | `grep storybook apps/storybook/package.json` |
+| Storybook commands | `bun run storybook` (root script → `turbo run storybook`; or `bun run --filter @repo/storybook storybook`), port 6006; `bun run build-storybook` | `grep storybook apps/storybook/package.json` |
 | Versions | Bun 1.4.2 (`packageManager`, `engines.bun >=1.4.2`), Biome 2.4.12, Storybook 10.3.5, Tailwind 4.3, React 19.2, TypeScript 6 | `grep -h '"storybook"\|"@biomejs/biome"\|"tailwindcss"\|"react":\|"typescript":' package.json apps/storybook/package.json packages/ui/package.json` |
 | Plugin window | `figma.showUI(__html__, { width: 320, height: 480, themeColors: true, title })` in both editors | `grep -n -A4 showUI apps/design-plugin/src/plugin/plugin.ts` |
 | Manifest | has `documentAccess: "dynamic-page"` and `networkAccess: { allowedDomains: ["none"] }` | `cat apps/design-plugin/figma.manifest.ts` |
 | Build output | `dist/index.html`, `dist/plugin.js`, `dist/manifest.json` | `ls apps/design-plugin/dist` after `bun run build` |
 | MCP servers in `.claude/settings.json` | Figma, Context7, sequential-thinking | `python3 -c "import json;print(list(json.load(open('.claude/settings.json'))['mcpServers']))"` |
-| `figma-*` colour utilities | bg: `figma-bg`, `-secondary`, `-tertiary`, `-hover`, `-pressed`, `-selected`, `-disabled`, `-brand`, `-brand-hover`, `-brand-pressed`, `-danger`, `-danger-hover`, `-menu`, `-menu-hover`, `-menu-selected`, `-tooltip`; text: `figma-text`, `-secondary`, `-tertiary`, `-disabled`, `-brand`, `-onbrand`, `-danger`, `-ondanger`, `-menu`, `-menu-secondary`, `-menu-danger`, `-menu-disabled`, `-tooltip`, `-tooltip-secondary`; border: `figma-border`, `-translucent`, `-strong`, `-selected`, `-selected-strong`, `-danger`, `-menu`; icon: `figma-icon`, `-secondary`, `-brand`, `-onbrand`, `-menu` | `grep -o "^  --color-figma-[a-z-]*" packages/ui/src/styles.css` |
+| `figma-*` color utilities | bg: `figma-bg`, `-secondary`, `-tertiary`, `-hover`, `-pressed`, `-selected`, `-disabled`, `-brand`, `-brand-hover`, `-brand-pressed`, `-danger`, `-danger-hover`, `-menu`, `-menu-hover`, `-menu-selected`, `-tooltip`; text: `figma-text`, `-secondary`, `-tertiary`, `-disabled`, `-brand`, `-onbrand`, `-danger`, `-ondanger`, `-menu`, `-menu-secondary`, `-menu-danger`, `-menu-disabled`, `-tooltip`, `-tooltip-secondary`; border: `figma-border`, `-translucent`, `-strong`, `-selected`, `-selected-strong`, `-danger`, `-menu`; icon: `figma-icon`, `-secondary`, `-brand`, `-onbrand`, `-menu` | `grep -o "^  --color-figma-[a-z-]*" packages/ui/src/styles.css` |
 | Static tokens (Figma injects no variable) | bg-menu, bg-menu-hover, bg-menu-selected, bg-tooltip, text-menu, text-menu-secondary, text-menu-danger, text-menu-disabled, text-tooltip, text-tooltip-secondary, border-menu, border-translucent, icon-menu | `grep -c "static: Figma injects no" packages/ui/src/styles.css` → 26 |
 | Scale | `text-xs` 9/12, `text-sm` 11/16 (body), `text-base` 11/16, `text-lg` 13/20, `text-xl` 15/24; weights medium 450 (body), semibold 550, bold 600; radii sm 2 px, md 5 px, lg 5 px, xl 13 px; `--tracking-ui3`; shadows `tooltip`, `menu`, `dialog`; `svg.lucide { stroke-width: 1.5 }` | `grep -n "^  --text-\|^  --font-weight\|^  --radius\|^  --shadow\|svg.lucide" packages/ui/src/styles.css` |
 | Button sizes | default `h-6`, `sm`/`xs` `h-5` (aliases), `lg` `h-8`, `icon` 24 px, `icon-sm`/`icon-xs` 20 px, `icon-lg` 32 px | `sed -n 27,36p packages/ui/src/components/ui/button.tsx` |
@@ -75,10 +75,10 @@ Write `apps/docs/content/docs/guides/theming.mdx` with exactly this content:
 ````mdx
 ---
 title: Theming and the UI3 look
-description: How the components take Figma's colours, what the figma-* utilities are, and the sizes the UI3 design uses.
+description: How the components take Figma's colors, what the figma-* utilities are, and the sizes the UI3 design uses.
 ---
 
-## Where the colours come from
+## Where the colors come from
 
 The plugin opens its window with `themeColors: true`:
 
@@ -91,7 +91,7 @@ figma.showUI(__html__, {
 });
 ```
 
-With that flag Figma injects its own colour variables (`--figma-color-bg`, `--figma-color-text`, `--figma-color-border` and about 150 more) into the plugin iframe and sets a `figma-light` or `figma-dark` class on `<html>`. When the user switches Figma's theme, the variables change and the plugin follows without a reload.
+With that flag Figma injects its own color variables (`--figma-color-bg`, `--figma-color-text`, `--figma-color-border` and about 150 more) into the plugin iframe and sets a `figma-light` or `figma-dark` class on `<html>`. When the user switches Figma's theme, the variables change and the plugin follows without a reload.
 
 `packages/ui/src/styles.css` turns those variables into the component tokens:
 
@@ -131,7 +131,7 @@ The full table with the fallback values, and a console snippet that prints the v
 
 ## The figma-* utilities
 
-Every token is a Tailwind colour, so it works with any colour utility: `bg-figma-bg-secondary`, `text-figma-text-secondary`, `border-figma-border`, `ring-figma-border-selected`, `fill-figma-bg-tooltip`.
+Every token is a Tailwind color, so it works with any color utility: `bg-figma-bg-secondary`, `text-figma-text-secondary`, `border-figma-border`, `ring-figma-border-selected`, `fill-figma-bg-tooltip`.
 
 ```tsx
 <section className="border-b border-figma-border p-2">
@@ -139,7 +139,7 @@ Every token is a Tailwind colour, so it works with any colour utility: `bg-figma
 </section>
 ```
 
-Use a `figma-*` utility when the kit names the surface you want: a secondary text colour, the panel divider, the hover background. Use the shadcn alias when a shadcn component already applies it for you; there is no need to override `bg-background` on a `Dialog`. Never write a hex colour or an `rgba()` value in a component; it will not follow the theme.
+Use a `figma-*` utility when the kit names the surface you want: a secondary text color, the panel divider, the hover background. Use the shadcn alias when a shadcn component already applies it for you; there is no need to override `bg-background` on a `Dialog`. Never write a hex color or an `rgba()` value in a component; it will not follow the theme.
 
 Menus, dropdowns, context menus, the menubar, the command palette and tooltips are dark in both themes. They use the static `figma-*-menu` and `figma-*-tooltip` tokens, so do not wrap them in `dark:` variants or give them light backgrounds.
 
@@ -274,8 +274,8 @@ Replace the two command lists with:
 - `bun run types` — Type-check all packages
 - `bun run lint` — Lint all packages (Biome)
 - `bun run docs` — Start the documentation site (Next.js, port 3000)
-- `turbo run storybook` — Start Storybook (apps/storybook, port 6006); there is no root `storybook` script
-- `turbo run build-storybook` — Build static Storybook (cached by Turborepo)
+- `bun run storybook` — Start Storybook (apps/storybook, port 6006)
+- `bun run build-storybook` — Build static Storybook (cached by Turborepo)
 
 ### Package-scoped commands
 
@@ -336,7 +336,7 @@ with:
 ```markdown
 ### Styling and theming
 
-Tailwind CSS 4 only; there are no CSS Modules. `packages/ui/src/styles.css` defines `--ui3-*` tokens as `var(--figma-color-*, <UI3 kit fallback>)`, so inside Figma (`showUI` with `themeColors: true`) the colours follow the user's theme live, and in Storybook or tests the fallbacks apply. The tokens are exposed as `figma-*` Tailwind colours (`bg-figma-bg-secondary`, `text-figma-text-secondary`, `border-figma-border`, …) and also back the shadcn aliases (`bg-background`, `text-muted-foreground`, …). Menus and tooltips are dark in both themes by design. The scale is 24 px controls, 11 px Inter at weight 450, 5 px radius (13 px for menus and dialogs). Never hard-code a colour. Full explanation: `apps/docs/content/docs/guides/theming.mdx`; the bound-versus-static token table is `packages/ui/src/figma-variables.md`.
+Tailwind CSS 4 only; there are no CSS Modules. `packages/ui/src/styles.css` defines `--ui3-*` tokens as `var(--figma-color-*, <UI3 kit fallback>)`, so inside Figma (`showUI` with `themeColors: true`) the colors follow the user's theme live, and in Storybook or tests the fallbacks apply. The tokens are exposed as `figma-*` Tailwind colors (`bg-figma-bg-secondary`, `text-figma-text-secondary`, `border-figma-border`, …) and also back the shadcn aliases (`bg-background`, `text-muted-foreground`, …). Menus and tooltips are dark in both themes by design. The scale is 24 px controls, 11 px Inter at weight 450, 5 px radius (13 px for menus and dialogs). Never hard-code a color. Full explanation: `apps/docs/content/docs/guides/theming.mdx`; the bound-versus-static token table is `packages/ui/src/figma-variables.md`.
 ```
 
 - [ ] **Step 8: Tooling (lines 127–132)**
@@ -364,7 +364,7 @@ Replace the paragraph with:
 - [ ] **Step 10: Verify**
 
 ```bash
-grep -n "react-figma-ui\|figma-plugin-ds\|module.scss\|14 \|2.4.10\|8.6.18\|bun run storybook\|@repo/figma-plugin" .claude/CLAUDE.md
+grep -n "react-figma-ui\|figma-plugin-ds\|module.scss\|14 \|2.4.10\|8.6.18\|turbo run storybook\|@repo/figma-plugin" .claude/CLAUDE.md
 ```
 
 Expected: no output. Then the shared verify command.
@@ -390,7 +390,7 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 Replace line 21 `- **14+ UI components** via shadcn/ui + custom Figma components (Button, Input, Select, Accordion, Icon, and more)` with:
 
 ```markdown
-- **50 UI components** — 46 from shadcn/ui plus Icon, IconButton, SectionTitle and Type, styled to Figma's UI3 design and themed live from Figma's colour variables
+- **50 UI components** — 46 from shadcn/ui plus Icon, IconButton, SectionTitle and Type, styled to Figma's UI3 design and themed live from Figma's color variables
 ```
 
 Delete line 8, the redundant `![Bun bundler]` badge.
@@ -410,8 +410,8 @@ Replace the table with:
 | `bun run types` | Type-check all packages |
 | `bun run lint` | Lint with Biome |
 | `bun run docs` | Start the documentation site |
-| `turbo run storybook` | Start Storybook (port 6006) |
-| `turbo run build-storybook` | Build static Storybook (cached) |
+| `bun run storybook` | Start Storybook (port 6006) |
+| `bun run build-storybook` | Build static Storybook (cached) |
 ```
 
 - [ ] **Step 3: UI Components (lines 82–90)**
@@ -425,9 +425,9 @@ Replace the section with:
 
 ### Figma-native UI
 
-The components follow Figma's UI3 design: 24 px controls, 11 px Inter, 5 px radius, dark menus and tooltips. Colours bind to the `--figma-color-*` variables Figma injects when the window opens with `themeColors: true`, so the plugin follows the user's light or dark theme live; outside Figma the UI3 kit colours apply. Use the `figma-*` Tailwind utilities (for example `text-figma-text-secondary`, `border-figma-border`) instead of hard-coded colours. See the [theming guide](apps/docs/content/docs/guides/theming.mdx) and `packages/ui/src/figma-variables.md`.
+The components follow Figma's UI3 design: 24 px controls, 11 px Inter, 5 px radius, dark menus and tooltips. Colours bind to the `--figma-color-*` variables Figma injects when the window opens with `themeColors: true`, so the plugin follows the user's light or dark theme live; outside Figma the UI3 kit colors apply. Use the `figma-*` Tailwind utilities (for example `text-figma-text-secondary`, `border-figma-border`) instead of hard-coded colors. See the [theming guide](apps/docs/content/docs/guides/theming.mdx) and `packages/ui/src/figma-variables.md`.
 
-Run `turbo run storybook` to browse all components; the `UI3` section compares them with the kit in both themes.
+Run `bun run storybook` to browse all components; the `UI3` section compares them with the kit in both themes.
 ```
 
 - [ ] **Step 4: Plugin Configuration (lines 96–102)**
@@ -463,7 +463,7 @@ Run `bun changeset` after user-facing changes. Merging to master runs the releas
 - [ ] **Step 6: Verify**
 
 ```bash
-grep -n "14+\|bun run storybook\|Bun bundler" README.md
+grep -n "14+\|turbo run storybook\|Bun bundler" README.md
 ```
 
 Expected: no output. Then the shared verify command.
@@ -509,7 +509,7 @@ In "Important Architecture Constraints", after the line `- **UI components** com
 
 ```markdown
 - **The UI follows Figma's UI3 design.** Build screens like `packages/ui/src/app.tsx`: a 40 px header, sections divided by `border-b border-figma-border` with `p-2`, and 24 px rows (`flex h-6 items-center gap-2`). Controls are 24 px by default; use `size="lg"` only in dialogs.
-- **Colour only through tokens.** Use the `figma-*` utilities (`text-figma-text-secondary`, `bg-figma-bg-secondary`, `border-figma-border`) or the shadcn aliases the components already apply. Never write hex or `rgba()` colours, and never add `dark:` variants: the theme comes from Figma's variables through `themeColors: true`.
+- **Colour only through tokens.** Use the `figma-*` utilities (`text-figma-text-secondary`, `bg-figma-bg-secondary`, `border-figma-border`) or the shadcn aliases the components already apply. Never write hex or `rgba()` colors, and never add `dark:` variants: the theme comes from Figma's variables through `themeColors: true`.
 - **Menus and tooltips are dark in both themes** by design. Do not restyle them.
 - **Read `@references/ui-components.md`** for the component inventory and the layout pattern before writing any UI.
 ```
@@ -547,7 +547,7 @@ All UI components are imported from `@repo/ui` (which maps to `packages/ui/src/i
 
 **Never install additional UI libraries.** The build produces a single HTML file; external dependencies increase bundle size. Use what's available.
 
-**The components follow Figma's UI3 design.** They are 24 px tall, use 11 px Inter, and take their colours from Figma's theme through `themeColors: true`. Do not fight that: no hard-coded colours, no `dark:` variants, no roomy padding. The full explanation is in `apps/docs/content/docs/guides/theming.mdx`.
+**The components follow Figma's UI3 design.** They are 24 px tall, use 11 px Inter, and take their colors from Figma's theme through `themeColors: true`. Do not fight that: no hard-coded colors, no `dark:` variants, no roomy padding. The full explanation is in `apps/docs/content/docs/guides/theming.mdx`.
 
 ## Inventory
 
@@ -563,7 +563,7 @@ Fifty components. The sixteen marked ★ are edited to match the UI3 kit exactly
 | Surfaces | Accordion, Collapsible, Command ★, HoverCard, Popover |
 | Custom Figma | Icon, IconButton, SectionTitle, Type |
 
-Storybook (`turbo run storybook`) shows every component in both themes; the `UI3` section compares the ★ components with the kit.
+Storybook (`bun run storybook`) shows every component in both themes; the `UI3` section compares the ★ components with the kit.
 
 ## Inputs
 
@@ -847,7 +847,7 @@ description: The 50 components available for your plugin's interface, and how th
 
 ## Overview
 
-The template includes 50 UI components that look native inside Figma: 46 from [shadcn/ui](https://ui.shadcn.com) and four custom Figma components. They are styled with Tailwind CSS 4 to Figma's UI3 design and take their colours from Figma's theme; see [Theming and the UI3 look](/docs/guides/theming).
+The template includes 50 UI components that look native inside Figma: 46 from [shadcn/ui](https://ui.shadcn.com) and four custom Figma components. They are styled with Tailwind CSS 4 to Figma's UI3 design and take their colors from Figma's theme; see [Theming and the UI3 look](/docs/guides/theming).
 
 Import them from `@repo/ui`:
 
@@ -855,7 +855,7 @@ Import them from `@repo/ui`:
 import { Button, Input, Select } from "@repo/ui";
 ```
 
-Run `turbo run storybook` to browse every component in light and dark; the `UI3` section compares the kit-matched components with Figma's own.
+Run `bun run storybook` to browse every component in light and dark; the `UI3` section compares the kit-matched components with Figma's own.
 
 ## Inventory
 
@@ -1030,7 +1030,7 @@ Both are dark in both themes. Wrap the app in `TooltipProvider` once.
 
 ## Styling
 
-All components accept `className`. Use the `figma-*` colour utilities and the layout conventions from the [theming guide](/docs/guides/theming): 24 px rows, 8 px gutters, `border-figma-border` dividers, `text-figma-text-secondary` for secondary copy. Never hard-code a colour.
+All components accept `className`. Use the `figma-*` color utilities and the layout conventions from the [theming guide](/docs/guides/theming): 24 px rows, 8 px gutters, `border-figma-border` dividers, `text-figma-text-secondary` for secondary copy. Never hard-code a color.
 
 ```tsx
 <section className="flex flex-col gap-2 border-b border-figma-border p-2 pb-4">
@@ -1060,25 +1060,22 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 
 **Files:**
 - Modify: `apps/docs/content/docs/index.mdx:14,17`
-- Modify: `apps/docs/content/docs/getting-started/index.mdx:10,68`
+- Modify: `apps/docs/content/docs/getting-started/index.mdx:10`
 - Modify: `apps/docs/content/docs/guides/plugin-config.mdx:10-21`
 - Modify: `apps/docs/content/docs/guides/architecture.mdx:56`
 - Modify: `apps/docs/content/docs/project/contributing.mdx:50`
 - Modify: `apps/docs/content/docs/project/versioning.mdx:43`
-- Modify: `CONTRIBUTING.md:29`
 
 - [ ] **Step 1: Apply these exact replacements**
 
 | File | Replace | With |
 | --- | --- | --- |
-| `index.mdx:14` | `- **14+ UI components** that look native in Figma (buttons, inputs, selects, accordions, and more)` | `- **50 UI components** that look native in Figma (buttons, inputs, selects, menus, dialogs, tabs, and more), themed live from Figma's colours` |
+| `index.mdx:14` | `- **14+ UI components** that look native in Figma (buttons, inputs, selects, accordions, and more)` | `- **50 UI components** that look native in Figma (buttons, inputs, selects, menus, dialogs, tabs, and more), themed live from Figma's colors` |
 | `index.mdx:17` | `- **Automated testing** with 27+ tests` | `- **Automated testing** with more than 130 tests` |
 | `getting-started/index.mdx:10` | `(version 1.0 or later)` | `(version 1.4.2 or later)` |
-| `getting-started/index.mdx:68` | `` | `bun run storybook` | Browse UI components interactively | `` | `` | `turbo run storybook` | Browse UI components interactively | `` |
 | `architecture.mdx:56` | `two files are created in` | `three files are created in` |
 | `project/contributing.mdx:50` | `- bun test suites (90+ tests)` | `- bun test suites (more than 130 tests)` |
 | `project/versioning.mdx:43` | `The template is currently at **v1.3.0** (the root \`package.json\` version).` | `The current version is the root \`package.json\` version; each release is also listed in \`packages/ui/CHANGELOG.md\`.` |
-| `CONTRIBUTING.md:29` | `` | `bun run storybook` | Start Storybook dev server | `` | `` | `turbo run storybook` | Start Storybook dev server | `` |
 
 - [ ] **Step 2: Manifest snippet in `plugin-config.mdx`**
 
@@ -1104,7 +1101,7 @@ export default {
 - [ ] **Step 3: Verify**
 
 ```bash
-grep -rn "14+\|27+\|90+\|1.0 or later\|bun run storybook\|two files\|v1.3.0" apps/docs/content CONTRIBUTING.md README.md .claude/CLAUDE.md
+grep -rn "14+\|27+\|90+\|1.0 or later\|turbo run storybook\|two files\|v1.3.0" apps/docs/content CONTRIBUTING.md README.md .claude/CLAUDE.md
 ```
 
 Expected: no output. Then `bun run docs:build` and the shared verify command.
@@ -1112,7 +1109,7 @@ Expected: no output. Then `bun run docs:build` and the shared verify command.
 - [ ] **Step 4: Commit**
 
 ```bash
-git add apps/docs/content/docs/index.mdx apps/docs/content/docs/getting-started/index.mdx apps/docs/content/docs/guides/plugin-config.mdx apps/docs/content/docs/guides/architecture.mdx apps/docs/content/docs/project/contributing.mdx apps/docs/content/docs/project/versioning.mdx CONTRIBUTING.md
+git add apps/docs/content/docs/index.mdx apps/docs/content/docs/getting-started/index.mdx apps/docs/content/docs/guides/plugin-config.mdx apps/docs/content/docs/guides/architecture.mdx apps/docs/content/docs/project/contributing.mdx apps/docs/content/docs/project/versioning.mdx
 git commit -m "docs: correct counts, commands, versions and the manifest example
 
 Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
@@ -1185,7 +1182,7 @@ Expected: `Tasks: 4 successful, 4 total`; `✓ Compiled successfully` and `Exite
 git push -u origin docs/stream-2-drift
 gh pr create --base master --title "docs: bring the documentation in line with the Bun and UI3 stack" --body "$(cat <<'PRBODY'
 ## Summary
-- New guide `guides/theming.mdx`: how colours bind to Figma's variables, the `figma-*` utilities, which tokens are static, the UI3 scale, the panel layout, the parity stories
+- New guide `guides/theming.mdx`: how colors bind to Figma's variables, the `figma-*` utilities, which tokens are static, the UI3 scale, the panel layout, the parity stories
 - CLAUDE.md, README and the build-figma-plugin skill rewritten to the shadcn/Tailwind 4/UI3 stack with summaries linking to the guide; the skill now validates with tests and follows the UI3 conventions
 - Full 50-component inventory in the components guide and the skill reference
 - Corrections: counts, Storybook command, Bun version, manifest fields, build outputs, hard-coded version; workspace and launch config targets
