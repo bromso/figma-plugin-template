@@ -5,6 +5,7 @@
 import { watch } from "node:fs";
 import { rm } from "node:fs/promises";
 import path from "node:path";
+import { pathToFileURL } from "node:url";
 import tailwind from "bun-plugin-tailwind";
 import type manifestShape from "./figma.manifest";
 
@@ -71,7 +72,10 @@ async function buildPlugin() {
 
 async function loadManifest(): Promise<Manifest> {
   // Query string busts Bun's module cache so edits are picked up in --watch.
-  const mod = (await import(`${manifestFile}?t=${Date.now()}`)) as { default: Manifest };
+  // file:// URL keeps this valid on Windows, where a drive path plus "?t=" would not resolve.
+  const mod = (await import(`${pathToFileURL(manifestFile).href}?t=${Date.now()}`)) as {
+    default: Manifest;
+  };
   return mod.default;
 }
 
