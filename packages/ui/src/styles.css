@@ -61,6 +61,8 @@
   --ui3-text-ondanger: var(--figma-color-text-ondanger, #ffffff);
   --ui3-text-menu: var(--figma-color-text-menu, #ffffff);
   --ui3-text-menu-secondary: var(--figma-color-text-menu-secondary, rgba(255, 255, 255, 0.7));
+  --ui3-text-menu-danger: var(--figma-color-text-menu-danger, #ffafa3);
+  --ui3-text-menu-disabled: var(--figma-color-text-menu-disabled, rgba(255, 255, 255, 0.4));
   --ui3-text-tooltip: var(--figma-color-text-tooltip, #ffffff);
   --ui3-text-tooltip-secondary: var(--figma-color-text-tooltip-secondary, rgba(255, 255, 255, 0.7));
   /* borders */
@@ -142,6 +144,8 @@ html.figma-dark {
   --ui3-text-ondanger: var(--figma-color-text-ondanger, #ffffff);
   --ui3-text-menu: var(--figma-color-text-menu, #ffffff);
   --ui3-text-menu-secondary: var(--figma-color-text-menu-secondary, rgba(255, 255, 255, 0.7));
+  --ui3-text-menu-danger: var(--figma-color-text-menu-danger, #ffafa3);
+  --ui3-text-menu-disabled: var(--figma-color-text-menu-disabled, rgba(255, 255, 255, 0.4));
   --ui3-text-tooltip: var(--figma-color-text-tooltip, #ffffff);
   --ui3-text-tooltip-secondary: var(--figma-color-text-tooltip-secondary, rgba(255, 255, 255, 0.7));
   --ui3-border: var(--figma-color-border, #444444);
@@ -220,6 +224,8 @@ html.figma-dark {
   --color-figma-text-ondanger: var(--ui3-text-ondanger);
   --color-figma-text-menu: var(--ui3-text-menu);
   --color-figma-text-menu-secondary: var(--ui3-text-menu-secondary);
+  --color-figma-text-menu-danger: var(--ui3-text-menu-danger);
+  --color-figma-text-menu-disabled: var(--ui3-text-menu-disabled);
   --color-figma-text-tooltip: var(--ui3-text-tooltip);
   --color-figma-text-tooltip-secondary: var(--ui3-text-tooltip-secondary);
   --color-figma-border: var(--ui3-border);

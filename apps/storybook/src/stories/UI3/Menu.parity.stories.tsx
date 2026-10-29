@@ -5,6 +5,8 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
   DropdownMenuSeparator,
   DropdownMenuShortcut,
   DropdownMenuSub,
@@ -52,8 +54,17 @@ export const Parity: StoryObj = {
           <DropdownMenuLabel>Options</DropdownMenuLabel>
           <DropdownMenuCheckboxItem checked>Show rulers</DropdownMenuCheckboxItem>
           <DropdownMenuCheckboxItem>Snap to pixel grid</DropdownMenuCheckboxItem>
+          <DropdownMenuLabel inset>Zoom</DropdownMenuLabel>
+          <DropdownMenuRadioGroup value="fit">
+            <DropdownMenuRadioItem value="fit">Zoom to fit</DropdownMenuRadioItem>
+            <DropdownMenuRadioItem value="100">Zoom to 100%</DropdownMenuRadioItem>
+          </DropdownMenuRadioGroup>
           <DropdownMenuItem disabled>
             Flatten<DropdownMenuShortcut>⌘E</DropdownMenuShortcut>
+          </DropdownMenuItem>
+          <DropdownMenuSeparator />
+          <DropdownMenuItem variant="destructive">
+            Delete<DropdownMenuShortcut>⌫</DropdownMenuShortcut>
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
