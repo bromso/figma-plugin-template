@@ -5,7 +5,7 @@
 ![Bun](https://img.shields.io/badge/bun-1.4-f9f1e1?logo=bun)
 ![TypeScript](https://img.shields.io/badge/typescript-6-3178c6?logo=typescript&logoColor=white)
 ![React](https://img.shields.io/badge/react-19-61dafb?logo=react&logoColor=black)
-![Bun](https://img.shields.io/badge/bun_bundler-1.4-f9f1e1?logo=bun)
+![Bun bundler](https://img.shields.io/badge/bun_bundler-1.4-f9f1e1?logo=bun)
 ![Turborepo](https://img.shields.io/badge/turborepo-2-ef4444?logo=turborepo&logoColor=white)
 ![Biome](https://img.shields.io/badge/biome-2-60a5fa?logo=biome&logoColor=white)
 ![Storybook](https://img.shields.io/badge/storybook-10-ff4785?logo=storybook&logoColor=white)
@@ -16,7 +16,7 @@ Figma/FigJam plugin boilerplate with React, Bun, TypeScript, and Turborepo monor
 ## Features
 
 - **Turborepo monorepo** with Bun package manager — fast installs, cached builds
-- **React + TypeScript + Bun** build pipeline — one script, no bundler plugins to configure
+- **React + TypeScript + Bun** build pipeline — one build script (`build.ts`), no Vite config
 - **Single-file HTML output** — required by the Figma plugin API (all assets inlined)
 - **14+ UI components** via shadcn/ui + custom Figma components (Button, Input, Select, Accordion, Icon, and more)
 - **Storybook 10** for interactive component documentation with play tests

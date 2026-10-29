@@ -74,7 +74,7 @@ All commands use **Bun** as the package manager. Run from the repo root.
 
 ```
 apps/
-  figma-plugin/     — Figma plugin app (build.ts bundles to dist/)
+  design-plugin/    — Figma plugin app (build.ts bundles to dist/)
   storybook/        — Storybook component documentation
 packages/
   common/           — Shared types and network event definitions (@repo/common)
@@ -122,7 +122,7 @@ Turborepo orchestrates tasks. The plugin is built by one script, `apps/design-pl
 
 Storybook (`apps/storybook`) is the only workspace that still uses Vite.
 
-Bun does not downlevel syntax: `dist/plugin.js` ships modern JavaScript unchanged (verified running in Figma's sandbox), so there is no `target: es2017` any more.
+Bun does not downlevel syntax: `dist/plugin.js` ships modern JavaScript unchanged (verified in Figma's sandbox during the Bun migration), so there is no syntax-target option.
 
 ### Styling
 

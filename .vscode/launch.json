@@ -2,17 +2,32 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "type": "node-terminal",
+      "type": "bun",
       "request": "launch",
-      "name": "Debug bun test (current file)",
-      "command": "bun test --inspect-brk ${relativeFile}",
-      "cwd": "${workspaceFolder}"
+      "name": "Debug bun test (UI file)",
+      "runtime": "bun",
+      "runtimeArgs": ["test"],
+      "program": "${file}",
+      "cwd": "${workspaceFolder}/packages/ui",
+      "watchMode": false,
+      "stopOnEntry": false
+    },
+    {
+      "type": "bun",
+      "request": "launch",
+      "name": "Debug bun test (common file)",
+      "runtime": "bun",
+      "runtimeArgs": ["test"],
+      "program": "${file}",
+      "cwd": "${workspaceFolder}/packages/common",
+      "watchMode": false,
+      "stopOnEntry": false
     },
     {
       "type": "chrome",
       "request": "launch",
       "name": "Debug UI (Chrome)",
-      "url": "http://localhost:5173",
+      "url": "http://localhost:3000",
       "webRoot": "${workspaceFolder}/packages/ui/src",
       "skipFiles": ["<node_internals>/**"]
     },
