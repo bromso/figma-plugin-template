@@ -2,8 +2,13 @@ import { cn } from "@repo/ui";
 import type { ReactNode } from "react";
 
 type ParityFrameProps = {
-  /** Component rendered twice, once per theme. Use inline (non-portaled) states here. */
-  children: ReactNode;
+  /**
+   * Component rendered twice, once per theme. Use inline (non-portaled) states here.
+   * When the content has ids (e.g. `id`/`htmlFor` pairs), pass a function instead and
+   * suffix every id with the given column so the light and dark copies don't collide,
+   * e.g. `id={\`c1-${column}\`}`.
+   */
+  children: ReactNode | ((column: "light" | "dark") => ReactNode);
   /** Reference PNG imported from ./refs */
   reference: string;
   /** What the reference shows, e.g. "Button set: variants × states" */
@@ -19,12 +24,12 @@ export function ParityFrame({ children, reference, caption, portaled }: ParityFr
     <div className="flex flex-wrap items-start gap-6 font-sans text-sm text-foreground">
       <div className={cn(col, "bg-figma-bg ring-1 ring-figma-border")}>
         <span className="text-figma-text-secondary">Light</span>
-        {children}
+        {typeof children === "function" ? children("light") : children}
       </div>
       {!portaled && (
         <div className={cn("dark", col, "bg-figma-bg ring-1 ring-figma-border")}>
           <span className="text-figma-text-secondary">Dark</span>
-          {children}
+          {typeof children === "function" ? children("dark") : children}
         </div>
       )}
       <figure className="m-0 flex max-w-[560px] flex-col gap-2">

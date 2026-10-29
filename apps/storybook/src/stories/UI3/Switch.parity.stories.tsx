@@ -10,12 +10,14 @@ export default meta;
 function Row({
   id,
   label,
+  col,
   ...props
-}: { id: string; label: string } & React.ComponentProps<typeof Switch>) {
+}: { id: string; label: string; col: "light" | "dark" } & React.ComponentProps<typeof Switch>) {
+  const fullId = `${id}-${col}`;
   return (
     <div className="flex h-6 items-center gap-2">
-      <Switch id={id} {...props} />
-      <Label htmlFor={id}>{label}</Label>
+      <Switch id={fullId} {...props} />
+      <Label htmlFor={fullId}>{label}</Label>
     </div>
   );
 }
@@ -23,13 +25,17 @@ function Row({
 export const Parity: StoryObj = {
   render: () => (
     <ParityFrame reference={ref} caption="Switch: On / Off / Mixed × Default / Focused / Disabled">
-      <Row id="s1" label="On, Normal" defaultChecked />
-      <Row id="s2" label="Off, Normal" />
-      <Row id="s3" label="On, Disabled" defaultChecked disabled />
-      <Row id="s4" label="Off, Disabled" disabled />
-      <p className="text-figma-text-secondary">
-        Tab to a switch to see the focus ring. Radix Switch has no mixed state.
-      </p>
+      {(col) => (
+        <>
+          <Row id="s1" col={col} label="On, Normal" defaultChecked />
+          <Row id="s2" col={col} label="Off, Normal" />
+          <Row id="s3" col={col} label="On, Disabled" defaultChecked disabled />
+          <Row id="s4" col={col} label="Off, Disabled" disabled />
+          <p className="text-figma-text-secondary">
+            Tab to a switch to see the focus ring. Radix Switch has no mixed state.
+          </p>
+        </>
+      )}
     </ParityFrame>
   ),
 };

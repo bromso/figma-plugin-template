@@ -10,12 +10,14 @@ export default meta;
 function Row({
   id,
   label,
+  col,
   ...props
-}: { id: string; label: string } & React.ComponentProps<typeof Checkbox>) {
+}: { id: string; label: string; col: "light" | "dark" } & React.ComponentProps<typeof Checkbox>) {
+  const fullId = `${id}-${col}`;
   return (
     <div className="flex h-6 items-center gap-2">
-      <Checkbox id={id} {...props} />
-      <Label htmlFor={id}>{label}</Label>
+      <Checkbox id={fullId} {...props} />
+      <Label htmlFor={fullId}>{label}</Label>
     </div>
   );
 }
@@ -26,11 +28,15 @@ export const Parity: StoryObj = {
       reference={ref}
       caption="Checkbox: Checked / Unchecked / Mixed × Default / Disabled, with label"
     >
-      <Row id="c1" label="On, Normal" defaultChecked />
-      <Row id="c2" label="Off, Normal" />
-      <Row id="c3" label="Mixed" checked="indeterminate" />
-      <Row id="c4" label="On, Disabled" defaultChecked disabled />
-      <Row id="c5" label="Off, Disabled" disabled />
+      {(col) => (
+        <>
+          <Row id="c1" col={col} label="On, Normal" defaultChecked />
+          <Row id="c2" col={col} label="Off, Normal" />
+          <Row id="c3" col={col} label="Mixed" checked="indeterminate" />
+          <Row id="c4" col={col} label="On, Disabled" defaultChecked disabled />
+          <Row id="c5" col={col} label="Off, Disabled" disabled />
+        </>
+      )}
     </ParityFrame>
   ),
 };
