@@ -2142,6 +2142,8 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 
 - [ ] **Step 2: Verify** shared command plus `bun run lint`.
 
+Sweep outcome (commits `7a9fcc1`…`0bd3560` plus two fix-ups): sheet/drawer/card titles → `text-sm leading-4 font-semibold tracking-ui3`; calendar labels `text-sm`; InputGroup restyled to the Input surface (24 px, `bg-figma-bg-secondary`, hover/focus/invalid borders, Command skips the hover border via `in-data-[slot=command]:`; buttons shrunk to 20 px, addon dims via `group-has-disabled/input-group:`); OTP cells on figma tokens with the active edge painted by a 1 px shadow; small buttons at 11 px; Select disabled rows use the menu disabled token; CommandDialog drops its width override and moves the sr-only header inside Content; Dialog/AlertDialog Content get `overflow-hidden` and body wrappers `min-h-0 overflow-y-auto`; `ParityFrame` children may be a render function so Checkbox/Switch/Radio ids are unique per column. Left as token-level notes: `calendar.tsx` `[&>span]:text-xs` and focus ring, Card/Sheet/Drawer descriptions on `text-muted-foreground`.
+
 ---
 
 ### Task 22: Changeset, verification, PR
