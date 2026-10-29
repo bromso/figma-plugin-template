@@ -10,7 +10,7 @@ export const Parity: StoryObj = {
   render: () => (
     <ParityFrame
       reference={ref}
-      caption="Text input: Default, Focus, Active, Empty, Disabled; with icon; large; multi-line"
+      caption="Text input: Default, Focus, Empty, Disabled; large; multi-line (icon-lead inputs live in InputGroup)"
     >
       <Input defaultValue="Text, Default" />
       <Input defaultValue="Text, Focus" autoFocus />

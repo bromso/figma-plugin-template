@@ -14,7 +14,7 @@ function Input({
       data-slot="input"
       data-size={size}
       className={cn(
-        "w-full min-w-0 rounded-md border border-transparent bg-figma-bg-secondary px-2 text-sm font-medium tracking-ui3 text-foreground transition-colors outline-none data-[size=default]:h-6 data-[size=lg]:h-8 file:inline-flex file:h-5 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-figma-text-secondary hover:border-figma-border focus-visible:border-figma-border-selected disabled:pointer-events-none disabled:border-figma-border-translucent disabled:bg-transparent disabled:text-figma-text-disabled aria-invalid:border-figma-border-danger",
+        "w-full min-w-0 rounded-md border border-transparent bg-figma-bg-secondary px-2 text-sm font-medium tracking-ui3 text-foreground transition-colors outline-none h-6 data-[size=lg]:h-8 file:inline-flex file:h-5 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-figma-text-secondary hover:border-figma-border focus-visible:border-figma-border-selected disabled:pointer-events-none disabled:border-figma-border-translucent disabled:bg-transparent disabled:text-figma-text-disabled aria-invalid:border-figma-border-danger",
         className
       )}
       {...props}

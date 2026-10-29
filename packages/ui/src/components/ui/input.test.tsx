@@ -25,4 +25,13 @@ describe("Input interaction tests", () => {
     await userEvent.type(input, "hello");
     expect(input).toHaveValue("");
   });
+
+  it("reflects size on data-size and lets className override the height", () => {
+    render(<Input size="lg" placeholder="L" />);
+    expect(screen.getByPlaceholderText("L")).toHaveAttribute("data-size", "lg");
+    render(<Input className="h-8" placeholder="H" />);
+    const h = screen.getByPlaceholderText("H");
+    expect(h.className).toContain("h-8");
+    expect(h.className).not.toContain("h-6");
+  });
 });
