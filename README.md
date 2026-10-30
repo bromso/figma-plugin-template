@@ -5,7 +5,6 @@
 ![Bun](https://img.shields.io/badge/bun-1.4-f9f1e1?logo=bun)
 ![TypeScript](https://img.shields.io/badge/typescript-6-3178c6?logo=typescript&logoColor=white)
 ![React](https://img.shields.io/badge/react-19-61dafb?logo=react&logoColor=black)
-![Bun bundler](https://img.shields.io/badge/bun_bundler-1.4-f9f1e1?logo=bun)
 ![Turborepo](https://img.shields.io/badge/turborepo-2-ef4444?logo=turborepo&logoColor=white)
 ![Biome](https://img.shields.io/badge/biome-2-60a5fa?logo=biome&logoColor=white)
 ![Storybook](https://img.shields.io/badge/storybook-10-ff4785?logo=storybook&logoColor=white)
@@ -18,7 +17,7 @@ Figma/FigJam plugin boilerplate with React, Bun, TypeScript, and Turborepo monor
 - **Turborepo monorepo** with Bun package manager — fast installs, cached builds
 - **React + TypeScript + Bun** build pipeline — one build script (`build.ts`), no Vite config
 - **Single-file HTML output** — required by the Figma plugin API (all assets inlined)
-- **14+ UI components** via shadcn/ui + custom Figma components (Button, Input, Select, Accordion, Icon, and more)
+- **50 UI components** — 46 from shadcn/ui plus Icon, IconButton, SectionTitle and Type, styled to Figma's UI3 design and themed live from Figma's color variables
 - **Storybook 10** for interactive component documentation with play tests
 - **bun test** for testing (happy-dom for UI, plain runtime for common packages)
 - **Biome** for linting and formatting
@@ -57,18 +56,21 @@ Packages are **JIT source-only** — they export raw TypeScript with no build st
 |---------|-------------|
 | `bun run dev` | Watch mode (plugin + UI via Turborepo) |
 | `bun run build` | Production build |
+| `bun run analyze` | Production build with bundle size reports |
 | `bun run test` | Run all tests |
 | `bun run test:watch` | Watch mode for tests |
+| `bun run types` | Type-check all packages |
 | `bun run lint` | Lint with Biome |
-| `bun run storybook` | Start Storybook dev server |
-| `turbo run build-storybook` | Build static Storybook (cached) |
+| `bun run docs` | Start the documentation site |
+| `bun run storybook` | Start Storybook (port 6006) |
+| `bun run build-storybook` | Build static Storybook (cached) |
 
 ## Architecture
 
 The plugin runs as **two separate processes** that communicate via message passing:
 
 - **Plugin side** (`apps/design-plugin/src/plugin/`) — Runs in Figma's sandbox with access to the Figma API (`figma.*`). No DOM access. Entry: `plugin.ts`.
-- **UI side** (`packages/ui/src/`) — Runs in an iframe. React app with shadcn/ui components. Entry: `main.tsx` → `app.tsx`.
+- **UI side** (`packages/ui/src/`) — Runs in an iframe. React app with shadcn/ui components. Entry: `main.tsx` → `app.tsx`; `app.tsx` is the sampler laid out like a Figma properties panel.
 - **Common** (`packages/common/src/`) — Shared between both sides. Contains network event type definitions.
 
 ### Messaging
@@ -81,13 +83,13 @@ Communication uses [monorepo-networker](https://github.com/CoconutGoodie/monorep
 
 ## UI Components
 
-`packages/ui` provides 14+ components via [shadcn/ui](https://ui.shadcn.com) and custom Figma-specific components:
+`packages/ui` provides 50 components: 46 from [shadcn/ui](https://ui.shadcn.com) (inputs, menus, dialogs, tabs, tables, charts, and more) and four custom Figma components (`Icon`, `IconButton`, `SectionTitle`, `Type`). Import everything from `@repo/ui`.
 
-**shadcn/ui:** `Accordion`, `Alert`, `Button`, `Checkbox`, `Input`, `Label`, `RadioGroup`, `Select`, `Switch`, `Textarea`
+### Figma-native UI
 
-**Custom Figma:** `Icon`, `IconButton`, `SectionTitle`, `Type`
+The components follow Figma's UI3 design: 24 px controls, 11 px Inter, 5 px radius, dark menus and tooltips. Colours bind to the `--figma-color-*` variables Figma injects when the window opens with `themeColors: true`, so the plugin follows the user's light or dark theme live; outside Figma the UI3 kit colors apply. Use the `figma-*` Tailwind utilities (for example `text-figma-text-secondary`, `border-figma-border`) instead of hard-coded colors. See the [theming guide](apps/docs/content/docs/guides/theming.mdx) and `packages/ui/src/figma-variables.md`.
 
-Run `bun run storybook` to browse all components interactively with live examples.
+Run `bun run storybook` to browse all components; the `UI3` section compares them with the kit in both themes.
 
 ## Plugin Configuration
 
@@ -97,11 +99,19 @@ Edit `apps/design-plugin/figma.manifest.ts` to set your plugin name, ID, and per
 export default {
   name: "My Plugin",
   id: "your-plugin-id-from-figma",
+  documentAccess: "dynamic-page",
+  networkAccess: { allowedDomains: ["none"] },
   // ...
 };
 ```
 
 Get your plugin ID from Figma: **Plugins > Manage plugins > Create new plugin**.
+
+The window opens at 320 × 480 with `themeColors: true` (see `apps/design-plugin/src/plugin/plugin.ts`); keep that flag so the UI receives Figma's theme.
+
+## Releases
+
+Run `bun changeset` after user-facing changes. Merging to master runs the release workflow, which opens a "chore: version packages" PR; merging that PR bumps the versions and writes the CHANGELOGs.
 
 ## Testing in Figma
 
