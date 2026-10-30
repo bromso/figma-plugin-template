@@ -4,7 +4,7 @@
   "description": "Figma/FigJam plugin boilerplate with React, Bun, TypeScript, and Turborepo monorepo",
   "private": true,
   "license": "MIT",
-  "author": "Jonas Br\u00f6ms",
+  "author": "Jonas Bröms",
   "repository": {
     "type": "git",
     "url": "https://github.com/bromso/figma-plugin-template"
