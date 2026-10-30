@@ -1,7 +1,7 @@
 /// <reference types="bun" />
 
-import type { TestingLibraryMatchers } from "@testing-library/jest-dom/matchers";
 import type { AsymmetricMatcher, expect } from "bun:test";
+import type { TestingLibraryMatchers } from "@testing-library/jest-dom/matchers";
 
 type StringMatcher = ReturnType<typeof expect.stringContaining>;
 

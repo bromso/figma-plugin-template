@@ -31,10 +31,10 @@ describe("Button interaction tests", () => {
   it("renders the child element with button classes when asChild", () => {
     render(
       <Button asChild>
-        <a href="#x">Link</a>
+        <a href="#x">Button link</a>
       </Button>
     );
-    const a = screen.getByRole("link", { name: "Link" });
+    const a = screen.getByRole("link", { name: "Button link" });
     expect(a.getAttribute("data-slot")).toBe("button");
     expect(a.className).toContain("h-6");
   });
