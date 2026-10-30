@@ -425,7 +425,7 @@ Replace the section with:
 
 ### Figma-native UI
 
-The components follow Figma's UI3 design: 24 px controls, 11 px Inter, 5 px radius, dark menus and tooltips. Colours bind to the `--figma-color-*` variables Figma injects when the window opens with `themeColors: true`, so the plugin follows the user's light or dark theme live; outside Figma the UI3 kit colors apply. Use the `figma-*` Tailwind utilities (for example `text-figma-text-secondary`, `border-figma-border`) instead of hard-coded colors. See the [theming guide](apps/docs/content/docs/guides/theming.mdx) and `packages/ui/src/figma-variables.md`.
+The components follow Figma's UI3 design: 24 px controls, 11 px Inter, 5 px radius, dark menus and tooltips. Colors bind to the `--figma-color-*` variables Figma injects when the window opens with `themeColors: true`, so the plugin follows the user's light or dark theme live; outside Figma the UI3 kit colors apply. Use the `figma-*` Tailwind utilities (for example `text-figma-text-secondary`, `border-figma-border`) instead of hard-coded colors. See the [theming guide](apps/docs/content/docs/guides/theming.mdx) and `packages/ui/src/figma-variables.md`.
 
 Run `bun run storybook` to browse all components; the `UI3` section compares them with the kit in both themes.
 ```
@@ -509,7 +509,7 @@ In "Important Architecture Constraints", after the line `- **UI components** com
 
 ```markdown
 - **The UI follows Figma's UI3 design.** Build screens like `packages/ui/src/app.tsx`: a 40 px header, sections divided by `border-b border-figma-border` with `p-2`, and 24 px rows (`flex h-6 items-center gap-2`). Controls are 24 px by default; use `size="lg"` only in dialogs.
-- **Colour only through tokens.** Use the `figma-*` utilities (`text-figma-text-secondary`, `bg-figma-bg-secondary`, `border-figma-border`) or the shadcn aliases the components already apply. Never write hex or `rgba()` colors, and never add `dark:` variants: the theme comes from Figma's variables through `themeColors: true`.
+- **Color only through tokens.** Use the `figma-*` utilities (`text-figma-text-secondary`, `bg-figma-bg-secondary`, `border-figma-border`) or the shadcn aliases the components already apply. Never write hex or `rgba()` colors, and never add `dark:` variants: the theme comes from Figma's variables through `themeColors: true`.
 - **Menus and tooltips are dark in both themes** by design. Do not restyle them.
 - **Read `@references/ui-components.md`** for the component inventory and the layout pattern before writing any UI.
 ```
@@ -742,7 +742,7 @@ Components accept `className`. Use these utilities; they follow Figma's theme.
 <section className="flex flex-col gap-2 border-b border-figma-border p-2 pb-4">              {/* section */}
 <div className="flex h-6 items-center gap-2">                                   {/* 24 px row */}
 
-// Colour (never hex, never rgba)
+// Color (never hex, never rgba)
 <p className="text-figma-text-secondary">Secondary text</p>
 <div className="bg-figma-bg-secondary">Filled surface</div>
 <div className="border border-figma-border">Divider or outline</div>
