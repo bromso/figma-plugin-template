@@ -338,6 +338,8 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 
 ---
 
+Review outcome for Task 5: the major-update rule loses `"groupName": null` (it never affected `group:allNonMajor`, which matches only minor and patch, but it cancelled `group:monorepos`, so a Storybook or React major would have arrived as many PRs that cannot pass CI alone); a final rule `{ "matchDepTypes": ["engines"], "enabled": false }` keeps Renovate from bumping the `engines.node` and `engines.bun` floors, which the bun manager otherwise treats as dependencies under `rangeStrategy: "bump"`; the contributing sentence says monorepo packages move together; `mcp-servers.mdx` drops its last "v18 or higher" hint. Accepted as-is: `config:recommended` opens a Dependency Dashboard issue; Bun bumps arrive through `packageManager` and `setup-bun` in the grouped PR while the "1.4.2 or later" docs wording stays a true minimum; `semanticCommitScope: "deps"` and the lockFileMaintenance schedule repeat defaults as a statement of intent. Follow-ups: pin `setup-node` in `docs.yml` when Next 16 lands; consider `minimumReleaseAge`.
+
 ### Task 6: Changeset
 
 **Files:**
