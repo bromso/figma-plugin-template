@@ -867,9 +867,9 @@ Run `bun run storybook` to browse every component in light and dark; the `UI3` s
 | Layout | AspectRatio, Resizable, ScrollArea, Separator, Sidebar |
 | Navigation | Breadcrumb, ContextMenu, DropdownMenu, Menubar, NavigationMenu, Pagination, Tabs |
 | Surfaces | Accordion, Collapsible, Command, HoverCard, Popover |
-| Custom Figma | Icon, IconButton, SectionTitle, Type |
+| Custom Figma | Icon, IconButton, SectionTitle, Type (Icon and Type are filed under Data display in Storybook) |
 
-Sixteen components are edited to match the UI3 kit exactly: Button, Input, Textarea, Checkbox, RadioGroup, Switch, Select, Tabs, Badge, Tooltip, DropdownMenu, ContextMenu, Menubar, Command, Dialog and AlertDialog. The others share the same tokens and scale.
+Names are families; `packages/ui/src/index.ts` lists the exact exports (for example Sonner is `Toaster`, Chart is `ChartContainer`). Sixteen components are edited to match the UI3 kit exactly: Button, Input, Textarea, Checkbox, RadioGroup, Switch, Select, Tabs, Badge, Tooltip, DropdownMenu, ContextMenu, Menubar, Command, Dialog and AlertDialog. The others share the same tokens and scale.
 
 ## Input components
 
@@ -938,7 +938,7 @@ Put them on 24 px rows with a `Label`:
 <Icon name="lucide:info" className="text-figma-icon-secondary" />
 ```
 
-Built-in icons: `lucide:plus`, `lucide:info`, `lucide:star`, `lucide:ellipsis`. The `ICONS` export lists them; add more with `registerIcons()`.
+Built-in icons: `lucide:plus`, `lucide:info`, `lucide:star`, `lucide:ellipsis` (the `ICONS` export lists them). To add more, call `registerIcons()` with an Iconify collection and add each name to `StaticIconNameMap` via `declare module "@repo/ui" { interface StaticIconNameMap { "lucide:trash": true } }`; otherwise `<Icon name>` will not type-check.
 
 ### Badge
 
