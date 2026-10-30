@@ -43,6 +43,7 @@ Both processes build to `apps/design-plugin/dist/`:
 apps/
   design-plugin/      — Figma plugin app (builds to dist/)
   storybook/          — Component documentation (not part of plugin)
+  docs/               — Documentation site (Next.js + Fumadocs)
 packages/
   common/             — Shared types and message definitions
   ui/                 — React UI components and app shell
