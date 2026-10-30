@@ -25,6 +25,7 @@ import {
   Switch,
   Textarea,
   Type,
+  useFigmaTheme,
 } from "../index";
 
 describe("@repo/ui exports", () => {
@@ -53,6 +54,7 @@ describe("@repo/ui exports", () => {
     expect(IconButton).toBeDefined();
     expect(SectionTitle).toBeDefined();
     expect(Type).toBeDefined();
+    expect(useFigmaTheme).toBeDefined();
   });
 
   it("exports cn utility", () => {

@@ -43,6 +43,8 @@ Inside Figma the `--figma-color-*` value wins. Outside Figma, in Storybook, test
 
 The tokens are exposed to Tailwind as `--color-figma-*`, which gives you the `figma-*` utilities described below. The shadcn aliases (`bg-background`, `text-foreground`, `text-muted-foreground`, `border-border`, `bg-primary` and so on) point at the same tokens, so every shadcn component is themed as well.
 
+Plugin code that needs the current theme (for example to pick an image) can call `useFigmaTheme()` from `@repo/ui`; it returns `"light"` or `"dark"` and updates when Figma switches the `figma-dark` class.
+
 ## Which tokens bind, and which are static
 
 Figma documents variables for the bg, text, border and icon families. The template binds to those. It documents nothing for menus, tooltips or translucent borders, so those tokens are not bound to Figma and keep the UI3 kit's values: the same in both themes, except `bg-menu-selected` and `border-translucent`, which have a light and a dark value. That is the intended look: Figma's own menus and tooltips are dark whether the app is light or dark.

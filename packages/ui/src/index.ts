@@ -292,6 +292,7 @@ export {
 } from "./components/ui/tooltip";
 
 // ─── Hooks ───────────────────────────────────────────────
+export { type FigmaTheme, useFigmaTheme } from "./hooks/use-figma-theme";
 
 // ─── Utilities ───────────────────────────────────────────
 export { cn } from "./lib/utils";
