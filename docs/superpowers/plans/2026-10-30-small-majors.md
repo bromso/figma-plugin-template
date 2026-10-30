@@ -240,6 +240,13 @@ gh project item-add 30 --owner bromso --url <pr-url>
 
 ---
 
+## Outcomes
+
+- **Task 1.** `bun run types` passed through the normal script (the freshly installed `tsc` shim did not stall this time), tests 133, lint 5/5, and the Pages docs build printed "Finished TypeScript in 429ms" from Next's CLI type-check. The lockfile also recorded the workspace versions 1.4.0→1.4.1 left behind by the version PR #22, which bumps manifests without running `bun install`. Quality review suggested dropping the `ms-vscode.vscode-typescript-next` recommendation now that the native extension is recommended; done in 27e0702.
+- **Task 2.** The commit went through the husky hook and lint-staged 17.6.0 ran Biome on the staged file (its new progress output is visible in the hook log). Quality review found `CONTRIBUTING.md` still saying "Node.js >= 18" from before this stream; fixed in 80f0224 with the 22.22.1 floor.
+- **Task 3.** Types 4/4 and the docs build pass on `@types/node` 26.6.6 (`undici-types` moved to 8.9). Quality review recommended pinning the docs app's Node types to the CI runtime (`^24`) rather than tracking the latest major, since the repo just documented a 22.22.1 floor and runs 24 in CI; kept at 26 per the approved spec because a pin at 24 is a downgrade that Renovate would flag indefinitely. Jonas decides; `@types/ws` still nests its own `@types/node` 20 (pre-existing).
+- **Task 4.** 133 tests pass on jest-dom 7.0.1 with the unchanged `/matchers` preload; types 4/4.
+
 ## Self-review
 
 - **Spec coverage.** Change 1 → Task 1 (manifests, badge, extension); change 2 → Task 2 (lint-staged, engines, two docs sentences, hook check); change 3 → Task 3; change 4 → Task 4; verification section → the per-task controller steps and Task 5; "Next config unchanged" is enforced by Task 1 touching no `next.config.mjs`.
