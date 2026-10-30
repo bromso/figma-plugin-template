@@ -73,14 +73,14 @@ PLUGIN_CHANNEL.registerMessageHandler("getSelectionInfo", () => {
 In `packages/ui/src/app.tsx` (or any UI component):
 
 ```typescript
-import { PLUGIN_CHANNEL } from "./app.network";
+import { UI_CHANNEL } from "./app.network";
 import { PLUGIN } from "@repo/common/networkSides";
 
 // Fire-and-forget (no return value):
-PLUGIN_CHANNEL.emit(PLUGIN, "renameSelection", ["New Name"]);
+UI_CHANNEL.emit(PLUGIN, "renameSelection", ["New Name"]);
 
 // Request-response (waits for return value):
-const info = await PLUGIN_CHANNEL.request(PLUGIN, "getSelectionInfo", []);
+const info = await UI_CHANNEL.request(PLUGIN, "getSelectionInfo", []);
 // info is typed as { name: string; type: string }[]
 ```
 

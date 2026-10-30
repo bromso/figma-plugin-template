@@ -14,7 +14,7 @@ Figma plugins run as **two separate processes** that communicate via message pas
 │      plugin.network.ts  │                  │    app.network.tsx      │
 │                         │                  │    main.tsx             │
 │  Has: figma.* API       │                  │  Has: DOM, React, CSS  │
-│  No: DOM, fetch, window │                  │  No: figma.* API       │
+│  No: DOM, window        │                  │  No: figma.* API       │
 └─────────────────────────┘                  └─────────────────────────┘
 ```
 
@@ -43,6 +43,7 @@ Both processes build to `apps/design-plugin/dist/`:
 apps/
   design-plugin/      — Figma plugin app (builds to dist/)
   storybook/          — Component documentation (not part of plugin)
+  docs/               — Documentation site (Next.js + Fumadocs)
 packages/
   common/             — Shared types and message definitions
   ui/                 — React UI components and app shell

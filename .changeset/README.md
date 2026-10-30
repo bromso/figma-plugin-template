@@ -11,7 +11,7 @@ bun changeset
 ```
 
 This will ask you:
-1. Which packages changed (usually the root `figma-plugin-template`)
+1. Which packages changed (usually `@repo/ui`; `@repo/common` is bumped with it and `@repo/design-plugin` is ignored)
 2. Whether it's a major, minor, or patch change
 3. A summary of what changed (write this for humans, not machines)
 
@@ -21,4 +21,4 @@ Commit the generated `.changeset/*.md` file with your PR.
 
 - **Major**: Breaking changes to the template structure or API
 - **Minor**: New features, new components, new skills
-- **Patch**: Bug fixes, dependency updates, documentation
+- **Patch**: Bug fixes and dependency updates in a package. Template-only changes (docs, editor config, CI) need no changeset.

@@ -7,6 +7,7 @@
     "---Guides---",
     "guides/architecture",
     "guides/ui-components",
+    "guides/theming",
     "guides/messaging",
     "guides/plugin-config",
     "---LLM / AI---",

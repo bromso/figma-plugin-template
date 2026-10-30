@@ -25,14 +25,6 @@
     },
     {
       "type": "chrome",
-      "request": "launch",
-      "name": "Debug UI (Chrome)",
-      "url": "http://localhost:3000",
-      "webRoot": "${workspaceFolder}/packages/ui/src",
-      "skipFiles": ["<node_internals>/**"]
-    },
-    {
-      "type": "chrome",
       "request": "attach",
       "name": "Attach to Figma Plugin (Developer VM)",
       "port": 9222,
