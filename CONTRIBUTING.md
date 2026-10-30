@@ -102,7 +102,7 @@ bun changeset
 
 This creates a changeset file describing your changes. Commit it with your PR.
 
-Merging to master runs the release workflow, which opens or updates a "chore: version packages" PR with the version bumps and CHANGELOG entries; merging that PR applies them. No git tags or GitHub Releases are created (all packages are private).
+Merging to master runs the release workflow, which opens or updates a "chore: version packages" PR with the version bumps and CHANGELOG entries; merging that PR applies them. Merging it also creates a git tag per package (`@repo/ui@x.y.z`, `@repo/common@x.y.z`) and a GitHub Release with the changelog entry.
 
 **Version types:**
 - **Major** (2.0.0): Breaking changes to template structure

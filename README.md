@@ -112,7 +112,7 @@ The window opens at 320 × 480 with `themeColors: true` (see `apps/design-plugin
 
 ## Releases
 
-Run `bun changeset` after user-facing changes. Merging to master runs the release workflow, which opens or updates a "chore: version packages" PR with the version bumps and CHANGELOG entries; merging that PR applies them. No git tags or npm releases are created (all packages are private).
+Run `bun changeset` after user-facing changes. Merging to master runs the release workflow, which opens or updates a "chore: version packages" PR with the version bumps and CHANGELOG entries; merging that PR applies them. Merging it also creates a git tag per package (`@repo/ui@x.y.z`, `@repo/common@x.y.z`) and a GitHub Release with the changelog entry.
 
 ## Testing in Figma
 

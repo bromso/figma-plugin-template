@@ -42,7 +42,7 @@ Claude Code asks you to approve these project servers on first start; `/mcp` sho
 - **Conventional commits**: `feat: ...`, `fix: ...`, `chore: ...`, `docs: ...`
 - **After making user-facing changes**, run `bun changeset` and commit the changeset file
 - **Don't bump versions manually** -- changesets handles version bumps and CHANGELOG
-- **Releases**: merging to master runs `release.yml`, which opens (or updates) a "chore: version packages" PR containing the version bumps and CHANGELOG entries from the pending changesets; merging that PR lands them on master
+- **Releases**: merging to master runs `release.yml`, which opens (or updates) a "chore: version packages" PR containing the version bumps and CHANGELOG entries from the pending changesets; merging that PR lands them on master and creates a git tag plus a GitHub Release per package
 
 ---
 
@@ -135,9 +135,9 @@ The UI package uses Tailwind CSS 4 only; there are no CSS Modules. `packages/ui/
 
 - **Bun 1.4.2** — Package manager, bundler and test runner (sole lockfile: `bun.lock`)
 - **Turborepo** — Monorepo task orchestration with caching
-- **Biome 2.4.12** — Linting and formatting (root `biome.json`)
+- **Biome 2.6.4** — Linting and formatting (root `biome.json`)
 - **bun test** — Testing framework (happy-dom via preload for UI, plain runtime for common)
-- **Storybook 10.3.5** — Component documentation with a light/dark toolbar and `UI3/*` parity stories against kit screenshots
+- **Storybook 10.6.5** — Component documentation with a light/dark toolbar and `UI3/*` parity stories against kit screenshots
 - **Tailwind CSS 4** — Styling for the plugin UI and Storybook, via `bun-plugin-tailwind` in the plugin build and `@tailwindcss/vite` in Storybook (the docs site uses its own Tailwind 3 setup)
 - **Changesets** — Versioning and CHANGELOGs, released by `release.yml`
 

@@ -19,9 +19,9 @@ describe("Badge", () => {
   it("renders the child element with asChild", () => {
     render(
       <Badge asChild>
-        <a href="#x">Link</a>
+        <a href="#x">Badge link</a>
       </Badge>
     );
-    expect(screen.getByRole("link", { name: "Link" })).toHaveAttribute("data-slot", "badge");
+    expect(screen.getByRole("link", { name: "Badge link" })).toHaveAttribute("data-slot", "badge");
   });
 });
