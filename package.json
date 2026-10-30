@@ -4,7 +4,7 @@
   "description": "Figma/FigJam plugin boilerplate with React, Bun, TypeScript, and Turborepo monorepo",
   "private": true,
   "license": "MIT",
-  "author": "Jonas Bröms",
+  "author": "Jonas Br\u00f6ms",
   "repository": {
     "type": "git",
     "url": "https://github.com/bromso/figma-plugin-template"
@@ -60,5 +60,8 @@
   "workspaces": [
     "apps/*",
     "packages/*"
-  ]
+  ],
+  "overrides": {
+    "@radix-ui/react-dialog": "1.3.1"
+  }
 }
