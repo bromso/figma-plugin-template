@@ -7,7 +7,7 @@
     { "name": "🧩 Plugin/Design", "path": "apps/design-plugin" },
     { "name": "⚛️ Common", "path": "packages/common" },
     { "name": "🎨 Design System", "path": "packages/ui" },
-    { "name": "📕 Storybook", "path": "packages/ui" },
+    { "name": "📕 Storybook", "path": "apps/storybook" },
     { "name": "📜 Documentation", "path": "apps/docs" }
   ],
 
@@ -55,13 +55,10 @@
     "**/.source": true
   },
   // Terminal working directory for multi-root
-  "terminal.integrated.cwd": "${workspaceFolder:🏠 Root}",
+  "terminal.integrated.cwd": "${workspaceFolder:🏡 Root}",
 
   // Tailwind config path (workspace-relative)
-  "tailwindCSS.experimental.configFile": "packages/ui/src/styles/globals.css",
-
-  // GraphQL config (workspace-relative)
-  "graphql-config.load.filePath": "./apps/app/graphql.config.ts",
+  "tailwindCSS.experimental.configFile": "packages/ui/src/styles.css",
 
   // ===== File Associations =====
   // Treat all .vscode JSON files as JSONC (allows comments)
@@ -80,7 +77,7 @@
   "cSpell.customDictionaries": {
     "project-words": {
       "name": "project-words",
-      "path": "${workspaceFolder:🏠 Root}/cspell.json",
+      "path": "${workspaceFolder:🏡 Root}/cspell.json",
       "addWords": true,
       "scope": "workspace"
     }
