@@ -2,10 +2,10 @@ import type React from "react";
 import { cn } from "@/lib/utils";
 
 const sizeMap = {
-  xsmall: "text-[11px]",
-  small: "text-[12px]",
-  large: "text-[13px]",
-  xlarge: "text-[14px]",
+  xsmall: "text-xs",
+  small: "text-sm",
+  large: "text-lg",
+  xlarge: "text-xl",
 } as const;
 
 const weightMap = {

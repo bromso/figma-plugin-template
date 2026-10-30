@@ -122,7 +122,7 @@ import { Icon, SectionTitle, Type, Badge, Alert, AlertDescription, Label } from 
 ```
 
 Built-in icons: `lucide:plus`, `lucide:info`, `lucide:star`, `lucide:ellipsis` (the `ICONS` export lists them). To add more, call `registerIcons()` with an Iconify collection and add each name to `StaticIconNameMap` via `declare module "@repo/ui" { interface StaticIconNameMap { "lucide:trash": true } }` in a file that imports from `@repo/ui` (for example `import type {} from "@repo/ui";`, otherwise the declaration replaces the real types instead of extending them); without it `<Icon name>` will not type-check.
-Type sizes: `xsmall` (11 px), `small` (12 px, default), `large` (13 px), `xlarge` (14 px). Weights: `normal`, `medium`, `bold` (renders semibold, 550).
+Type sizes (UI3 scale): `xsmall` (9 px), `small` (11 px, default), `large` (13 px), `xlarge` (15 px). Weights: `normal`, `medium`, `bold` (renders semibold, 550).
 
 ## Overlays
 
