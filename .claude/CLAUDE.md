@@ -145,4 +145,4 @@ The UI package uses Tailwind CSS 4 only; there are no CSS Modules. `packages/ui/
 
 ## Available Skills
 
-- `build-figma-plugin` (`.agents/skills/build-figma-plugin/`) — Build a complete Figma plugin from a plain English description; its `references/` cover the architecture, the UI components and the Figma API patterns this template uses. No third-party skills are vendored into the repository.
+- `build-figma-plugin` (`.claude/skills/build-figma-plugin/`) — Build a complete Figma plugin from a plain English description; its `references/` cover the architecture, the UI components and the Figma API patterns this template uses. No third-party skills are vendored into the repository.

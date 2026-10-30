@@ -49,8 +49,7 @@ out/
 **/public/worker-*.js.map
 **/public/swe-worker-*.js
 
-# Editor-local skill copies (the template ships its skill in .agents/skills/)
-.claude/skills/
+# Editor-local skill copies from other agents
 .windsurf/
 
 # Planning artifacts (development history, not needed by template users)

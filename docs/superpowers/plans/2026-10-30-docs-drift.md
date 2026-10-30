@@ -482,7 +482,7 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 ### Task 4: The build-figma-plugin skill
 
 **Files:**
-- Modify: `.agents/skills/build-figma-plugin/SKILL.md`
+- Modify: `.claude/skills/build-figma-plugin/SKILL.md`
 
 - [ ] **Step 1: Validation step (lines 50–54)**
 
@@ -517,7 +517,7 @@ In "Important Architecture Constraints", after the line `- **UI components** com
 - [ ] **Step 4: Verify**
 
 ```bash
-grep -c "bun run test\|themeColors\|figma-text-secondary" .agents/skills/build-figma-plugin/SKILL.md
+grep -c "bun run test\|themeColors\|figma-text-secondary" .claude/skills/build-figma-plugin/SKILL.md
 ```
 
 Expected: `3` or more. Then the shared verify command.
@@ -525,7 +525,7 @@ Expected: `3` or more. Then the shared verify command.
 - [ ] **Step 5: Commit**
 
 ```bash
-git add .agents/skills/build-figma-plugin/SKILL.md
+git add .claude/skills/build-figma-plugin/SKILL.md
 git commit -m "docs(skill): validate with tests and follow the UI3 conventions
 
 Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
@@ -536,7 +536,7 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 ### Task 5: The skill's UI components reference
 
 **Files:**
-- Rewrite: `.agents/skills/build-figma-plugin/references/ui-components.md`
+- Rewrite: `.claude/skills/build-figma-plugin/references/ui-components.md`
 
 - [ ] **Step 1: Replace the whole file with**
 
@@ -824,7 +824,7 @@ Expected: `46`. Count the names in the Inventory table (46 shadcn names across t
 - [ ] **Step 3: Commit**
 
 ```bash
-git add .agents/skills/build-figma-plugin/references/ui-components.md
+git add .claude/skills/build-figma-plugin/references/ui-components.md
 git commit -m "docs(skill): UI3 inventory, utilities and panel pattern in the components reference
 
 Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
