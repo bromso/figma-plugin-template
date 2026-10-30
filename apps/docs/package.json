@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build --webpack",
+    "build": "next build && serwist build",
     "start": "next start",
     "lint": "biome check ."
   },
@@ -13,18 +13,22 @@
     "fumadocs-core": "^16.17.9",
     "fumadocs-mdx": "^15.4.10",
     "fumadocs-ui": "^16.17.9",
-    "@ducanh2912/next-pwa": "^10.2.9",
     "next": "^16.4.3",
     "react": "^19.3.1",
     "react-dom": "^19.3.1"
   },
   "devDependencies": {
+    "@serwist/cli": "^9.5.13",
+    "@serwist/next": "^9.5.13",
     "@tailwindcss/postcss": "^4.3.3",
     "@types/node": "^25.9.9",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
+    "esbuild": "^0.28.2",
     "postcss": "^8.5.32",
+    "serwist": "^9.5.13",
     "tailwindcss": "^4.3.3",
-    "typescript": "^6.0.3"
+    "typescript": "^6.0.3",
+    "zod": "^4.6.7"
   }
 }

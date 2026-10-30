@@ -1,3 +1,4 @@
+import { SerwistProvider } from "@serwist/next/react";
 import { RootProvider } from "fumadocs-ui/provider/next";
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
@@ -72,18 +73,25 @@ export default function Layout({ children }: { children: ReactNode }) {
       <body className="flex min-h-screen flex-col">
         {/* biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD from static constant */}
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: websiteJsonLd }} />
-        <RootProvider
-          search={{
-            options: {
-              type: "static",
-              // The static client fetches "/api/search" relative to the origin, so the
-              // GitHub Pages base path has to be passed explicitly.
-              api: `${BASE}/api/search`,
-            },
-          }}
+        <SerwistProvider
+          swUrl={`${BASE}/sw.js`}
+          // The default scope is "/", which the browser rejects for a worker served under the base path.
+          options={{ scope: `${BASE}/` }}
+          disable={process.env.NODE_ENV === "development"}
         >
-          {children}
-        </RootProvider>
+          <RootProvider
+            search={{
+              options: {
+                type: "static",
+                // The static client fetches "/api/search" relative to the origin, so the
+                // GitHub Pages base path has to be passed explicitly.
+                api: `${BASE}/api/search`,
+              },
+            }}
+          >
+            {children}
+          </RootProvider>
+        </SerwistProvider>
       </body>
     </html>
   );

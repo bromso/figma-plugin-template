@@ -40,14 +40,9 @@ storybook-static
 out/
 .source/
 
-# PWA generated files
-**/public/sw.js
-**/public/sw.js.map
-**/public/workbox-*.js
-**/public/workbox-*.js.map
-**/public/worker-*.js
-**/public/worker-*.js.map
-**/public/swe-worker-*.js
+# Serwist generated service worker
+apps/docs/public/sw.js
+apps/docs/public/sw.js.map
 
 # Editor-local skill copies from other agents
 .windsurf/
