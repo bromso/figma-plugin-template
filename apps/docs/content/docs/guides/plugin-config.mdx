@@ -14,6 +14,10 @@ export default {
   api: "1.0.0",
   main: "plugin.js",
   ui: "index.html",
+  // Required for new plugins: pages load lazily, so use the *Async node lookups
+  documentAccess: "dynamic-page",
+  // The template makes no network requests; list domains here if yours does
+  networkAccess: { allowedDomains: ["none"] },
   capabilities: [],
   enableProposedApi: false,
   editorType: ["figma", "figjam"],
