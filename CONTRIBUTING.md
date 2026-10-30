@@ -21,8 +21,8 @@ bun run build
 
 | Command | Description |
 |---------|-------------|
-| `bun run dev` | Watch mode (plugin + UI via Turborepo) |
-| `bun run build` | Production build to `apps/design-plugin/dist/` |
+| `bun run dev` | Watch-mode plugin build plus the docs site dev server (Turborepo) |
+| `bun run build` | Production build of the plugin (to `apps/design-plugin/dist/`) and the docs site |
 | `bun run test` | Run all tests (bun test) |
 | `bun run test:watch` | Watch mode for tests |
 | `bun run lint` | Lint with Biome |

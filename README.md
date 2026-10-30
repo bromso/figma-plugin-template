@@ -15,10 +15,10 @@ Figma/FigJam plugin boilerplate with React, Bun, TypeScript, and Turborepo monor
 ## Features
 
 - **Turborepo monorepo** with Bun package manager — fast installs, cached builds
-- **React + TypeScript + Bun** build pipeline — one build script (`build.ts`), no Vite config
+- **React + TypeScript + Bun** build pipeline — one build script (`build.ts`) for the plugin; Vite is used only by Storybook
 - **Single-file HTML output** — required by the Figma plugin API (all assets inlined)
 - **50 UI components** — 46 from shadcn/ui plus Icon, IconButton, SectionTitle and Type, styled to Figma's UI3 design and themed live from Figma's color variables
-- **Storybook 10** for interactive component documentation with play tests
+- **Storybook 10** for interactive component documentation, including UI3 parity stories
 - **bun test** for testing (happy-dom for UI, plain runtime for common packages)
 - **Biome** for linting and formatting
 - **Type-safe message passing** between plugin and UI via monorepo-networker
@@ -43,6 +43,7 @@ bun run dev
 apps/
   design-plugin/  — Figma plugin app (build.ts bundles to dist/)
   storybook/      — Storybook component documentation
+  docs/           — Documentation site (Next.js + Fumadocs, port 3000)
 packages/
   common/         — Shared types and network events (@repo/common)
   ui/             — UI components, styles, and app shell (@repo/ui)
@@ -54,8 +55,8 @@ Packages are **JIT source-only** — they export raw TypeScript with no build st
 
 | Command | Description |
 |---------|-------------|
-| `bun run dev` | Watch mode (plugin + UI via Turborepo) |
-| `bun run build` | Production build |
+| `bun run dev` | Watch-mode plugin build plus the docs site dev server (Turborepo) |
+| `bun run build` | Production build of the plugin (to `apps/design-plugin/dist/`) and the docs site |
 | `bun run analyze` | Production build with bundle size reports |
 | `bun run test` | Run all tests |
 | `bun run test:watch` | Watch mode for tests |
@@ -78,7 +79,7 @@ The plugin runs as **two separate processes** that communicate via message passi
 Communication uses [monorepo-networker](https://github.com/CoconutGoodie/monorepo-networker):
 
 1. **Define events** in `packages/common/src/networkSides.ts` — each side declares the events it listens to with typed signatures.
-2. **Build channels** in `*.network.ts` files — set up postMessage transport and register handlers.
+2. **Build channels** in `plugin.network.ts` and `app.network.tsx` — set up postMessage transport and register handlers.
 3. **Use channels** — `PLUGIN_CHANNEL.emit(UI, "event", [args])` for fire-and-forget, `.request(...)` for request/response (returns a Promise).
 
 ## UI Components
@@ -87,7 +88,7 @@ Communication uses [monorepo-networker](https://github.com/CoconutGoodie/monorep
 
 ### Figma-native UI
 
-The components follow Figma's UI3 design: 24 px controls, 11 px Inter, 5 px radius, dark menus and tooltips. Colours bind to the `--figma-color-*` variables Figma injects when the window opens with `themeColors: true`, so the plugin follows the user's light or dark theme live; outside Figma the UI3 kit colors apply. Use the `figma-*` Tailwind utilities (for example `text-figma-text-secondary`, `border-figma-border`) instead of hard-coded colors. See the [theming guide](apps/docs/content/docs/guides/theming.mdx) and `packages/ui/src/figma-variables.md`.
+The components follow Figma's UI3 design: 24 px controls, 11 px Inter, 5 px radius, dark menus and tooltips. Most colors bind to the `--figma-color-*` variables Figma injects when the window opens with `themeColors: true`, so the plugin follows the user's light or dark theme live; menus and tooltips use fixed dark values, and outside Figma the UI3 kit colors apply. Use the `figma-*` Tailwind utilities (for example `text-figma-text-secondary`, `border-figma-border`) instead of hard-coded colors. See the [theming guide](apps/docs/content/docs/guides/theming.mdx) and `packages/ui/src/figma-variables.md`.
 
 Run `bun run storybook` to browse all components; the `UI3` section compares them with the kit in both themes.
 
@@ -111,7 +112,7 @@ The window opens at 320 × 480 with `themeColors: true` (see `apps/design-plugin
 
 ## Releases
 
-Run `bun changeset` after user-facing changes. Merging to master runs the release workflow, which opens a "chore: version packages" PR; merging that PR bumps the versions and writes the CHANGELOGs.
+Run `bun changeset` after user-facing changes. Merging to master runs the release workflow, which opens or updates a "chore: version packages" PR with the version bumps and CHANGELOG entries; merging that PR applies them. No git tags or npm releases are created (all packages are private).
 
 ## Testing in Figma
 
