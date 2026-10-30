@@ -1162,6 +1162,8 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 
 ---
 
+Review outcome for Task 8: the workspace file kept all its settings at the top level, where VS Code ignores them; a follow-up commit moves them into the `"settings"` object and drops excludes for folders that do not exist (`.swc`, `.devcontainer`, `.cursor`, `docker`, `k8s`).
+
 ### Task 9: Biome exclusion, fact-check review, final verification, PR
 
 **Files:**
