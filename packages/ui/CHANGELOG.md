@@ -1,5 +1,13 @@
 # @repo/ui
 
+## 1.4.1
+
+### Patch Changes
+
+- [#21](https://github.com/bromso/figma-plugin-template/pull/21) [`18bd1f8`](https://github.com/bromso/figma-plugin-template/commit/18bd1f8f8a9d2834f18d09f46edcfdb95259d82d) Thanks [@bromso](https://github.com/bromso)! - Refresh dependencies: React 19.3, radix-ui 1.8, lucide-react 1.65, recharts 3.10, tailwind-merge 3.7 and other minors. No API changes; icon glyphs may differ slightly with the newer Lucide set.
+- Updated dependencies []:
+  - @repo/common@1.4.1
+
 ## 1.4.0
 
 ### Minor Changes
