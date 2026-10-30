@@ -28,8 +28,8 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.6.4",
-    "@changesets/changelog-github": "^0.6.0",
-    "@changesets/cli": "^2.31.0",
+    "@changesets/changelog-github": "^1.0.1",
+    "@changesets/cli": "^3.0.3",
     "husky": "^9.1.7",
     "lint-staged": "^16.4.0",
     "turbo": "^2.11.10"
@@ -54,7 +54,7 @@
     "docs:build": "bun run --filter @repo/docs build",
     "changeset": "changeset",
     "version-packages": "changeset version",
-    "release": "changeset tag",
+    "release": "changeset git-tag",
     "prepare": "husky"
   },
   "workspaces": [

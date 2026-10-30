@@ -27,12 +27,14 @@ jobs:
       - name: Install dependencies
         run: bun install --frozen-lockfile
 
-      - name: Create Release PR or Tag
-        uses: changesets/action@v1
+      - name: Version packages or create release
+        uses: changesets/action@v2
         with:
-          title: "chore: version packages"
-          commit: "chore: version packages"
-          version: bun changeset version
-          publish: bun changeset tag
+          version-script: bun changeset version
+          publish-script: bun changeset publish
+          pr-title: "chore: version packages"
+          commit-message: "chore: version packages"
+          create-github-releases: true
+          push-git-tags: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

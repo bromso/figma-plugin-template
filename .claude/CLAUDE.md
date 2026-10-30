@@ -42,7 +42,7 @@ Claude Code asks you to approve these project servers on first start; `/mcp` sho
 - **Conventional commits**: `feat: ...`, `fix: ...`, `chore: ...`, `docs: ...`
 - **After making user-facing changes**, run `bun changeset` and commit the changeset file
 - **Don't bump versions manually** -- changesets handles version bumps and CHANGELOG
-- **Releases**: merging to master runs `release.yml`, which opens (or updates) a "chore: version packages" PR containing the version bumps and CHANGELOG entries from the pending changesets; merging that PR lands them on master
+- **Releases**: merging to master runs `release.yml`, which opens (or updates) a "chore: version packages" PR containing the version bumps and CHANGELOG entries from the pending changesets; merging that PR lands them on master and creates a git tag plus a GitHub Release per package
 
 ---
 

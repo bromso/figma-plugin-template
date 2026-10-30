@@ -32,7 +32,7 @@ Commit the generated file (in `.changeset/`) with your pull request.
 1. Contributors merge PRs with changeset files
 2. A GitHub Action automatically opens or updates a "chore: version packages" PR
 3. That PR updates the package changelogs (`packages/ui/CHANGELOG.md`, `packages/common/CHANGELOG.md`) and bumps both package versions
-4. When merged, the workflow runs `changeset tag`; because the packages are private, no git tag or GitHub Release is created unless `privatePackages.tag` is enabled in `.changeset/config.json`.
+4. When merged, the workflow runs `changeset publish`, which creates a git tag per package (`@repo/ui@x.y.z`, `@repo/common@x.y.z`) and a GitHub Release for each tag with its changelog entry. Nothing is published to npm; the packages are private and `privatePackages` in `.changeset/config.json` enables versioning and tagging them.
 
 ## Viewing the changelog
 
