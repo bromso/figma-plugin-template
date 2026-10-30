@@ -251,4 +251,4 @@ gh project item-add 30 --owner bromso --url <pr-url>
 
 - **Spec coverage.** Change 1 → Task 1 (manifests, badge, extension); change 2 → Task 2 (lint-staged, engines, two docs sentences, hook check); change 3 → Task 3; change 4 → Task 4; verification section → the per-task controller steps and Task 5; "Next config unchanged" is enforced by Task 1 touching no `next.config.mjs`.
 - **Placeholders.** `<pr-url>` comes from the `gh pr create` output; every other value is literal.
-- **Consistency.** The same four manifest paths are used in Task 1 and Task 5; the Node floor string `>=22.22.1` matches the two docs sentences' "22.22"; commit messages match the spec's ordering.
+- **Consistency.** The same four manifest paths are used in Task 1 and Task 5; the Node floor string `>=22.22.1` matches the docs sentences and CONTRIBUTING (22.22.1); commit messages match the spec's ordering.
