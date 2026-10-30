@@ -26,7 +26,16 @@
             "noDocumentCookie": "off"
           },
           "correctness": {
-            "useExhaustiveDependencies": "off",
+            "useExhaustiveDependencies": "off"
+          }
+        }
+      }
+    },
+    {
+      "includes": ["packages/ui/src/components/ui/calendar.tsx"],
+      "linter": {
+        "rules": {
+          "correctness": {
             "noComponentHookFactories": "off"
           }
         }
@@ -56,6 +65,7 @@
       "**/*.json",
       "!**/node_modules",
       "!**/dist",
+      "!**/storybook-static",
       "!**/.turbo",
       "!**/.next",
       "!**/.source",

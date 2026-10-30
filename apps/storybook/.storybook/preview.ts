@@ -27,14 +27,14 @@ const preview: Preview = {
   ],
   parameters: {
     viewport: {
-      viewports: {
+      options: {
         figmaSmall: {
           name: "Figma Plugin Small (300x200)",
           styles: { width: "300px", height: "200px" },
         },
         figmaMedium: {
-          name: "Figma Plugin Medium (320x500)",
-          styles: { width: "320px", height: "500px" },
+          name: "Figma Plugin Default (320x480)",
+          styles: { width: "320px", height: "480px" },
         },
         figmaLarge: {
           name: "Figma Plugin Large (400x600)",
