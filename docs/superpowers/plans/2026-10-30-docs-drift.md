@@ -558,7 +558,7 @@ Fifty components. The sixteen marked ★ are edited to match the UI3 kit exactly
 | Inputs | Button ★, Calendar, Checkbox ★, Input ★, InputGroup, InputOTP, RadioGroup ★, Select ★, Slider, Switch ★, Textarea ★, Toggle, ToggleGroup |
 | Data display | Avatar, Badge ★, Card, Carousel, Chart, Icon, Label, Table, Tooltip ★, Type |
 | Feedback | Alert, AlertDialog ★, Dialog ★, Drawer, Progress, Sheet, Skeleton, Sonner |
-| Layout | AspectRatio, Resizable, ScrollArea, Separator |
+| Layout | AspectRatio, Resizable, ScrollArea, Separator, Sidebar |
 | Navigation | Breadcrumb, ContextMenu ★, DropdownMenu ★, Menubar ★, NavigationMenu, Pagination, Tabs ★ |
 | Surfaces | Accordion, Collapsible, Command ★, HoverCard, Popover |
 | Custom Figma | Icon, IconButton, SectionTitle, Type |
@@ -864,7 +864,7 @@ Run `bun run storybook` to browse every component in light and dark; the `UI3` s
 | Inputs | Button, Calendar, Checkbox, Input, InputGroup, InputOTP, RadioGroup, Select, Slider, Switch, Textarea, Toggle, ToggleGroup |
 | Data display | Avatar, Badge, Card, Carousel, Chart, Icon, Label, Table, Tooltip, Type |
 | Feedback | Alert, AlertDialog, Dialog, Drawer, Progress, Sheet, Skeleton, Sonner |
-| Layout | AspectRatio, Resizable, ScrollArea, Separator |
+| Layout | AspectRatio, Resizable, ScrollArea, Separator, Sidebar |
 | Navigation | Breadcrumb, ContextMenu, DropdownMenu, Menubar, NavigationMenu, Pagination, Tabs |
 | Surfaces | Accordion, Collapsible, Command, HoverCard, Popover |
 | Custom Figma | Icon, IconButton, SectionTitle, Type |
