@@ -135,9 +135,9 @@ The UI package uses Tailwind CSS 4 only; there are no CSS Modules. `packages/ui/
 
 - **Bun 1.4.2** — Package manager, bundler and test runner (sole lockfile: `bun.lock`)
 - **Turborepo** — Monorepo task orchestration with caching
-- **Biome 2.4.12** — Linting and formatting (root `biome.json`)
+- **Biome 2.6.4** — Linting and formatting (root `biome.json`)
 - **bun test** — Testing framework (happy-dom via preload for UI, plain runtime for common)
-- **Storybook 10.3.5** — Component documentation with a light/dark toolbar and `UI3/*` parity stories against kit screenshots
+- **Storybook 10.6.5** — Component documentation with a light/dark toolbar and `UI3/*` parity stories against kit screenshots
 - **Tailwind CSS 4** — Styling for the plugin UI and Storybook, via `bun-plugin-tailwind` in the plugin build and `@tailwindcss/vite` in Storybook (the docs site uses its own Tailwind 3 setup)
 - **Changesets** — Versioning and CHANGELOGs, released by `release.yml`
 
