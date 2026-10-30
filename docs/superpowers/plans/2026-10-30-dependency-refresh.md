@@ -271,6 +271,8 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 
 ---
 
+Review outcome for Task 4: `@repo/docs` joins `ignore` (otherwise `privatePackages.tag` would tag the docs app at 0.0.0); the release job gains `actions/setup-node@v4` with Node 24 because the Changesets CLI runs under whatever `node` the runner resolves and cli 3 requires 22.11 or later; checkout gets `persist-credentials: false`; the job is named "Version or release"; `versioning.mdx` and `.changeset/README.md` note that `@repo/<pkg>@<version>` tags start with the first release after this change and that the three apps are ignored.
+
 ### Task 5: Node engine and Renovate
 
 **Files:**
