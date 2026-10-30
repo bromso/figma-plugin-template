@@ -15,12 +15,15 @@
   "packageRules": [
     {
       "matchUpdateTypes": ["major"],
-      "groupName": null,
       "labels": ["dependencies", "major"]
     },
     {
       "matchPackageNames": ["storybook", "@storybook/**", "@biomejs/biome"],
       "rangeStrategy": "pin"
+    },
+    {
+      "matchDepTypes": ["engines"],
+      "enabled": false
     }
   ]
 }
