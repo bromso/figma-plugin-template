@@ -4,7 +4,7 @@ Thank you for your interest in contributing to figma-plugin-template! We welcome
 
 ## Prerequisites
 
-- Node.js >= 18
+- Node.js >= 22.22.1 (used by the release tooling and the docs site; Bun runs everything else)
 - [Bun](https://bun.sh) >= 1.4.2
 - Figma desktop app (for plugin testing)
 
