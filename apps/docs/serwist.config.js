@@ -9,6 +9,6 @@ export default serwist({
   swSrc: "src/app/sw.ts",
   swDest: isGitHubPages ? "out/sw.js" : "public/sw.js",
   // A worker left in `public/` by an earlier local build must not be precached
-  // (or copied into the export) as if it were a static asset.
+  // as if it were a static asset.
   globIgnores: ["public/sw.js", "public/sw.js.map"],
 });
