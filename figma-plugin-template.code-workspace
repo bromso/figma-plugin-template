@@ -22,8 +22,6 @@
       ".next": true,
       ".turbo": true,
       ".changeset": true,
-      ".github": true,
-      ".husky": true,
       ".claude": true,
       ".bun": true,
       ".vscode": true,
