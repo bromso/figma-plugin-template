@@ -32,7 +32,7 @@ You MUST modify these files (read the reference docs first):
 | File | What to change |
 |------|---------------|
 | `packages/common/src/networkSides.ts` | Add message types for your plugin's events |
-| `apps/design-plugin/src/plugin/plugin.ts` | Set window size, title, and bootstrap logic |
+| `apps/design-plugin/src/plugin/plugin.ts` | Set the window title and bootstrap logic. Keep `width: 320, height: 480` unless the UI needs more, and always keep `themeColors: true` |
 | `apps/design-plugin/src/plugin/plugin.network.ts` | Register Figma API handlers for each message |
 | `packages/ui/src/app.tsx` | Build the React UI using `@repo/ui` components |
 | `apps/design-plugin/figma.manifest.ts` | Update plugin `name` (keep existing `id` for dev) |
@@ -48,9 +48,10 @@ You MUST modify these files (read the reference docs first):
 Run these commands and verify they all pass:
 
 ```bash
-bun run build      # Must succeed — produces dist/index.html + dist/plugin.js
+bun run build      # Must succeed — produces dist/index.html, dist/plugin.js, dist/manifest.json
 bun run types      # Must succeed — no TypeScript errors
 bun run lint       # Must succeed — no Biome errors
+bun run test       # Must succeed — all tests pass
 ```
 
 If any command fails, **fix the issue yourself** and re-run. Do not ask the user to fix anything.
@@ -101,3 +102,7 @@ Follow the same flow: understand what they want to change, modify the relevant f
 - **UI code** (`app.tsx`) runs in an iframe. It can use React and DOM but has NO access to `figma.*`. It communicates with the plugin via messages.
 - **The build output is a single HTML file** (`dist/index.html`) with all JS/CSS inlined. No external files or network requests at runtime.
 - **UI components** come from `@repo/ui`. Always import from there — never install new UI libraries.
+- **The UI follows Figma's UI3 design.** Build screens like `packages/ui/src/app.tsx`: a 40 px header, sections divided by `border-b border-figma-border` with `p-2`, and 24 px rows (`flex h-6 items-center gap-2`). Controls are 24 px by default; use `size="lg"` only in dialogs.
+- **Colour only through tokens.** Use the `figma-*` utilities (`text-figma-text-secondary`, `bg-figma-bg-secondary`, `border-figma-border`) or the shadcn aliases the components already apply. Never write hex or `rgba()` colors, and never add `dark:` variants: the theme comes from Figma's variables through `themeColors: true`.
+- **Menus and tooltips are dark in both themes** by design. Do not restyle them.
+- **Read `@references/ui-components.md`** for the component inventory and the layout pattern before writing any UI.
