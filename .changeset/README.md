@@ -11,7 +11,7 @@ bun changeset
 ```
 
 This will ask you:
-1. Which packages changed (usually `@repo/ui` (`@repo/common` is bumped with it; `@repo/design-plugin` is ignored))
+1. Which packages changed (usually `@repo/ui`; `@repo/common` is bumped with it and `@repo/design-plugin` is ignored)
 2. Whether it's a major, minor, or patch change
 3. A summary of what changed (write this for humans, not machines)
 
