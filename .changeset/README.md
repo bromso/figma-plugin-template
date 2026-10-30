@@ -11,11 +11,13 @@ bun changeset
 ```
 
 This will ask you:
-1. Which packages changed (usually `@repo/ui`; `@repo/common` is bumped with it and `@repo/design-plugin` is ignored)
+1. Which packages changed (usually `@repo/ui`; `@repo/common` is bumped with it, and `@repo/storybook`, `@repo/design-plugin` and `@repo/docs` are ignored, as they are apps, not versioned)
 2. Whether it's a major, minor, or patch change
 3. A summary of what changed (write this for humans, not machines)
 
 Commit the generated `.changeset/*.md` file with your PR.
+
+Merging the version PR creates a git tag and a GitHub Release for `@repo/ui` and `@repo/common`.
 
 ## What counts as a change?
 
