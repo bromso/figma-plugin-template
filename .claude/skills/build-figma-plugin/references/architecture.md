@@ -14,7 +14,7 @@ Figma plugins run as **two separate processes** that communicate via message pas
 │      plugin.network.ts  │                  │    app.network.tsx      │
 │                         │                  │    main.tsx             │
 │  Has: figma.* API       │                  │  Has: DOM, React, CSS  │
-│  No: DOM, fetch, window │                  │  No: figma.* API       │
+│  No: DOM, window        │                  │  No: figma.* API       │
 └─────────────────────────┘                  └─────────────────────────┘
 ```
 

@@ -10,6 +10,8 @@ All UI components are imported from `@repo/ui` (which maps to `packages/ui/src/i
 
 Fifty components. The sixteen marked ★ are edited to match the UI3 kit exactly; the others share the same tokens and scale.
 
+Names are families; `packages/ui/src/index.ts` lists the exact exports (for example Sonner is `Toaster`, Chart is `ChartContainer`, Resizable is `ResizablePanelGroup`/`ResizablePanel`/`ResizableHandle`).
+
 | Group | Components |
 | --- | --- |
 | Inputs | Button ★, Calendar, Checkbox ★, Input ★, InputGroup, InputOTP, RadioGroup ★, Select ★, Slider, Switch ★, Textarea ★, Toggle, ToggleGroup |
@@ -18,7 +20,7 @@ Fifty components. The sixteen marked ★ are edited to match the UI3 kit exactly
 | Layout | AspectRatio, Resizable, ScrollArea, Separator, Sidebar |
 | Navigation | Breadcrumb, ContextMenu ★, DropdownMenu ★, Menubar ★, NavigationMenu, Pagination, Tabs ★ |
 | Surfaces | Accordion, Collapsible, Command ★, HoverCard, Popover |
-| Custom Figma | Icon, IconButton, SectionTitle, Type |
+| Custom Figma | Icon, IconButton, SectionTitle, Type (Icon and Type are filed under Data display in Storybook) |
 
 Storybook (`bun run storybook`) shows every component in both themes; the `UI3` section compares the ★ components with the kit.
 
@@ -67,8 +69,6 @@ import { Input, Textarea, Checkbox, Switch, Label, RadioGroup, RadioGroupItem, S
 </Select>
 ```
 
-`Input` and `SelectTrigger` take `size="lg"` for 32 px fields in dialogs.
-
 ## Buttons
 
 ```tsx
@@ -90,6 +90,8 @@ import { Button, IconButton } from "@repo/ui";
 Variants: `default`, `secondary`, `outline`, `ghost`, `destructive`, `link`.
 Sizes: `default` (24 px), `lg` (32 px), `sm` and `xs` (20 px, aliases), `icon` (24 px square), `icon-sm` and `icon-xs` (20 px), `icon-lg` (32 px).
 
+`Input` and `SelectTrigger` take `size="lg"` (32 px); `SelectTrigger` also has `size="sm"` (20 px).
+
 ## Display
 
 ```tsx
@@ -108,7 +110,7 @@ import { Icon, SectionTitle, Type, Badge, Alert, AlertDescription, Label } from 
 <Badge>Default</Badge>
 <Badge variant="secondary">New</Badge>
 
-// Typography helper (renders p, span, h1…h6, label); prefer Tailwind text utilities for new UI
+// Typography helper (renders p, span, div, h1…h6, label); prefer Tailwind text utilities for new UI
 <Type size="small">Body text</Type>
 <Type as="h2" size="large" weight="bold">Heading</Type>
 
@@ -119,19 +121,20 @@ import { Icon, SectionTitle, Type, Badge, Alert, AlertDescription, Label } from 
 </Alert>
 ```
 
-Built-in icons: `lucide:plus`, `lucide:info`, `lucide:star`, `lucide:ellipsis`. The `ICONS` export lists them; add more with `registerIcons()`.
-Type sizes: `xsmall` (11 px), `small` (12 px, default), `large` (13 px), `xlarge` (14 px). Weights: `normal`, `medium`, `bold`.
+Built-in icons: `lucide:plus`, `lucide:info`, `lucide:star`, `lucide:ellipsis` (the `ICONS` export lists them). To add more, call `registerIcons()` with an Iconify collection and add each name to `StaticIconNameMap` via `declare module "@repo/ui" { interface StaticIconNameMap { "lucide:trash": true } }`; otherwise `<Icon name>` will not type-check.
+Type sizes: `xsmall` (11 px), `small` (12 px, default), `large` (13 px), `xlarge` (14 px). Weights: `normal`, `medium`, `bold` (renders semibold, 550).
 
 ## Overlays
 
 ```tsx
 import {
+  Button, IconButton, Input,
   Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger, DialogClose,
   DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuTrigger,
   Tooltip, TooltipContent, TooltipProvider, TooltipTrigger,
 } from "@repo/ui";
 
-// Dialog: 320 px window, 40 px header and footer; the body is yours (16 px padding)
+// Dialog: 320 px window (size="lg" on DialogContent for 480), 40 px header and footer; the body is yours (16 px padding)
 <Dialog>
   <DialogTrigger asChild><Button variant="secondary">Rename…</Button></DialogTrigger>
   <DialogContent>
@@ -193,6 +196,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger, Accordion, AccordionContent, 
 Components accept `className`. Use these utilities; they follow Figma's theme.
 
 ```tsx
+import { Button, Icon } from "@repo/ui";
+
 // Panel structure
 <div className="flex h-full flex-col bg-background text-foreground">          {/* root */}
 <div className="flex h-10 items-center justify-between border-b border-figma-border px-2">  {/* 40 px header */}
@@ -214,7 +219,7 @@ Components accept `className`. Use these utilities; they follow Figma's theme.
 <div className="min-h-0 flex-1 overflow-y-auto">Scrolling body</div>
 ```
 
-Do not use `p-4` shells, `mb-4` stacks, `text-base` headings or `font-bold` for body copy; they look oversized next to Figma's own panels.
+Do not use `p-4` panel shells (dialog bodies excepted), `mb-4` stacks, `text-xl` or larger headings, or `font-bold` for body copy; they look oversized next to Figma's own panels. (`text-base` is the same 11 px as `text-sm`.)
 
 ## App Shell Pattern
 
@@ -222,8 +227,8 @@ The standard plugin screen follows `packages/ui/src/app.tsx`: a fixed header, sc
 
 ```tsx
 import { useState } from "react";
-import { Button, Input, SectionTitle, Tabs, TabsContent, TabsList, TabsTrigger } from "@repo/ui";
-import { PLUGIN_CHANNEL } from "./app.network";
+import { Button, Input, SectionTitle, Tabs, TabsContent, TabsList, TabsTrigger, TooltipProvider } from "@repo/ui";
+import { UI_CHANNEL } from "./app.network";
 import { PLUGIN } from "@repo/common/networkSides";
 
 function App() {
@@ -232,7 +237,7 @@ function App() {
 
   async function handleRename() {
     try {
-      const count = await PLUGIN_CHANNEL.request(PLUGIN, "renameLayers", [name]);
+      const count = await UI_CHANNEL.request(PLUGIN, "renameLayers", [name]);
       setResult(`Renamed ${count} layers`);
     } catch (err) {
       setResult(`Error: ${(err as Error).message}`);
@@ -240,31 +245,35 @@ function App() {
   }
 
   return (
-    <div className="flex h-full flex-col bg-background text-foreground">
-      <Tabs defaultValue="rename" className="min-h-0 flex-1 gap-0">
-        <div className="flex h-10 items-center border-b border-figma-border px-2">
-          <TabsList>
-            <TabsTrigger value="rename">Rename</TabsTrigger>
-            <TabsTrigger value="about">About</TabsTrigger>
-          </TabsList>
-        </div>
-        <TabsContent value="rename" className="flex min-h-0 flex-col overflow-y-auto">
-          <section className="flex flex-col gap-2 border-b border-figma-border p-2 pb-4">
-            <SectionTitle>Layer</SectionTitle>
-            <Input placeholder="New name" aria-label="New name" value={name} onChange={e => setName(e.target.value)} />
-          </section>
-          <section className="flex flex-col gap-2 p-2">
-            <Button className="w-full" onClick={handleRename}>Rename selection</Button>
-            {result && <p className="text-figma-text-secondary">{result}</p>}
-          </section>
-        </TabsContent>
-        <TabsContent value="about" className="min-h-0 overflow-y-auto p-2 text-figma-text-secondary">
-          Renames every selected layer.
-        </TabsContent>
-      </Tabs>
-    </div>
+    <TooltipProvider>
+      <div className="flex h-full flex-col bg-background text-foreground">
+        <Tabs defaultValue="rename" className="min-h-0 flex-1 gap-0">
+          <div className="flex h-10 items-center border-b border-figma-border px-2">
+            <TabsList>
+              <TabsTrigger value="rename">Rename</TabsTrigger>
+              <TabsTrigger value="about">About</TabsTrigger>
+            </TabsList>
+          </div>
+          <TabsContent value="rename" className="flex min-h-0 flex-col overflow-y-auto">
+            <section className="flex flex-col gap-2 border-b border-figma-border p-2 pb-4">
+              <SectionTitle>Layer</SectionTitle>
+              <Input placeholder="New name" aria-label="New name" value={name} onChange={e => setName(e.target.value)} />
+            </section>
+            <section className="flex flex-col gap-2 p-2">
+              <Button className="w-full" onClick={handleRename}>Rename selection</Button>
+              {result && <p className="text-figma-text-secondary">{result}</p>}
+            </section>
+          </TabsContent>
+          <TabsContent value="about" className="min-h-0 overflow-y-auto p-2 text-figma-text-secondary">
+            Renames every selected layer.
+          </TabsContent>
+        </Tabs>
+      </div>
+    </TooltipProvider>
   );
 }
 
 export default App;
 ```
+
+Declare `renameLayers(name: string): number` on `PLUGIN` in `packages/common/src/networkSides.ts` and register its handler in `apps/design-plugin/src/plugin/plugin.network.ts`; see `message-patterns.md`.
