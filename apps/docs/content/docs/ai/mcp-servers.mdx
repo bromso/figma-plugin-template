@@ -136,7 +136,7 @@ Personal access tokens don't expire by default, but they can be revoked. If you 
 
 ## Adding your own MCP servers
 
-Servers everyone who clones the repository should get go in `.mcp.json`. Each entry needs a `command` and an `args` array; `env` is optional and may reference environment variables with `${NAME}` (or `${NAME:-default}` to fall back to a default):
+Servers everyone who clones the repository should get go in `.mcp.json`. A local server needs a `command` and an `args` array; a remote one uses `"type": "http"` and a `url` (with optional `headers`). `env` is optional and may reference environment variables with `${NAME}` (or `${NAME:-default}` to fall back to a default):
 
 ```json
 {

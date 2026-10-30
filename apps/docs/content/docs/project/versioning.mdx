@@ -30,7 +30,7 @@ Commit the generated file (in `.changeset/`) with your pull request.
 ## How releases happen
 
 1. Contributors merge PRs with changeset files
-2. A GitHub Action automatically creates a "Version Packages" PR
+2. A GitHub Action automatically opens or updates a "chore: version packages" PR
 3. That PR updates the package changelogs (`packages/ui/CHANGELOG.md`, `packages/common/CHANGELOG.md`) and bumps both package versions
 4. When merged, the workflow runs `changeset tag`; because the packages are private, no git tag or GitHub Release is created unless `privatePackages.tag` is enabled in `.changeset/config.json`.
 
@@ -40,4 +40,4 @@ See [packages/ui/CHANGELOG.md](https://github.com/bromso/figma-plugin-template/b
 
 ## Current version
 
-The template's version is the version of `@repo/ui` and `@repo/common`, which Changesets bumps together (currently 1.4.0). Releases from 1.4.0 onward are listed in `packages/ui/CHANGELOG.md`; 1.0.0 to 1.3.0 are in the root `CHANGELOG.md`. The root `package.json` version is not bumped by Changesets.
+The template's version is the version of `@repo/ui` and `@repo/common`, which Changesets bumps together. Releases from 1.4.0 onward are listed in `packages/ui/CHANGELOG.md`; 1.0.0 to 1.3.0 are in the root `CHANGELOG.md`. The root `package.json` version is not bumped by Changesets.

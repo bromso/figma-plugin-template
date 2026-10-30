@@ -96,7 +96,7 @@ Put them on 24 px rows with a `Label`:
 <Icon name="lucide:info" className="text-figma-icon-secondary" />
 ```
 
-Built-in icons: `lucide:plus`, `lucide:info`, `lucide:star`, `lucide:ellipsis` (the `ICONS` export lists them). To add more, call `registerIcons()` with an Iconify collection and add each name to `StaticIconNameMap` via `declare module "@repo/ui" { interface StaticIconNameMap { "lucide:trash": true } }`; otherwise `<Icon name>` will not type-check.
+Built-in icons: `lucide:plus`, `lucide:info`, `lucide:star`, `lucide:ellipsis` (the `ICONS` export lists them). To add more, call `registerIcons()` with an Iconify collection and add each name to `StaticIconNameMap` via `declare module "@repo/ui" { interface StaticIconNameMap { "lucide:trash": true } }` in a file that imports from `@repo/ui` (for example `import type {} from "@repo/ui";`, otherwise the declaration replaces the real types instead of extending them); without it `<Icon name>` will not type-check.
 
 ### Badge
 

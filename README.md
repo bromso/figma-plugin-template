@@ -80,7 +80,7 @@ Communication uses [monorepo-networker](https://github.com/CoconutGoodie/monorep
 
 1. **Define events** in `packages/common/src/networkSides.ts` — each side declares the events it listens to with typed signatures.
 2. **Build channels** in `plugin.network.ts` and `app.network.tsx` — set up postMessage transport and register handlers.
-3. **Use channels** — `PLUGIN_CHANNEL.emit(UI, "event", [args])` for fire-and-forget, `.request(...)` for request/response (returns a Promise).
+3. **Use channels** — on the plugin side `PLUGIN_CHANNEL.emit(UI, "event", [args])` for fire-and-forget and `.request(...)` for request/response (returns a Promise); on the UI side the channel is `UI_CHANNEL` and the target is `PLUGIN`.
 
 ## UI Components
 

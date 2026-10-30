@@ -21,4 +21,4 @@ Commit the generated `.changeset/*.md` file with your PR.
 
 - **Major**: Breaking changes to the template structure or API
 - **Minor**: New features, new components, new skills
-- **Patch**: Bug fixes, dependency updates, documentation
+- **Patch**: Bug fixes and dependency updates in a package. Template-only changes (docs, editor config, CI) need no changeset.

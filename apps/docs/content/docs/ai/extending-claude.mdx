@@ -32,7 +32,7 @@ GitHub hosts an official remote MCP server. Create a [personal access token](htt
 claude mcp add --scope local --transport http github https://api.githubcopilot.com/mcp/ --header "Authorization: Bearer $GITHUB_PAT"
 ```
 
-Start Claude Code and type `/mcp` to check that `github` is connected.
+The shell substitutes the token when you run the command, so it is stored in your personal Claude Code config; re-run the command after rotating it. Start Claude Code and type `/mcp` to check that `github` is connected.
 
 ### Try it
 

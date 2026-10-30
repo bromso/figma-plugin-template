@@ -31,7 +31,7 @@ This template comes with an AI skill that lets you describe what you want and ha
 - **Context7** — Fetches up-to-date library documentation to reduce errors
 - **Sequential Thinking** — Lets Claude work through multi-step problems before acting
 
-Claude Code asks you to approve these project servers on first start; `/mcp` shows their status. Personal servers or ones with keys go in your own config via `claude mcp add --scope local`, never in `.claude/settings.json`, which cannot define servers.
+Claude Code asks you to approve these project servers on first start; `/mcp` shows their status. Personal servers, or keys you would rather not reference from the repository, go in your own config via `claude mcp add --scope local`; shared servers reference keys as `${VAR}` in `.mcp.json`. `.claude/settings.json` cannot define servers.
 
 ---
 
@@ -112,7 +112,7 @@ Communication between sides uses [monorepo-networker](https://github.com/Coconut
 
 1. **Define events** in `packages/common/src/networkSides.ts` — each side declares the events it *listens* to, with typed signatures.
 2. **Build channels** in `*.network.ts` files — `plugin.network.ts` and `app.network.tsx` set up transport (postMessage) and register handlers.
-3. **Use channels** — `PLUGIN_CHANNEL.emit(UI, "event", [args])` for fire-and-forget, `.request(...)` for request/response (returns a Promise).
+3. **Use channels** — on the plugin side `PLUGIN_CHANNEL.emit(UI, "event", [args])` for fire-and-forget and `.request(...)` for request/response (returns a Promise); on the UI side the channel is `UI_CHANNEL` and the target is `PLUGIN`.
 
 ### Build System
 
@@ -129,7 +129,7 @@ Bun does not downlevel syntax: `dist/plugin.js` ships modern JavaScript unchange
 
 ### Styling and theming
 
-The UI package uses Tailwind CSS 4 only; there are no CSS Modules. `packages/ui/src/styles.css` defines `--ui3-*` tokens, most as `var(--figma-color-*, <UI3 kit fallback>)` and the rest (menu, tooltip and translucent-border tokens) as static values because Figma injects no variable for them, so inside Figma (`showUI` with `themeColors: true`) the bound colors follow the user's theme live, and in Storybook or tests the fallbacks apply. The tokens are exposed as `figma-*` Tailwind colors (`bg-figma-bg-secondary`, `text-figma-text-secondary`, `border-figma-border`, …) and also back the shadcn aliases (`bg-background`, `text-muted-foreground`, …). Menus and tooltips are dark in both themes by design. The scale is 24 px controls, 11 px Inter at weight 450, 5 px radius (13 px for menus and dialogs). Never hard-code a color. Full explanation: `apps/docs/content/docs/guides/theming.mdx`; the bound-versus-static token table is `packages/ui/src/figma-variables.md`.
+The UI package uses Tailwind CSS 4 only; there are no CSS Modules. `packages/ui/src/styles.css` defines `--ui3-*` tokens, most as `var(--figma-color-*, <UI3 kit fallback>)` and the rest (menu, tooltip and translucent-border tokens) as static values because Figma documents no variable for them, so inside Figma (`showUI` with `themeColors: true`) the bound colors follow the user's theme live, and in Storybook or tests the fallbacks apply. The tokens are exposed as `figma-*` Tailwind colors (`bg-figma-bg-secondary`, `text-figma-text-secondary`, `border-figma-border`, …) and also back the shadcn aliases (`bg-background`, `text-muted-foreground`, …). Menus and tooltips are dark in both themes by design. The scale is 24 px controls, 11 px Inter at weight 450, 5 px radius (13 px for menus and dialogs). Never hard-code a color. Full explanation: `apps/docs/content/docs/guides/theming.mdx`; the bound-versus-static token table is `packages/ui/src/figma-variables.md`.
 
 ## Tooling
 

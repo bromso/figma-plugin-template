@@ -23,10 +23,14 @@ bun run build
 |---------|-------------|
 | `bun run dev` | Watch-mode plugin build plus the docs site dev server (Turborepo) |
 | `bun run build` | Production build of the plugin (to `apps/design-plugin/dist/`) and the docs site |
+| `bun run analyze` | Production build with bundle size reports |
 | `bun run test` | Run all tests (bun test) |
 | `bun run test:watch` | Watch mode for tests |
+| `bun run types` | Type-check all packages |
 | `bun run lint` | Lint with Biome |
+| `bun run docs` | Start the documentation site |
 | `bun run storybook` | Start Storybook dev server |
+| `bun run build-storybook` | Build static Storybook |
 
 ## Project Structure
 
@@ -36,6 +40,7 @@ This is a Turborepo monorepo:
 apps/
   design-plugin/  — The Figma plugin application
   storybook/      — Storybook for component documentation
+  docs/           — Documentation site (Next.js + Fumadocs)
 packages/
   common/         — Shared types and network events (@repo/common)
   ui/             — UI components and styles (@repo/ui)
@@ -57,6 +62,7 @@ Packages are **JIT source-only** — they export raw TypeScript with no build st
 3. Make your changes and ensure all checks pass:
    ```bash
    bun run build
+   bun run types
    bun run test
    bun run lint
    ```
@@ -96,7 +102,7 @@ bun changeset
 
 This creates a changeset file describing your changes. Commit it with your PR.
 
-A GitHub Action will automatically create a "Version Packages" PR that bumps the version and updates CHANGELOG.md. Merging that PR creates a new release.
+Merging to master runs the release workflow, which opens or updates a "chore: version packages" PR with the version bumps and CHANGELOG entries; merging that PR applies them. No git tags or GitHub Releases are created (all packages are private).
 
 **Version types:**
 - **Major** (2.0.0): Breaking changes to template structure
