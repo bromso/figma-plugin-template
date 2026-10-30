@@ -21,7 +21,7 @@
 ```bash
 bun run types 2>&1 | grep -E "Tasks:|error TS"      # Tasks: 3 successful, 3 total
 bun run test 2>&1 | grep -E "Tasks:|^ *[0-9]+ (pass|fail)"   # Tasks: 2 successful; 131 pass, 0 fail
-bun run lint 2>&1 | grep -E "Tasks:|✖|rror"        # Tasks: 4 successful, 4 total (one pre-existing @repo/docs warning is fine)
+bun run lint 2>&1 | grep -E "Tasks:|✖|rror"        # Tasks: 5 successful, 5 total after Task 3 added a Storybook lint script (4 before); one pre-existing @repo/docs warning is fine
 ```
 
 **Controller set** (loads native binaries; the controller runs these after the implementer reports):
@@ -187,6 +187,8 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 ```
 
 ---
+
+Review outcome for Task 3: `noComponentHookFactories` is off only for `packages/ui/src/components/ui/calendar.tsx` (a second override), `!**/storybook-static` joined the Biome excludes, `apps/storybook` gained `"lint": "biome check ."` so turbo lints it, and `.storybook/preview.ts` uses the Storybook 10 `viewport.options` key with the default preset at 320×480.
 
 ### Task 4: Changesets 3 and the release workflow
 
