@@ -427,6 +427,8 @@ PRBODY
 
 ---
 
+Task 7 outcome: after the clean reinstall, `bun outdated` still listed eleven in-range updates the version table had not named (next 15.5.28, typescript 6.0.3, @types/node 25.9.9, autoprefixer 10.6.2, postcss 8.5.32, @tailwindcss/vite 4.3.3, @vitejs/plugin-react 6.1.2, vite 8.3.5, @testing-library/jest-dom 6.10.0, @testing-library/react 16.3.3, shadcn 4.23.0). They were applied with `bun update <pkg>` per workspace as one extra commit and verified with the same six commands, after which only the excluded majors remain (plus @types/node 26 and @testing-library/jest-dom 7, both majors). The Changesets dry run needs `GITHUB_TOKEN` because `@changesets/changelog-github` resolves commit metadata; with `GITHUB_TOKEN=$(gh auth token)` it bumps both packages to 1.4.1. The `bun run test` grep in Step 1 must match the turbo-prefixed lines (`@repo/ui:test:  131 pass`).
+
 ## Self-review
 
 - **Spec coverage.** Groups 1–6 of the spec map to Tasks 1–6; the spec's verification section maps to the per-task verification plus Task 7 (clean reinstall, dry run, Storybook check, `bun outdated`). Docs sentences for tags and releases: Task 4 Step 5. Node and Renovate sentences: Task 5 Step 3. Changeset: Task 6.
