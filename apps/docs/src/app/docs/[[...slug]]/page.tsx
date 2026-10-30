@@ -1,4 +1,10 @@
-import { DocsBody, DocsPage, DocsTitle, EditOnGitHub } from "fumadocs-ui/layouts/docs/page";
+import {
+  DocsBody,
+  DocsDescription,
+  DocsPage,
+  DocsTitle,
+  EditOnGitHub,
+} from "fumadocs-ui/layouts/docs/page";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getMDXComponents } from "@/components/mdx";
@@ -51,7 +57,10 @@ export default async function Page(props: PageProps) {
         footer={{ enabled: true }}
       >
         <DocsTitle>{page.data.title}</DocsTitle>
-        <EditOnGitHub href={`${REPO_URL}/blob/master/apps/docs/content/docs/${page.path}`} />
+        <DocsDescription>{page.data.description}</DocsDescription>
+        <div className="flex flex-row items-center gap-2">
+          <EditOnGitHub href={`${REPO_URL}/blob/master/apps/docs/content/docs/${page.path}`} />
+        </div>
         <DocsBody>
           <MDX components={getMDXComponents()} />
         </DocsBody>
