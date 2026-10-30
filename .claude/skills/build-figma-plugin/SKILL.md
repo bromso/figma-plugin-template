@@ -101,7 +101,7 @@ Follow the same flow: understand what they want to change, modify the relevant f
 
 ## Important Architecture Constraints
 
-- **Plugin code** (`plugin.ts`, `plugin.network.ts`) runs in Figma's sandbox. It can access `figma.*` API but has NO DOM, NO `fetch`, NO `window`.
+- **Plugin code** (`plugin.ts`, `plugin.network.ts`) runs in Figma's sandbox. It can access `figma.*` API but has NO DOM and NO `window` (it does have `fetch`, limited by the manifest's `networkAccess`).
 - **UI code** (`app.tsx`) runs in an iframe. It can use React and DOM but has NO access to `figma.*`. It communicates with the plugin via messages.
 - **The build output is a single HTML file** (`dist/index.html`) with all JS/CSS inlined. No external files or network requests at runtime.
 - **UI components** come from `@repo/ui`. Always import from there — never install new UI libraries.

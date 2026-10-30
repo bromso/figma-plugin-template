@@ -57,3 +57,6 @@ out/
 
 # Superpowers brainstorm mockups (local only)
 .superpowers/
+
+# Personal Claude Code settings
+.claude/settings.local.json

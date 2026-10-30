@@ -36,7 +36,7 @@ docs: add plugin testing guide
 
 1. Create a feature branch: `git checkout -b feat/my-feature`
 2. Make your changes
-3. Run checks: `bun run build && bun run test && bun run lint`
+3. Run checks: `bun run build && bun run types && bun run test && bun run lint`
 4. Add a changeset: `bun changeset` (if your change affects users)
 5. Push and open a PR against `master`
 6. CI runs automatically — wait for green checks
@@ -44,7 +44,7 @@ docs: add plugin testing guide
 
 ## CI pipeline
 
-Every push and PR runs:
+Every push to `master` and every pull request against it runs:
 - Biome linting
 - TypeScript type-checking
 - bun test suites (more than 130 tests)
