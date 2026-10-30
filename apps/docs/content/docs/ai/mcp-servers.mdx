@@ -7,13 +7,15 @@ description: Configure Model Context Protocol servers to give Claude access to F
 
 MCP (Model Context Protocol) servers extend what Claude can do by connecting it to external tools and data sources. Instead of copying and pasting information into your conversation, MCP servers let Claude access it directly.
 
-This template comes with three MCP servers pre-configured in `.claude/settings.json`:
+This template comes with three MCP servers pre-configured in `.mcp.json` at the repository root, which is the file Claude Code reads for project-wide servers:
 
-- **Figma Dev Mode** — Claude can read your Figma files, inspect layers, and extract design tokens
+- **Figma** — Claude can read your Figma files, inspect layers, and extract design tokens (via the community `figma-developer-mcp` server)
 - **Context7** — Claude gets up-to-date library documentation so it doesn't use outdated APIs
 - **Sequential Thinking** — Claude reasons through complex problems step-by-step
 
-## Figma Dev Mode
+The first time you start Claude Code in the project it asks you to approve these servers; that is a security check for servers that arrive with a repository. Approve them once and they load in every session. Type `/mcp` inside Claude Code to see their status.
+
+## Figma
 
 The Figma MCP server lets Claude read your design files directly. When you say "look at my Figma file", Claude can actually inspect the layers, styles, and structure.
 
@@ -26,9 +28,9 @@ The Figma MCP server lets Claude read your design files directly. When you say "
 5. Give it a descriptive name (e.g., "Claude Code")
 6. Copy the token — you won't be able to see it again
 
-### Adding the key to your project
+### Providing the key
 
-Open `.claude/settings.json` and paste your token into the `FIGMA_API_KEY` field:
+`.mcp.json` is checked into git, so it never contains the token itself. Instead it reads the `FIGMA_API_KEY` environment variable:
 
 ```json
 {
@@ -37,14 +39,20 @@ Open `.claude/settings.json` and paste your token into the `FIGMA_API_KEY` field
       "command": "npx",
       "args": ["-y", "figma-developer-mcp", "--stdio"],
       "env": {
-        "FIGMA_API_KEY": "figd_your-token-here"
+        "FIGMA_API_KEY": "${FIGMA_API_KEY}"
       }
     }
   }
 }
 ```
 
-> **Important:** `.claude/settings.json` is checked into git. If your repository is public, use `.claude/settings.local.json` instead — this file is gitignored and takes precedence over the shared config.
+Export the variable in the shell you start Claude Code from, for example in `~/.zshrc`:
+
+```bash
+export FIGMA_API_KEY="figd_your-token-here"
+```
+
+Then start Claude Code from a new terminal. The token stays on your machine and out of the repository.
 
 ### Verifying it works
 
@@ -60,7 +68,7 @@ Context7 fetches live documentation for libraries and frameworks. When Claude wr
 
 ### Configuration
 
-No setup needed. Context7 works out of the box:
+No setup needed. Context7 works out of the box; this is its entry in `.mcp.json`:
 
 ```json
 {
@@ -81,7 +89,7 @@ Sequential Thinking helps Claude break down complex problems into step-by-step r
 
 ### Configuration
 
-No setup needed. Sequential Thinking works out of the box:
+No setup needed. Sequential Thinking works out of the box; this is its entry in `.mcp.json`:
 
 ```json
 {
@@ -98,9 +106,13 @@ This is especially useful when your plugin needs complex logic, like transformin
 
 ## Troubleshooting
 
+### The servers never appear
+
+Make sure you approved them when Claude Code asked on first start. Run `/mcp` inside Claude Code to see the list and their status, or `claude mcp list` from the terminal. If you declined by mistake, run `claude mcp reset-project-choices` and start Claude Code again.
+
 ### "FIGMA_API_KEY is not set"
 
-You haven't added your Figma API key yet. Follow the [setup steps above](#adding-the-key-to-your-project).
+The environment variable is missing in the shell that launched Claude Code. Follow the [steps above](#providing-the-key), then start Claude Code from a new terminal.
 
 ### "npx: command not found"
 
@@ -124,7 +136,7 @@ Personal access tokens don't expire by default, but they can be revoked. If you 
 
 ## Adding your own MCP servers
 
-You can add more MCP servers to `.claude/settings.json`. Each entry needs a `command` and `args` array:
+Servers everyone who clones the repository should get go in `.mcp.json`. Each entry needs a `command` and an `args` array; `env` is optional and may reference environment variables with `${NAME}`:
 
 ```json
 {
@@ -133,14 +145,20 @@ You can add more MCP servers to `.claude/settings.json`. Each entry needs a `com
       "command": "npx",
       "args": ["-y", "my-mcp-package", "--stdio"],
       "env": {
-        "API_KEY": "your-key"
+        "API_KEY": "${MY_SERVER_API_KEY}"
       }
     }
   }
 }
 ```
 
-The `env` field is optional — only include it if the server requires environment variables.
+Servers only you want, or servers whose keys you would rather not reference at all, are added from the terminal instead and stored in your personal Claude Code config, not in the repository:
+
+```bash
+claude mcp add --scope local my-server -e API_KEY=your-key -- npx -y my-mcp-package --stdio
+```
+
+Use `--scope user` to make a server available in all your projects. Note that `.claude/settings.json` and `.claude/settings.local.json` cannot define MCP servers; Claude Code only reads server definitions from `.mcp.json` and from your personal config.
 
 Browse available MCP servers at the [MCP Server Registry](https://registry.modelcontextprotocol.io) or build your own following the [MCP specification](https://modelcontextprotocol.io).
 

@@ -25,11 +25,13 @@ This template comes with an AI skill that lets you describe what you want and ha
 
 - **build-figma-plugin** — Build a complete plugin from a plain English description. This is the only skill shipped with the template; install others into your own Claude Code setup if you want them.
 
-### MCP Servers (pre-configured)
+### MCP Servers (pre-configured in `.mcp.json`)
 
-- **Figma** (`figma-developer-mcp`) — Lets Claude read your Figma files directly (requires `FIGMA_API_KEY` in `.claude/settings.json`)
+- **Figma** (`figma-developer-mcp`) — Lets Claude read your Figma files directly (reads the `FIGMA_API_KEY` environment variable; export it in your shell)
 - **Context7** — Fetches up-to-date library documentation to reduce errors
 - **Sequential Thinking** — Lets Claude work through multi-step problems before acting
+
+Claude Code asks you to approve these project servers on first start; `/mcp` shows their status. Personal servers or ones with keys go in your own config via `claude mcp add --scope local`, never in `.claude/settings.json`, which cannot define servers.
 
 ---
 

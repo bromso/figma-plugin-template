@@ -1117,6 +1117,10 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 
 ---
 
+### Task 7b: MCP configuration (added after the Task 7 sweep)
+
+Review finding, confirmed against Claude Code's documentation: settings files cannot define MCP servers; project servers are read from `.mcp.json` at the repository root (with a one-time approval prompt), personal ones from the user's own config via `claude mcp add`. The three "pre-configured" servers in `.claude/settings.json` therefore never loaded. Jonas chose to fix it in this PR: `mcpServers` moved to `.mcp.json` with `"FIGMA_API_KEY": "${FIGMA_API_KEY}"` env expansion, `settings.json` keeps only `enabledPlugins`, `ai/mcp-servers.mdx` and `ai/extending-claude.mdx` were rewritten around `.mcp.json` and `claude mcp add`, and the CLAUDE.md MCP section says where the servers live. Commit `chore: configure the MCP servers in .mcp.json so Claude Code loads them`.
+
 ### Task 8: Editor configuration
 
 **Files:**

@@ -5,9 +5,14 @@ description: Optional tools and servers you can add to give Claude more capabili
 
 ## Beyond the defaults
 
-This template comes with three MCP servers pre-configured — [Figma](/docs/ai/mcp-servers#figma-dev-mode), [Context7](/docs/ai/mcp-servers#context7), and [Sequential Thinking](/docs/ai/mcp-servers#sequential-thinking). But you can add more to give Claude additional abilities.
+This template comes with three MCP servers pre-configured — [Figma](/docs/ai/mcp-servers#figma), [Context7](/docs/ai/mcp-servers#context7), and [Sequential Thinking](/docs/ai/mcp-servers#sequential-thinking). But you can add more to give Claude additional abilities.
 
 This page covers optional servers you can install when you need them. Each one is independent — pick only what's useful for your workflow.
+
+Two ways to add a server:
+
+- **Shared with the repository**: add it to `.mcp.json` at the project root. Anyone who clones the repo gets it after approving it once.
+- **Just for you**: run `claude mcp add` from the terminal. The server is stored in your personal Claude Code config, outside the repository, which is where API keys belong.
 
 ## GitHub
 
@@ -21,24 +26,13 @@ Let Claude manage pull requests, issues, and repositories directly. Useful if yo
 
 ### Setup
 
-1. Create a [GitHub Personal Access Token](https://github.com/settings/tokens) with `repo` scope
-2. Add to `.claude/settings.local.json` (keeps your token out of git):
+GitHub hosts an official remote MCP server, so no token needs to be stored anywhere:
 
-```json
-{
-  "mcpServers": {
-    "github": {
-      "command": "npx",
-      "args": ["-y", "github-mcp"],
-      "env": {
-        "GITHUB_PERSONAL_ACCESS_TOKEN": "ghp_your-token-here"
-      }
-    }
-  }
-}
+```bash
+claude mcp add --scope local --transport http github https://api.githubcopilot.com/mcp/
 ```
 
-3. Restart Claude Code
+Then start Claude Code, type `/mcp`, and complete the GitHub sign-in when prompted.
 
 ### Try it
 
@@ -58,7 +52,7 @@ Give Claude a web browser. It can navigate pages, click buttons, fill forms, and
 
 ### Setup
 
-Add to `.claude/settings.json`:
+No API key needed, so it can be shared. Add to `.mcp.json`:
 
 ```json
 {
@@ -71,7 +65,7 @@ Add to `.claude/settings.json`:
 }
 ```
 
-No API key needed. Restart Claude Code after adding.
+Restart Claude Code and approve the new server when asked.
 
 ### Try it
 
@@ -92,20 +86,10 @@ Semantic web search — smarter than keyword search. Claude can find relevant ar
 ### Setup
 
 1. Get an API key from [Exa](https://exa.ai)
-2. Add to `.claude/settings.local.json`:
+2. Add the server to your personal config so the key stays out of git:
 
-```json
-{
-  "mcpServers": {
-    "exa": {
-      "command": "npx",
-      "args": ["-y", "exa-mcp-server"],
-      "env": {
-        "EXA_API_KEY": "your-api-key-here"
-      }
-    }
-  }
-}
+```bash
+claude mcp add --scope local exa -e EXA_API_KEY=your-api-key-here -- npx -y exa-mcp-server
 ```
 
 3. Restart Claude Code
@@ -128,7 +112,7 @@ Persistent memory across sessions. Claude can save and recall information using 
 
 ### Setup
 
-Add to `.claude/settings.json`:
+No API key needed. Add to `.mcp.json`:
 
 ```json
 {
@@ -141,7 +125,7 @@ Add to `.claude/settings.json`:
 }
 ```
 
-No API key needed. Memory is stored locally in a `memory.jsonl` file. Restart Claude Code after adding.
+Memory is stored locally in a `memory.jsonl` file. Restart Claude Code and approve the new server when asked.
 
 ### Try it
 
@@ -151,11 +135,11 @@ No API key needed. Memory is stored locally in a `memory.jsonl` file. Restart Cl
 
 ## Adding servers to your config
 
-Each server example above shows the JSON to add. A few tips:
+A few tips:
 
-- **Servers with API keys** should go in `.claude/settings.local.json` — this file is gitignored, so your keys stay private
-- **Servers without API keys** can go in `.claude/settings.json` — shared with anyone who clones the repo
-- **You can mix both** — shared servers in `settings.json`, private keys in `settings.local.json`
-- **Restart Claude Code** after changing either file for the new servers to take effect
+- **Servers with API keys** belong in your personal config via `claude mcp add --scope local` (this project only) or `--scope user` (all your projects). If a shared server needs a key, reference an environment variable in `.mcp.json` with `"${NAME}"` rather than pasting the key.
+- **Servers without API keys** can go in `.mcp.json` — shared with anyone who clones the repo
+- **`.claude/settings.json` cannot define servers**; Claude Code reads server definitions only from `.mcp.json` and your personal config
+- **Restart Claude Code** after changing `.mcp.json` and approve new servers when prompted; `/mcp` shows what is loaded
 
 Browse more servers at the [MCP Server Registry](https://registry.modelcontextprotocol.io) or the [official servers repository](https://github.com/modelcontextprotocol/servers).
