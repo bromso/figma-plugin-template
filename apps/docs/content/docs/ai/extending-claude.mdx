@@ -26,13 +26,13 @@ Let Claude manage pull requests, issues, and repositories directly. Useful if yo
 
 ### Setup
 
-GitHub hosts an official remote MCP server, so no token needs to be stored anywhere:
+GitHub hosts an official remote MCP server. Create a [personal access token](https://github.com/settings/personal-access-tokens) with the repository permissions you want Claude to have, export it in your shell (for example `export GITHUB_PAT="github_pat_..."` in `~/.zshrc`), then add the server to your personal config:
 
 ```bash
-claude mcp add --scope local --transport http github https://api.githubcopilot.com/mcp/
+claude mcp add --scope local --transport http github https://api.githubcopilot.com/mcp/ --header "Authorization: Bearer $GITHUB_PAT"
 ```
 
-Then start Claude Code, type `/mcp`, and complete the GitHub sign-in when prompted.
+Start Claude Code and type `/mcp` to check that `github` is connected.
 
 ### Try it
 
@@ -137,7 +137,7 @@ Memory is stored locally in a `memory.jsonl` file. Restart Claude Code and appro
 
 A few tips:
 
-- **Servers with API keys** belong in your personal config via `claude mcp add --scope local` (this project only) or `--scope user` (all your projects). If a shared server needs a key, reference an environment variable in `.mcp.json` with `"${NAME}"` rather than pasting the key.
+- **Servers with API keys** belong in your personal config via `claude mcp add --scope local` (this project only) or `--scope user` (all your projects). If a shared server needs a key, reference an environment variable in `.mcp.json` with `"${NAME}"` (or `"${NAME:-default}"` to fall back to a default) rather than pasting the key.
 - **Servers without API keys** can go in `.mcp.json` — shared with anyone who clones the repo
 - **`.claude/settings.json` cannot define servers**; Claude Code reads server definitions only from `.mcp.json` and your personal config
 - **Restart Claude Code** after changing `.mcp.json` and approve new servers when prompted; `/mcp` shows what is loaded

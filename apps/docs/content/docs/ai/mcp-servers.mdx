@@ -13,7 +13,7 @@ This template comes with three MCP servers pre-configured in `.mcp.json` at the 
 - **Context7** — Claude gets up-to-date library documentation so it doesn't use outdated APIs
 - **Sequential Thinking** — Claude reasons through complex problems step-by-step
 
-The first time you start Claude Code in the project it asks you to approve these servers; that is a security check for servers that arrive with a repository. Approve them once and they load in every session. Type `/mcp` inside Claude Code to see their status.
+The first time you start an interactive Claude Code session in the project, it asks you to approve these servers; that is a security check for servers that arrive with a repository. Approve them once and they load in every session. Type `/mcp` inside Claude Code to see their status.
 
 ## Figma
 
@@ -110,9 +110,9 @@ This is especially useful when your plugin needs complex logic, like transformin
 
 Make sure you approved them when Claude Code asked on first start. Run `/mcp` inside Claude Code to see the list and their status, or `claude mcp list` from the terminal. If you declined by mistake, run `claude mcp reset-project-choices` and start Claude Code again.
 
-### "FIGMA_API_KEY is not set"
+### Figma requests fail with an authentication error
 
-The environment variable is missing in the shell that launched Claude Code. Follow the [steps above](#providing-the-key), then start Claude Code from a new terminal.
+If `FIGMA_API_KEY` is missing from the shell that launched Claude Code, `claude mcp list` shows a missing-variable warning for `figma` and the server receives the literal text `${FIGMA_API_KEY}` instead of a token. Follow the [steps above](#providing-the-key), then start Claude Code from a new terminal.
 
 ### "npx: command not found"
 
@@ -136,7 +136,7 @@ Personal access tokens don't expire by default, but they can be revoked. If you 
 
 ## Adding your own MCP servers
 
-Servers everyone who clones the repository should get go in `.mcp.json`. Each entry needs a `command` and an `args` array; `env` is optional and may reference environment variables with `${NAME}`:
+Servers everyone who clones the repository should get go in `.mcp.json`. Each entry needs a `command` and an `args` array; `env` is optional and may reference environment variables with `${NAME}` (or `${NAME:-default}` to fall back to a default):
 
 ```json
 {
@@ -158,7 +158,7 @@ Servers only you want, or servers whose keys you would rather not reference at a
 claude mcp add --scope local my-server -e API_KEY=your-key -- npx -y my-mcp-package --stdio
 ```
 
-Use `--scope user` to make a server available in all your projects. Note that `.claude/settings.json` and `.claude/settings.local.json` cannot define MCP servers; Claude Code only reads server definitions from `.mcp.json` and from your personal config.
+Use `--scope user` to make a server available in all your projects, or `--scope project` to have the command write the entry into `.mcp.json` for you. Note that `.claude/settings.json` and `.claude/settings.local.json` cannot define MCP servers; Claude Code only reads server definitions from `.mcp.json` and from your personal config.
 
 Browse available MCP servers at the [MCP Server Registry](https://registry.modelcontextprotocol.io) or build your own following the [MCP specification](https://modelcontextprotocol.io).
 
