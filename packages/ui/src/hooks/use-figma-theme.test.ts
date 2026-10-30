@@ -1,10 +1,11 @@
-import { afterEach, describe, expect, it } from "bun:test";
-import { act, renderHook } from "@testing-library/react";
+import { afterEach, describe, expect, it, spyOn } from "bun:test";
+import { act, cleanup, renderHook } from "@testing-library/react";
 import { useFigmaTheme } from "./use-figma-theme";
 
 const html = () => document.documentElement;
 
 afterEach(() => {
+  cleanup();
   html().classList.remove("figma-dark", "figma-light", "dark");
 });
 
@@ -31,6 +32,7 @@ describe("useFigmaTheme", () => {
     expect(result.current).toBe("light");
     await act(async () => {
       html().classList.add("figma-dark");
+      // happy-dom delivers MutationObserver records in a microtask queued by classList.add
       await Promise.resolve(); // let the MutationObserver callback run
     });
     expect(result.current).toBe("dark");
@@ -41,13 +43,12 @@ describe("useFigmaTheme", () => {
     expect(result.current).toBe("light");
   });
 
-  it("stops observing after unmount", async () => {
-    const { result, unmount } = renderHook(() => useFigmaTheme());
+  it("disconnects its observer on unmount", () => {
+    const disconnect = spyOn(MutationObserver.prototype, "disconnect");
+    const { unmount } = renderHook(() => useFigmaTheme());
+    expect(disconnect).not.toHaveBeenCalled();
     unmount();
-    await act(async () => {
-      html().classList.add("figma-dark");
-      await Promise.resolve();
-    });
-    expect(result.current).toBe("light");
+    expect(disconnect).toHaveBeenCalledTimes(1);
+    disconnect.mockRestore();
   });
 });

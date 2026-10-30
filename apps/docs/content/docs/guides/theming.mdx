@@ -43,7 +43,7 @@ Inside Figma the `--figma-color-*` value wins. Outside Figma, in Storybook, test
 
 The tokens are exposed to Tailwind as `--color-figma-*`, which gives you the `figma-*` utilities described below. The shadcn aliases (`bg-background`, `text-foreground`, `text-muted-foreground`, `border-border`, `bg-primary` and so on) point at the same tokens, so every shadcn component is themed as well.
 
-Plugin code that needs the current theme (for example to pick an image) can call `useFigmaTheme()` from `@repo/ui`; it returns `"light"` or `"dark"` and updates when Figma switches the `figma-dark` class.
+Plugin code that needs the current theme (for example to pick an image) can call `useFigmaTheme()` from `@repo/ui`; it returns `"light"` or `"dark"` and updates when Figma switches the `figma-dark` class (outside Figma it also treats a `dark` class on `<html>`, which Storybook sets, as dark).
 
 ## Which tokens bind, and which are static
 

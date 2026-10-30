@@ -6,6 +6,8 @@ export type FigmaTheme = "light" | "dark";
  * Reads the theme Figma applies to the plugin iframe. With `themeColors: true`
  * Figma toggles `figma-dark` / `figma-light` on `<html>`; Storybook and tests
  * use `.dark`. Returns "light" when there is no document (server rendering).
+ * Only the <html> element is read; a nested .dark wrapper is honoured by the
+ * CSS but not by this hook.
  */
 function readTheme(): FigmaTheme {
   if (typeof document === "undefined") return "light";
