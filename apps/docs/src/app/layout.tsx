@@ -1,4 +1,4 @@
-import { RootProvider } from "fumadocs-ui/provider";
+import { RootProvider } from "fumadocs-ui/provider/next";
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import "./global.css";
@@ -76,6 +76,9 @@ export default function Layout({ children }: { children: ReactNode }) {
           search={{
             options: {
               type: "static",
+              // The static client fetches "/api/search" relative to the origin, so the
+              // GitHub Pages base path has to be passed explicitly.
+              api: `${BASE}/api/search`,
             },
           }}
         >

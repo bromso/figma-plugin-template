@@ -11,8 +11,7 @@
     "isolatedModules": true,
     "resolveJsonModule": true,
     "paths": {
-      "@/*": ["./src/*"],
-      "collections/*": ["./.source/*"]
+      "@/*": ["./src/*"]
     },
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,

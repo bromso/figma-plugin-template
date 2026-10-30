@@ -1,4 +1,4 @@
-import { DocsBody, DocsPage, DocsTitle } from "fumadocs-ui/page";
+import { DocsBody, DocsPage, DocsTitle, EditOnGitHub } from "fumadocs-ui/layouts/docs/page";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getMDXComponents } from "@/components/mdx";
@@ -47,16 +47,11 @@ export default async function Page(props: PageProps) {
       <DocsPage
         toc={page.data.toc}
         tableOfContent={{ style: "normal" }}
-        editOnGithub={{
-          owner: "bromso",
-          repo: "figma-plugin-template",
-          sha: "master",
-          path: `apps/docs/content/docs/${page.file.path}`,
-        }}
         breadcrumb={{ enabled: true }}
         footer={{ enabled: true }}
       >
         <DocsTitle>{page.data.title}</DocsTitle>
+        <EditOnGitHub href={`${REPO_URL}/blob/master/apps/docs/content/docs/${page.path}`} />
         <DocsBody>
           <MDX components={getMDXComponents()} />
         </DocsBody>
