@@ -102,7 +102,7 @@ The plugin runs as **two separate processes** that communicate via message passi
 
 ### UI Components
 
-`packages/ui/src/index.ts` exports 46 shadcn/ui component files (`packages/ui/src/components/ui/`, from Accordion to Tooltip, including Dialog, DropdownMenu, Tabs, Command and Sidebar) and four custom Figma components (`packages/ui/src/components/figma/`): `Icon`, `IconButton`, `SectionTitle`, `Type`. Sixteen of the shadcn components are edited to match Figma's UI3 kit (Button, Input, Textarea, Checkbox, RadioGroup, Switch, Select, Tabs, Badge, Tooltip, DropdownMenu, ContextMenu, Menubar, Command, Dialog, AlertDialog); the rest use the same tokens and scale. Always import from `@repo/ui`; never add another UI library.
+`packages/ui/src/index.ts` exports 45 shadcn/ui component files (`packages/ui/src/components/ui/`, from Accordion to Tooltip, including Dialog, DropdownMenu, Tabs, Command and Sheet) and four custom Figma components (`packages/ui/src/components/figma/`): `Icon`, `IconButton`, `SectionTitle`, `Type`. Sixteen of the shadcn components are edited to match Figma's UI3 kit (Button, Input, Textarea, Checkbox, RadioGroup, Switch, Select, Tabs, Badge, Tooltip, DropdownMenu, ContextMenu, Menubar, Command, Dialog, AlertDialog); the rest use the same tokens and scale. Always import from `@repo/ui`; never add another UI library.
 
 Icons come from a registered Lucide subset (`lucide:plus`, `lucide:info`, `lucide:star`, `lucide:ellipsis`); add more with `registerIcons()`.
 

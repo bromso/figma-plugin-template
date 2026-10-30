@@ -17,7 +17,7 @@ Names are families; `packages/ui/src/index.ts` lists the exact exports (for exam
 | Inputs | Button ★, Calendar, Checkbox ★, Input ★, InputGroup, InputOTP, RadioGroup ★, Select ★, Slider, Switch ★, Textarea ★, Toggle, ToggleGroup |
 | Data display | Avatar, Badge ★, Card, Carousel, Chart, Icon, Label, Table, Tooltip ★, Type |
 | Feedback | Alert, AlertDialog ★, Dialog ★, Drawer, Progress, Sheet, Skeleton, Sonner |
-| Layout | AspectRatio, Resizable, ScrollArea, Separator, Sidebar |
+| Layout | AspectRatio, Resizable, ScrollArea, Separator |
 | Navigation | Breadcrumb, ContextMenu ★, DropdownMenu ★, Menubar ★, NavigationMenu, Pagination, Tabs ★ |
 | Surfaces | Accordion, Collapsible, Command ★, HoverCard, Popover |
 | Custom Figma | Icon, IconButton, SectionTitle, Type (Icon and Type are filed under Data display in Storybook) |

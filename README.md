@@ -17,7 +17,7 @@ Figma/FigJam plugin boilerplate with React, Bun, TypeScript, and Turborepo monor
 - **Turborepo monorepo** with Bun package manager — fast installs, cached builds
 - **React + TypeScript + Bun** build pipeline — one build script (`build.ts`) for the plugin; Vite is used only by Storybook
 - **Single-file HTML output** — required by the Figma plugin API (all assets inlined)
-- **50 UI components** — 46 from shadcn/ui plus Icon, IconButton, SectionTitle and Type, styled to Figma's UI3 design and themed live from Figma's color variables
+- **49 UI components** — 45 from shadcn/ui plus Icon, IconButton, SectionTitle and Type, styled to Figma's UI3 design and themed live from Figma's color variables
 - **Storybook 10** for interactive component documentation, including UI3 parity stories
 - **bun test** for testing (happy-dom for UI, plain runtime for common packages)
 - **Biome** for linting and formatting
@@ -84,7 +84,7 @@ Communication uses [monorepo-networker](https://github.com/CoconutGoodie/monorep
 
 ## UI Components
 
-`packages/ui` provides 50 components: 46 from [shadcn/ui](https://ui.shadcn.com) (inputs, menus, dialogs, tabs, tables, charts, and more) and four custom Figma components (`Icon`, `IconButton`, `SectionTitle`, `Type`). Import everything from `@repo/ui`.
+`packages/ui` provides 49 components: 45 from [shadcn/ui](https://ui.shadcn.com) (inputs, menus, dialogs, tabs, tables, charts, and more) and four custom Figma components (`Icon`, `IconButton`, `SectionTitle`, `Type`). Import everything from `@repo/ui`.
 
 ### Figma-native UI
 
