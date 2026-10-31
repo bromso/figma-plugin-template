@@ -27,7 +27,7 @@ This template comes with an AI skill that lets you describe what you want and ha
 
 ### MCP Servers (pre-configured in `.mcp.json`)
 
-- **Figma** (`figma-developer-mcp`) — Lets Claude read your Figma files directly (reads the `FIGMA_API_KEY` environment variable; export it in your shell)
+- **Figma** (Figma's official remote server, `https://mcp.figma.com/mcp`) — Lets Claude read your Figma files from a pasted link; sign in once with `/mcp` → figma → Authenticate (no API key)
 - **Context7** — Fetches up-to-date library documentation to reduce errors
 - **Sequential Thinking** — Lets Claude work through multi-step problems before acting
 
