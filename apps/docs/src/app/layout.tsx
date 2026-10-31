@@ -2,11 +2,11 @@ import { SerwistProvider } from "@serwist/next/react";
 import { RootProvider } from "fumadocs-ui/provider/next";
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
+import { BASE } from "@/lib/base";
 import "./global.css";
 
 const SITE_URL = "https://bromso.github.io/figma-plugin-template";
 const SITE_DESCRIPTION = "Build Figma plugins with React, Bun, TypeScript, and AI skills";
-const BASE = process.env.GITHUB_PAGES === "true" ? "/figma-plugin-template" : "";
 
 export const metadata: Metadata = {
   title: {
