@@ -1,6 +1,5 @@
 import type { BaseLayoutProps } from "fumadocs-ui/layouts/shared";
-
-const BASE = process.env.GITHUB_PAGES === "true" ? "/figma-plugin-template" : "";
+import { BASE } from "./base";
 
 export function baseOptions(): BaseLayoutProps {
   return {

@@ -17,4 +17,13 @@ describe("Calendar interaction tests", () => {
     // At minimum prev/next buttons
     expect(buttons.length).toBeGreaterThanOrEqual(2);
   });
+
+  it("renders week-number cells without a stray week attribute", () => {
+    const { container } = render(<Calendar month={new Date(2025, 0, 1)} showWeekNumber />);
+    const cells = container.querySelectorAll(".rdp-week_number");
+    expect(cells.length).toBeGreaterThan(0);
+    for (const cell of cells) {
+      expect(cell.hasAttribute("week")).toBe(false);
+    }
+  });
 });

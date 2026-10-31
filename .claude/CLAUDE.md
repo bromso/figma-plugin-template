@@ -59,7 +59,7 @@ All commands use **Bun** as the package manager. Run from the repo root.
 - `bun run analyze` — Production build plus `dist/meta-*.json` bundle size reports
 - `bun run test` — Run all tests across all packages (bun test)
 - `bun run test:watch` — Watch mode for tests
-- `bun run types` — Type-check the plugin, `ui`, `common` and the docs app (`tsc --noEmit`; the docs task generates `.source` and runs `next typegen` first)
+- `bun run types` — Type-check the plugin, `ui`, `common`, Storybook and the docs app (`tsc --noEmit`; the docs task generates `.source` and runs `next typegen` first)
 - `bun run lint` — Lint all packages (Biome)
 - `bun run docs` — Start the documentation site (Next.js, port 3000)
 - `bun run storybook` — Start Storybook (apps/storybook, port 6006)
