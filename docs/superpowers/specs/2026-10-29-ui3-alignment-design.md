@@ -3,7 +3,7 @@
 **Date:** 2026-10-29
 **Status:** Approved, awaiting implementation plan
 **Source of truth:** Figma community file "UI3: Figma's UI Kit", file key `tumaLvnU1CE6fZgCVc68wb`
-**Predecessor:** `docs/plans/2026-04-23-ui3-theming-design.md` (token swap + CSS-only overrides, superseded by this spec)
+**Predecessor:** `docs/archive/2026-04-plans/2026-04-23-ui3-theming-design.md` (token swap + CSS-only overrides, superseded by this spec)
 **Depends on:** PR #16 (Bun build; `themeColors: true` so Figma injects `--figma-color-*` into the plugin iframe)
 
 ## Goal
