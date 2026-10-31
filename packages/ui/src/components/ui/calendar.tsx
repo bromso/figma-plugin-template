@@ -26,6 +26,8 @@ function Calendar({
       showOutsideDays={showOutsideDays}
       className={cn(
         "group/calendar bg-background p-2 [--cell-radius:var(--radius-md)] [--cell-size:--spacing(7)] in-data-[slot=card-content]:bg-transparent in-data-[slot=popover-content]:bg-transparent",
+        // react-day-picker's own stylesheet is not imported, so this is the only RTL flip for the nav chevrons;
+        // drop these two rules if that stylesheet is ever imported, or the chevrons flip twice.
         String.raw`rtl:**:[.rdp-button\_next>svg]:rotate-180`,
         String.raw`rtl:**:[.rdp-button\_previous>svg]:rotate-180`,
         className
