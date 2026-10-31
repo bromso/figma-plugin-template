@@ -1,5 +1,17 @@
 # @repo/ui
 
+## 2.0.0
+
+### Major Changes
+
+- [#27](https://github.com/bromso/figma-plugin-template/pull/27) [`b2f550b`](https://github.com/bromso/figma-plugin-template/commit/b2f550b4987911fe8226eb6e3c892037422cff9b) Thanks [@bromso](https://github.com/bromso)! - Remove the unused Sidebar component and useIsMobile hook; Sonner now follows Figma's theme through the new useFigmaTheme() hook instead of next-themes; Type uses the UI3 type scale (9/11/13/15 px) so its default size is 11 px like every other control.
+
+### Patch Changes
+
+- [#29](https://github.com/bromso/figma-plugin-template/pull/29) [`bcbe010`](https://github.com/bromso/figma-plugin-template/commit/bcbe01031e7e654382ca77013ee3e1b97e9830ac) Thanks [@bromso](https://github.com/bromso)! - Calendar: the week-number cell no longer spreads the `week` object onto the `<td>`, which rendered a stray `week="[object Object]"` attribute when `showWeekNumber` was set.
+- Updated dependencies []:
+  - @repo/common@2.0.0
+
 ## 1.4.2
 
 ### Patch Changes
