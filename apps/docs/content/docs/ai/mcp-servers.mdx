@@ -9,7 +9,7 @@ MCP (Model Context Protocol) servers extend what Claude can do by connecting it 
 
 This template comes with three MCP servers pre-configured in `.mcp.json` at the repository root, which is the file Claude Code reads for project-wide servers:
 
-- **Figma** — Claude can read your Figma files, inspect layers, and extract design tokens (via the community `figma-developer-mcp` server)
+- **Figma** — Claude can read your Figma files, inspect layers, and extract design tokens (via Figma's official remote MCP server)
 - **Context7** — Claude gets up-to-date library documentation so it doesn't use outdated APIs
 - **Sequential Thinking** — Claude reasons through complex problems step-by-step
 
@@ -17,50 +17,51 @@ The first time you start an interactive Claude Code session in the project, it a
 
 ## Figma
 
-The Figma MCP server lets Claude read your design files directly. When you say "look at my Figma file", Claude can actually inspect the layers, styles, and structure.
+The Figma MCP server lets Claude read your design files directly. Copy a link to a frame or layer in Figma, paste it into the conversation, and Claude can inspect its layers, styles, variables and structure.
 
-### Getting your API key
-
-1. Open [Figma](https://www.figma.com) and log in
-2. Click your profile icon in the top-left corner and select **Settings**
-3. Scroll down to **Personal access tokens**
-4. Click **Generate new token**
-5. Give it a descriptive name (e.g., "Claude Code")
-6. Copy the token — you won't be able to see it again
-
-### Providing the key
-
-`.mcp.json` is checked into git, so it never contains the token itself. Instead it reads the `FIGMA_API_KEY` environment variable:
+The template uses [Figma's official remote server](https://developers.figma.com/docs/figma-mcp-server/remote-server-installation/). It runs on Figma's side, so there is nothing to install, no Figma desktop app requirement and no API key to manage. This is its entry in `.mcp.json`:
 
 ```json
 {
   "mcpServers": {
     "figma": {
-      "command": "npx",
-      "args": ["-y", "figma-developer-mcp", "--stdio"],
-      "env": {
-        "FIGMA_API_KEY": "${FIGMA_API_KEY}"
-      }
+      "type": "http",
+      "url": "https://mcp.figma.com/mcp"
     }
   }
 }
 ```
 
-Export the variable in the shell you start Claude Code from, for example in `~/.zshrc`:
+### Signing in
+
+1. Start Claude Code in the project and approve the servers if asked.
+2. Type `/mcp`, select **figma** and choose **Authenticate**.
+3. A browser page opens; click **Allow access**.
+4. Back in Claude Code you should see "Authentication successful. Connected to figma".
+
+You sign in once per machine with your own Figma account. Nothing about your account is stored in the repository.
+
+### Who can use it
+
+The remote server works on every Figma plan, Starter included, but how much depends on your seat. Full and Dev seats on paid plans get a daily allowance of read calls; View and Collab seats, and everyone on the Starter plan, get a small monthly allowance. Figma publishes the current numbers on its [rate limits page](https://developers.figma.com/docs/figma-mcp-server/rate-limits-access/) and may change them.
+
+### Figma's skills (optional)
+
+Figma also ships a Claude Code plugin that bundles the same server with skills for common workflows, such as turning a design into code. If you want those skills, install it from the terminal:
 
 ```bash
-export FIGMA_API_KEY="figd_your-token-here"
+claude plugin install figma@claude-plugins-official
 ```
 
-Then start Claude Code from a new terminal. The token stays on your machine and out of the repository.
+Then restart Claude Code, type `/plugin`, open the **Installed** tab, select **figma** and sign in. The plugin is a personal install and does not change the repository.
 
 ### Verifying it works
 
-Start a Claude Code session and ask Claude to read a Figma file:
+Start a Claude Code session and paste a Figma link:
 
-> "Look at this Figma file: https://www.figma.com/design/abc123/MyFile"
+> "Look at this Figma frame: https://www.figma.com/design/abc123/MyFile?node-id=1-2"
 
-If configured correctly, Claude will describe the file's contents. If the key is missing or expired, you'll see an authentication error.
+If you are signed in, Claude describes the frame. If not, the `figma` server shows as needing authentication in `/mcp`.
 
 ## Context7
 
@@ -110,13 +111,13 @@ This is especially useful when your plugin needs complex logic, like transformin
 
 Make sure you approved them when Claude Code asked on first start. Run `/mcp` inside Claude Code to see the list and their status, or `claude mcp list` from the terminal. If you declined by mistake, run `claude mcp reset-project-choices` and start Claude Code again.
 
-### Figma requests fail with an authentication error
+### Figma requests fail or ask you to sign in
 
-If `FIGMA_API_KEY` is missing from the shell that launched Claude Code, `claude mcp list` shows a missing-variable warning for `figma` and the server receives the literal text `${FIGMA_API_KEY}` instead of a token. Follow the [steps above](#providing-the-key), then start Claude Code from a new terminal.
+Run `/mcp`, select **figma** and choose **Authenticate** again. Your sign-in can lapse, or you may have signed in with a different Figma account than the one that can open the file. If the server answers but refuses a request, you may have used up your seat's allowance; see [Who can use it](#who-can-use-it).
 
 ### "npx: command not found"
 
-MCP servers use `npx` to run without installing globally. Make sure Node.js is installed:
+Context7 and Sequential Thinking use `npx` to run without installing globally. Make sure Node.js is installed:
 
 ```bash
 node --version  # Should print v22.22.1 or higher
@@ -126,13 +127,9 @@ node --version  # Should print v22.22.1 or higher
 
 MCP servers start on demand when Claude needs them. If a server isn't responding:
 
-1. Check your internet connection — all three servers fetch packages via npm
+1. Check your internet connection — Context7 and Sequential Thinking fetch their packages via npm, and Figma's server is remote
 2. Try clearing the npx cache: `npx clear-npx-cache`
 3. Restart your Claude Code session
-
-### Figma token expired
-
-Personal access tokens don't expire by default, but they can be revoked. If you get authentication errors with a previously working token, generate a new one in Figma settings.
 
 ## Adding your own MCP servers
 
