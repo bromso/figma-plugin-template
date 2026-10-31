@@ -2,14 +2,14 @@ import { ToggleGroup, ToggleGroupItem } from "@repo/ui";
 import type { Meta, StoryObj } from "@storybook/react";
 import { AlignCenterIcon, AlignLeftIcon, AlignRightIcon } from "lucide-react";
 
-const meta = {
+const meta: Meta<typeof ToggleGroup> = {
   component: ToggleGroup,
   title: "Inputs/ToggleGroup",
   tags: ["autodocs"],
-} satisfies Meta<typeof ToggleGroup>;
+};
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof ToggleGroup>;
 
 export const Default: Story = {
   render: () => (

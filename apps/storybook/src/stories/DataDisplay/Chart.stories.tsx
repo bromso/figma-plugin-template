@@ -2,14 +2,14 @@ import { type ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } f
 import type { Meta, StoryObj } from "@storybook/react";
 import { Bar, BarChart, XAxis, YAxis } from "recharts";
 
-const meta = {
+const meta: Meta<typeof ChartContainer> = {
   component: ChartContainer,
   title: "Data Display/Chart",
   tags: ["autodocs"],
-} satisfies Meta<typeof ChartContainer>;
+};
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof ChartContainer>;
 
 const chartData = [
   { month: "Jan", desktop: 186 },

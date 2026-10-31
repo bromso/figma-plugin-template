@@ -2,14 +2,14 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@r
 import type { Meta, StoryObj } from "@storybook/react";
 import { expect, userEvent, within } from "storybook/test";
 
-const meta = {
+const meta: Meta<typeof Accordion> = {
   component: Accordion,
   title: "Surfaces/Accordion",
   tags: ["autodocs"],
-} satisfies Meta<typeof Accordion>;
+};
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof Accordion>;
 
 export const Default: Story = {
   render: () => (

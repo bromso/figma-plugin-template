@@ -1,14 +1,14 @@
 import { InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot } from "@repo/ui";
 import type { Meta, StoryObj } from "@storybook/react";
 
-const meta = {
+const meta: Meta<typeof InputOTP> = {
   component: InputOTP,
   title: "Inputs/InputOTP",
   tags: ["autodocs"],
-} satisfies Meta<typeof InputOTP>;
+};
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof InputOTP>;
 
 export const Default: Story = {
   render: () => (
