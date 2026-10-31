@@ -43,6 +43,8 @@ Inside Figma the `--figma-color-*` value wins. Outside Figma, in Storybook, test
 
 The tokens are exposed to Tailwind as `--color-figma-*`, which gives you the `figma-*` utilities described below. The shadcn aliases (`bg-background`, `text-foreground`, `text-muted-foreground`, `border-border`, `bg-primary` and so on) point at the same tokens, so every shadcn component is themed as well.
 
+Plugin code that needs the current theme (for example to pick an image) can call `useFigmaTheme()` from `@repo/ui`; it returns `"light"` or `"dark"` and updates when Figma switches the `figma-dark` class (outside Figma it also treats a `dark` class on `<html>`, which Storybook sets, as dark).
+
 ## Which tokens bind, and which are static
 
 Figma documents variables for the bg, text, border and icon families. The template binds to those. It documents nothing for menus, tooltips or translucent borders, so those tokens are not bound to Figma and keep the UI3 kit's values: the same in both themes, except `bg-menu-selected` and `border-translucent`, which have a light and a dark value. That is the intended look: Figma's own menus and tooltips are dark whether the app is light or dark.
@@ -86,7 +88,7 @@ The components follow Figma's UI3 kit, which is denser than the shadcn defaults.
 | Font | Inter (Latin subset), as a variable font inlined into the plugin bundle |
 | Icons | Lucide icons are drawn with a 1.5 px stroke to match Figma's 1 px icons |
 
-The `Type` component keeps its own sizes (`xsmall` 11 px, `small` 12 px, `large` 13 px, `xlarge` 14 px); prefer the Tailwind text utilities above for new UI.
+The `Type` component uses the same scale (`xsmall` 9 px, `small` 11 px, `large` 13 px, `xlarge` 15 px); prefer the Tailwind text utilities above for new UI.
 
 ## Laying out a panel
 

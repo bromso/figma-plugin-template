@@ -1,11 +1,11 @@
 ---
 title: UI Components
-description: The 50 components available for your plugin's interface, and how they fit Figma's UI3 design.
+description: The 49 components available for your plugin's interface, and how they fit Figma's UI3 design.
 ---
 
 ## Overview
 
-The template includes 50 UI components that look native inside Figma: 46 from [shadcn/ui](https://ui.shadcn.com) and four custom Figma components. They are styled with Tailwind CSS 4 to Figma's UI3 design and take their colors from Figma's theme; see [Theming and the UI3 Look](/docs/guides/theming).
+The template includes 49 UI components that look native inside Figma: 45 from [shadcn/ui](https://ui.shadcn.com) and four custom Figma components. They are styled with Tailwind CSS 4 to Figma's UI3 design and take their colors from Figma's theme; see [Theming and the UI3 Look](/docs/guides/theming).
 
 Import them from `@repo/ui`:
 
@@ -22,7 +22,7 @@ Run `bun run storybook` to browse every component in light and dark; the `UI3` s
 | Inputs | Button, Calendar, Checkbox, Input, InputGroup, InputOTP, RadioGroup, Select, Slider, Switch, Textarea, Toggle, ToggleGroup |
 | Data display | Avatar, Badge, Card, Carousel, Chart, Icon, Label, Table, Tooltip, Type |
 | Feedback | Alert, AlertDialog, Dialog, Drawer, Progress, Sheet, Skeleton, Sonner |
-| Layout | AspectRatio, Resizable, ScrollArea, Separator, Sidebar |
+| Layout | AspectRatio, Resizable, ScrollArea, Separator |
 | Navigation | Breadcrumb, ContextMenu, DropdownMenu, Menubar, NavigationMenu, Pagination, Tabs |
 | Surfaces | Accordion, Collapsible, Command, HoverCard, Popover |
 | Custom Figma | Icon, IconButton, SectionTitle, Type (Icon and Type are filed under Data display in Storybook) |
@@ -114,7 +114,7 @@ Built-in icons: `lucide:plus`, `lucide:info`, `lucide:star`, `lucide:ellipsis` (
 <Type as="h2" size="large" weight="bold">Heading</Type>
 ```
 
-`SectionTitle` is the 32 px section header used in the template's sample app (`packages/ui/src/app.tsx`). `Type` keeps its own sizes (`xsmall` 11 px, `small` 12 px, `large` 13 px, `xlarge` 14 px); for new UI prefer the Tailwind text utilities from the theming guide.
+`SectionTitle` is the 32 px section header used in the template's sample app (`packages/ui/src/app.tsx`). `Type` uses the UI3 scale (`xsmall` 9 px, `small` 11 px, `large` 13 px, `xlarge` 15 px); for new UI prefer the Tailwind text utilities from the theming guide.
 
 ### Alert
 

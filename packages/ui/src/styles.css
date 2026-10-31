@@ -105,9 +105,6 @@ html.figma-dark {
   --border: var(--ui3-border);
   --input: var(--ui3-bg-secondary);
   --ring: var(--ui3-border-selected);
-  --sidebar: var(--ui3-bg-secondary);
-  --sidebar-foreground: var(--ui3-text);
-  --sidebar-border: var(--ui3-border);
   --chart-1: #0d99ff;
   --chart-2: #14ae5c;
   --chart-3: #ffcd29;
@@ -189,9 +186,6 @@ html.figma-dark {
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-border: var(--sidebar-border);
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
