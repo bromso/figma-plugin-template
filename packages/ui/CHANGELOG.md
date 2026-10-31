@@ -1,5 +1,13 @@
 # @repo/ui
 
+## 1.4.2
+
+### Patch Changes
+
+- [#25](https://github.com/bromso/figma-plugin-template/pull/25) [`060a836`](https://github.com/bromso/figma-plugin-template/commit/060a836552d78b7b23dd6ae39c350df3c4b6d005) Thanks [@bromso](https://github.com/bromso)! - Calendar now uses @daypicker/react 10 (the renamed react-day-picker); date-fns is no longer a direct dependency of the UI package.
+- Updated dependencies []:
+  - @repo/common@1.4.2
+
 ## 1.4.1
 
 ### Patch Changes
